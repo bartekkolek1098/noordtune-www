@@ -1,4 +1,5 @@
 import type {Metadata} from "next";
+import {blogArticleUrl, type BlogArticle} from "@/content/blog-articles";
 import {faqs, seo, type FaqItem} from "@/content/copy";
 import type {SeoLanding} from "@/content/seo-landings";
 import {
@@ -100,6 +101,52 @@ export function createSeoLandingMetadata(page: SeoLanding): Metadata {
   };
 }
 
+export function createBlogArticleMetadata(article: BlogArticle): Metadata {
+  const canonical = blogArticleUrl(article);
+  const image = `${site.url}${article.heroImage}`;
+
+  return {
+    title: article.metaTitle,
+    description: article.metaDescription,
+    metadataBase: new URL(site.url),
+    alternates: {
+      canonical,
+      languages: {
+        [article.locale]: canonical
+      }
+    },
+    openGraph: {
+      title: article.metaTitle,
+      description: article.metaDescription,
+      url: canonical,
+      siteName: site.name,
+      locale: article.locale,
+      type: "article",
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt,
+      section: article.category,
+      images: [
+        {
+          url: image,
+          width: 1774,
+          height: 887,
+          alt: `${site.name} ${article.title}`
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.metaTitle,
+      description: article.metaDescription,
+      images: [image]
+    },
+    robots: {
+      index: true,
+      follow: true
+    }
+  };
+}
+
 export function localBusinessJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
@@ -161,6 +208,32 @@ export function faqItemsJsonLd(items: FaqItem[]) {
         text: item.answer
       }
     }))
+  };
+}
+
+export function articleJsonLd(article: BlogArticle) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.title,
+    description: article.metaDescription,
+    image: `${site.url}${article.heroImage}`,
+    datePublished: article.publishedAt,
+    dateModified: article.updatedAt,
+    author: {
+      "@type": "Organization",
+      name: site.name,
+      url: site.url
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/brand/noordtune-logo.png`
+      }
+    },
+    mainEntityOfPage: blogArticleUrl(article)
   };
 }
 

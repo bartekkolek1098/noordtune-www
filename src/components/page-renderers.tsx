@@ -20,10 +20,10 @@ import {
   posts,
   pricingPlans,
   processSteps,
-  results,
   services,
   whyItems
 } from "@/content/copy";
+import {publishedCustomerResults} from "@/content/customer-results";
 import {heroImages, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
 const ui = {
@@ -79,6 +79,27 @@ const ui = {
   whatsappFast: string;
   contactCards: string[];
 }>;
+
+const resultsIntro = {
+  nl: {
+    kicker: "Klantresultaten & voorbeeldcases",
+    title: "Realisaties zijn voertuigafhankelijk, nooit een universele belofte.",
+    text:
+      "Deze pagina wordt de plek voor echte NoordTune realisaties: voertuigfoto's, motorvariant, Stage of service, originele waarden, getunede waarden en technische notities. De huidige kaarten zijn duidelijke indicatieve voorbeelden totdat klantgoedgekeurde cases worden gepubliceerd. Resultaten hangen af van onderhoudsstaat, ECU, TCU, softwareversie, brandstof, hardware en gebruik. Gebruik de Power Catalog voor een voertuigspecifieke indicatie of stuur je gegevens via WhatsApp voor advies."
+  },
+  en: {
+    kicker: "Customer results & example cases",
+    title: "Results are vehicle-specific, never a universal promise.",
+    text:
+      "This page is prepared for real NoordTune customer results: vehicle photos, engine variant, Stage or service, stock figures, tuned figures and technical notes. Current cards are clearly marked indicative examples until approved customer cases are published. Results depend on condition, ECU, TCU, software version, fuel, hardware and use."
+  },
+  pl: {
+    kicker: "Realizacje i przykłady",
+    title: "Wyniki zależą od konkretnego auta, nie są uniwersalną obietnicą.",
+    text:
+      "Ta strona będzie miejscem na prawdziwe realizacje NoordTune: zdjęcia auta, wersję silnika, Stage lub usługę, wartości seryjne, wynik po tuningu i notatki techniczne. Obecne karty są oznaczone jako przykłady orientacyjne, dopóki nie pojawią się zatwierdzone realizacje klientów. Wyniki zależą od stanu auta, ECU, TCU, wersji oprogramowania, paliwa, osprzętu i sposobu użytkowania."
+  }
+} satisfies Record<Locale, {kicker: string; title: string; text: string}>;
 
 export function HomeRenderer({locale}: {locale: Locale}) {
   const home = homeContent[locale];
@@ -167,8 +188,8 @@ export function HomeRenderer({locale}: {locale: Locale}) {
             }
           />
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {results[locale].map((result) => (
-              <ResultCardView key={result.car} locale={locale} result={result} />
+            {publishedCustomerResults(locale).map((result) => (
+              <ResultCardView key={result.id} locale={locale} result={result} />
             ))}
           </div>
         </section>
@@ -318,7 +339,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
   }
 
   if (pageKey === "resultaten") {
-    const resultsBlock = pageSections.resultaten[locale][0];
+    const resultsBlock = resultsIntro[locale];
 
     return (
       <>
@@ -326,14 +347,24 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           bullets={
             locale === "nl"
               ? [
-                  "Voorbeelden zijn indicatief per motorvariant",
-                  "Onderhoudsstaat en softwareversie tellen mee",
-                  "Transmissielimieten worden meegenomen",
-                  "Definitief advies volgt na voertuigcheck"
+                  "Geselecteerde klantresultaten en indicatieve voorbeeldcases",
+                  "Resultaten hangen af van onderhoud, ECU, TCU en softwareversie",
+                  "Brandstof, hardware en transmissielimieten tellen mee",
+                  "Gebruik de Power Catalog voor een voertuigspecifieke indicatie"
                 ]
               : locale === "en"
-                ? ["Indicative examples", "Vehicle condition matters", "Final advice follows a check"]
-                : ["Przykłady są orientacyjne", "Stan auta ma znaczenie", "Finalna porada po sprawdzeniu auta"]
+                ? [
+                    "Selected customer results and indicative examples",
+                    "Vehicle condition, ECU, TCU and software version matter",
+                    "Fuel, hardware and gearbox limits influence the result",
+                    "Use the Power Catalog for a vehicle-specific indication"
+                  ]
+                : [
+                    "Wybrane realizacje i przykłady orientacyjne",
+                    "Stan auta, ECU, TCU i wersja oprogramowania mają znaczenie",
+                    "Paliwo, osprzęt i limity skrzyni wpływają na wynik",
+                    "Użyj katalogu mocy, aby sprawdzić konkretne auto"
+                  ]
           }
           image="/images/sections/customer-result.svg"
           kicker={resultsBlock.kicker}
@@ -348,7 +379,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           secondaryHref={site.whatsappUrl}
           secondaryLabel={locale === "nl" ? "WhatsApp ons" : locale === "en" ? "Message us on WhatsApp" : "Napisz na WhatsApp"}
           stats={[
-            {value: "4", label: locale === "nl" ? "Voorbeeldcases" : locale === "en" ? "Example cases" : "Przykłady"},
+            {value: "4", label: locale === "nl" ? "Resultaatkaarten" : locale === "en" ? "Result cards" : "Karty wyników"},
             {value: "Stage 1", label: locale === "nl" ? "Populairste basis" : locale === "en" ? "Popular base" : "Popularna baza"},
             {value: "100%", label: locale === "nl" ? "Voertuigafhankelijk" : locale === "en" ? "Vehicle dependent" : "Zależne od auta"},
             {value: "RDW", label: locale === "nl" ? "Cataloguscheck" : locale === "en" ? "Catalog check" : "Katalog"}
@@ -358,8 +389,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
         />
         <section className="container py-12 md:py-16">
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {results[locale].map((result) => (
-              <ResultCardView key={result.car} locale={locale} result={result} />
+            {publishedCustomerResults(locale).map((result) => (
+              <ResultCardView key={result.id} locale={locale} result={result} />
             ))}
           </div>
         </section>

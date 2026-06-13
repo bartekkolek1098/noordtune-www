@@ -2,7 +2,9 @@ import Image from "next/image";
 import Link from "next/link";
 import {ArrowRight} from "lucide-react";
 import {Icon} from "@/components/icon";
-import type {BlogPost, PricingPlan, ResultCard, ServiceCardCopy} from "@/content/copy";
+import type {BlogPost, PricingPlan, ServiceCardCopy} from "@/content/copy";
+import {blogArticlePathForPost} from "@/content/blog-articles";
+import type {CustomerResult} from "@/content/customer-results";
 import {pathFor, type Locale} from "@/content/site";
 
 const labels = {
@@ -12,7 +14,9 @@ const labels = {
     vat: "incl. btw",
     stock: "Origineel",
     tuned: "Getuned",
-    read: "Lees artikel"
+    read: "Lees artikel",
+    demo: "Indicatief voorbeeld",
+    hp: "pk"
   },
   en: {
     more: "More info",
@@ -20,7 +24,9 @@ const labels = {
     vat: "incl. VAT",
     stock: "Stock",
     tuned: "Tuned",
-    read: "Read article"
+    read: "Read article",
+    demo: "Indicative example",
+    hp: "hp"
   },
   pl: {
     more: "Więcej info",
@@ -28,7 +34,9 @@ const labels = {
     vat: "z VAT",
     stock: "Seryjnie",
     tuned: "Po tuningu",
-    read: "Czytaj"
+    read: "Czytaj",
+    demo: "Przykład orientacyjny",
+    hp: "KM"
   }
 } satisfies Record<Locale, Record<string, string>>;
 
@@ -102,30 +110,53 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
   );
 }
 
-export function ResultCardView({result, locale}: {result: ResultCard; locale: Locale}) {
+export function ResultCardView({result, locale}: {result: CustomerResult; locale: Locale}) {
   const copy = labels[locale];
+  const image = result.images[0] ?? "/images/sections/customer-result.svg";
+  const car = `${result.vehicleMake} ${result.vehicleModel}`;
+  const stock = `${result.stockPowerHp} ${copy.hp} / ${result.stockTorqueNm} Nm`;
+  const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;
+  const gain = `+${result.gainPowerHp} ${copy.hp}`;
+
   return (
-    <article className="panel-edge rounded-[3px] p-5">
-      <div className="flex items-start justify-between gap-3">
-        <div>
-          <p className="text-xs font-black uppercase text-primary">{result.stage}</p>
-          <h3 className="racing-title mt-1 text-3xl text-white">{result.car}</h3>
-        </div>
-        <span className="rounded-[3px] border border-primary/50 bg-primary/15 px-3 py-2 text-sm font-black text-primary">
-          {result.gain}
+    <article className="panel-edge overflow-hidden rounded-[3px]">
+      <div className="relative h-36 border-b border-white/10 bg-black/35">
+        <Image
+          alt=""
+          className="object-cover opacity-85"
+          fill
+          sizes="(min-width:1024px) 25vw, 100vw"
+          src={image}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#090a0b] via-black/25 to-transparent" />
+        <span className="absolute bottom-3 left-3 rounded-[3px] border border-white/15 bg-black/60 px-3 py-1 text-[0.65rem] font-black uppercase text-white/70">
+          {result.customerApproved ? result.serviceType : copy.demo}
         </span>
       </div>
-      <div className="mt-5 grid grid-cols-2 gap-3">
-        <div className="border border-white/10 bg-black/28 p-3">
-          <p className="text-xs uppercase text-white/45">{copy.stock}</p>
-          <p className="mt-1 font-semibold text-white">{result.stock}</p>
+      <div className="p-5">
+        <div className="flex items-start justify-between gap-3">
+          <div>
+            <p className="text-xs font-black uppercase text-primary">{result.stage}</p>
+            <h3 className="racing-title mt-1 text-3xl text-white">{car}</h3>
+            <p className="mt-1 text-xs font-semibold uppercase text-white/45">{result.vehicleEngine}</p>
+          </div>
+          <span className="rounded-[3px] border border-primary/50 bg-primary/15 px-3 py-2 text-sm font-black text-primary">
+            {gain}
+          </span>
         </div>
-        <div className="border border-primary/25 bg-primary/10 p-3">
-          <p className="text-xs uppercase text-white/45">{copy.tuned}</p>
-          <p className="mt-1 font-semibold text-white">{result.tuned}</p>
+        <div className="mt-5 grid grid-cols-2 gap-3">
+          <div className="border border-white/10 bg-black/28 p-3">
+            <p className="text-xs uppercase text-white/45">{copy.stock}</p>
+            <p className="mt-1 font-semibold text-white">{stock}</p>
+          </div>
+          <div className="border border-primary/25 bg-primary/10 p-3">
+            <p className="text-xs uppercase text-white/45">{copy.tuned}</p>
+            <p className="mt-1 font-semibold text-white">{tuned}</p>
+          </div>
         </div>
+        <p className="mt-4 text-sm leading-6 text-white/65">{result.shortDescription}</p>
+        <p className="mt-3 text-xs leading-5 text-white/42">{result.disclaimer}</p>
       </div>
-      <p className="mt-4 text-sm leading-6 text-white/65">{result.text}</p>
     </article>
   );
 }
@@ -133,19 +164,23 @@ export function ResultCardView({result, locale}: {result: ResultCard; locale: Lo
 export function BlogCard({post, locale}: {post: BlogPost; locale: Locale}) {
   const copy = labels[locale];
   return (
-    <article
-      className="panel-edge flex min-h-full flex-col rounded-[3px] p-5 transition hover:border-primary/70"
+    <Link
+      aria-label={`${copy.read}: ${post.title}`}
+      className="group panel-edge flex min-h-full flex-col rounded-[3px] p-5 transition hover:border-primary/70 hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       data-article-slug={post.slug}
+      href={blogArticlePathForPost(locale, post.slug)}
     >
       <div className="flex items-center justify-between gap-3 text-xs uppercase text-white/45">
         <span className="font-black text-primary">{post.category}</span>
         <span>{post.readTime}</span>
       </div>
-      <h3 className="racing-title mt-4 text-2xl leading-none text-white">{post.title}</h3>
+      <h3 className="racing-title mt-4 text-2xl leading-none text-white transition group-hover:text-primary">
+        {post.title}
+      </h3>
       <p className="mt-3 flex-1 text-sm leading-6 text-white/66">{post.excerpt}</p>
       <span className="mt-5 inline-flex items-center gap-2 text-sm font-black uppercase text-white">
         {copy.read} <ArrowRight className="h-4 w-4 text-primary" />
       </span>
-    </article>
+    </Link>
   );
 }

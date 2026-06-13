@@ -161,6 +161,14 @@ The preview is approved in direction by the owner. This pass adds the remaining 
 - mobile overflow fix
 - locale `html.lang` fix
 
+Additional content-architecture pass:
+
+- Blog cards now link to full educational article pages.
+- SEO articles are separated from customer results and social updates.
+- Customer result cards now render from `src/content/customer-results.ts`.
+- Facebook-style posts are documented as future draft social updates or draft customer results, not SEO articles.
+- Article pages include metadata, Article JSON-LD and FAQ JSON-LD where relevant.
+
 Production domain is not connected yet.
 
 ## Remaining Manual Checks
@@ -175,6 +183,10 @@ Before connecting `www.noordtune.nl`:
   - `/tuning-resultaten/abarth-500-abarth-eu-1-4-t-jet-135/`
 - Confirm legal pages with the owner.
 - Confirm DNS cutover timing.
+- Re-check a few new article routes on Vercel preview after this commit deploys:
+  - `/nl/blog/wat-is-chiptuning`
+  - `/en/news-blog/what-is-chiptuning`
+  - `/pl/aktualnosci-blog/co-to-jest-chiptuning`
 
 ## Recommendation
 

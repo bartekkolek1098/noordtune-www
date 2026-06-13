@@ -1,4 +1,5 @@
 import type {MetadataRoute} from "next";
+import {blogArticles, blogArticleUrl} from "@/content/blog-articles";
 import {seoLandings, seoLandingUrl} from "@/content/seo-landings";
 import {
   absolutePath,
@@ -37,5 +38,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }));
 
-  return [...mainPages, ...landingPages];
+  const articlePages = blogArticles
+    .filter((article) => article.status === "published")
+    .map((article) => ({
+      url: blogArticleUrl(article),
+      lastModified: new Date(article.updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.72,
+      alternates: {
+        languages: {
+          [article.locale]: blogArticleUrl(article)
+        }
+      }
+    }));
+
+  return [...mainPages, ...landingPages, ...articlePages];
 }

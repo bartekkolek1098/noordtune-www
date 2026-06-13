@@ -10,6 +10,20 @@ Future Facebook sync should bring selected Facebook Page posts into the website 
 
 No Facebook API sync is implemented in this pass.
 
+## Owner Posting Workflow
+
+The owner normally posts on Facebook in a workshop/result format:
+
+- vehicle photo or photo set
+- short modification description
+- vehicle make, model and engine
+- Stage or service performed
+- power/torque result or gains when available
+- certificate or service confirmation sometimes
+- short professional summary
+
+These posts are valuable proof content, but they should not be treated as normal SEO blog articles.
+
 ## Content Separation
 
 Keep three content models separate:
@@ -48,10 +62,14 @@ Recommended process:
 
 1. Scheduled job requests recent Page posts.
 2. Normalize post text, date, permalink and media.
-3. Download or proxy approved images safely.
-4. Store synced posts as draft social updates.
-5. Admin manually approves before publishing.
-6. Published social updates appear in a separate website section.
+3. Store every imported item as a draft social update first.
+4. Detect likely customer result posts from vehicle/model/result language.
+5. Let admin convert a draft social update into a draft customer result.
+6. Admin edits vehicle data, power/torque, service type, ECU/TCU notes and legal wording.
+7. Download/store approved images locally or in controlled object storage.
+8. Link back to the original Facebook post when useful.
+9. Publish either a social update card or a full customer result page.
+10. Keep SEO articles separate from imported social content.
 
 Manual approval is recommended because:
 
@@ -86,6 +104,22 @@ Social updates should:
 - Never replace SEO landing pages or articles
 - Avoid claims that are not backed by customer approval or measured data
 
+Customer results should:
+
+- publish only after owner/admin review
+- include vehicle make, model, engine and service type
+- include stock/tuned power and torque only when known
+- include a vehicle-specific disclaimer
+- never promise identical gains for every vehicle
+- link to the original Facebook post when imported from Facebook
+- remain noindex or draft if the content is too thin
+
+SEO articles should:
+
+- remain manually written evergreen knowledge-base content
+- include metadata, internal links and FAQ where useful
+- never be auto-created from Facebook posts
+
 ## Implementation Notes
 
 Do not implement Facebook API access yet.
@@ -97,3 +131,9 @@ When implementation starts, add:
 - Scheduled route or worker
 - Content moderation / approval state
 - Error logging and retry handling
+
+Current related architecture:
+
+- SEO articles: `src/content/blog-articles.ts`
+- Customer results: `src/content/customer-results.ts`
+- Content architecture note: `docs/CONTENT_ARCHITECTURE_RESULTS_AND_SOCIAL.md`

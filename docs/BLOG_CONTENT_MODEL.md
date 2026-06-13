@@ -99,6 +99,24 @@ Recommended future flow:
 
 Current blog cards are static content entries in:
 
-- `/Users/bartk/Documents/www.noordtune.nl/src/content/copy.ts`
+- `src/content/copy.ts`
 
-Each card now includes a future `slug`, but full article pages are not implemented yet.
+Full SEO article pages are now implemented in:
+
+- `src/content/blog-articles.ts`
+- `src/content/blog-articles-data-nl.ts`
+- `src/content/blog-articles-data-en.ts`
+- `src/content/blog-articles-data-pl.ts`
+- `src/app/[locale]/[slug]/[articleSlug]/page.tsx`
+
+Blog cards link to these article routes:
+
+- `/nl/blog/...`
+- `/en/news-blog/...`
+- `/pl/aktualnosci-blog/...`
+
+Customer-result style posts remain separate in:
+
+- `src/content/customer-results.ts`
+
+Facebook-synced posts should still become draft social updates or draft customer results, not SEO articles.
