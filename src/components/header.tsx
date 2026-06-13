@@ -15,7 +15,7 @@ type HeaderProps = {
 export function Header({locale, activeKey, languagePaths}: HeaderProps) {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-black/86 backdrop-blur-xl">
-      <div className="container flex min-h-[72px] items-center justify-between gap-3 xl:min-h-[86px]">
+      <div className="container flex min-h-[72px] items-center justify-between gap-2 xl:min-h-[86px] xl:gap-3">
         <Link
           aria-label="NoordTune.nl home"
           className="flex shrink-0 items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -23,7 +23,7 @@ export function Header({locale, activeKey, languagePaths}: HeaderProps) {
         >
           <Image
             alt="NoordTune.nl Chiptuning & Auto Diagnostiek"
-            className="h-auto w-44 sm:w-48 xl:w-52 2xl:w-56"
+            className="h-auto w-28 min-[360px]:w-32 min-[420px]:w-36 sm:w-48 xl:w-52 2xl:w-56"
             height={75}
             priority
             src="/brand/noordtune-logo.png"
@@ -52,8 +52,8 @@ export function Header({locale, activeKey, languagePaths}: HeaderProps) {
           })}
         </nav>
 
-        <div className="ml-auto flex items-center gap-2 xl:hidden">
-          <LanguageSwitcher languagePaths={languagePaths} locale={locale} pageKey={activeKey} />
+        <div className="ml-auto flex items-center gap-1 xl:hidden">
+          <LanguageSwitcher compact languagePaths={languagePaths} locale={locale} pageKey={activeKey} />
         </div>
 
         <div className="hidden items-center gap-3 xl:flex">
