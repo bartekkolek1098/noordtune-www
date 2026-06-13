@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "content:audit": "tsx scripts/audit-locales.ts",
-    "screenshots": "tsx scripts/capture-screenshots.ts"
+    "screenshots": "tsx scripts/capture-screenshots.ts",
+    "menu:screenshots": "tsx scripts/capture-mobile-menu-screenshots.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

@@ -80,6 +80,33 @@ Post-deploy verification:
 - Polish diacritics are present.
 - Mobile menu opens without horizontal overflow.
 
+### Launch Blocker: Open Mobile Menu Overlay
+
+Owner-reported issue on `https://noordtune-www.vercel.app/pl`:
+
+- On iPhone/mobile browser, the opened mobile menu visually mixed with the hero section.
+- Hero headline, CTAs, badges, navigation links and language controls appeared overlapped.
+- The page underneath looked like it remained part of the menu.
+
+Fix added:
+
+- The mobile menu now renders as a portal-mounted full-screen dialog on `document.body`.
+- The overlay uses `position: fixed`, `inset: 0`, `z-index: 120` and a solid premium dark background with subtle red atmosphere.
+- Body scroll is locked while the menu is open.
+- The overlay sits above the header, hero and floating WhatsApp button.
+- The menu closes from the close button, Escape key, route changes and navigation link clicks.
+- Open mobile menu screenshots are now generated for `/pl`, `/nl` and `/en`.
+
+Open-menu screenshot outputs:
+
+- `docs/qa-screenshots/mobile-menu/mobile-menu-pl.png`
+- `docs/qa-screenshots/mobile-menu/mobile-menu-nl.png`
+- `docs/qa-screenshots/mobile-menu/mobile-menu-en.png`
+
+See also:
+
+- `docs/MOBILE_MENU_BUGFIX_REPORT.md`
+
 ## Language QA
 
 The language switcher is structurally correct and maps equivalent routes through `src/content/site.ts`.

@@ -16,6 +16,7 @@ type LanguageSwitcherProps = {
   pageKey: PageKey;
   className?: string;
   compact?: boolean;
+  order?: Locale[];
   languagePaths?: Partial<Record<Locale, string>>;
 };
 
@@ -23,10 +24,17 @@ function storeLocaleCookie(locale: Locale) {
   document.cookie = `${localeCookieName}=${locale}; path=/; max-age=31536000; SameSite=Lax`;
 }
 
-export function LanguageSwitcher({compact = false, locale, pageKey, className, languagePaths}: LanguageSwitcherProps) {
+export function LanguageSwitcher({
+  compact = false,
+  locale,
+  pageKey,
+  className,
+  order = [...locales],
+  languagePaths
+}: LanguageSwitcherProps) {
   return (
     <div className={clsx("flex items-center gap-1", className)} aria-label="Language switcher">
-      {locales.map((item) => {
+      {order.map((item) => {
         const href = languagePaths?.[item] ?? pathFor(item, pageKey);
 
         return (
