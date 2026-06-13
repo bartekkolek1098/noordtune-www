@@ -17,7 +17,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Learn what chiptuning and ECU remap mean, how power and torque are adjusted and why diagnostics and custom calibration matter.",
     category: "Chiptuning",
     readTime: "5 min",
-    heroImage: "/images/heroes/blog.png",
+    heroImage: "/images/sections/ecu-bench-red.png",
     intro:
       "Chiptuning is the careful adjustment of the engine control software. The aim is a stronger, smoother car while staying within realistic technical margins.",
     ...commonDates,
@@ -48,7 +48,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Understand the difference between Stage 1 and Stage 2 tuning, including hardware, diagnostics, logging and realistic margins.",
     category: "Technical",
     readTime: "6 min",
-    heroImage: "/images/sections/turbo-engine.svg",
+    heroImage: "/images/sections/ecu-bench-red.png",
     intro:
       "Stage 1 and Stage 2 are useful terms, but they only make sense when hardware, diagnostics and safety margins are considered together.",
     ...commonDates,
@@ -79,7 +79,7 @@ export const enBlogArticles: BlogArticle[] = [
       "ECU remap can be safe when the vehicle is healthy, the calibration is realistic and diagnostics are taken seriously.",
     category: "Advice",
     readTime: "7 min",
-    heroImage: "/images/sections/ecu-laptop.svg",
+    heroImage: "/images/sections/autotuner-bench.webp",
     intro:
       "An ECU remap is safe when the vehicle condition, software quality and chosen margins all line up. Responsible tuning starts with checking, not guessing.",
     ...commonDates,
@@ -110,7 +110,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Read what an AdBlue fault can mean, why diagnostics matter and why legal wording around emissions systems is important.",
     category: "Diagnostics",
     readTime: "4 min",
-    heroImage: "/images/sections/diagnostic-tablet.svg",
+    heroImage: "/images/sections/bmw-diagnostics.jpg",
     intro:
       "AdBlue faults can be caused by sensors, pump issues, crystallisation, NOx values or software warnings. The correct route starts with diagnostics.",
     ...commonDates,
@@ -141,7 +141,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Practical aftercare tips after ECU remap: warm-up, maintenance, fuel quality, checks and when to ask for advice.",
     category: "Aftercare",
     readTime: "5 min",
-    heroImage: "/images/sections/workshop-red.png",
+    heroImage: "/images/sections/obd-reprogramming.webp",
     intro:
       "After tuning the car usually feels stronger immediately. Good aftercare helps keep that result reliable and enjoyable.",
     ...commonDates,
@@ -172,7 +172,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Good chiptuning starts with diagnostics. Learn why fault codes, live data and logging protect the tuning result.",
     category: "Diagnostics",
     readTime: "6 min",
-    heroImage: "/images/sections/dyno-logging.svg",
+    heroImage: "/images/sections/datalog-road.webp",
     intro:
       "The best tuning starts with the technical condition of the car. Diagnostics prevent software from hiding or worsening an existing issue.",
     ...commonDates,

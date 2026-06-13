@@ -112,7 +112,7 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
 
 export function ResultCardView({result, locale}: {result: CustomerResult; locale: Locale}) {
   const copy = labels[locale];
-  const image = result.images[0] ?? "/images/sections/customer-result.svg";
+  const image = result.images[0] ?? "/images/sections/ford-sid212-obd.webp";
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
   const stock = `${result.stockPowerHp} ${copy.hp} / ${result.stockTorqueNm} Nm`;
   const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;

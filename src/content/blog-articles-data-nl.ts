@@ -17,7 +17,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "Lees wat chiptuning en ECU remap betekenen, hoe vermogen en koppel worden aangepast en waarom diagnose en maatwerk belangrijk zijn.",
     category: "Chiptuning",
     readTime: "5 min",
-    heroImage: "/images/heroes/blog.png",
+    heroImage: "/images/sections/ecu-bench-red.png",
     intro:
       "Chiptuning is het zorgvuldig aanpassen van de software in de motorcomputer. Het doel is niet blind het hoogste getal, maar een auto die sterker, soepeler en betrouwbaarder aanvoelt binnen realistische technische marges.",
     ...commonDates,
@@ -72,7 +72,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "Wat is het verschil tussen Stage 1 en Stage 2 tuning? Lees wanneer standaard hardware genoeg is en wanneer extra onderdelen of loganalyse nodig zijn.",
     category: "Techniek",
     readTime: "6 min",
-    heroImage: "/images/sections/turbo-engine.svg",
+    heroImage: "/images/sections/ecu-bench-red.png",
     intro:
       "Stage 1 en Stage 2 worden vaak genoemd, maar de termen zijn niet voor elk merk exact hetzelfde. Het belangrijkste verschil zit in de hardware, controle en veiligheidsmarges.",
     ...commonDates,
@@ -127,7 +127,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "ECU remap kan veilig zijn als de auto gezond is, de software realistisch blijft en diagnose/loganalyse serieus worden genomen.",
     category: "Advies",
     readTime: "7 min",
-    heroImage: "/images/sections/ecu-laptop.svg",
+    heroImage: "/images/sections/autotuner-bench.webp",
     intro:
       "Een ECU remap is zo veilig als de technische basis, de softwarekwaliteit en de gekozen marges. Daarom begint verantwoord tunen niet met een getal, maar met controle.",
     ...commonDates,
@@ -182,7 +182,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "Een AdBlue storing vraagt om diagnose, foutcode-analyse en juridisch zorgvuldige oplossingen. Lees wat mogelijk is en waar je op moet letten.",
     category: "Diagnose",
     readTime: "4 min",
-    heroImage: "/images/sections/diagnostic-tablet.svg",
+    heroImage: "/images/sections/bmw-diagnostics.jpg",
     intro:
       "Een AdBlue storing kan uiteenlopen van een defecte sensor tot kristallisatie, pompproblemen, NOx-sensorwaarden of softwaremeldingen. De juiste aanpak begint altijd met diagnose.",
     ...commonDates,
@@ -236,7 +236,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "Net een tuning laten uitvoeren? Lees praktische tips over warmrijden, onderhoud, brandstofkwaliteit, controle en rijgedrag.",
     category: "Nazorg",
     readTime: "5 min",
-    heroImage: "/images/sections/workshop-red.png",
+    heroImage: "/images/sections/obd-reprogramming.webp",
     intro:
       "Na tuning voelt een auto vaak direct sterker. Juist dan is het belangrijk om slim met onderhoud, warmrijden en controle om te gaan.",
     ...commonDates,
@@ -289,7 +289,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "Een goede tuning begint met diagnose. Lees waarom foutcodes, live data en loganalyse belangrijk zijn voor veilige chiptuning.",
     category: "Diagnose",
     readTime: "6 min",
-    heroImage: "/images/sections/dyno-logging.svg",
+    heroImage: "/images/sections/datalog-road.webp",
     intro:
       "De beste tuning begint niet op de laptop, maar bij de technische staat van de auto. Diagnose vooraf voorkomt dat software een bestaand probleem maskeert of verergert.",
     ...commonDates,

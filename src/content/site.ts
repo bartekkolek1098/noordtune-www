@@ -136,15 +136,15 @@ export function pageKeyFromSlug(locale: Locale, slug: string): PageKey | undefin
 
 export const heroImages: Record<PageKey, string> = {
   home: "/images/heroes/home.png",
-  chiptuning: "/images/heroes/chiptuning.png",
-  diagnose: "/images/heroes/diagnose.png",
-  diensten: "/images/heroes/services.png",
-  prijzen: "/images/heroes/pricing.png",
-  resultaten: "/images/heroes/results.png",
-  blog: "/images/heroes/blog.png",
+  chiptuning: "/images/sections/obd-reprogramming.webp",
+  diagnose: "/images/sections/bmw-diagnostics.jpg",
+  diensten: "/images/sections/autotuner-bench.webp",
+  prijzen: "/images/sections/autotuner-bench.webp",
+  resultaten: "/images/sections/datalog-road.webp",
+  blog: "/images/sections/ecu-bench-red.png",
   over: "/images/heroes/about.png",
   contact: "/images/heroes/contact.png",
-  appointment: "/images/sections/workshop-lift.svg",
-  privacy: "/images/sections/diagnostic-tablet.svg",
-  terms: "/images/sections/ecu-laptop.svg"
+  appointment: "/images/sections/obd-reprogramming.webp",
+  privacy: "/images/sections/bmw-diagnostics.jpg",
+  terms: "/images/sections/autotuner-bench.webp"
 };

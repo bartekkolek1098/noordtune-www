@@ -602,7 +602,7 @@ export const homeContent: Record<Locale, {
         "Advies voor Stage 1 tuning, Stage 2 tuning, DSG tuning en TCU tuning",
         "Ondersteuning bij DPF storing, EGR storing en AdBlue storing waar wettelijk toegestaan"
       ],
-      image: "/images/sections/workshop-lift.svg"
+      image: "/images/sections/obd-reprogramming.webp"
     },
     highlights: [
       {
@@ -611,7 +611,7 @@ export const homeContent: Record<Locale, {
         text:
           "Een goede ECU remap voelt alsof de auto zo uit de fabriek had moeten komen: krachtiger, soepeler en voorspelbaar. Bij NoordTune.nl stemmen we software af op de motorvariant, onderhoudsstaat, brandstof, transmissie en jouw rijstijl. Stage 1 tuning is ideaal voor een standaard auto. Stage 2 tuning past bij voertuigen met ondersteunende hardware en vraagt extra controle op temperaturen, luchtmassa, turbodruk en koppellimieten.",
         bullets: ["BMW chiptuning", "Audi chiptuning", "Volkswagen chiptuning", "Mercedes chiptuning"],
-        image: "/images/sections/turbo-engine.svg"
+        image: "/images/sections/ecu-bench-red.png"
       },
       {
         kicker: "Auto diagnose & loganalyse",
@@ -619,7 +619,7 @@ export const homeContent: Record<Locale, {
         text:
           "Bij moderne auto's vertelt een foutcode zelden het hele verhaal. Daarom combineren we diagnose met live data, loganalyse en technische interpretatie. Dat is belangrijk bij vermogensverlies, noodloop, DPF storing, EGR storing, AdBlue storing, turbodrukproblemen of onrustig schakelgedrag. Ook voor tuning controleren we waar nodig eerst de basis, zodat software geen bestaande problemen verbergt.",
         bullets: ["Foutcodes uitlezen", "Live data controleren", "Rijlogs analyseren", "Gericht hersteladvies"],
-        image: "/images/sections/diagnostic-tablet.svg"
+        image: "/images/sections/bmw-diagnostics.jpg"
       },
       {
         kicker: "DSG / TCU tuning",
@@ -627,7 +627,7 @@ export const homeContent: Record<Locale, {
         text:
           "Bij veel auto's bepaalt de transmissie hoe bruikbaar de tuning voelt. DSG tuning of TCU tuning kan schakelmomenten, koppelbegrenzers en rijgedrag optimaliseren. Het doel is geen harde of onrustige bak, maar een transmissie die logischer reageert op het extra vermogen en comfortabel blijft in dagelijks gebruik.",
         bullets: ["Koppellimieten controleren", "Schakelgedrag verbeteren", "Betere respons onder belasting"],
-        image: "/images/sections/dyno-logging.svg"
+        image: "/images/sections/datalog-road.webp"
       }
     ],
     finalTitle: "Klaar voor meer vermogen en zekerheid?",
@@ -648,7 +648,7 @@ export const homeContent: Record<Locale, {
       text:
         "NoordTune.nl provides professional chiptuning, ECU remap and diagnostics in Assen. We focus on the whole vehicle: torque delivery, throttle response, gearbox behavior, fault codes and live data.",
       bullets: ["Custom ECU remap", "Diagnostics and log analysis", "Stage 1 and Stage 2 advice", "DSG and TCU tuning"],
-      image: "/images/sections/workshop-lift.svg"
+      image: "/images/sections/obd-reprogramming.webp"
     },
     highlights: [
       {
@@ -657,7 +657,7 @@ export const homeContent: Record<Locale, {
         text:
           "Good tuning makes the vehicle stronger and smoother without losing reliability. We tune for the engine, transmission, condition and intended use.",
         bullets: ["BMW tuning", "Audi tuning", "Volkswagen tuning", "Mercedes tuning"],
-        image: "/images/sections/turbo-engine.svg"
+        image: "/images/sections/ecu-bench-red.png"
       },
       {
         kicker: "Diagnostics and logs",
@@ -665,7 +665,7 @@ export const homeContent: Record<Locale, {
         text:
           "Fault codes, live data and logs help separate real causes from symptoms before software or parts are changed.",
         bullets: ["Fault codes", "Live data", "Road logs", "Clear advice"],
-        image: "/images/sections/diagnostic-tablet.svg"
+        image: "/images/sections/bmw-diagnostics.jpg"
       },
       {
         kicker: "DSG / TCU tuning",
@@ -673,7 +673,7 @@ export const homeContent: Record<Locale, {
         text:
           "DSG and TCU tuning can improve shift behavior, torque limits and response while keeping the car pleasant every day.",
         bullets: ["Torque limits", "Shift strategy", "Drivability"],
-        image: "/images/sections/dyno-logging.svg"
+        image: "/images/sections/datalog-road.webp"
       }
     ],
     finalTitle: "Ready for more performance?",
@@ -693,7 +693,7 @@ export const homeContent: Record<Locale, {
       text:
         "NoordTune.nl oferuje profesjonalny chiptuning, remap ECU i diagnostykę w Assen. Patrzymy na cały samochód: moment obrotowy, reakcję gazu, pracę skrzyni, kody błędów i live data. Dzięki temu doradzamy rozwiązanie dopasowane do auta, silnika i sposobu jazdy.",
       bullets: ["Indywidualny remap ECU", "Diagnostyka i analiza logów", "Stage 1 i Stage 2", "DSG i TCU tuning"],
-      image: "/images/sections/workshop-lift.svg"
+      image: "/images/sections/obd-reprogramming.webp"
     },
     highlights: [
       {
@@ -702,7 +702,7 @@ export const homeContent: Record<Locale, {
         text:
           "Dobry tuning sprawia, że auto jest mocniejsze i płynniejsze bez utraty kultury pracy. Program dobieramy do silnika, skrzyni, stanu auta i sposobu użytkowania. Liczą się nie tylko liczby, ale też sposób budowania momentu, reakcja pedału gazu i bezpieczeństwo podzespołów.",
         bullets: ["BMW tuning", "Audi tuning", "Volkswagen tuning", "Mercedes tuning"],
-        image: "/images/sections/turbo-engine.svg"
+        image: "/images/sections/ecu-bench-red.png"
       },
       {
         kicker: "Diagnostyka i logi",
@@ -710,7 +710,7 @@ export const homeContent: Record<Locale, {
         text:
           "Kody błędów, live data i logi pomagają znaleźć przyczynę problemu przed wymianą części lub zmianą oprogramowania. To ważne przy spadku mocy, trybie awaryjnym, problemach z DPF, EGR, AdBlue albo nietypowej pracy skrzyni.",
         bullets: ["Kody błędów", "Live data", "Logi drogowe", "Jasne doradztwo"],
-        image: "/images/sections/diagnostic-tablet.svg"
+        image: "/images/sections/bmw-diagnostics.jpg"
       },
       {
         kicker: "DSG / TCU tuning",
@@ -718,7 +718,7 @@ export const homeContent: Record<Locale, {
         text:
           "Tuning DSG i TCU może poprawić zmiany biegów, limity momentu i reakcję auta, zachowując komfort jazdy. Celem nie jest nerwowa skrzynia, tylko napęd, który logicznie współpracuje z dodatkowym momentem.",
         bullets: ["Limity momentu", "Strategia zmian", "Komfort jazdy"],
-        image: "/images/sections/dyno-logging.svg"
+        image: "/images/sections/datalog-road.webp"
       }
     ],
     finalTitle: "Gotowy na lepsze osiągi i pewność?",
@@ -732,7 +732,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "Chiptuning",
       text: "Meer vermogen, meer koppel en een soepelere verbranding. Volledig afgestemd op jouw auto.",
       bullets: ["Stage 1 tuning", "Stage 2 tuning", "ECU remap Assen"],
-      image: "/images/sections/turbo-engine.svg",
+      image: "/images/sections/ecu-bench-red.png",
       icon: "gauge",
       page: "chiptuning"
     },
@@ -740,7 +740,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "Auto Diagnose",
       text: "Professionele diagnose van storingen, foutcodes, live data en meetwaarden.",
       bullets: ["Foutcodes uitlezen", "Live data analyse", "Gericht advies"],
-      image: "/images/sections/diagnostic-tablet.svg",
+      image: "/images/sections/bmw-diagnostics.jpg",
       icon: "scan",
       page: "diagnose"
     },
@@ -748,7 +748,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "DPF / EGR / AdBlue",
       text: "Diagnose, storing analyse en softwarematige ondersteuning waar wettelijk toegestaan.",
       bullets: ["DPF storing", "EGR storing", "AdBlue storing"],
-      image: "/images/sections/diagnostic-tablet.svg",
+      image: "/images/sections/bmw-diagnostics.jpg",
       icon: "shield",
       page: "diagnose"
     },
@@ -756,7 +756,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "DSG / TCU tuning",
       text: "Optimalisatie van schakelgedrag, koppellimieten en rijgevoel voor transmissies.",
       bullets: ["Snellere respons", "Soepeler schakelen", "Passend bij extra koppel"],
-      image: "/images/sections/dyno-logging.svg",
+      image: "/images/sections/datalog-road.webp",
       icon: "cpu",
       page: "diensten"
     },
@@ -764,7 +764,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "Loganalyse",
       text: "Gedetailleerde analyse van rijlogs, turbodruk, luchtmassa, injectie en veiligheid.",
       bullets: ["Data analyse", "Probleemdetectie", "Controle na tuning"],
-      image: "/images/sections/ecu-laptop.svg",
+      image: "/images/sections/autotuner-bench.webp",
       icon: "chart",
       page: "diagnose"
     },
@@ -772,7 +772,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "Mobiele service",
       text: "Waar mogelijk komen we naar je toe voor diagnose of voorbereiding op locatie.",
       bullets: ["Assen en omgeving", "Vooraf afgestemd", "Flexibel plannen"],
-      image: "/images/sections/workshop-lift.svg",
+      image: "/images/sections/obd-reprogramming.webp",
       icon: "truck",
       page: "contact"
     }
@@ -786,7 +786,7 @@ services.en = [
     title: "Chiptuning",
     text: "More power, torque and cleaner drivability with software tailored to your car.",
     bullets: ["Stage 1 tuning", "Stage 2 tuning", "ECU remap"],
-    image: "/images/sections/turbo-engine.svg",
+    image: "/images/sections/ecu-bench-red.png",
     icon: "gauge",
     page: "chiptuning"
   },
@@ -794,7 +794,7 @@ services.en = [
     title: "Car diagnostics",
     text: "Professional fault code reading, live data checks and technical diagnosis.",
     bullets: ["Fault codes", "Live data", "Clear advice"],
-    image: "/images/sections/diagnostic-tablet.svg",
+    image: "/images/sections/bmw-diagnostics.jpg",
     icon: "scan",
     page: "diagnose"
   },
@@ -802,7 +802,7 @@ services.en = [
     title: "DPF / EGR / AdBlue",
     text: "Fault analysis and legal software support where permitted.",
     bullets: ["DPF faults", "EGR faults", "AdBlue faults"],
-    image: "/images/sections/diagnostic-tablet.svg",
+    image: "/images/sections/bmw-diagnostics.jpg",
     icon: "shield",
     page: "diagnose"
   },
@@ -810,7 +810,7 @@ services.en = [
     title: "DSG / TCU tuning",
     text: "Transmission behavior, torque limits and shift response matched to the tune.",
     bullets: ["Response", "Shift comfort", "Torque control"],
-    image: "/images/sections/dyno-logging.svg",
+    image: "/images/sections/datalog-road.webp",
     icon: "cpu",
     page: "diensten"
   },
@@ -818,7 +818,7 @@ services.en = [
     title: "Log analysis",
     text: "Detailed review of boost, airflow, injection, temperatures and safety margins.",
     bullets: ["Data analysis", "Problem detection", "Aftercare"],
-    image: "/images/sections/ecu-laptop.svg",
+    image: "/images/sections/autotuner-bench.webp",
     icon: "chart",
     page: "diagnose"
   },
@@ -826,7 +826,7 @@ services.en = [
     title: "Mobile service",
     text: "Where possible, we come to you for diagnostics or preparation on location.",
     bullets: ["Assen region", "Planned upfront", "Flexible"],
-    image: "/images/sections/workshop-lift.svg",
+    image: "/images/sections/obd-reprogramming.webp",
     icon: "truck",
     page: "contact"
   }
@@ -837,7 +837,7 @@ services.pl = [
     title: "Chiptuning",
     text: "Więcej mocy, momentu i lepsza reakcja dzięki oprogramowaniu dobranemu do konkretnego auta.",
     bullets: ["Stage 1", "Stage 2", "Remap ECU"],
-    image: "/images/sections/turbo-engine.svg",
+    image: "/images/sections/ecu-bench-red.png",
     icon: "gauge",
     page: "chiptuning"
   },
@@ -845,7 +845,7 @@ services.pl = [
     title: "Diagnostyka",
     text: "Profesjonalny odczyt błędów, live data, analiza logów i techniczna interpretacja wyników.",
     bullets: ["Kody błędów", "Live data", "Doradztwo"],
-    image: "/images/sections/diagnostic-tablet.svg",
+    image: "/images/sections/bmw-diagnostics.jpg",
     icon: "scan",
     page: "diagnose"
   },
@@ -853,7 +853,7 @@ services.pl = [
     title: "DPF / EGR / AdBlue",
     text: "Diagnostyka, analiza usterek i rozwiązania zgodne z przepisami tam, gdzie jest to możliwe.",
     bullets: ["DPF", "EGR", "AdBlue"],
-    image: "/images/sections/diagnostic-tablet.svg",
+    image: "/images/sections/bmw-diagnostics.jpg",
     icon: "shield",
     page: "diagnose"
   },
@@ -861,7 +861,7 @@ services.pl = [
     title: "DSG / TCU tuning",
     text: "Praca skrzyni, limity momentu i reakcja dopasowane do dodatkowego momentu.",
     bullets: ["Reakcja", "Komfort zmian", "Kontrola momentu"],
-    image: "/images/sections/dyno-logging.svg",
+    image: "/images/sections/datalog-road.webp",
     icon: "cpu",
     page: "diensten"
   },
@@ -869,7 +869,7 @@ services.pl = [
     title: "Analiza logów",
     text: "Szczegółowa analiza doładowania, przepływu powietrza, wtrysku, temperatur i marginesów bezpieczeństwa.",
     bullets: ["Analiza danych", "Wykrywanie problemów", "Kontrola po tuningu"],
-    image: "/images/sections/ecu-laptop.svg",
+    image: "/images/sections/autotuner-bench.webp",
     icon: "chart",
     page: "diagnose"
   },
@@ -877,7 +877,7 @@ services.pl = [
     title: "Serwis mobilny",
     text: "Tam, gdzie jest to technicznie możliwe, przyjeżdżamy na diagnostykę lub przygotowanie na miejscu.",
     bullets: ["Okolice Assen", "Uzgodnienie przed", "Elastycznie"],
-    image: "/images/sections/workshop-lift.svg",
+    image: "/images/sections/obd-reprogramming.webp",
     icon: "truck",
     page: "contact"
   }
@@ -1043,7 +1043,7 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
         text:
           "Bij chiptuning wordt de software in de motorcomputer aangepast zodat de motor efficienter en krachtiger reageert. Denk aan turbodruk, inspuiting, koppelbegrenzers, gaspedaalrespons en veiligheidsmarges. Een goede ECU remap in Assen begint daarom met de vraag: wat kan deze motor verantwoord leveren, in deze auto, met deze transmissie en dit gebruik?",
         bullets: ["Meer vermogen en koppel", "Betere gaspedaalrespons", "Soepeler rijgedrag", "Vaak prettiger verbruik bij rustig rijden"],
-        image: "/images/sections/turbo-engine.svg"
+        image: "/images/sections/ecu-bench-red.png"
       },
       {
         kicker: "Stage 1 tuning",
@@ -1060,12 +1060,12 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
       }
     ],
     en: [
-      {kicker: "ECU remap", title: "Chiptuning is about balance, not just peak numbers.", text: "We adjust engine software around boost, injection, torque limits, throttle response and safety margins.", bullets: ["More power", "More torque", "Better response", "Factory-like feel"], image: "/images/sections/turbo-engine.svg"},
+      {kicker: "ECU remap", title: "Chiptuning is about balance, not just peak numbers.", text: "We adjust engine software around boost, injection, torque limits, throttle response and safety margins.", bullets: ["More power", "More torque", "Better response", "Factory-like feel"], image: "/images/sections/ecu-bench-red.png"},
       {kicker: "Stage 1", title: "For standard cars that should feel stronger.", text: "Stage 1 tuning keeps the car on standard hardware and optimizes software within realistic margins."},
       {kicker: "Stage 2", title: "For vehicles with supporting hardware.", text: "Stage 2 requires more checks, especially logs, temperatures, airflow and gearbox limits."}
     ],
     pl: [
-      {kicker: "Remap ECU", title: "Chiptuning to balans, nie tylko maksymalna liczba.", text: "Zmieniamy oprogramowanie silnika z uwagą na doładowanie, wtrysk, limity momentu, reakcję gazu i marginesy bezpieczeństwa. Dobra kalibracja ma dawać więcej przyjemności z jazdy, ale nadal pasować do auta i sposobu użytkowania.", bullets: ["Więcej mocy", "Więcej momentu", "Lepsza reakcja", "Fabryczny charakter"], image: "/images/sections/turbo-engine.svg"},
+      {kicker: "Remap ECU", title: "Chiptuning to balans, nie tylko maksymalna liczba.", text: "Zmieniamy oprogramowanie silnika z uwagą na doładowanie, wtrysk, limity momentu, reakcję gazu i marginesy bezpieczeństwa. Dobra kalibracja ma dawać więcej przyjemności z jazdy, ale nadal pasować do auta i sposobu użytkowania.", bullets: ["Więcej mocy", "Więcej momentu", "Lepsza reakcja", "Fabryczny charakter"], image: "/images/sections/ecu-bench-red.png"},
       {kicker: "Stage 1", title: "Dla seryjnych aut, które mają jechać mocniej.", text: "Stage 1 zachowuje seryjny osprzęt i optymalizuje oprogramowanie w rozsądnych marginesach. To najczęstszy wybór, gdy auto jest technicznie zdrowe i ma dostać więcej elastyczności bez zmian mechanicznych."},
       {kicker: "Stage 2", title: "Dla aut z odpowiednim osprzętem.", text: "Stage 2 wymaga więcej kontroli, szczególnie logów, temperatur, przepływu powietrza, doładowania i limitów skrzyni. Nie każde auto potrzebuje Stage 2; czasem Stage 1 daje lepszą równowagę na co dzień."}
     ]
@@ -1078,7 +1078,7 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
         text:
           "Veel storingen worden te snel opgelost door onderdelen te vervangen. NoordTune.nl begint met uitlezen, live data, freeze frames en context: wanneer treedt de storing op, onder welke belasting en welke waardes wijken af? Zo wordt auto diagnose Assen een gerichte technische analyse in plaats van gokken.",
         bullets: ["Foutcodes uitlezen en interpreteren", "Live data vergelijken", "Sensorwaarden en drukwaarden controleren", "Advies voor reparatie of softwarematige vervolgstap"],
-        image: "/images/sections/diagnostic-tablet.svg"
+        image: "/images/sections/bmw-diagnostics.jpg"
       },
       {
         kicker: "DPF / EGR / AdBlue",
@@ -1094,12 +1094,12 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
       }
     ],
     en: [
-      {kicker: "Diagnostics", title: "A fault code is a clue, not the full answer.", text: "We combine codes, live data and context to avoid replacing parts blindly.", bullets: ["Fault codes", "Live data", "Sensor checks", "Repair advice"], image: "/images/sections/diagnostic-tablet.svg"},
+      {kicker: "Diagnostics", title: "A fault code is a clue, not the full answer.", text: "We combine codes, live data and context to avoid replacing parts blindly.", bullets: ["Fault codes", "Live data", "Sensor checks", "Repair advice"], image: "/images/sections/bmw-diagnostics.jpg"},
       {kicker: "DPF / EGR / AdBlue", title: "Fault analysis with technical and legal care.", text: "We provide diagnostics and advice. Software solutions are only discussed where legally permitted."},
       {kicker: "Log analysis", title: "Data shows what you feel while driving.", text: "Logs help analyze boost, airflow, fuel pressure, lambda, correction values and gearbox behavior."}
     ],
     pl: [
-      {kicker: "Diagnostyka", title: "Kod błędu to wskazówka, nie cała odpowiedź.", text: "Łączymy kody błędów, live data, freeze frame i kontekst usterki, aby uniknąć wymiany części na ślepo. Dzięki temu łatwiej odróżnić objaw od realnej przyczyny.", bullets: ["Kody błędów", "Live data", "Sensory", "Porada"], image: "/images/sections/diagnostic-tablet.svg"},
+      {kicker: "Diagnostyka", title: "Kod błędu to wskazówka, nie cała odpowiedź.", text: "Łączymy kody błędów, live data, freeze frame i kontekst usterki, aby uniknąć wymiany części na ślepo. Dzięki temu łatwiej odróżnić objaw od realnej przyczyny.", bullets: ["Kody błędów", "Live data", "Sensory", "Porada"], image: "/images/sections/bmw-diagnostics.jpg"},
       {kicker: "DPF / EGR / AdBlue", title: "Analiza usterek z uwagą na technikę i przepisy.", text: "Wykonujemy diagnostykę, analizę usterek i doradztwo. Rozwiązania programowe omawiamy wyłącznie wtedy, gdy są technicznie uzasadnione i zgodne z obowiązującymi przepisami."},
       {kicker: "Logi", title: "Dane pokazują to, co czujesz podczas jazdy.", text: "Logi pomagają sprawdzić doładowanie, przepływ powietrza, ciśnienie paliwa, lambda, korekty wtrysku i pracę skrzyni pod obciążeniem."}
     ]
@@ -1186,7 +1186,7 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
           "Servicekeuze en voertuigdetails worden later toegevoegd",
           "Geen online betaling of kalenderkoppeling in deze eerste versie"
         ],
-        image: "/images/sections/workshop-lift.svg"
+        image: "/images/sections/obd-reprogramming.webp"
       }
     ],
     en: [
@@ -1196,7 +1196,7 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
         text:
           "The future appointment system will include service choice, vehicle details and available time slots. For now, WhatsApp is the fastest way to plan the right next step.",
         bullets: ["Plan via WhatsApp for now", "Use the Power Catalog first", "Service choice will be added later"],
-        image: "/images/sections/workshop-lift.svg"
+        image: "/images/sections/obd-reprogramming.webp"
       }
     ],
     pl: [
@@ -1206,7 +1206,7 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
         text:
           "Przyszły system terminów będzie zawierał wybór usługi, dane pojazdu i dostępne godziny. Na razie najszybszą drogą pozostaje kontakt przez WhatsApp.",
         bullets: ["Na razie WhatsApp", "Najpierw sprawdź katalog mocy", "Wybór usługi będzie dodany później"],
-        image: "/images/sections/workshop-lift.svg"
+        image: "/images/sections/obd-reprogramming.webp"
       }
     ]
   },

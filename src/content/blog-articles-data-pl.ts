@@ -17,7 +17,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Wyjaśniamy, czym jest chiptuning i remap ECU, jak zmienia się moc oraz moment i dlaczego ważna jest diagnostyka.",
     category: "Chiptuning",
     readTime: "5 min",
-    heroImage: "/images/heroes/blog.png",
+    heroImage: "/images/sections/ecu-bench-red.png",
     intro:
       "Chiptuning to świadome dostosowanie oprogramowania sterownika silnika. Celem nie jest przypadkowo najwyższa liczba, lecz mocniejsze, płynniejsze i nadal rozsądnie zabezpieczone auto.",
     ...commonDates,
@@ -48,7 +48,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Wyjaśniamy różnicę między Stage 1 i Stage 2: osprzęt, logi, diagnostyka, marginesy bezpieczeństwa i zastosowanie.",
     category: "Technika",
     readTime: "6 min",
-    heroImage: "/images/sections/turbo-engine.svg",
+    heroImage: "/images/sections/ecu-bench-red.png",
     intro:
       "Stage 1 i Stage 2 to przydatne pojęcia, ale dopiero razem z osprzętem, diagnostyką i marginesami bezpieczeństwa mają realne znaczenie.",
     ...commonDates,
@@ -79,7 +79,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Remap ECU może być bezpieczny, jeżeli auto jest sprawne, kalibracja ma rozsądne marginesy, a diagnostyka jest traktowana poważnie.",
     category: "Porady",
     readTime: "7 min",
-    heroImage: "/images/sections/ecu-laptop.svg",
+    heroImage: "/images/sections/autotuner-bench.webp",
     intro:
       "Bezpieczeństwo remapu zależy od stanu auta, jakości kalibracji i wybranych marginesów. Odpowiedzialny tuning zaczyna się od kontroli.",
     ...commonDates,
@@ -110,7 +110,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Wyjaśniamy, co może oznaczać usterka AdBlue, dlaczego potrzebna jest diagnostyka i jak zachować ostrożne legalne podejście.",
     category: "Diagnostyka",
     readTime: "4 min",
-    heroImage: "/images/sections/diagnostic-tablet.svg",
+    heroImage: "/images/sections/bmw-diagnostics.jpg",
     intro:
       "Usterka AdBlue może wynikać z czujników, pompy, krystalizacji, wartości NOx albo komunikatów oprogramowania. Właściwy kierunek zaczyna się od diagnostyki.",
     ...commonDates,
@@ -141,7 +141,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Praktyczne zalecenia po remapie ECU: rozgrzewanie, serwis, paliwo, kontrola i reakcja na nietypowe objawy.",
     category: "Po usłudze",
     readTime: "5 min",
-    heroImage: "/images/sections/workshop-red.png",
+    heroImage: "/images/sections/obd-reprogramming.webp",
     intro:
       "Po tuningu auto zwykle od razu czuje się mocniejsze. Właśnie wtedy warto pamiętać o rozsądnej eksploatacji i kontroli.",
     ...commonDates,
@@ -172,7 +172,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Dobry chiptuning zaczyna się od diagnostyki. Wyjaśniamy, dlaczego kody błędów, live data i logi chronią rezultat.",
     category: "Diagnostyka",
     readTime: "6 min",
-    heroImage: "/images/sections/dyno-logging.svg",
+    heroImage: "/images/sections/datalog-road.webp",
     intro:
       "Najlepszy tuning zaczyna się od stanu technicznego auta. Diagnostyka zapobiega sytuacji, w której oprogramowanie przykrywa albo pogłębia istniejący problem.",
     ...commonDates,
