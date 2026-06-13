@@ -71,6 +71,15 @@ Fix added:
 - The header language switcher has a compact mobile mode.
 - Language labels are hidden below very narrow widths while flags remain visible.
 
+Post-deploy verification:
+
+- `/pl` mobile was rechecked on the updated Vercel preview.
+- `html.lang` resolves to `pl`.
+- Horizontal overflow is no longer present.
+- Floating WhatsApp remains visible.
+- Polish diacritics are present.
+- Mobile menu opens without horizontal overflow.
+
 ## Language QA
 
 The language switcher is structurally correct and maps equivalent routes through `src/content/site.ts`.
@@ -142,6 +151,6 @@ Before connecting `www.noordtune.nl`:
 
 ## Recommendation
 
-Ready for final Vercel preview review after this commit deploys.
+Ready for final owner preview review.
 
 Do not connect `www.noordtune.nl` until the updated preview is visually checked once more.
