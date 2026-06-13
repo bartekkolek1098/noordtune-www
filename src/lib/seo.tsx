@@ -1,5 +1,10 @@
 import type {Metadata} from "next";
 import {blogArticleUrl, type BlogArticle} from "@/content/blog-articles";
+import {
+  customerResultUrl,
+  isPublicCustomerResult,
+  type CustomerResult
+} from "@/content/customer-results";
 import {faqs, seo, type FaqItem} from "@/content/copy";
 import type {SeoLanding} from "@/content/seo-landings";
 import {
@@ -147,6 +152,67 @@ export function createBlogArticleMetadata(article: BlogArticle): Metadata {
   };
 }
 
+export function createCustomerResultMetadata(result: CustomerResult): Metadata {
+  const canonical = customerResultUrl(result);
+  const image = `${site.url}${result.images[0] ?? "/images/sections/tuning-laptop-b2.webp"}`;
+  const car = `${result.vehicleMake} ${result.vehicleModel}`;
+  const hp = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
+  const title =
+    result.locale === "nl"
+      ? `${car} ${result.stage} | NoordTune klantresultaat`
+      : result.locale === "en"
+        ? `${car} ${result.stage} | NoordTune customer result`
+        : `${car} ${result.stage} | Realizacja NoordTune`;
+  const description =
+    result.locale === "nl"
+      ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} naar ${result.tunedPowerHp} ${hp} en ${result.stockTorqueNm} Nm naar ${result.tunedTorqueNm} Nm. Resultaten blijven voertuigafhankelijk.`
+      : result.locale === "en"
+        ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} to ${result.tunedPowerHp} ${hp} and ${result.stockTorqueNm} Nm to ${result.tunedTorqueNm} Nm. Results remain vehicle-specific.`
+        : `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} do ${result.tunedPowerHp} ${hp} oraz ${result.stockTorqueNm} Nm do ${result.tunedTorqueNm} Nm. Wynik zależy od konkretnego auta.`;
+  const publicPage = isPublicCustomerResult(result);
+
+  return {
+    title,
+    description,
+    metadataBase: new URL(site.url),
+    alternates: {
+      canonical,
+      languages: {
+        [result.locale]: canonical
+      }
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonical,
+      siteName: site.name,
+      locale: result.locale,
+      type: "article",
+      publishedTime: result.publishedAt,
+      modifiedTime: result.updatedAt,
+      section: "Customer results",
+      images: [
+        {
+          url: image,
+          width: 1774,
+          height: 887,
+          alt: result.imageAlt
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image]
+    },
+    robots: {
+      index: publicPage,
+      follow: publicPage
+    }
+  };
+}
+
 export function localBusinessJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
@@ -234,6 +300,37 @@ export function articleJsonLd(article: BlogArticle) {
       }
     },
     mainEntityOfPage: blogArticleUrl(article)
+  };
+}
+
+export function customerResultJsonLd(result: CustomerResult) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: `${result.vehicleMake} ${result.vehicleModel} ${result.stage}`,
+    description: result.shortDescription,
+    image: result.images.map((image) => `${site.url}${image}`),
+    datePublished: result.publishedAt,
+    dateModified: result.updatedAt,
+    author: {
+      "@type": "Organization",
+      name: site.name,
+      url: site.url
+    },
+    publisher: {
+      "@type": "Organization",
+      name: site.name,
+      logo: {
+        "@type": "ImageObject",
+        url: `${site.url}/brand/noordtune-logo.png`
+      }
+    },
+    about: {
+      "@type": "Vehicle",
+      name: `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleEngine}`,
+      vehicleModelDate: result.vehicleYear
+    },
+    mainEntityOfPage: customerResultUrl(result)
   };
 }
 

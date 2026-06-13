@@ -23,7 +23,7 @@ import {
   services,
   whyItems
 } from "@/content/copy";
-import {publishedCustomerResults} from "@/content/customer-results";
+import {displayCustomerResults} from "@/content/customer-results";
 import {heroImages, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
 const ui = {
@@ -188,7 +188,7 @@ export function HomeRenderer({locale}: {locale: Locale}) {
             }
           />
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {publishedCustomerResults(locale).map((result) => (
+            {displayCustomerResults(locale).map((result) => (
               <ResultCardView key={result.id} locale={locale} result={result} />
             ))}
           </div>
@@ -389,7 +389,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
         />
         <section className="container py-12 md:py-16">
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {publishedCustomerResults(locale).map((result) => (
+            {displayCustomerResults(locale).map((result) => (
               <ResultCardView key={result.id} locale={locale} result={result} />
             ))}
           </div>
