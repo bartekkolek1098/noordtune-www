@@ -155,19 +155,19 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   prijzen: {
     nl: {
-      title: "Prijzen & Pakketten | Diagnose vanaf €89, Stage 1 vanaf €649",
+      title: "Prijzen & Pakketten | Diagnose vanaf €89, Stage 1 vanaf €150",
       description:
-        "Transparante prijzen voor chiptuning en auto diagnose: diagnose vanaf €89, Stage 1 vanaf €649, Stage 2 vanaf €849 en loganalyse vanaf €149."
+        "Transparante prijzen voor chiptuning en auto diagnose: diagnose vanaf €89, Stage 1 vanaf €150, Stage 2 vanaf €250 en loganalyse vanaf €149."
     },
     en: {
-      title: "Pricing | Diagnostics from €89 and Stage 1 from €649",
+      title: "Pricing | Diagnostics from €89 and Stage 1 from €150",
       description:
         "Clear starting prices for diagnostics, Stage 1, Stage 2, log analysis and mobile service. Final quote depends on the vehicle."
     },
     pl: {
-      title: "Cennik | Diagnostyka od €89 i Stage 1 od €649",
+      title: "Cennik | Diagnostyka od €89 i Stage 1 od €150",
       description:
-        "Przejrzyste ceny startowe: diagnostyka od €89, Stage 1 od €649, Stage 2 od €849 i analiza logów od €149."
+        "Przejrzyste ceny startowe: diagnostyka od €89, Stage 1 od €150, Stage 2 od €250 i analiza logów od €149."
     }
   },
   resultaten: {
@@ -937,24 +937,24 @@ export const whyItems: Record<Locale, Array<{title: string; text: string; icon: 
 export const pricingPlans: Record<Locale, PricingPlan[]> = {
   nl: [
     {name: "Diagnose", price: "€89,-", note: "vanaf", text: "Volledige diagnose van motor en systemen.", features: ["Foutcodes", "Basiscontrole", "Advies"]},
-    {name: "Stage 1", price: "€649,-", note: "vanaf", text: "Meer vermogen en koppel op standaard hardware.", features: ["ECU remap", "Originele file backup", "Controle"], highlighted: true},
-    {name: "Stage 2", price: "€849,-", note: "vanaf", text: "Voor auto's met passende hardware en extra controle.", features: ["Uitgebreide software", "Logadvies", "Veiligheidsmarges"]},
+    {name: "Stage 1", price: "€150,-", note: "vanaf", text: "Meer vermogen en koppel op standaard hardware.", features: ["ECU remap", "Originele file backup", "Controle"], highlighted: true},
+    {name: "Stage 2", price: "€250,-", note: "vanaf", text: "Voor auto's met passende hardware en extra controle.", features: ["Uitgebreide software", "Logadvies", "Veiligheidsmarges"]},
     {name: "Loganalyse", price: "€149,-", note: "vanaf", text: "Analyse van motorwaarden, prestaties en storingen.", features: ["Data analyse", "Rapport", "Advies"]},
     {name: "Mobiele service", price: "€129,-", note: "vanaf", text: "Service op locatie waar technisch mogelijk.", features: ["Op afspraak", "Assen regio", "Vooraf afgestemd"]},
     {name: "EGR / DPF / AdBlue", price: "op aanvraag", note: "", text: "Diagnose, storing analyse en oplossingen waar wettelijk toegestaan.", features: ["Storing analyse", "Advies", "Maatwerk"]}
   ],
   en: [
     {name: "Diagnostics", price: "€89,-", note: "from", text: "Full diagnosis of engine and related systems.", features: ["Fault codes", "Basic checks", "Advice"]},
-    {name: "Stage 1", price: "€649,-", note: "from", text: "More power and torque on standard hardware.", features: ["ECU remap", "Original file backup", "Checks"], highlighted: true},
-    {name: "Stage 2", price: "€849,-", note: "from", text: "For cars with supporting hardware and extra control.", features: ["Extended software", "Log advice", "Margins"]},
+    {name: "Stage 1", price: "€150,-", note: "from", text: "More power and torque on standard hardware.", features: ["ECU remap", "Original file backup", "Checks"], highlighted: true},
+    {name: "Stage 2", price: "€250,-", note: "from", text: "For cars with supporting hardware and extra control.", features: ["Extended software", "Log advice", "Margins"]},
     {name: "Log analysis", price: "€149,-", note: "from", text: "Review of engine data, performance and faults.", features: ["Data", "Report", "Advice"]},
     {name: "Mobile service", price: "€129,-", note: "from", text: "Service on location where technically possible.", features: ["Appointment", "Assen region", "Planned"]},
     {name: "EGR / DPF / AdBlue", price: "on request", note: "", text: "Diagnostics and legal solutions where permitted.", features: ["Fault analysis", "Advice", "Custom"]}
   ],
   pl: [
     {name: "Diagnostyka", price: "€89,-", note: "od", text: "Pełna diagnostyka silnika i powiązanych systemów.", features: ["Kody błędów", "Kontrola", "Doradztwo"]},
-    {name: "Stage 1", price: "€649,-", note: "od", text: "Więcej mocy i momentu na seryjnym osprzęcie.", features: ["Remap ECU", "Kopia oryginału", "Kontrola"], highlighted: true},
-    {name: "Stage 2", price: "€849,-", note: "od", text: "Dla aut z odpowiednim osprzętem i dodatkową kontrolą.", features: ["Oprogramowanie", "Logi", "Marginesy"]},
+    {name: "Stage 1", price: "€150,-", note: "od", text: "Więcej mocy i momentu na seryjnym osprzęcie.", features: ["Remap ECU", "Kopia oryginału", "Kontrola"], highlighted: true},
+    {name: "Stage 2", price: "€250,-", note: "od", text: "Dla aut z odpowiednim osprzętem i dodatkową kontrolą.", features: ["Oprogramowanie", "Logi", "Marginesy"]},
     {name: "Analiza logów", price: "€149,-", note: "od", text: "Analiza danych silnika, osiągów i usterek.", features: ["Dane", "Raport", "Porada"]},
     {name: "Serwis mobilny", price: "€129,-", note: "od", text: "Usługa na miejscu, jeżeli technicznie możliwa.", features: ["Termin", "Region Assen", "Uzgodnienie"]},
     {name: "EGR / DPF / AdBlue", price: "na zapytanie", note: "", text: "Diagnostyka i rozwiązania zgodne z przepisami tam, gdzie są dozwolone.", features: ["Analiza", "Porada", "Indywidualnie"]}

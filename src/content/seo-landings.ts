@@ -73,7 +73,7 @@ export const seoLandings: SeoLanding[] = [
       {
         question: "Wat kost chiptuning in Assen?",
         answer:
-          "Stage 1 tuning start bij NoordTune.nl vanaf €649 incl. btw. De definitieve prijs hangt af van ECU type, leesmethode, motorvariant, softwareversie en eventuele extra diagnose of loganalyse."
+          "Stage 1 tuning start bij NoordTune.nl vanaf €150 incl. btw. De definitieve prijs hangt af van ECU type, leesmethode, motorvariant, softwareversie en eventuele extra diagnose of loganalyse."
       },
       {
         question: "Is Stage 1 tuning geschikt voor mijn auto?",
@@ -333,7 +333,7 @@ export const seoLandings: SeoLanding[] = [
       {
         question: "Wat kost Stage 1 tuning?",
         answer:
-          "Stage 1 tuning start vanaf €649 incl. btw. De definitieve prijs hangt af van ECU, motorvariant, softwareversie en benodigde controle."
+          "Stage 1 tuning start vanaf €150 incl. btw. De definitieve prijs hangt af van ECU, motorvariant, softwareversie en benodigde controle."
       },
       {
         question: "Heb ik hardware nodig voor Stage 1?",
@@ -398,7 +398,7 @@ export const seoLandings: SeoLanding[] = [
       {
         question: "Wat kost Stage 2 tuning?",
         answer:
-          "Stage 2 tuning start vanaf €849 incl. btw. De prijs hangt af van hardware, ECU, softwareversie, loganalyse en benodigde controle."
+          "Stage 2 tuning start vanaf €250 incl. btw. De prijs hangt af van hardware, ECU, softwareversie, loganalyse en benodigde controle."
       },
       {
         question: "Kan mijn standaard auto Stage 2 krijgen?",

@@ -319,8 +319,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           secondaryLabel={locale === "nl" ? "WhatsApp ons" : locale === "en" ? "Message us on WhatsApp" : "Napisz na WhatsApp"}
           stats={[
             {value: "€89", label: locale === "nl" ? "Diagnose vanaf" : locale === "en" ? "Diagnostics from" : "Diagnostyka od"},
-            {value: "€649", label: "Stage 1"},
-            {value: "€849", label: "Stage 2"},
+            {value: "€150", label: "Stage 1"},
+            {value: "€250", label: "Stage 2"},
             {value: "€149", label: locale === "nl" ? "Loganalyse" : locale === "en" ? "Log analysis" : "Analiza logów"}
           ]}
           text={pricingBlock.text}
