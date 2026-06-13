@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Workshop lift visual</title>
+  <desc id="desc">Premium dark workshop with a car silhouette on a lift and red light bars.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#050505"/>
+      <stop offset=".58" stop-color="#101214"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <g opacity=".18" stroke="#fff" stroke-width="2">
+    <path d="M0 210h1600M0 430h1600M0 650h1600"/>
+    <path d="M220 0v760M520 0v760M820 0v760M1120 0v760M1420 0v760"/>
+  </g>
+  <g filter="url(#glow)" stroke="#e30613" stroke-width="12" stroke-linecap="round">
+    <path d="M160 158h350"/>
+    <path d="M1090 158h350"/>
+    <path d="M1320 240v290"/>
+    <path d="M280 240v290"/>
+  </g>
+  <g transform="translate(230 405)">
+    <path d="M120 235h890c82 0 136-30 190-92l-146-34-116-95H355L246 126 94 160z" fill="#08090a" stroke="#4c545d" stroke-width="8"/>
+    <path d="M340 18h382c105 0 190 36 248 92H248c28-50 58-80 92-92z" fill="#11161b" stroke="#66717a" stroke-width="6" opacity=".8"/>
+    <circle cx="305" cy="250" r="74" fill="#050505" stroke="#69737d" stroke-width="14"/>
+    <circle cx="955" cy="250" r="74" fill="#050505" stroke="#69737d" stroke-width="14"/>
+    <circle cx="305" cy="250" r="33" fill="#15191d"/>
+    <circle cx="955" cy="250" r="33" fill="#15191d"/>
+    <path d="M1020 130h120" stroke="#e30613" stroke-width="12" stroke-linecap="round" filter="url(#glow)"/>
+  </g>
+  <g transform="translate(250 720)" fill="#0b0d0f" stroke="#313941" stroke-width="8">
+    <rect width="1120" height="45" rx="4"/>
+    <rect x="160" y="45" width="70" height="150"/>
+    <rect x="890" y="45" width="70" height="150"/>
+  </g>
+  <g opacity=".5" stroke="#e30613" stroke-width="6" stroke-linecap="round">
+    <path d="M105 140h240"/>
+    <path d="M105 178h150"/>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Diagnostic tablet visual</title>
+  <desc id="desc">Dark diagnostic tablet interface with fault-code cards and red scan lighting.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#050505"/>
+      <stop offset=".6" stop-color="#111317"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="scan" cx=".22" cy=".2" r=".8">
+      <stop offset="0" stop-color="#e30613" stop-opacity=".45"/>
+      <stop offset=".35" stop-color="#e30613" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#e30613" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#scan)"/>
+  <g transform="translate(260 125)">
+    <rect x="0" y="0" width="1080" height="680" rx="54" fill="#050607" stroke="#373d43" stroke-width="12"/>
+    <rect x="70" y="75" width="940" height="530" rx="20" fill="#0c1117" stroke="#1f252c" stroke-width="4"/>
+    <g font-family="Arial, sans-serif" font-weight="800" fill="#fff">
+      <text x="110" y="140" font-size="34">LIVE DATA</text>
+      <text x="110" y="182" font-size="18" fill="#e30613">FAULT ANALYSIS / SENSOR VALUES / ROAD LOGS</text>
+    </g>
+    <g transform="translate(110 230)">
+      <g fill="#111821" stroke="#34404b" stroke-width="3">
+        <rect width="250" height="120" rx="12"/>
+        <rect x="305" width="250" height="120" rx="12"/>
+        <rect x="610" width="250" height="120" rx="12"/>
+        <rect y="160" width="250" height="120" rx="12"/>
+        <rect x="305" y="160" width="250" height="120" rx="12"/>
+        <rect x="610" y="160" width="250" height="120" rx="12"/>
+      </g>
+      <g font-family="Arial, sans-serif" font-weight="800">
+        <text x="26" y="48" fill="#e30613" font-size="22">BOOST</text><text x="26" y="88" fill="#fff" font-size="34">1.82 bar</text>
+        <text x="331" y="48" fill="#e30613" font-size="22">AIR MASS</text><text x="331" y="88" fill="#fff" font-size="34">928 mg</text>
+        <text x="636" y="48" fill="#e30613" font-size="22">FUEL</text><text x="636" y="88" fill="#fff" font-size="34">1420 bar</text>
+        <text x="26" y="208" fill="#e30613" font-size="22">DPF</text><text x="26" y="248" fill="#fff" font-size="34">CHECK</text>
+        <text x="331" y="208" fill="#e30613" font-size="22">EGR</text><text x="331" y="248" fill="#fff" font-size="34">DATA</text>
+        <text x="636" y="208" fill="#e30613" font-size="22">ADBLUE</text><text x="636" y="248" fill="#fff" font-size="34">SCR</text>
+      </g>
+    </g>
+  </g>
+  <g stroke="#e30613" stroke-width="8" filter="url(#glow)" opacity=".9">
+    <path d="M122 820h360M560 820h110M748 820h230M1058 820h420"/>
+    <path d="M150 875h760M990 875h270"/>
+  </g>
+  <path d="M0 760h1600v240H0z" fill="#030303" opacity=".78"/>
+</svg>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">ECU tuning laptop visual</title>
+  <desc id="desc">Dark workshop style visual with laptop, ECU traces and red performance accents.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#090a0b"/>
+      <stop offset=".55" stop-color="#111317"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="red" cx=".74" cy=".28" r=".55">
+      <stop offset="0" stop-color="#e30613" stop-opacity=".55"/>
+      <stop offset=".38" stop-color="#e30613" stop-opacity=".14"/>
+      <stop offset="1" stop-color="#e30613" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#red)"/>
+  <g opacity=".18" stroke="#fff" stroke-width="1">
+    <path d="M0 150h1600M0 300h1600M0 450h1600M0 600h1600M0 750h1600M0 900h1600"/>
+    <path d="M140 0v1000M320 0v1000M500 0v1000M680 0v1000M860 0v1000M1040 0v1000M1220 0v1000M1400 0v1000"/>
+  </g>
+  <g transform="translate(190 250)">
+    <path d="M220 70h600c44 0 80 36 80 80v320H140V150c0-44 36-80 80-80z" fill="#050505" stroke="#2c3035" stroke-width="8"/>
+    <rect x="185" y="120" width="670" height="300" rx="18" fill="#0d1117" stroke="#3a4149" stroke-width="5"/>
+    <path d="M65 485h910l88 120H0z" fill="#14171b" stroke="#3a4149" stroke-width="6"/>
+    <path d="M305 520h430l35 48H270z" fill="#050505" opacity=".88"/>
+    <g stroke="#e30613" stroke-width="7" fill="none" filter="url(#glow)">
+      <path d="M235 330c72-108 142-102 204-18s126 92 188 12 112-114 178-24"/>
+      <path d="M235 250h88l36-62 58 126 44-84 50 20h296"/>
+    </g>
+    <g fill="#f2f2f2" opacity=".78" font-family="Arial, sans-serif" font-weight="700">
+      <text x="225" y="170" font-size="26">ECU MAP</text>
+      <text x="225" y="390" font-size="20" opacity=".58">BOOST  FUEL  TORQUE  LOGS</text>
+    </g>
+  </g>
+  <g transform="translate(1080 210)" fill="none" stroke="#e30613" stroke-width="8" filter="url(#glow)">
+    <circle cx="170" cy="170" r="150" opacity=".75"/>
+    <path d="M35 170h42M263 170h42M170 35v42M170 263v42"/>
+    <path d="M170 170 276 92"/>
+  </g>
+  <path d="M0 780c210-58 374-68 555-30 238 50 412 28 610-42 156-55 292-64 435-38v330H0z" fill="#020202" opacity=".78"/>
+</svg>

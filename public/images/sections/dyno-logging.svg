@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Dyno and logging visual</title>
+  <desc id="desc">Dark performance logging visual with dyno graph curves and a car outline.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#070707"/>
+      <stop offset=".52" stop-color="#111418"/>
+      <stop offset="1" stop-color="#050505"/>
+    </linearGradient>
+    <radialGradient id="red" cx=".62" cy=".42" r=".56">
+      <stop offset="0" stop-color="#e30613" stop-opacity=".45"/>
+      <stop offset=".45" stop-color="#e30613" stop-opacity=".1"/>
+      <stop offset="1" stop-color="#e30613" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <rect width="1600" height="1000" fill="url(#red)"/>
+  <g transform="translate(150 135)">
+    <rect width="840" height="540" rx="18" fill="#080c11" stroke="#343c45" stroke-width="6"/>
+    <g stroke="#fff" stroke-opacity=".12">
+      <path d="M80 80v390M220 80v390M360 80v390M500 80v390M640 80v390M780 80v390"/>
+      <path d="M80 100h700M80 190h700M80 280h700M80 370h700M80 460h700"/>
+    </g>
+    <path d="M80 430c106-120 203-185 318-174 129 12 199-80 328-130 42-16 76-22 116-26" fill="none" stroke="#e30613" stroke-width="10"/>
+    <path d="M80 378c126-58 227-72 330-34 142 52 235 28 370-80" fill="none" stroke="#ffffff" stroke-width="7" opacity=".75"/>
+    <text x="80" y="58" fill="#fff" font-family="Arial, sans-serif" font-size="34" font-weight="900">LOGANALYSE</text>
+    <text x="618" y="510" fill="#e30613" font-family="Arial, sans-serif" font-size="24" font-weight="900">PK / NM / BOOST</text>
+  </g>
+  <g transform="translate(820 515)" fill="none" stroke-linecap="round">
+    <path d="M55 170h460c48 0 84-20 116-56l-86-22-70-60H218l-68 68-106 20z" stroke="#737d87" stroke-width="9"/>
+    <path d="M205 40h220c68 0 120 20 166 60H142c16-32 36-52 63-60z" stroke="#4a535d" stroke-width="6"/>
+    <circle cx="190" cy="180" r="46" stroke="#6d7782" stroke-width="12"/>
+    <circle cx="500" cy="180" r="46" stroke="#6d7782" stroke-width="12"/>
+    <path d="M555 106h80" stroke="#e30613" stroke-width="9"/>
+  </g>
+  <g opacity=".55" stroke="#e30613" stroke-width="6" stroke-linecap="round">
+    <path d="M1080 180h260"/>
+    <path d="M1080 225h180"/>
+    <path d="M1080 270h230"/>
+  </g>
+  <path d="M0 780c260-78 496-66 730-2 244 66 496 70 870-52v274H0z" fill="#020202" opacity=".8"/>
+</svg>
