@@ -104,7 +104,7 @@ export const languageLabels: Record<Locale, {label: string; flag: string; name: 
 
 export const navItems: Array<{key: PageKey | "catalog"; labels: Record<Locale, string>}> = [
   {key: "home", labels: {nl: "Home", en: "Home", pl: "Start"}},
-  {key: "catalog", labels: {nl: "Catalogus", en: "Catalog", pl: "Katalog mocy"}},
+  {key: "catalog", labels: {nl: "Catalogus", en: "Power Catalog", pl: "Katalog mocy"}},
   {key: "chiptuning", labels: {nl: "Chiptuning", en: "Chiptuning", pl: "Chiptuning"}},
   {key: "diagnose", labels: {nl: "Diagnose", en: "Diagnostics", pl: "Diagnostyka"}},
   {key: "diensten", labels: {nl: "Diensten", en: "Services", pl: "Usługi"}},
