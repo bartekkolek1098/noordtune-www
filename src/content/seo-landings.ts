@@ -27,7 +27,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "chiptuning-assen",
     parentKey: "chiptuning",
-    heroImage: "/images/sections/obd-reprogramming.webp",
+    heroImage: "/images/sections/flexbox-engine-laptop.jpg",
     seo: {
       title: "Chiptuning Assen | ECU Remap op Maat | NoordTune.nl",
       description:
@@ -53,7 +53,7 @@ export const seoLandings: SeoLanding[] = [
           "Controle van foutcodes en technische basis",
           "Advies over DSG / TCU tuning wanneer relevant"
         ],
-        image: "/images/sections/ecu-bench-red.png"
+        image: "/images/sections/ecu-reading.webp"
       },
       {
         kicker: "Veilige marges",
@@ -98,7 +98,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "chiptuning-drenthe",
     parentKey: "chiptuning",
-    heroImage: "/images/sections/ecu-bench-red.png",
+    heroImage: "/images/sections/be-racing-turbo.webp",
     seo: {
       title: "Chiptuning Drenthe | Stage 1 & ECU Remap | NoordTune.nl",
       description:
@@ -119,7 +119,7 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Veel auto's hebben ruimte voor meer vermogen en koppel, maar niet iedere auto vraagt dezelfde aanpak. NoordTune.nl helpt bestuurders in Drenthe met een nuchtere combinatie van chiptuning, auto diagnose en loganalyse. We letten op bruikbaarheid, betrouwbaarheid en rijgevoel in plaats van alleen een hoog getal op papier.",
         bullets: ["Chiptuning Drenthe vanuit Assen", "Persoonlijk advies per voertuig", "Geschikt voor dagelijks en zakelijk gebruik"],
-        image: "/images/sections/obd-reprogramming.webp"
+        image: "/images/sections/tuning-laptop-b2.webp"
       },
       {
         kicker: "Stage 1 en Stage 2",
@@ -163,7 +163,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "chiptuning-groningen",
     parentKey: "chiptuning",
-    heroImage: "/images/sections/autotuner-bench.webp",
+    heroImage: "/images/sections/bench-ecu-service.webp",
     seo: {
       title: "Chiptuning Groningen | ECU Remap vlakbij Groningen | NoordTune.nl",
       description:
@@ -184,7 +184,7 @@ export const seoLandings: SeoLanding[] = [
         text:
           "NoordTune.nl ligt praktisch voor klanten uit Groningen, Haren, Hoogezand, Veendam, Stadskanaal en omgeving. We combineren tuning met diagnose en duidelijke uitleg, zodat je weet wat er aan je auto gebeurt en waarom een bepaalde oplossing past.",
         bullets: ["ECU remap voor Groningen", "Diagnose en loganalyse mogelijk", "Power Catalog voor eerste indicatie"],
-        image: "/images/sections/autotuner-bench.webp"
+        image: "/images/sections/bench-ecu-service.webp"
       },
       {
         kicker: "Rijgedrag",
@@ -228,7 +228,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "auto-diagnose-assen",
     parentKey: "diagnose",
-    heroImage: "/images/sections/bmw-diagnostics.jpg",
+    heroImage: "/images/sections/obd-connector.jpg",
     seo: {
       title: "Auto Diagnose Assen | Foutcodes, Live Data & Loganalyse",
       description:
@@ -249,7 +249,7 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Moderne auto's zitten vol sensoren, regelmodules en voorwaarden. Een DPF storing, EGR storing, AdBlue storing, turbodrukfout of vermogensverlies kan meerdere oorzaken hebben. NoordTune.nl gebruikt foutcodes, live data, freeze frames en rijgedrag om de klacht gericht te begrijpen.",
         bullets: ["Foutcodes uitlezen en interpreteren", "Live data en meetwaarden controleren", "Advies voordat onderdelen worden vervangen"],
-        image: "/images/sections/bmw-diagnostics.jpg"
+        image: "/images/sections/obd-connector.jpg"
       },
       {
         kicker: "Loganalyse",
@@ -314,7 +314,7 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Bij Stage 1 tuning blijft de auto technisch standaard. De ECU software wordt aangepast binnen realistische marges voor turbodruk, injectie, ontsteking, koppelbegrenzing en gaspedaalrespons. Het resultaat is meestal meer trekkracht, betere respons en een rustiger gevoel bij inhalen of accelereren.",
         bullets: ["Voor standaard hardware", "Geschikt voor veel turbo motoren", "Focus op rijdbaarheid en veilige marges"],
-        image: "/images/sections/ecu-bench-red.png"
+        image: "/images/sections/be-racing-turbo.webp"
       },
       {
         kicker: "Voor wie?",
@@ -358,7 +358,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "stage-2-tuning",
     parentKey: "chiptuning",
-    heroImage: "/images/sections/datalog-road.webp",
+    heroImage: "/images/sections/bmw-turbo-engine.jpeg",
     seo: {
       title: "Stage 2 Tuning | ECU Remap met Extra Controle | NoordTune.nl",
       description:
@@ -379,7 +379,7 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Stage 2 tuning is geen standaard vervolgstap voor iedere auto. Het past bij voertuigen met ondersteunende hardware en vraagt extra aandacht voor turbodruk, luchtmassa, uitlaatgasstroming, temperaturen, brandstofdruk, koppeling en automaat. Daarom is loganalyse vaak belangrijker dan bij Stage 1.",
         bullets: ["Voor aangepaste hardware", "Loganalyse sterk aanbevolen", "Afstemming op motor en transmissie"],
-        image: "/images/sections/datalog-road.webp"
+        image: "/images/sections/bmw-engine-bay.jpg"
       },
       {
         kicker: "Regelgeving",
@@ -423,7 +423,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "ecu-remap",
     parentKey: "chiptuning",
-    heroImage: "/images/sections/autotuner-bench.webp",
+    heroImage: "/images/sections/bench-ecu-service.webp",
     seo: {
       title: "ECU Remap Assen | Motorsoftware op Maat | NoordTune.nl",
       description:
@@ -449,7 +449,7 @@ export const seoLandings: SeoLanding[] = [
           "Originele software veiligstellen waar mogelijk",
           "Controle bij foutcodes of twijfel"
         ],
-        image: "/images/sections/autotuner-bench.webp"
+        image: "/images/sections/ecu-reading.webp"
       },
       {
         kicker: "Veilige marges",
@@ -519,7 +519,7 @@ export const seoLandings: SeoLanding[] = [
           "Focus op dagelijks comfort en controle",
           "Geen onnodig harde of nerveuze schakelingen"
         ],
-        image: "/images/sections/datalog-road.webp"
+        image: "/images/sections/tuning-laptop-b2.webp"
       },
       {
         kicker: "Wanneer zinvol?",
@@ -563,7 +563,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "loganalyse",
     parentKey: "diagnose",
-    heroImage: "/images/sections/datalog-road.webp",
+    heroImage: "/images/sections/tuning-laptop-b2.webp",
     seo: {
       title: "Loganalyse Auto | Data bij Tuning en Diagnose | NoordTune.nl",
       description:
@@ -633,7 +633,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "dpf-storing",
     parentKey: "diagnose",
-    heroImage: "/images/sections/bmw-diagnostics.jpg",
+    heroImage: "/images/sections/obd-connector.jpg",
     seo: {
       title: "DPF Storing | Diagnose en Storing Analyse | NoordTune.nl",
       description:
@@ -659,7 +659,7 @@ export const seoLandings: SeoLanding[] = [
           "Regeneratievoorwaarden controleren",
           "Advies op maat en wettelijke context bespreken"
         ],
-        image: "/images/sections/bmw-diagnostics.jpg"
+        image: "/images/sections/obd-connector.jpg"
       },
       {
         kicker: "Zorgvuldige woorden",
@@ -703,7 +703,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "egr-storing",
     parentKey: "diagnose",
-    heroImage: "/images/sections/ecu-bench-red.png",
+    heroImage: "/images/sections/obd-connector.jpg",
     seo: {
       title: "EGR Storing | Diagnose, Live Data en Advies | NoordTune.nl",
       description:

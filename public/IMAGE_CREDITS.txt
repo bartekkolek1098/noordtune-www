@@ -1,0 +1,28 @@
+NoordTune.nl image credits
+
+Owner-supplied / local technical images
+- public/images/sections/tuning-laptop-b2.webp
+- public/images/sections/flexbox-engine-laptop.jpg
+- public/images/sections/bench-ecu-service.webp
+- public/images/sections/obd-connector.jpg
+- public/images/sections/ecu-reading.webp
+- public/images/sections/bmw-turbo-engine.jpeg
+- public/images/sections/bmw-engine-bay.jpg
+- public/images/sections/be-racing-turbo.webp
+
+Customer result model images from Wikimedia Commons
+- BMW 3-Series (G20) 330d (2020), author: Charles from Port Chester, New York, license: CC BY 2.0
+  Source: https://commons.wikimedia.org/wiki/File:BMW_3-Series_(G20)_330d_(2020)_(53138135058).jpg
+  License: https://creativecommons.org/licenses/by/2.0
+
+- Audi A4 B9 2.0 TDI quattro (2016), author: Charles from Port Chester, New York, license: CC BY 2.0
+  Source: https://commons.wikimedia.org/wiki/File:Audi_A4_B9_2.0_TDI_quattro_(2016)_(52715228667).jpg
+  License: https://creativecommons.org/licenses/by/2.0
+
+- 2018 Volkswagen Golf GTI MK7.5 in Haifa, author: ES, license: CC BY-SA 4.0
+  Source: https://commons.wikimedia.org/wiki/File:2018_Volkswagen_Golf_GTI_MK7.5_in_Haifa.jpg
+  License: https://creativecommons.org/licenses/by-sa/4.0
+
+- Mercedes-Benz C 220d AVANTGARDE (W206) front, author: Tokumeigakarinoaoshima, license: CC BY-SA 4.0
+  Source: https://commons.wikimedia.org/wiki/File:Mercedes-Benz_C_220d_AVANTGARDE_(W206)_front.jpg
+  License: https://creativecommons.org/licenses/by-sa/4.0

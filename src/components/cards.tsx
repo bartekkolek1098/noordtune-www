@@ -122,7 +122,7 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
     <article className="panel-edge overflow-hidden rounded-[3px]">
       <div className="relative h-36 border-b border-white/10 bg-black/35">
         <Image
-          alt=""
+          alt={`${car} ${result.stage}`}
           className="object-cover opacity-85"
           fill
           sizes="(min-width:1024px) 25vw, 100vw"

@@ -311,7 +311,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
                 ? ["ECU access matters", "Extra checks can be needed", "Clear advice before work"]
                 : ["Dostęp do ECU ma znaczenie", "Czasem potrzebna jest dodatkowa kontrola", "Najpierw jasna porada"]
           }
-          image="/images/sections/datalog-road.webp"
+          image="/images/sections/tuning-laptop-b2.webp"
           kicker={pricingBlock.kicker}
           primaryHref={site.catalogUrl}
           primaryLabel={locale === "nl" ? "Open Power Catalog" : locale === "en" ? "Open Power Catalog" : "Otwórz katalog mocy"}
@@ -366,7 +366,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
                     "Użyj katalogu mocy, aby sprawdzić konkretne auto"
                   ]
           }
-          image="/images/sections/datalog-road.webp"
+          image="/images/sections/be-racing-turbo.webp"
           kicker={resultsBlock.kicker}
           links={[
             {label: "Stage 1 tuning", href: locale === "nl" ? "/nl/stage-1-tuning" : pathFor(locale, "chiptuning")},
@@ -423,7 +423,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
       <>
         <RichInfoSection
           bullets={contactBlock.bullets}
-          image="/images/sections/obd-reprogramming.webp"
+          image="/images/sections/tuning-laptop-b2.webp"
           kicker={contactBlock.kicker}
           links={[
             {label: locale === "nl" ? "Chiptuning Assen" : "Chiptuning", href: locale === "nl" ? "/nl/chiptuning-assen" : pathFor(locale, "chiptuning")},

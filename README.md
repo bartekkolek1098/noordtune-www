@@ -57,8 +57,9 @@ Replace hero and section imagery here:
 
 - `public/images/heroes/`
 - `public/images/sections/`
+- `public/images/results/`
 
-The current images are safe local assets and generated visual placeholders, not random third-party web images. Before final launch, replace placeholders with owned/generated high-resolution workshop, ECU, diagnostics, dyno/logging and customer-result imagery where available.
+The current images are safe local/owner-supplied assets, generated visual placeholders and documented Wikimedia Commons model images for result cards. Public image credits are listed in `public/IMAGE_CREDITS.txt`; the working asset note is in `docs/IMAGE_ASSET_CREDITS.md`. Before final launch, replace any remaining placeholders with owned/generated high-resolution workshop, ECU, diagnostics, dyno/logging and customer-result imagery where available.
 
 ## Deployment
 

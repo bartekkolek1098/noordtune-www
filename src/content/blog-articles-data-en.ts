@@ -17,7 +17,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Learn what chiptuning and ECU remap mean, how power and torque are adjusted and why diagnostics and custom calibration matter.",
     category: "Chiptuning",
     readTime: "5 min",
-    heroImage: "/images/sections/ecu-bench-red.png",
+    heroImage: "/images/sections/ecu-reading.webp",
     intro:
       "Chiptuning is the careful adjustment of the engine control software. The aim is a stronger, smoother car while staying within realistic technical margins.",
     ...commonDates,
@@ -48,7 +48,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Understand the difference between Stage 1 and Stage 2 tuning, including hardware, diagnostics, logging and realistic margins.",
     category: "Technical",
     readTime: "6 min",
-    heroImage: "/images/sections/ecu-bench-red.png",
+    heroImage: "/images/sections/be-racing-turbo.webp",
     intro:
       "Stage 1 and Stage 2 are useful terms, but they only make sense when hardware, diagnostics and safety margins are considered together.",
     ...commonDates,
@@ -79,7 +79,7 @@ export const enBlogArticles: BlogArticle[] = [
       "ECU remap can be safe when the vehicle is healthy, the calibration is realistic and diagnostics are taken seriously.",
     category: "Advice",
     readTime: "7 min",
-    heroImage: "/images/sections/autotuner-bench.webp",
+    heroImage: "/images/sections/flexbox-engine-laptop.jpg",
     intro:
       "An ECU remap is safe when the vehicle condition, software quality and chosen margins all line up. Responsible tuning starts with checking, not guessing.",
     ...commonDates,
@@ -110,7 +110,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Read what an AdBlue fault can mean, why diagnostics matter and why legal wording around emissions systems is important.",
     category: "Diagnostics",
     readTime: "4 min",
-    heroImage: "/images/sections/bmw-diagnostics.jpg",
+    heroImage: "/images/sections/obd-connector.jpg",
     intro:
       "AdBlue faults can be caused by sensors, pump issues, crystallisation, NOx values or software warnings. The correct route starts with diagnostics.",
     ...commonDates,
@@ -141,7 +141,7 @@ export const enBlogArticles: BlogArticle[] = [
       "Practical aftercare tips after ECU remap: warm-up, maintenance, fuel quality, checks and when to ask for advice.",
     category: "Aftercare",
     readTime: "5 min",
-    heroImage: "/images/sections/obd-reprogramming.webp",
+    heroImage: "/images/sections/tuning-laptop-b2.webp",
     intro:
       "After tuning the car usually feels stronger immediately. Good aftercare helps keep that result reliable and enjoyable.",
     ...commonDates,
