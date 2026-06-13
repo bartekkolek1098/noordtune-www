@@ -79,7 +79,7 @@ export const plBlogArticles: BlogArticle[] = [
       "Remap ECU może być bezpieczny, jeżeli auto jest sprawne, kalibracja ma rozsądne marginesy, a diagnostyka jest traktowana poważnie.",
     category: "Porady",
     readTime: "7 min",
-    heroImage: "/images/sections/flexbox-engine-laptop.jpg",
+    heroImage: "/images/sections/autotuner-ecu-hands.jpeg",
     intro:
       "Bezpieczeństwo remapu zależy od stanu auta, jakości kalibracji i wybranych marginesów. Odpowiedzialny tuning zaczyna się od kontroli.",
     ...commonDates,

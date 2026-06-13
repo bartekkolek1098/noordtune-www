@@ -7,6 +7,7 @@ This file records externally sourced image assets used in the NoordTune.nl main 
 The following technical/workshop images were supplied locally by the owner and are stored in `public/images/sections/`:
 
 - `tuning-laptop-b2.webp`
+- `autotuner-ecu-hands.jpeg`
 - `flexbox-engine-laptop.jpg`
 - `bench-ecu-service.webp`
 - `obd-connector.jpg`

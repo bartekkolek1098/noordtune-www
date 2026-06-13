@@ -79,7 +79,7 @@ export const enBlogArticles: BlogArticle[] = [
       "ECU remap can be safe when the vehicle is healthy, the calibration is realistic and diagnostics are taken seriously.",
     category: "Advice",
     readTime: "7 min",
-    heroImage: "/images/sections/flexbox-engine-laptop.jpg",
+    heroImage: "/images/sections/autotuner-ecu-hands.jpeg",
     intro:
       "An ECU remap is safe when the vehicle condition, software quality and chosen margins all line up. Responsible tuning starts with checking, not guessing.",
     ...commonDates,

@@ -602,7 +602,7 @@ export const homeContent: Record<Locale, {
         "Advies voor Stage 1 tuning, Stage 2 tuning, DSG tuning en TCU tuning",
         "Ondersteuning bij DPF storing, EGR storing en AdBlue storing waar wettelijk toegestaan"
       ],
-      image: "/images/sections/tuning-laptop-b2.webp"
+      image: "/images/sections/obd-reprogramming.webp"
     },
     highlights: [
       {
@@ -611,7 +611,7 @@ export const homeContent: Record<Locale, {
         text:
           "Een goede ECU remap voelt alsof de auto zo uit de fabriek had moeten komen: krachtiger, soepeler en voorspelbaar. Bij NoordTune.nl stemmen we software af op de motorvariant, onderhoudsstaat, brandstof, transmissie en jouw rijstijl. Stage 1 tuning is ideaal voor een standaard auto. Stage 2 tuning past bij voertuigen met ondersteunende hardware en vraagt extra controle op temperaturen, luchtmassa, turbodruk en koppellimieten.",
         bullets: ["BMW chiptuning", "Audi chiptuning", "Volkswagen chiptuning", "Mercedes chiptuning"],
-        image: "/images/sections/flexbox-engine-laptop.jpg"
+        image: "/images/sections/autotuner-ecu-hands.jpeg"
       },
       {
         kicker: "Auto diagnose & loganalyse",
@@ -648,7 +648,7 @@ export const homeContent: Record<Locale, {
       text:
         "NoordTune.nl provides professional chiptuning, ECU remap and diagnostics in Assen. We focus on the whole vehicle: torque delivery, throttle response, gearbox behavior, fault codes and live data.",
       bullets: ["Custom ECU remap", "Diagnostics and log analysis", "Stage 1 and Stage 2 advice", "DSG and TCU tuning"],
-      image: "/images/sections/tuning-laptop-b2.webp"
+      image: "/images/sections/obd-reprogramming.webp"
     },
     highlights: [
       {
@@ -657,7 +657,7 @@ export const homeContent: Record<Locale, {
         text:
           "Good tuning makes the vehicle stronger and smoother without losing reliability. We tune for the engine, transmission, condition and intended use.",
         bullets: ["BMW tuning", "Audi tuning", "Volkswagen tuning", "Mercedes tuning"],
-        image: "/images/sections/flexbox-engine-laptop.jpg"
+        image: "/images/sections/autotuner-ecu-hands.jpeg"
       },
       {
         kicker: "Diagnostics and logs",
@@ -693,7 +693,7 @@ export const homeContent: Record<Locale, {
       text:
         "NoordTune.nl oferuje profesjonalny chiptuning, remap ECU i diagnostykę w Assen. Patrzymy na cały samochód: moment obrotowy, reakcję gazu, pracę skrzyni, kody błędów i live data. Dzięki temu doradzamy rozwiązanie dopasowane do auta, silnika i sposobu jazdy.",
       bullets: ["Indywidualny remap ECU", "Diagnostyka i analiza logów", "Stage 1 i Stage 2", "DSG i TCU tuning"],
-      image: "/images/sections/tuning-laptop-b2.webp"
+      image: "/images/sections/obd-reprogramming.webp"
     },
     highlights: [
       {
@@ -702,7 +702,7 @@ export const homeContent: Record<Locale, {
         text:
           "Dobry tuning sprawia, że auto jest mocniejsze i płynniejsze bez utraty kultury pracy. Program dobieramy do silnika, skrzyni, stanu auta i sposobu użytkowania. Liczą się nie tylko liczby, ale też sposób budowania momentu, reakcja pedału gazu i bezpieczeństwo podzespołów.",
         bullets: ["BMW tuning", "Audi tuning", "Volkswagen tuning", "Mercedes tuning"],
-        image: "/images/sections/flexbox-engine-laptop.jpg"
+        image: "/images/sections/autotuner-ecu-hands.jpeg"
       },
       {
         kicker: "Diagnostyka i logi",
@@ -732,7 +732,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "Chiptuning",
       text: "Meer vermogen, meer koppel en een soepelere verbranding. Volledig afgestemd op jouw auto.",
       bullets: ["Stage 1 tuning", "Stage 2 tuning", "ECU remap Assen"],
-      image: "/images/sections/flexbox-engine-laptop.jpg",
+      image: "/images/sections/autotuner-ecu-hands.jpeg",
       icon: "gauge",
       page: "chiptuning"
     },
@@ -764,7 +764,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       title: "Loganalyse",
       text: "Gedetailleerde analyse van rijlogs, turbodruk, luchtmassa, injectie en veiligheid.",
       bullets: ["Data analyse", "Probleemdetectie", "Controle na tuning"],
-      image: "/images/sections/tuning-laptop-b2.webp",
+      image: "/images/sections/autotuner-bench.webp",
       icon: "chart",
       page: "diagnose"
     },
@@ -786,7 +786,7 @@ services.en = [
     title: "Chiptuning",
     text: "More power, torque and cleaner drivability with software tailored to your car.",
     bullets: ["Stage 1 tuning", "Stage 2 tuning", "ECU remap"],
-    image: "/images/sections/flexbox-engine-laptop.jpg",
+    image: "/images/sections/autotuner-ecu-hands.jpeg",
     icon: "gauge",
     page: "chiptuning"
   },
@@ -818,7 +818,7 @@ services.en = [
     title: "Log analysis",
     text: "Detailed review of boost, airflow, injection, temperatures and safety margins.",
     bullets: ["Data analysis", "Problem detection", "Aftercare"],
-    image: "/images/sections/tuning-laptop-b2.webp",
+    image: "/images/sections/autotuner-bench.webp",
     icon: "chart",
     page: "diagnose"
   },
@@ -837,7 +837,7 @@ services.pl = [
     title: "Chiptuning",
     text: "Więcej mocy, momentu i lepsza reakcja dzięki oprogramowaniu dobranemu do konkretnego auta.",
     bullets: ["Stage 1", "Stage 2", "Remap ECU"],
-    image: "/images/sections/flexbox-engine-laptop.jpg",
+    image: "/images/sections/autotuner-ecu-hands.jpeg",
     icon: "gauge",
     page: "chiptuning"
   },
@@ -869,7 +869,7 @@ services.pl = [
     title: "Analiza logów",
     text: "Szczegółowa analiza doładowania, przepływu powietrza, wtrysku, temperatur i marginesów bezpieczeństwa.",
     bullets: ["Analiza danych", "Wykrywanie problemów", "Kontrola po tuningu"],
-    image: "/images/sections/tuning-laptop-b2.webp",
+    image: "/images/sections/autotuner-bench.webp",
     icon: "chart",
     page: "diagnose"
   },
@@ -1043,7 +1043,7 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
         text:
           "Bij chiptuning wordt de software in de motorcomputer aangepast zodat de motor efficienter en krachtiger reageert. Denk aan turbodruk, inspuiting, koppelbegrenzers, gaspedaalrespons en veiligheidsmarges. Een goede ECU remap in Assen begint daarom met de vraag: wat kan deze motor verantwoord leveren, in deze auto, met deze transmissie en dit gebruik?",
         bullets: ["Meer vermogen en koppel", "Betere gaspedaalrespons", "Soepeler rijgedrag", "Vaak prettiger verbruik bij rustig rijden"],
-        image: "/images/sections/flexbox-engine-laptop.jpg"
+        image: "/images/sections/autotuner-ecu-hands.jpeg"
       },
       {
         kicker: "Stage 1 tuning",
@@ -1060,12 +1060,12 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
       }
     ],
     en: [
-      {kicker: "ECU remap", title: "Chiptuning is about balance, not just peak numbers.", text: "We adjust engine software around boost, injection, torque limits, throttle response and safety margins.", bullets: ["More power", "More torque", "Better response", "Factory-like feel"], image: "/images/sections/flexbox-engine-laptop.jpg"},
+      {kicker: "ECU remap", title: "Chiptuning is about balance, not just peak numbers.", text: "We adjust engine software around boost, injection, torque limits, throttle response and safety margins.", bullets: ["More power", "More torque", "Better response", "Factory-like feel"], image: "/images/sections/autotuner-ecu-hands.jpeg"},
       {kicker: "Stage 1", title: "For standard cars that should feel stronger.", text: "Stage 1 tuning keeps the car on standard hardware and optimizes software within realistic margins."},
       {kicker: "Stage 2", title: "For vehicles with supporting hardware.", text: "Stage 2 requires more checks, especially logs, temperatures, airflow and gearbox limits."}
     ],
     pl: [
-      {kicker: "Remap ECU", title: "Chiptuning to balans, nie tylko maksymalna liczba.", text: "Zmieniamy oprogramowanie silnika z uwagą na doładowanie, wtrysk, limity momentu, reakcję gazu i marginesy bezpieczeństwa. Dobra kalibracja ma dawać więcej przyjemności z jazdy, ale nadal pasować do auta i sposobu użytkowania.", bullets: ["Więcej mocy", "Więcej momentu", "Lepsza reakcja", "Fabryczny charakter"], image: "/images/sections/flexbox-engine-laptop.jpg"},
+      {kicker: "Remap ECU", title: "Chiptuning to balans, nie tylko maksymalna liczba.", text: "Zmieniamy oprogramowanie silnika z uwagą na doładowanie, wtrysk, limity momentu, reakcję gazu i marginesy bezpieczeństwa. Dobra kalibracja ma dawać więcej przyjemności z jazdy, ale nadal pasować do auta i sposobu użytkowania.", bullets: ["Więcej mocy", "Więcej momentu", "Lepsza reakcja", "Fabryczny charakter"], image: "/images/sections/autotuner-ecu-hands.jpeg"},
       {kicker: "Stage 1", title: "Dla seryjnych aut, które mają jechać mocniej.", text: "Stage 1 zachowuje seryjny osprzęt i optymalizuje oprogramowanie w rozsądnych marginesach. To najczęstszy wybór, gdy auto jest technicznie zdrowe i ma dostać więcej elastyczności bez zmian mechanicznych."},
       {kicker: "Stage 2", title: "Dla aut z odpowiednim osprzętem.", text: "Stage 2 wymaga więcej kontroli, szczególnie logów, temperatur, przepływu powietrza, doładowania i limitów skrzyni. Nie każde auto potrzebuje Stage 2; czasem Stage 1 daje lepszą równowagę na co dzień."}
     ]

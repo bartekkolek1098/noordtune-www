@@ -2,6 +2,7 @@ NoordTune.nl image credits
 
 Owner-supplied / local technical images
 - public/images/sections/tuning-laptop-b2.webp
+- public/images/sections/autotuner-ecu-hands.jpeg
 - public/images/sections/flexbox-engine-laptop.jpg
 - public/images/sections/bench-ecu-service.webp
 - public/images/sections/obd-connector.jpg

@@ -27,7 +27,7 @@ export const seoLandings: SeoLanding[] = [
     locale: "nl",
     slug: "chiptuning-assen",
     parentKey: "chiptuning",
-    heroImage: "/images/sections/flexbox-engine-laptop.jpg",
+    heroImage: "/images/sections/autotuner-ecu-hands.jpeg",
     seo: {
       title: "Chiptuning Assen | ECU Remap op Maat | NoordTune.nl",
       description:

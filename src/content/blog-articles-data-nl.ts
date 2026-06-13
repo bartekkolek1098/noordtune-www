@@ -127,7 +127,7 @@ export const nlBlogArticles: BlogArticle[] = [
       "ECU remap kan veilig zijn als de auto gezond is, de software realistisch blijft en diagnose/loganalyse serieus worden genomen.",
     category: "Advies",
     readTime: "7 min",
-    heroImage: "/images/sections/flexbox-engine-laptop.jpg",
+    heroImage: "/images/sections/autotuner-ecu-hands.jpeg",
     intro:
       "Een ECU remap is zo veilig als de technische basis, de softwarekwaliteit en de gekozen marges. Daarom begint verantwoord tunen niet met een getal, maar met controle.",
     ...commonDates,
