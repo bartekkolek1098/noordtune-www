@@ -240,3 +240,19 @@ One non-blocking redirect nuance:
 Production status: clean.
 
 It is safe to proceed to post-launch SEO setup, such as Search Console, sitemap submission, analytics and monitoring.
+
+## Post-Launch SEO Follow-Up
+
+Post-launch SEO setup documentation has been created:
+
+- `docs/POST_LAUNCH_SEO_SETUP.md`
+- `docs/OWNER_POST_LAUNCH_CHECKLIST.md`
+
+Next recommended owner step:
+
+1. Add `https://www.noordtune.nl` in Google Search Console.
+2. Verify ownership.
+3. Submit `https://www.noordtune.nl/sitemap.xml`.
+4. Inspect the homepage, main Dutch pages, priority Dutch SEO landing pages and Dutch blog articles.
+
+No site feature changes were made for this documentation step.
