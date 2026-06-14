@@ -255,3 +255,17 @@ The recommended immediate next step is:
 3. Verify ownership.
 4. Submit `https://www.noordtune.nl/sitemap.xml`.
 5. Inspect `/nl`, `/nl/chiptuning`, `/nl/auto-diagnose`, `/nl/prijzen`, `/nl/contact`.
+
+## 11. After Initial Indexing
+
+After Google has had time to crawl the sitemap, review:
+
+- pages with impressions but low CTR
+- pages with no impressions after discovery
+- old URL redirect errors
+- unexpected 404s
+- queries where the page intent does not match the search phrase
+- opportunities for real customer result pages
+- opportunities for brand SEO pages such as BMW, Audi, Volkswagen and Mercedes
+
+Do not publish prepared brand pages just because they exist as drafts. Publish only when each page has enough unique, useful content and has been reviewed against Search Console data and owner priorities.

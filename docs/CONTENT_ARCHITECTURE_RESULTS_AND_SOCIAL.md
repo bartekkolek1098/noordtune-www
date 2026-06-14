@@ -129,3 +129,14 @@ Publish SEO articles now.
 Keep customer results as carefully labelled indicative examples until real owner-approved vehicle cases are added.
 
 Do not publish Facebook-synced content automatically.
+
+## Content Growth Phase Note
+
+The content growth branch prepares draft brand pages, draft educational articles and the first BMW X3 E83 2.0d Stage 1 customer-result template without publishing them.
+
+Rules for this phase:
+
+- draft brand pages remain outside routes, navigation and sitemap.
+- draft educational articles remain separate from published SEO articles until owner review.
+- the BMW X3 result stays `draft` and `indexable: false` until image rights, customer approval and final copy are confirmed.
+- social/Facebook-style posts remain a future import workflow and should not be mixed into SEO articles.
