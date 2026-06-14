@@ -148,3 +148,16 @@ Current related architecture:
 - SEO articles: `src/content/blog-articles.ts`
 - Customer results: `src/content/customer-results.ts`
 - Content architecture note: `docs/CONTENT_ARCHITECTURE_RESULTS_AND_SOCIAL.md`
+
+## Content Growth Reminder
+
+During the SEO content-growth phase, Facebook-style workshop posts should still be treated as source material for future draft social updates or draft customer results only.
+
+Do not:
+
+- auto-create SEO articles from Facebook posts
+- publish imported vehicle results without owner/admin approval
+- index thin social updates
+- use customer photos before image rights and approval are confirmed
+
+The prepared BMW X3 E83 2.0d Stage 1 case is a draft result template, not a Facebook sync implementation.
