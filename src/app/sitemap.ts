@@ -1,5 +1,6 @@
 import type {MetadataRoute} from "next";
 import {blogArticles, blogArticleUrl} from "@/content/blog-articles";
+import {customerResults, customerResultUrl, isPublicCustomerResult} from "@/content/customer-results";
 import {seoLandings, seoLandingUrl} from "@/content/seo-landings";
 import {
   absolutePath,
@@ -52,5 +53,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
     }));
 
-  return [...mainPages, ...landingPages, ...articlePages];
+  const resultPages = customerResults
+    .filter(isPublicCustomerResult)
+    .map((result) => ({
+      url: customerResultUrl(result),
+      lastModified: new Date(result.updatedAt),
+      changeFrequency: "monthly" as const,
+      priority: 0.68,
+      alternates: {
+        languages: {
+          [result.locale]: customerResultUrl(result)
+        }
+      }
+    }));
+
+  return [...mainPages, ...landingPages, ...articlePages, ...resultPages];
 }

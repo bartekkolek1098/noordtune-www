@@ -8,7 +8,12 @@ import {
   blogArticleStaticParams
 } from "../src/content/blog-articles";
 import {posts} from "../src/content/copy";
-import {customerResults} from "../src/content/customer-results";
+import {
+  customerResultFromRoute,
+  customerResults,
+  customerResultStaticParams,
+  isPublicCustomerResult
+} from "../src/content/customer-results";
 import {locales, pageRoutes, site, type Locale} from "../src/content/site";
 
 type Check = {
@@ -32,6 +37,7 @@ const files = [
   "src/components/power-catalog-section.tsx",
   "src/components/cta-section.tsx",
   "src/components/blog-article-renderer.tsx",
+  "src/components/customer-result-renderer.tsx",
   "src/components/page-renderers.tsx",
   "src/components/seo-landing-renderer.tsx",
   "src/components/footer.tsx",
@@ -47,6 +53,7 @@ const polishFiles = [
   "src/components/power-catalog-section.tsx",
   "src/components/cta-section.tsx",
   "src/components/blog-article-renderer.tsx",
+  "src/components/customer-result-renderer.tsx",
   "src/components/page-renderers.tsx",
   "src/components/seo-landing-renderer.tsx",
   "src/components/footer.tsx",
@@ -81,7 +88,10 @@ const requiredLabels = [
   "Otwórz katalog mocy",
   "Napisz na WhatsApp",
   "Umów wizytę",
-  "Sprawdź auto w katalogu"
+  "Sprawdź auto w katalogu",
+  "Controleer jouw auto in de Power Catalog",
+  "Check your vehicle in the Power Catalog",
+  "Sprawdź swoje auto w katalogu mocy"
 ];
 
 function stripRouteBlocks(source: string) {
@@ -234,11 +244,50 @@ async function main() {
     if (result.whatsappCta !== site.whatsappUrl) {
       failures.push(`Customer result has wrong WhatsApp URL: ${result.id}`);
     }
-    if (result.status === "published" && result.source === "facebook") {
-      failures.push(`Facebook-sourced customer result should not publish automatically: ${result.id}`);
+    if ((result.status === "demo" || result.status === "draft") && result.indexable) {
+      failures.push(`Demo/draft customer result must not be indexable: ${result.id}`);
+    }
+    if (result.status === "published" && result.indexable && !result.customerApproved) {
+      failures.push(`Indexable published customer result must be customer-approved: ${result.id}`);
+    }
+    if (result.status === "published" && result.source === "facebook" && !result.customerApproved) {
+      failures.push(`Facebook-sourced customer result requires approval before publishing: ${result.id}`);
     }
     if (result.status === "published" && !result.disclaimer) {
       failures.push(`Published customer result is missing disclaimer: ${result.id}`);
+    }
+    if (isPublicCustomerResult(result)) {
+      if (result.images.length === 0 || !result.imageAlt) {
+        failures.push(`Public customer result is missing image or alt text: ${result.id}`);
+      }
+      if (result.technicalNotes.length < 2) {
+        failures.push(`Public customer result needs useful technical notes: ${result.id}`);
+      }
+    }
+  }
+
+  const publicResultRoutes = new Set(
+    customerResultStaticParams().map((params) => `/${params.locale}/${params.resultsSlug}/${params.resultSlug}`)
+  );
+  const expectedPublicResultRoutes = new Set(
+    customerResults
+      .filter(isPublicCustomerResult)
+      .map((result) => `/${result.locale}/${pageRoutes.resultaten[result.locale]}/${result.slug}`)
+  );
+
+  for (const route of expectedPublicResultRoutes) {
+    if (!publicResultRoutes.has(route)) {
+      failures.push(`Public customer result is missing from static params: ${route}`);
+    }
+  }
+
+  for (const result of customerResults.filter((item) => !isPublicCustomerResult(item))) {
+    const route = `/${result.locale}/${pageRoutes.resultaten[result.locale]}/${result.slug}`;
+    if (publicResultRoutes.has(route)) {
+      failures.push(`Non-public customer result should not be statically exposed: ${route}`);
+    }
+    if (customerResultFromRoute(result.locale, pageRoutes.resultaten[result.locale], result.slug)) {
+      failures.push(`Non-public customer result should not resolve as route: ${route}`);
     }
   }
 

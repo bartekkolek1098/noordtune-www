@@ -1,37 +1,40 @@
-import {site, type Locale} from "./site";
+import {pageRoutes, site, type Locale} from "./site";
+
+export type CustomerResultSource = "manual" | "facebook";
+export type CustomerResultStatus = "published" | "draft" | "demo";
 
 export type CustomerResult = {
   id: string;
   locale: Locale;
   slug: string;
-  source: "manual" | "facebook";
+  source: CustomerResultSource;
   sourceUrl?: string;
-  status: "published" | "draft";
-  indexable?: boolean;
+  status: CustomerResultStatus;
+  indexable: boolean;
   vehicleMake: string;
   vehicleModel: string;
   vehicleGeneration?: string;
   vehicleEngine: string;
   vehicleYear?: string;
   transmission?: string;
-  licensePlateVisible: boolean;
-  images: string[];
-  imageAlt?: string;
+  ecu?: string;
+  tcu?: string;
   serviceType: string;
   stage: string;
   fuelType?: string;
-  ecu?: string;
-  tcu?: string;
   stockPowerHp: number;
   stockTorqueNm: number;
   tunedPowerHp: number;
   tunedTorqueNm: number;
   gainPowerHp: number;
   gainTorqueNm: number;
+  licensePlateVisible: boolean;
+  images: string[];
+  imageAlt: string;
   shortDescription: string;
   technicalNotes: string[];
   customerApproved: boolean;
-  certificateAvailable?: boolean;
+  certificateAvailable: boolean;
   certificateNote?: string;
   publishedAt: string;
   updatedAt: string;
@@ -42,9 +45,22 @@ export type CustomerResult = {
   localizedDraftDescriptions?: Partial<Record<Locale, string>>;
 };
 
-export function publishedCustomerResults(locale: Locale) {
-  return customerResults.filter((result) => result.locale === locale && result.status === "published");
-}
+type CustomerResultSeed = Omit<
+  CustomerResult,
+  | "id"
+  | "locale"
+  | "source"
+  | "status"
+  | "indexable"
+  | "licensePlateVisible"
+  | "customerApproved"
+  | "certificateAvailable"
+  | "publishedAt"
+  | "updatedAt"
+  | "disclaimer"
+  | "relatedPowerCatalogUrl"
+  | "whatsappCta"
+>;
 
 const demoDisclaimer = {
   nl: "Indicatief voorbeeld op basis van gangbare voertuigconfiguraties. Geen garantie voor identieke winst; definitieve resultaten zijn voertuigafhankelijk.",
@@ -59,367 +75,345 @@ const resultImages = {
   mercedesC220d: "/images/results/mercedes-c220d-w206.jpg"
 } as const;
 
+function demoResult(locale: Locale, seed: CustomerResultSeed): CustomerResult {
+  return {
+    ...seed,
+    id: `demo-${seed.slug}-${locale}`,
+    locale,
+    source: "manual",
+    status: "demo",
+    indexable: false,
+    licensePlateVisible: false,
+    customerApproved: false,
+    certificateAvailable: false,
+    publishedAt: "2026-06-13",
+    updatedAt: "2026-06-13",
+    disclaimer: demoDisclaimer[locale],
+    relatedPowerCatalogUrl: site.catalogUrl,
+    whatsappCta: site.whatsappUrl
+  };
+}
+
+export function isPublicCustomerResult(result: CustomerResult) {
+  return result.status === "published" && result.indexable;
+}
+
+export function publicCustomerResults(locale: Locale) {
+  return customerResults.filter((result) => result.locale === locale && isPublicCustomerResult(result));
+}
+
+export function displayCustomerResults(locale: Locale) {
+  return customerResults.filter((result) => result.locale === locale && result.status !== "draft");
+}
+
+export function customerResultPath(result: CustomerResult) {
+  return `/${result.locale}/${pageRoutes.resultaten[result.locale]}/${result.slug}`;
+}
+
+export function customerResultUrl(result: CustomerResult) {
+  return `${site.url}${customerResultPath(result)}`;
+}
+
+export function customerResultFromRoute(locale: Locale, resultsSlug: string, resultSlug: string) {
+  if (resultsSlug !== pageRoutes.resultaten[locale]) {
+    return undefined;
+  }
+
+  const result = customerResults.find((item) => item.locale === locale && item.slug === resultSlug);
+  return result && isPublicCustomerResult(result) ? result : undefined;
+}
+
+export function customerResultStaticParams() {
+  return customerResults.filter(isPublicCustomerResult).map((result) => ({
+    locale: result.locale,
+    resultsSlug: pageRoutes.resultaten[result.locale],
+    resultSlug: result.slug
+  }));
+}
+
 export const customerResults: CustomerResult[] = [
-  {
-    id: "demo-bmw-330d-stage-1-nl",
-    locale: "nl",
+  demoResult("nl", {
     slug: "bmw-330d-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "BMW",
     vehicleModel: "330d",
+    vehicleGeneration: "G20 / G21",
     vehicleEngine: "3.0 diesel",
     vehicleYear: "G20 / G21",
-    licensePlateVisible: false,
-    images: [resultImages.bmw330d],
+    transmission: "ZF 8HP automaat, afhankelijk van uitvoering",
+    ecu: "Bosch ECU, afhankelijk van uitvoering",
+    tcu: "TCU controle afhankelijk van koppelwens",
     serviceType: "ECU remap",
     stage: "Stage 1",
-    ecu: "Bosch ECU, afhankelijk van uitvoering",
+    fuelType: "Diesel",
     stockPowerHp: 265,
     stockTorqueNm: 580,
     tunedPowerHp: 320,
     tunedTorqueNm: 680,
     gainPowerHp: 55,
     gainTorqueNm: 100,
+    images: [resultImages.bmw330d],
+    imageAlt: "BMW 330d Stage 1 indicatief voorbeeldresultaat",
     shortDescription: "Sterke diesel met brede koppelopbouw, ideaal voor dagelijks rijden en snelwegkilometers.",
-    technicalNotes: ["Transmissielimieten blijven leidend", "Logcontrole aanbevolen bij hoge kilometerstand"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.nl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-audi-a4-tdi-stage-1-nl",
-    locale: "nl",
+    technicalNotes: ["Transmissielimieten blijven leidend", "Logcontrole aanbevolen bij hoge kilometerstand"]
+  }),
+  demoResult("nl", {
     slug: "audi-a4-20-tdi-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Audi",
     vehicleModel: "A4",
+    vehicleGeneration: "B9",
     vehicleEngine: "2.0 TDI",
     vehicleYear: "B9",
-    licensePlateVisible: false,
-    images: [resultImages.audiA4],
-    serviceType: "ECU remap",
-    stage: "Stage 1",
+    transmission: "S tronic of handgeschakeld, afhankelijk van uitvoering",
     ecu: "Bosch EDC, afhankelijk van bouwjaar",
+    serviceType: "ECU remap",
+    stage: "Stage 1",
+    fuelType: "Diesel",
     stockPowerHp: 190,
     stockTorqueNm: 400,
     tunedPowerHp: 225,
     tunedTorqueNm: 470,
     gainPowerHp: 35,
     gainTorqueNm: 70,
+    images: [resultImages.audiA4],
+    imageAlt: "Audi A4 2.0 TDI Stage 1 indicatief voorbeeldresultaat",
     shortDescription: "Meer trekkracht in het middengebied met behoud van rustige, comfortabele rijeigenschappen.",
-    technicalNotes: ["DPF- en EGR-status vooraf controleren", "Resultaat hangt af van softwareversie"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.nl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-golf-gti-stage-1-nl",
-    locale: "nl",
+    technicalNotes: ["DPF- en EGR-status vooraf controleren", "Resultaat hangt af van softwareversie"]
+  }),
+  demoResult("nl", {
     slug: "volkswagen-golf-gti-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Volkswagen",
     vehicleModel: "Golf GTI",
+    vehicleGeneration: "MQB",
     vehicleEngine: "2.0 TSI",
     vehicleYear: "MQB",
-    licensePlateVisible: false,
-    images: [resultImages.golfGti],
-    serviceType: "ECU remap",
-    stage: "Stage 1",
+    transmission: "DSG of handgeschakeld",
     ecu: "Bosch MED / MG, afhankelijk van uitvoering",
+    tcu: "DSG / TCU controle kan relevant zijn",
+    serviceType: "ECU remap",
+    stage: "Stage 1",
+    fuelType: "Benzine",
     stockPowerHp: 245,
     stockTorqueNm: 370,
     tunedPowerHp: 305,
     tunedTorqueNm: 450,
     gainPowerHp: 60,
     gainTorqueNm: 80,
+    images: [resultImages.golfGti],
+    imageAlt: "Volkswagen Golf GTI Stage 1 indicatief voorbeeldresultaat",
     shortDescription: "Snellere respons en duidelijk meer punch zonder harde of nerveuze vermogensafgifte.",
-    technicalNotes: ["Brandstofkwaliteit is belangrijk", "DSG / TCU controle kan relevant zijn"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.nl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-mercedes-c220d-stage-1-nl",
-    locale: "nl",
+    technicalNotes: ["Brandstofkwaliteit is belangrijk", "DSG / TCU controle kan relevant zijn"]
+  }),
+  demoResult("nl", {
     slug: "mercedes-c-220d-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Mercedes",
     vehicleModel: "C 220d",
+    vehicleGeneration: "W205 / W206",
     vehicleEngine: "2.0 diesel",
     vehicleYear: "W205 / W206",
-    licensePlateVisible: false,
-    images: [resultImages.mercedesC220d],
-    serviceType: "ECU remap",
-    stage: "Stage 1",
+    transmission: "9G-Tronic, afhankelijk van uitvoering",
     ecu: "Bosch ECU, afhankelijk van uitvoering",
+    serviceType: "ECU remap",
+    stage: "Stage 1",
+    fuelType: "Diesel",
     stockPowerHp: 194,
     stockTorqueNm: 400,
     tunedPowerHp: 230,
     tunedTorqueNm: 500,
     gainPowerHp: 36,
     gainTorqueNm: 100,
+    images: [resultImages.mercedesC220d],
+    imageAlt: "Mercedes C 220d Stage 1 indicatief voorbeeldresultaat",
     shortDescription: "Comfortabel meer koppel voor inhalen, belading en soepel rijden op lage toeren.",
-    technicalNotes: ["Automaatadaptatie en onderhoudsstaat tellen mee", "Diagnose vooraf aanbevolen"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.nl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-bmw-330d-stage-1-en",
-    locale: "en",
+    technicalNotes: ["Automaatadaptatie en onderhoudsstaat tellen mee", "Diagnose vooraf aanbevolen"]
+  }),
+  demoResult("en", {
     slug: "bmw-330d-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "BMW",
     vehicleModel: "330d",
+    vehicleGeneration: "G20 / G21",
     vehicleEngine: "3.0 diesel",
     vehicleYear: "G20 / G21",
-    licensePlateVisible: false,
-    images: [resultImages.bmw330d],
+    transmission: "ZF 8HP automatic, depending on variant",
+    ecu: "Bosch ECU, depending on variant",
+    tcu: "TCU checks depend on torque target",
     serviceType: "ECU remap",
     stage: "Stage 1",
-    ecu: "Bosch ECU, depending on variant",
+    fuelType: "Diesel",
     stockPowerHp: 265,
     stockTorqueNm: 580,
     tunedPowerHp: 320,
     tunedTorqueNm: 680,
     gainPowerHp: 55,
     gainTorqueNm: 100,
+    images: [resultImages.bmw330d],
+    imageAlt: "BMW 330d Stage 1 indicative example result",
     shortDescription: "Strong diesel tuning with broad torque for daily driving and motorway use.",
-    technicalNotes: ["Gearbox torque limits remain leading", "Logging is advised at higher mileage"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.en,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-audi-a4-tdi-stage-1-en",
-    locale: "en",
+    technicalNotes: ["Gearbox torque limits remain leading", "Logging is advised at higher mileage"]
+  }),
+  demoResult("en", {
     slug: "audi-a4-20-tdi-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Audi",
     vehicleModel: "A4",
+    vehicleGeneration: "B9",
     vehicleEngine: "2.0 TDI",
     vehicleYear: "B9",
-    licensePlateVisible: false,
-    images: [resultImages.audiA4],
+    transmission: "S tronic or manual, depending on variant",
+    ecu: "Bosch EDC, depending on year",
     serviceType: "ECU remap",
     stage: "Stage 1",
-    ecu: "Bosch EDC, depending on year",
+    fuelType: "Diesel",
     stockPowerHp: 190,
     stockTorqueNm: 400,
     tunedPowerHp: 225,
     tunedTorqueNm: 470,
     gainPowerHp: 35,
     gainTorqueNm: 70,
+    images: [resultImages.audiA4],
+    imageAlt: "Audi A4 2.0 TDI Stage 1 indicative example result",
     shortDescription: "More midrange torque while keeping a calm, factory-like driving feel.",
-    technicalNotes: ["DPF and EGR state should be checked first", "Software version affects the final route"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.en,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-golf-gti-stage-1-en",
-    locale: "en",
+    technicalNotes: ["DPF and EGR state should be checked first", "Software version affects the final route"]
+  }),
+  demoResult("en", {
     slug: "volkswagen-golf-gti-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Volkswagen",
     vehicleModel: "Golf GTI",
+    vehicleGeneration: "MQB",
     vehicleEngine: "2.0 TSI",
     vehicleYear: "MQB",
-    licensePlateVisible: false,
-    images: [resultImages.golfGti],
+    transmission: "DSG or manual",
+    ecu: "Bosch MED / MG, depending on variant",
+    tcu: "DSG / TCU checks can be relevant",
     serviceType: "ECU remap",
     stage: "Stage 1",
-    ecu: "Bosch MED / MG, depending on variant",
+    fuelType: "Petrol",
     stockPowerHp: 245,
     stockTorqueNm: 370,
     tunedPowerHp: 305,
     tunedTorqueNm: 450,
     gainPowerHp: 60,
     gainTorqueNm: 80,
+    images: [resultImages.golfGti],
+    imageAlt: "Volkswagen Golf GTI Stage 1 indicative example result",
     shortDescription: "Sharper response and extra punch without nervous power delivery.",
-    technicalNotes: ["Fuel quality matters", "DSG / TCU checks can be relevant"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.en,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-mercedes-c220d-stage-1-en",
-    locale: "en",
+    technicalNotes: ["Fuel quality matters", "DSG / TCU checks can be relevant"]
+  }),
+  demoResult("en", {
     slug: "mercedes-c-220d-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Mercedes",
     vehicleModel: "C 220d",
+    vehicleGeneration: "W205 / W206",
     vehicleEngine: "2.0 diesel",
     vehicleYear: "W205 / W206",
-    licensePlateVisible: false,
-    images: [resultImages.mercedesC220d],
+    transmission: "9G-Tronic, depending on variant",
+    ecu: "Bosch ECU, depending on variant",
     serviceType: "ECU remap",
     stage: "Stage 1",
-    ecu: "Bosch ECU, depending on variant",
+    fuelType: "Diesel",
     stockPowerHp: 194,
     stockTorqueNm: 400,
     tunedPowerHp: 230,
     tunedTorqueNm: 500,
     gainPowerHp: 36,
     gainTorqueNm: 100,
+    images: [resultImages.mercedesC220d],
+    imageAlt: "Mercedes C 220d Stage 1 indicative example result",
     shortDescription: "Comfortable extra torque for overtaking, load and low-rpm driving.",
-    technicalNotes: ["Automatic gearbox adaptation and maintenance matter", "Diagnostics are recommended first"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.en,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-bmw-330d-stage-1-pl",
-    locale: "pl",
+    technicalNotes: ["Automatic gearbox adaptation and maintenance matter", "Diagnostics are recommended first"]
+  }),
+  demoResult("pl", {
     slug: "bmw-330d-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "BMW",
     vehicleModel: "330d",
+    vehicleGeneration: "G20 / G21",
     vehicleEngine: "3.0 diesel",
     vehicleYear: "G20 / G21",
-    licensePlateVisible: false,
-    images: [resultImages.bmw330d],
+    transmission: "Automat ZF 8HP, zależnie od wersji",
+    ecu: "Bosch ECU, zależnie od wersji",
+    tcu: "Kontrola TCU zależna od docelowego momentu",
     serviceType: "Remap ECU",
     stage: "Stage 1",
-    ecu: "Bosch ECU, zależnie od wersji",
+    fuelType: "Diesel",
     stockPowerHp: 265,
     stockTorqueNm: 580,
     tunedPowerHp: 320,
     tunedTorqueNm: 680,
     gainPowerHp: 55,
     gainTorqueNm: 100,
+    images: [resultImages.bmw330d],
+    imageAlt: "BMW 330d Stage 1 przykład orientacyjny",
     shortDescription: "Mocny diesel z szerokim momentem do jazdy codziennej i tras.",
-    technicalNotes: ["Limity skrzyni są kluczowe", "Przy większym przebiegu zalecana analiza logów"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.pl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-audi-a4-tdi-stage-1-pl",
-    locale: "pl",
+    technicalNotes: ["Limity skrzyni są kluczowe", "Przy większym przebiegu zalecana analiza logów"]
+  }),
+  demoResult("pl", {
     slug: "audi-a4-20-tdi-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Audi",
     vehicleModel: "A4",
+    vehicleGeneration: "B9",
     vehicleEngine: "2.0 TDI",
     vehicleYear: "B9",
-    licensePlateVisible: false,
-    images: [resultImages.audiA4],
+    transmission: "S tronic lub manual, zależnie od wersji",
+    ecu: "Bosch EDC, zależnie od rocznika",
     serviceType: "Remap ECU",
     stage: "Stage 1",
-    ecu: "Bosch EDC, zależnie od rocznika",
+    fuelType: "Diesel",
     stockPowerHp: 190,
     stockTorqueNm: 400,
     tunedPowerHp: 225,
     tunedTorqueNm: 470,
     gainPowerHp: 35,
     gainTorqueNm: 70,
+    images: [resultImages.audiA4],
+    imageAlt: "Audi A4 2.0 TDI Stage 1 przykład orientacyjny",
     shortDescription: "Więcej momentu w średnim zakresie i spokojny, fabryczny charakter jazdy.",
-    technicalNotes: ["Warto sprawdzić DPF i EGR", "Wersja oprogramowania wpływa na finalny zakres"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.pl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-golf-gti-stage-1-pl",
-    locale: "pl",
+    technicalNotes: ["Warto sprawdzić DPF i EGR", "Wersja oprogramowania wpływa na finalny zakres"]
+  }),
+  demoResult("pl", {
     slug: "volkswagen-golf-gti-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Volkswagen",
     vehicleModel: "Golf GTI",
+    vehicleGeneration: "MQB",
     vehicleEngine: "2.0 TSI",
     vehicleYear: "MQB",
-    licensePlateVisible: false,
-    images: [resultImages.golfGti],
+    transmission: "DSG lub manual",
+    ecu: "Bosch MED / MG, zależnie od wersji",
+    tcu: "Kontrola DSG / TCU może być wskazana",
     serviceType: "Remap ECU",
     stage: "Stage 1",
-    ecu: "Bosch MED / MG, zależnie od wersji",
+    fuelType: "Benzyna",
     stockPowerHp: 245,
     stockTorqueNm: 370,
     tunedPowerHp: 305,
     tunedTorqueNm: 450,
     gainPowerHp: 60,
     gainTorqueNm: 80,
+    images: [resultImages.golfGti],
+    imageAlt: "Volkswagen Golf GTI Stage 1 przykład orientacyjny",
     shortDescription: "Lepsza reakcja i mocniejsze przyspieszenie bez nerwowego oddawania mocy.",
-    technicalNotes: ["Jakość paliwa ma znaczenie", "Kontrola DSG / TCU może być wskazana"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.pl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
-  {
-    id: "demo-mercedes-c220d-stage-1-pl",
-    locale: "pl",
+    technicalNotes: ["Jakość paliwa ma znaczenie", "Kontrola DSG / TCU może być wskazana"]
+  }),
+  demoResult("pl", {
     slug: "mercedes-c-220d-stage-1",
-    source: "manual",
-    status: "published",
     vehicleMake: "Mercedes",
     vehicleModel: "C 220d",
+    vehicleGeneration: "W205 / W206",
     vehicleEngine: "2.0 diesel",
     vehicleYear: "W205 / W206",
-    licensePlateVisible: false,
-    images: [resultImages.mercedesC220d],
+    transmission: "9G-Tronic, zależnie od wersji",
+    ecu: "Bosch ECU, zależnie od wersji",
     serviceType: "Remap ECU",
     stage: "Stage 1",
-    ecu: "Bosch ECU, zależnie od wersji",
+    fuelType: "Diesel",
     stockPowerHp: 194,
     stockTorqueNm: 400,
     tunedPowerHp: 230,
     tunedTorqueNm: 500,
     gainPowerHp: 36,
     gainTorqueNm: 100,
+    images: [resultImages.mercedesC220d],
+    imageAlt: "Mercedes C 220d Stage 1 przykład orientacyjny",
     shortDescription: "Więcej momentu do wyprzedzania, jazdy z obciążeniem i spokojnej jazdy z niskich obrotów.",
-    technicalNotes: ["Stan automatu i adaptacje są ważne", "Diagnostyka przed usługą jest zalecana"],
-    customerApproved: false,
-    publishedAt: "2026-06-13",
-    updatedAt: "2026-06-13",
-    disclaimer: demoDisclaimer.pl,
-    relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl
-  },
+    technicalNotes: ["Stan automatu i adaptacje są ważne", "Diagnostyka przed usługą jest zalecana"]
+  }),
   {
     id: "draft-bmw-x3-e83-20d-stage-1-nl",
     locale: "nl",

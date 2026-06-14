@@ -1,7 +1,7 @@
 # Content Architecture: SEO Articles, Customer Results and Social Updates
 
 Date: `2026-06-13`  
-Status: architecture and first implementation pass
+Status: architecture and customer results MVP branch
 
 ## Why This Split Exists
 
@@ -88,8 +88,21 @@ Important wording:
 Current implementation:
 
 - `src/content/customer-results.ts`
-- existing Results page renders selected published result cards from this model.
-- current cases are marked as indicative examples, not customer-approved real cases.
+- existing Results page renders selected listing cards from this model.
+- current BMW/Audi/Volkswagen/Mercedes cases are marked as `demo`, not customer-approved real cases.
+- demo and draft results are not indexable and do not generate public detail routes.
+- future detail routes are prepared as `/nl/resultaten/[slug]`, `/en/results/[slug]` and `/pl/rezultaty/[slug]`.
+- only `status: "published"` plus `indexable: true` can generate public detail pages and sitemap entries.
+
+Current draft template:
+
+- BMW X3 E83 2.0d Stage 1
+- N47 / Bosch EDC17
+- 177 hp / 350 Nm stock
+- 214 hp / 420 Nm tuned
+- +37 hp / +70 Nm
+- certificate noted as given to the customer
+- remains draft until owner confirms image rights, customer approval and final data.
 
 ## 3. Social Updates
 
@@ -121,6 +134,8 @@ Future flow:
    - social update card
    - full customer result page
 7. SEO articles remain manually written evergreen content.
+
+Customer result detail pages should be published only after approval. Facebook-imported posts should never become indexable customer result pages automatically.
 
 ## Current Launch Recommendation
 

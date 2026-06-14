@@ -4,7 +4,11 @@ import {ArrowRight} from "lucide-react";
 import {Icon} from "@/components/icon";
 import type {BlogPost, PricingPlan, ServiceCardCopy} from "@/content/copy";
 import {blogArticlePathForPost} from "@/content/blog-articles";
-import type {CustomerResult} from "@/content/customer-results";
+import {
+  customerResultPath,
+  isPublicCustomerResult,
+  type CustomerResult
+} from "@/content/customer-results";
 import {pathFor, type Locale} from "@/content/site";
 
 const labels = {
@@ -16,6 +20,9 @@ const labels = {
     tuned: "Getuned",
     read: "Lees artikel",
     demo: "Indicatief voorbeeld",
+    detail: "Bekijk case",
+    catalog: "Controleer jouw auto in de Power Catalog",
+    whatsapp: "WhatsApp ons",
     hp: "pk"
   },
   en: {
@@ -26,6 +33,9 @@ const labels = {
     tuned: "Tuned",
     read: "Read article",
     demo: "Indicative example",
+    detail: "View case",
+    catalog: "Check your vehicle in the Power Catalog",
+    whatsapp: "Message us",
     hp: "hp"
   },
   pl: {
@@ -36,6 +46,9 @@ const labels = {
     tuned: "Po tuningu",
     read: "Czytaj",
     demo: "Przykład orientacyjny",
+    detail: "Zobacz realizację",
+    catalog: "Sprawdź swoje auto w katalogu mocy",
+    whatsapp: "Napisz na WhatsApp",
     hp: "KM"
   }
 } satisfies Record<Locale, Record<string, string>>;
@@ -117,12 +130,13 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
   const stock = `${result.stockPowerHp} ${copy.hp} / ${result.stockTorqueNm} Nm`;
   const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;
   const gain = `+${result.gainPowerHp} ${copy.hp}`;
+  const detailHref = isPublicCustomerResult(result) ? customerResultPath(result) : undefined;
 
   return (
     <article className="panel-edge overflow-hidden rounded-[3px]">
       <div className="relative h-36 border-b border-white/10 bg-black/35">
         <Image
-          alt={`${car} ${result.stage}`}
+          alt={result.imageAlt}
           className="object-cover opacity-85"
           fill
           sizes="(min-width:1024px) 25vw, 100vw"
@@ -156,6 +170,35 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
         </div>
         <p className="mt-4 text-sm leading-6 text-white/65">{result.shortDescription}</p>
         <p className="mt-3 text-xs leading-5 text-white/42">{result.disclaimer}</p>
+        <div className="mt-5 grid gap-2">
+          {detailHref ? (
+            <Link
+              className="inline-flex items-center justify-between gap-2 rounded-[3px] border border-white/12 bg-black/30 px-3 py-2 text-xs font-black uppercase text-white transition hover:border-primary hover:text-primary"
+              href={detailHref}
+            >
+              {copy.detail}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          ) : null}
+          <a
+            className="inline-flex items-center justify-between gap-2 rounded-[3px] border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-black uppercase text-white transition hover:border-primary hover:bg-primary/18"
+            href={result.relatedPowerCatalogUrl}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {copy.catalog}
+            <ArrowRight className="h-4 w-4" />
+          </a>
+          <a
+            className="inline-flex items-center justify-between gap-2 rounded-[3px] border border-white/12 bg-black/30 px-3 py-2 text-xs font-black uppercase text-white/78 transition hover:border-primary hover:text-white"
+            href={result.whatsappCta}
+            rel="noreferrer"
+            target="_blank"
+          >
+            {copy.whatsapp}
+            <ArrowRight className="h-4 w-4" />
+          </a>
+        </div>
       </div>
     </article>
   );

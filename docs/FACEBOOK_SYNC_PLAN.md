@@ -71,6 +71,15 @@ Recommended process:
 9. Publish either a social update card or a full customer result page.
 10. Keep SEO articles separate from imported social content.
 
+Customer result publication must require explicit approval. A Facebook-sourced item should remain `draft` until the owner/admin confirms:
+
+- customer approval
+- image rights
+- exact vehicle model, engine and stage/service
+- stock/tuned power and torque, when used
+- whether a certificate/report can be referenced
+- legal and emissions wording
+
 Manual approval is recommended because:
 
 - Facebook copy may be too informal for the website.
@@ -107,6 +116,8 @@ Social updates should:
 Customer results should:
 
 - publish only after owner/admin review
+- use `status: "published"` and `indexable: true` only when the case is useful enough for search
+- remain `draft` or `demo` when data or approval is missing
 - include vehicle make, model, engine and service type
 - include stock/tuned power and torque only when known
 - include a vehicle-specific disclaimer
