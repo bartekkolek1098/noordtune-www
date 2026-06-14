@@ -22,7 +22,7 @@ const labels = {
     technical: "Technische notities",
     disclaimer: "Belangrijke nuance",
     catalog: "Controleer jouw auto in de Power Catalog",
-    whatsapp: "WhatsApp ons",
+    whatsapp: "Stuur je kenteken of motorgegevens via WhatsApp",
     generation: "Generatie",
     engine: "Motor",
     transmission: "Transmissie",
@@ -43,7 +43,7 @@ const labels = {
     technical: "Technical notes",
     disclaimer: "Important nuance",
     catalog: "Check your vehicle in the Power Catalog",
-    whatsapp: "Message us",
+    whatsapp: "Send us your vehicle details on WhatsApp",
     generation: "Generation",
     engine: "Engine",
     transmission: "Transmission",
@@ -56,15 +56,15 @@ const labels = {
   pl: {
     back: "Wróć do rezultatów",
     caseLabel: "Realizacja klienta",
-    stock: "Seryjnie",
-    tuned: "Po tuningu",
+    stock: "Seria",
+    tuned: "Po modyfikacji",
     gain: "Przyrost",
     vehicle: "Pojazd",
     service: "Usługa",
     technical: "Notatki techniczne",
     disclaimer: "Ważna informacja",
     catalog: "Sprawdź swoje auto w katalogu mocy",
-    whatsapp: "Napisz na WhatsApp",
+    whatsapp: "Wyślij nam dane auta przez WhatsApp",
     generation: "Generacja",
     engine: "Silnik",
     transmission: "Skrzynia",
@@ -92,7 +92,8 @@ function Fact({label, value}: {label: string; value?: string}) {
 export function CustomerResultRenderer({result}: {result: CustomerResult}) {
   const copy = labels[result.locale];
   const image = result.images[0] ?? "/images/sections/tuning-laptop-b2.webp";
-  const title = `${result.vehicleMake} ${result.vehicleModel} ${result.stage}`;
+  const title =
+    result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleGeneration ?? ""} ${result.vehicleEngine} ${result.stage}`.replace(/\s+/g, " ").trim();
   const hpUnit = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
   const stock = `${result.stockPowerHp} ${hpUnit} / ${result.stockTorqueNm} Nm`;
   const tuned = `${result.tunedPowerHp} ${hpUnit} / ${result.tunedTorqueNm} Nm`;

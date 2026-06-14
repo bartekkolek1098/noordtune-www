@@ -85,19 +85,19 @@ const resultsIntro = {
     kicker: "Klantresultaten & voorbeeldcases",
     title: "Realisaties zijn voertuigafhankelijk, nooit een universele belofte.",
     text:
-      "Deze pagina wordt de plek voor echte NoordTune realisaties: voertuigfoto's, motorvariant, Stage of service, originele waarden, getunede waarden en technische notities. De huidige kaarten zijn duidelijke indicatieve voorbeelden totdat klantgoedgekeurde cases worden gepubliceerd. Resultaten hangen af van onderhoudsstaat, ECU, TCU, softwareversie, brandstof, hardware en gebruik. Gebruik de Power Catalog voor een voertuigspecifieke indicatie of stuur je gegevens via WhatsApp voor advies."
+      "Deze pagina combineert echte NoordTune klantresultaten met duidelijk gemarkeerde voorbeeldcases. Een klantresultaat wordt alleen gepubliceerd wanneer de gegevens veilig genoeg zijn voor publicatie. De overige kaarten blijven indicatieve voorbeelden. Resultaten hangen af van onderhoudsstaat, ECU, TCU, softwareversie, brandstof, hardware en gebruik. Gebruik de Power Catalog voor een voertuigspecifieke indicatie of stuur je gegevens via WhatsApp voor advies."
   },
   en: {
     kicker: "Customer results & example cases",
     title: "Results are vehicle-specific, never a universal promise.",
     text:
-      "This page is prepared for real NoordTune customer results: vehicle photos, engine variant, Stage or service, stock figures, tuned figures and technical notes. Current cards are clearly marked indicative examples until approved customer cases are published. Results depend on condition, ECU, TCU, software version, fuel, hardware and use."
+      "This page combines real NoordTune customer results with clearly marked example cases. A customer result is only published when the data is safe to share. The other cards remain indicative examples. Results depend on condition, ECU, TCU, software version, fuel, hardware and use."
   },
   pl: {
     kicker: "Realizacje i przykłady",
     title: "Wyniki zależą od konkretnego auta, nie są uniwersalną obietnicą.",
     text:
-      "Ta strona będzie miejscem na prawdziwe realizacje NoordTune: zdjęcia auta, wersję silnika, Stage lub usługę, wartości seryjne, wynik po tuningu i notatki techniczne. Obecne karty są oznaczone jako przykłady orientacyjne, dopóki nie pojawią się zatwierdzone realizacje klientów. Wyniki zależą od stanu auta, ECU, TCU, wersji oprogramowania, paliwa, osprzętu i sposobu użytkowania."
+      "Ta strona łączy prawdziwe realizacje NoordTune z wyraźnie oznaczonymi przykładami orientacyjnymi. Realizacja klienta jest publikowana tylko wtedy, gdy dane można bezpiecznie pokazać. Pozostałe karty pozostają przykładami orientacyjnymi. Wyniki zależą od stanu auta, ECU, TCU, wersji oprogramowania, paliwa, osprzętu i sposobu użytkowania."
   }
 } satisfies Record<Locale, {kicker: string; title: string; text: string}>;
 

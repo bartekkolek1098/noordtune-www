@@ -158,17 +158,19 @@ export function createCustomerResultMetadata(result: CustomerResult): Metadata {
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
   const hp = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
   const title =
-    result.locale === "nl"
+    result.metaTitle ??
+    (result.locale === "nl"
       ? `${car} ${result.stage} | NoordTune klantresultaat`
       : result.locale === "en"
         ? `${car} ${result.stage} | NoordTune customer result`
-        : `${car} ${result.stage} | Realizacja NoordTune`;
+        : `${car} ${result.stage} | Realizacja NoordTune`);
   const description =
-    result.locale === "nl"
+    result.metaDescription ??
+    (result.locale === "nl"
       ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} naar ${result.tunedPowerHp} ${hp} en ${result.stockTorqueNm} Nm naar ${result.tunedTorqueNm} Nm. Resultaten blijven voertuigafhankelijk.`
       : result.locale === "en"
         ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} to ${result.tunedPowerHp} ${hp} and ${result.stockTorqueNm} Nm to ${result.tunedTorqueNm} Nm. Results remain vehicle-specific.`
-        : `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} do ${result.tunedPowerHp} ${hp} oraz ${result.stockTorqueNm} Nm do ${result.tunedTorqueNm} Nm. Wynik zależy od konkretnego auta.`;
+        : `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} do ${result.tunedPowerHp} ${hp} oraz ${result.stockTorqueNm} Nm do ${result.tunedTorqueNm} Nm. Wynik zależy od konkretnego auta.`);
   const publicPage = isPublicCustomerResult(result);
 
   return {
@@ -307,7 +309,7 @@ export function customerResultJsonLd(result: CustomerResult) {
   return {
     "@context": "https://schema.org",
     "@type": "Article",
-    headline: `${result.vehicleMake} ${result.vehicleModel} ${result.stage}`,
+    headline: result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.stage}`,
     description: result.shortDescription,
     image: result.images.map((image) => `${site.url}${image}`),
     datePublished: result.publishedAt,

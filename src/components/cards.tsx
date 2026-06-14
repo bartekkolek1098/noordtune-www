@@ -20,6 +20,7 @@ const labels = {
     tuned: "Getuned",
     read: "Lees artikel",
     demo: "Indicatief voorbeeld",
+    customer: "Klantresultaat",
     detail: "Bekijk case",
     catalog: "Controleer jouw auto in de Power Catalog",
     whatsapp: "WhatsApp ons",
@@ -33,6 +34,7 @@ const labels = {
     tuned: "Tuned",
     read: "Read article",
     demo: "Indicative example",
+    customer: "Customer result",
     detail: "View case",
     catalog: "Check your vehicle in the Power Catalog",
     whatsapp: "Message us",
@@ -42,10 +44,11 @@ const labels = {
     more: "Więcej info",
     featured: "Najczęściej wybierane",
     vat: "z VAT",
-    stock: "Seryjnie",
-    tuned: "Po tuningu",
+    stock: "Seria",
+    tuned: "Po modyfikacji",
     read: "Czytaj",
     demo: "Przykład orientacyjny",
+    customer: "Realizacja klienta",
     detail: "Zobacz realizację",
     catalog: "Sprawdź swoje auto w katalogu mocy",
     whatsapp: "Napisz na WhatsApp",
@@ -143,8 +146,14 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
           src={image}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#090a0b] via-black/25 to-transparent" />
-        <span className="absolute bottom-3 left-3 rounded-[3px] border border-white/15 bg-black/60 px-3 py-1 text-[0.65rem] font-black uppercase text-white/70">
-          {result.customerApproved ? result.serviceType : copy.demo}
+        <span
+          className={`absolute bottom-3 left-3 rounded-[3px] border px-3 py-1 text-[0.65rem] font-black uppercase ${
+            result.customerApproved
+              ? "border-primary/60 bg-primary/85 text-white shadow-glow"
+              : "border-white/15 bg-black/60 text-white/70"
+          }`}
+        >
+          {result.customerApproved ? copy.customer : copy.demo}
         </span>
       </div>
       <div className="p-5">
