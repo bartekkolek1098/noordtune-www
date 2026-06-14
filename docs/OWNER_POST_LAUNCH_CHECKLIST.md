@@ -99,3 +99,15 @@ Use this checklist for the first manual owner review after launch.
 - [ ] Decide uptime monitoring for `www.noordtune.nl`
 - [ ] Decide separate uptime monitoring for `power.noordtune.nl`
 - [ ] Review Search Console data after 30 days
+
+## First Content Growth Review
+
+- [ ] Check pages with impressions but low CTR
+- [ ] Check pages with no impressions after indexing
+- [ ] Check old URL redirect errors
+- [ ] Check unexpected 404s
+- [ ] Note common customer questions from WhatsApp
+- [ ] Decide which draft article should be finished first
+- [ ] Decide whether BMW, Audi, Volkswagen or Mercedes brand pages should be prioritized
+- [ ] Prepare owner-approved photos for the first real customer result
+- [ ] Confirm the BMW X3 E83 2.0d Stage 1 case can be published later

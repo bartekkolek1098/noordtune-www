@@ -7,15 +7,21 @@ export type CustomerResult = {
   source: "manual" | "facebook";
   sourceUrl?: string;
   status: "published" | "draft";
+  indexable?: boolean;
   vehicleMake: string;
   vehicleModel: string;
+  vehicleGeneration?: string;
   vehicleEngine: string;
   vehicleYear?: string;
+  transmission?: string;
   licensePlateVisible: boolean;
   images: string[];
+  imageAlt?: string;
   serviceType: string;
   stage: string;
+  fuelType?: string;
   ecu?: string;
+  tcu?: string;
   stockPowerHp: number;
   stockTorqueNm: number;
   tunedPowerHp: number;
@@ -25,11 +31,15 @@ export type CustomerResult = {
   shortDescription: string;
   technicalNotes: string[];
   customerApproved: boolean;
+  certificateAvailable?: boolean;
+  certificateNote?: string;
   publishedAt: string;
   updatedAt: string;
   disclaimer: string;
   relatedPowerCatalogUrl: string;
   whatsappCta: string;
+  draftNotes?: string[];
+  localizedDraftDescriptions?: Partial<Record<Locale, string>>;
 };
 
 export function publishedCustomerResults(locale: Locale) {
@@ -409,5 +419,173 @@ export const customerResults: CustomerResult[] = [
     disclaimer: demoDisclaimer.pl,
     relatedPowerCatalogUrl: site.catalogUrl,
     whatsappCta: site.whatsappUrl
+  },
+  {
+    id: "draft-bmw-x3-e83-20d-stage-1-nl",
+    locale: "nl",
+    slug: "bmw-x3-e83-20d-stage-1",
+    source: "manual",
+    status: "draft",
+    indexable: false,
+    vehicleMake: "BMW",
+    vehicleModel: "X3",
+    vehicleGeneration: "E83",
+    vehicleEngine: "2.0d N47",
+    vehicleYear: "E83",
+    transmission: "Automaat of handgeschakeld, te bevestigen",
+    licensePlateVisible: false,
+    images: [],
+    imageAlt: "BMW X3 E83 2.0d Stage 1 resultaatfoto, nog te vervangen door eigenaar-goedgekeurde foto",
+    serviceType: "ECU remap",
+    stage: "Stage 1",
+    fuelType: "Diesel",
+    ecu: "Bosch EDC17",
+    tcu: "Te controleren indien automaat",
+    stockPowerHp: 177,
+    stockTorqueNm: 350,
+    tunedPowerHp: 214,
+    tunedTorqueNm: 420,
+    gainPowerHp: 37,
+    gainTorqueNm: 70,
+    shortDescription:
+      "Draft voor een BMW X3 E83 2.0d Stage 1 case. Niet publiceren voordat foto, klantgoedkeuring en definitieve beschrijving zijn bevestigd.",
+    technicalNotes: [
+      "Motor: N47",
+      "ECU: Bosch EDC17",
+      "Certificaat aan klant meegegeven",
+      "Controleer onderhoudsstaat, DPF/EGR-status en transmissiegedrag voordat dit als case wordt gepubliceerd"
+    ],
+    customerApproved: false,
+    certificateAvailable: true,
+    certificateNote: "Certificaat aanwezig volgens eigenaar; bestand/referentie later toevoegen.",
+    publishedAt: "2026-06-14",
+    updatedAt: "2026-06-14",
+    disclaimer:
+      "Draft en niet indexeerbaar. Resultaten zijn voertuigspecifiek en afhankelijk van onderhoudsstaat, ECU/TCU, softwareversie, brandstof, hardware en gebruik.",
+    relatedPowerCatalogUrl: site.catalogUrl,
+    whatsappCta: site.whatsappUrl,
+    draftNotes: [
+      "Eigenaar-goedgekeurde foto toevoegen",
+      "Bron/Facebook-post URL toevoegen indien beschikbaar",
+      "Klantgoedkeuring expliciet bevestigen",
+      "Definitieve technische notities en certificaatreferentie aanvullen"
+    ],
+    localizedDraftDescriptions: {
+      nl: "BMW X3 E83 2.0d met N47-motor en Bosch EDC17, voorbereid als Stage 1 klantcase. De bekende waarden zijn 177 pk / 350 Nm origineel en 214 pk / 420 Nm na tuning.",
+      en: "BMW X3 E83 2.0d with N47 engine and Bosch EDC17, prepared as a Stage 1 customer-result draft. Known figures are 177 hp / 350 Nm stock and 214 hp / 420 Nm tuned.",
+      pl: "BMW X3 E83 2.0d z silnikiem N47 i sterownikiem Bosch EDC17, przygotowany jako szkic realizacji Stage 1. Znane wartości to 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po tuningu."
+    }
+  },
+  {
+    id: "draft-bmw-x3-e83-20d-stage-1-en",
+    locale: "en",
+    slug: "bmw-x3-e83-20d-stage-1",
+    source: "manual",
+    status: "draft",
+    indexable: false,
+    vehicleMake: "BMW",
+    vehicleModel: "X3",
+    vehicleGeneration: "E83",
+    vehicleEngine: "2.0d N47",
+    vehicleYear: "E83",
+    transmission: "Automatic or manual, to be confirmed",
+    licensePlateVisible: false,
+    images: [],
+    imageAlt: "BMW X3 E83 2.0d Stage 1 result image placeholder pending owner approval",
+    serviceType: "ECU remap",
+    stage: "Stage 1",
+    fuelType: "Diesel",
+    ecu: "Bosch EDC17",
+    tcu: "To be checked if automatic",
+    stockPowerHp: 177,
+    stockTorqueNm: 350,
+    tunedPowerHp: 214,
+    tunedTorqueNm: 420,
+    gainPowerHp: 37,
+    gainTorqueNm: 70,
+    shortDescription:
+      "Draft BMW X3 E83 2.0d Stage 1 case. Do not publish until image rights, customer approval and final copy are confirmed.",
+    technicalNotes: [
+      "Engine: N47",
+      "ECU: Bosch EDC17",
+      "Certificate given to the customer",
+      "Confirm condition, DPF/EGR status and transmission behaviour before publishing"
+    ],
+    customerApproved: false,
+    certificateAvailable: true,
+    certificateNote: "Certificate exists according to owner; file/reference to be added later.",
+    publishedAt: "2026-06-14",
+    updatedAt: "2026-06-14",
+    disclaimer:
+      "Draft and non-indexable. Results are vehicle-specific and depend on condition, ECU/TCU, software version, fuel, hardware and use.",
+    relatedPowerCatalogUrl: site.catalogUrl,
+    whatsappCta: site.whatsappUrl,
+    draftNotes: [
+      "Add owner-approved image",
+      "Add source/Facebook post URL if available",
+      "Confirm customer approval",
+      "Complete final technical notes and certificate reference"
+    ],
+    localizedDraftDescriptions: {
+      nl: "BMW X3 E83 2.0d met N47-motor en Bosch EDC17, voorbereid als Stage 1 klantcase. De bekende waarden zijn 177 pk / 350 Nm origineel en 214 pk / 420 Nm na tuning.",
+      en: "BMW X3 E83 2.0d with N47 engine and Bosch EDC17, prepared as a Stage 1 customer-result draft. Known figures are 177 hp / 350 Nm stock and 214 hp / 420 Nm tuned.",
+      pl: "BMW X3 E83 2.0d z silnikiem N47 i sterownikiem Bosch EDC17, przygotowany jako szkic realizacji Stage 1. Znane wartości to 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po tuningu."
+    }
+  },
+  {
+    id: "draft-bmw-x3-e83-20d-stage-1-pl",
+    locale: "pl",
+    slug: "bmw-x3-e83-20d-stage-1",
+    source: "manual",
+    status: "draft",
+    indexable: false,
+    vehicleMake: "BMW",
+    vehicleModel: "X3",
+    vehicleGeneration: "E83",
+    vehicleEngine: "2.0d N47",
+    vehicleYear: "E83",
+    transmission: "Automat lub manual, do potwierdzenia",
+    licensePlateVisible: false,
+    images: [],
+    imageAlt: "BMW X3 E83 2.0d Stage 1, zdjęcie realizacji do zastąpienia po akceptacji właściciela",
+    serviceType: "Remap ECU",
+    stage: "Stage 1",
+    fuelType: "Diesel",
+    ecu: "Bosch EDC17",
+    tcu: "Do sprawdzenia przy automacie",
+    stockPowerHp: 177,
+    stockTorqueNm: 350,
+    tunedPowerHp: 214,
+    tunedTorqueNm: 420,
+    gainPowerHp: 37,
+    gainTorqueNm: 70,
+    shortDescription:
+      "Szkic realizacji BMW X3 E83 2.0d Stage 1. Nie publikować przed potwierdzeniem zdjęć, zgody klienta i finalnego opisu.",
+    technicalNotes: [
+      "Silnik: N47",
+      "ECU: Bosch EDC17",
+      "Certyfikat przekazany klientowi",
+      "Przed publikacją potwierdzić stan auta, DPF/EGR i zachowanie skrzyni"
+    ],
+    customerApproved: false,
+    certificateAvailable: true,
+    certificateNote: "Certyfikat istnieje według właściciela; plik lub referencję dodać później.",
+    publishedAt: "2026-06-14",
+    updatedAt: "2026-06-14",
+    disclaimer:
+      "Szkic, nieindeksowany. Wyniki zależą od konkretnego auta, ECU/TCU, wersji oprogramowania, paliwa, osprzętu i sposobu użytkowania.",
+    relatedPowerCatalogUrl: site.catalogUrl,
+    whatsappCta: site.whatsappUrl,
+    draftNotes: [
+      "Dodać zdjęcie zaakceptowane przez właściciela",
+      "Dodać URL posta z Facebooka, jeśli będzie dostępny",
+      "Potwierdzić zgodę klienta",
+      "Uzupełnić finalne notatki techniczne i referencję certyfikatu"
+    ],
+    localizedDraftDescriptions: {
+      nl: "BMW X3 E83 2.0d met N47-motor en Bosch EDC17, voorbereid als Stage 1 klantcase. De bekende waarden zijn 177 pk / 350 Nm origineel en 214 pk / 420 Nm na tuning.",
+      en: "BMW X3 E83 2.0d with N47 engine and Bosch EDC17, prepared as a Stage 1 customer-result draft. Known figures are 177 hp / 350 Nm stock and 214 hp / 420 Nm tuned.",
+      pl: "BMW X3 E83 2.0d z silnikiem N47 i sterownikiem Bosch EDC17, przygotowany jako szkic realizacji Stage 1. Znane wartości to 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po tuningu."
+    }
   }
 ];

@@ -18,8 +18,8 @@ const labels = {
     readTime: "Leestijd",
     related: "Verder lezen",
     faq: "Veelgestelde vragen",
-    catalog: "Open Power Catalog",
-    whatsapp: "WhatsApp ons"
+    catalog: "Controleer jouw auto in de Power Catalog",
+    whatsapp: "Vraag advies via WhatsApp"
   },
   en: {
     back: "Back to News & Blog",
@@ -27,8 +27,8 @@ const labels = {
     readTime: "Read time",
     related: "Continue reading",
     faq: "Frequently asked questions",
-    catalog: "Open Power Catalog",
-    whatsapp: "Message us"
+    catalog: "Check your vehicle in the Power Catalog",
+    whatsapp: "Ask for advice on WhatsApp"
   },
   pl: {
     back: "Wróć do aktualności i bloga",
@@ -36,8 +36,8 @@ const labels = {
     readTime: "Czas czytania",
     related: "Czytaj dalej",
     faq: "Najczęstsze pytania",
-    catalog: "Otwórz katalog mocy",
-    whatsapp: "Napisz na WhatsApp"
+    catalog: "Sprawdź auto w katalogu mocy",
+    whatsapp: "Zapytaj przez WhatsApp"
   }
 } satisfies Record<Locale, Record<string, string>>;
 
@@ -145,10 +145,10 @@ export function BlogArticleRenderer({article}: {article: BlogArticle}) {
                   <p className="racing-title text-2xl text-white">NoordTune</p>
                   <p className="mt-3 text-sm leading-6 text-white/65">
                     {article.locale === "nl"
-                      ? "Wil je weten wat er bij jouw auto mogelijk is? Controleer de catalogus of stuur je kenteken en motorvariant via WhatsApp."
+                      ? "Wil je weten wat er bij jouw auto mogelijk is? Gebruik de Power Catalog als eerste technische indicatie en stuur daarna kenteken, motorvariant of foutmelding via WhatsApp voor advies op maat."
                       : article.locale === "en"
-                        ? "Want to know what is possible for your car? Check the catalog or send your vehicle details on WhatsApp."
-                        : "Chcesz wiedzieć, co jest możliwe w Twoim aucie? Sprawdź katalog albo wyślij dane pojazdu przez WhatsApp."}
+                        ? "Want to know what is possible for your car? Use the Power Catalog as a first technical indication, then send your vehicle details or fault information on WhatsApp for tailored advice."
+                        : "Chcesz wiedzieć, co jest możliwe w Twoim aucie? Użyj katalogu mocy jako pierwszej orientacji technicznej, a potem wyślij dane auta lub opis usterki przez WhatsApp."}
                   </p>
                   <div className="mt-5 grid gap-3">
                     <ButtonLink href={site.catalogUrl}>{copy.catalog}</ButtonLink>
