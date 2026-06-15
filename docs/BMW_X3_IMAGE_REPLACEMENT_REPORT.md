@@ -118,9 +118,7 @@ Listing labels:
 - Dutch BMW X3: `Klantresultaat`
 - English BMW X3: `Customer result`
 - Polish BMW X3: `Realizacja klienta`
-- Dutch demo cards: `Indicatief voorbeeld`
-- English demo cards: `Indicative example`
-- Polish demo cards: `Przykład orientacyjny`
+- demo/example cards are hidden from public listings
 
 Demo detail routes remain hidden:
 
@@ -189,10 +187,10 @@ Note: `docs/qa-screenshots/` is ignored by `.gitignore`, so these screenshots ar
 
 Visual review:
 
-- desktop Dutch result page displays the BMW X3 graphic as the hero background
+- desktop Dutch result page displays the BMW X3 graphic as the hero background and as a prominent project visual panel
 - mobile Polish result page remains readable and vertically stacked
 - results listing shows BMW X3 as a real customer result
-- demo cards remain clearly marked as indicative examples
+- demo/example cards are hidden from public listings
 
 ## Remaining Owner Review Items
 

@@ -172,19 +172,19 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   resultaten: {
     nl: {
-      title: "Resultaten | Voorbeelden van Stage 1 Tuning en ECU Remap",
+      title: "Klantresultaten | NoordTune Chiptuning Projecten",
       description:
-        "Bekijk voorbeeldresultaten voor BMW chiptuning, Audi chiptuning, Volkswagen chiptuning en Mercedes chiptuning. Indicatieve winst per voertuig."
+        "Bekijk geselecteerde NoordTune klantresultaten. Echte chiptuning projecten met voertuigafhankelijke waarden, duidelijke context en Power Catalog CTA."
     },
     en: {
-      title: "Results | Stage 1 Tuning and ECU Remap Examples",
+      title: "Customer Results | NoordTune Chiptuning Projects",
       description:
-        "Example chiptuning results for BMW, Audi, Volkswagen and Mercedes. Indicative gains, always verified per vehicle."
+        "Selected NoordTune customer results. Real chiptuning projects with vehicle-specific figures, clear context and Power Catalog CTA."
     },
     pl: {
-      title: "Rezultaty | Przykłady Stage 1 i remap ECU",
+      title: "Realizacje klientów | Projekty chiptuningu NoordTune",
       description:
-        "Przykładowe wyniki chiptuningu BMW, Audi, Volkswagen i Mercedes. Wyniki są orientacyjne i zależą od auta."
+        "Wybrane realizacje klientów NoordTune. Prawdziwe projekty chiptuningu z kontekstem konkretnego auta i linkiem do katalogu mocy."
     }
   },
   blog: {
@@ -407,24 +407,24 @@ export const pageHeroes: Record<PageKey, Record<Locale, PageHeroCopy>> = {
   },
   resultaten: {
     nl: {
-      eyebrow: "Resultaten & klantcases",
-      title: ["Meetbare winst", "realistische marges"],
+      eyebrow: "Klantresultaten",
+      title: ["Echte projecten", "realistische context"],
       intro:
-        "Voorbeeldresultaten voor populaire motoren. Iedere auto wordt afzonderlijk beoordeeld op onderhoud, ECU, transmissie en gebruik.",
+        "Geselecteerde NoordTune klantprojecten. Iedere auto wordt afzonderlijk beoordeeld op onderhoud, ECU/TCU, softwareversie, transmissie, brandstof en gebruik.",
       primary: "Bekijk tuningmogelijkheden",
       secondary: "WhatsApp ons"
     },
     en: {
-      eyebrow: "Results",
-      title: ["Measured gains", "realistic margins"],
-      intro: "Example results for popular engines. Every vehicle is checked individually before tuning.",
+      eyebrow: "Customer results",
+      title: ["Real projects", "realistic context"],
+      intro: "Selected NoordTune customer projects. Every vehicle is assessed individually for condition, ECU/TCU, software version, gearbox, fuel and use.",
       primary: "Check tuning options",
       secondary: "Message us on WhatsApp"
     },
     pl: {
-      eyebrow: "Rezultaty",
-      title: ["Mierzalne efekty", "realne marginesy"],
-      intro: "Przykładowe wyniki popularnych silników. Każde auto jest oceniane indywidualnie przed tuningiem.",
+      eyebrow: "Realizacje klientów",
+      title: ["Prawdziwe projekty", "realny kontekst"],
+      intro: "Wybrane realizacje NoordTune. Każde auto oceniamy indywidualnie pod kątem stanu technicznego, ECU/TCU, softu, skrzyni, paliwa i sposobu użytkowania.",
       primary: "Sprawdź możliwości auta",
       secondary: "Napisz na WhatsApp"
     }
@@ -1120,14 +1120,26 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
   resultaten: {
     nl: [
       {
-        kicker: "Realistische resultaten",
-        title: "Vermogenswinst is afhankelijk van auto, staat en softwareversie.",
+        kicker: "Klantresultaten",
+        title: "Gepubliceerde cases horen bij echte voertuigen, niet bij universele beloftes.",
         text:
-          "De voorbeelden op deze pagina zijn indicatief. Een BMW 330d Stage 1, Audi A4 2.0 TDI Stage 1, Volkswagen Golf GTI Stage 1 of Mercedes C 220d Stage 1 kan per bouwjaar, ECU, transmissie en onderhoudsstaat verschillen. Daarom gebruiken we de catalogus als indicatie en geven we definitief advies op basis van jouw auto."
+          "Een klantresultaat wordt pas gepubliceerd wanneer de gegevens, beeldrechten en privacykeuzes veilig genoeg zijn. De waarden horen altijd bij dat specifieke voertuig. Onderhoudsstaat, ECU/TCU, softwareversie, brandstof, transmissie, hardware en gebruik bepalen samen het uiteindelijke resultaat."
       }
     ],
-    en: [{title: "Realistic results", text: "Power gains depend on vehicle, condition, ECU, gearbox and software version."}],
-    pl: [{title: "Realne wyniki", text: "Przyrost zależy od auta, stanu technicznego, ECU, skrzyni, wersji oprogramowania i osprzętu. Przykłady pokazują orientacyjny potencjał, ale ostateczne doradztwo zawsze opieramy na konkretnym pojeździe."}]
+    en: [
+      {
+        title: "Real customer results",
+        text:
+          "Published cases belong to specific vehicles, not universal promises. Vehicle condition, ECU/TCU, software version, fuel, gearbox, hardware and use all influence the final result."
+      }
+    ],
+    pl: [
+      {
+        title: "Prawdziwe realizacje",
+        text:
+          "Publikowane realizacje dotyczą konkretnych aut obsłużonych przez NoordTune. Wyniki zależą od stanu auta, softu, paliwa, skrzyni, ECU/TCU, osprzętu i sposobu użytkowania."
+      }
+    ]
   },
   blog: {
     nl: [

@@ -86,6 +86,42 @@ Manual approval is recommended because:
 - Images may need cropping or alt text.
 - Some posts may not be suitable for permanent website content.
 
+## Manual Import Preparation
+
+Before a full Meta/Facebook API sync exists, the project now has a safe manual import preparation flow:
+
+- `docs/FACEBOOK_RESULT_IMPORT_TEMPLATE.md`
+- `data/facebook-result-import.example.json`
+- `scripts/import-facebook-results.ts`
+
+The helper script:
+
+- reads a local JSON file
+- validates required vehicle/result fields
+- produces draft customer result objects
+- defaults imported items to `source: "facebook"`
+- defaults imported items to `status: "draft"`
+- defaults imported items to `indexable: false`
+- requires owner/admin approval before publication
+- does not download Facebook images
+- does not call Meta APIs
+- does not require tokens
+- does not write to production content unless a developer manually converts a reviewed draft
+
+Example dry run:
+
+```bash
+tsx scripts/import-facebook-results.ts --input=data/facebook-result-import.example.json
+```
+
+Optional draft JSON output:
+
+```bash
+tsx scripts/import-facebook-results.ts --input=data/facebook-result-import.example.json --write --out=data/facebook-result-import.drafts.json
+```
+
+Even when `--write` is used, the script writes review JSON only. It does not modify `src/content/customer-results.ts` automatically.
+
 ## Image Handling
 
 Future image rules:
@@ -124,12 +160,14 @@ Customer results should:
 - never promise identical gains for every vehicle
 - link to the original Facebook post when imported from Facebook
 - remain noindex or draft if the content is too thin
+- only become public after enough unique content, approved images and owner/admin approval
 
 SEO articles should:
 
 - remain manually written evergreen knowledge-base content
 - include metadata, internal links and FAQ where useful
 - never be auto-created from Facebook posts
+- never mix short Facebook updates into the SEO Blog / Knowledge Base
 
 ## Implementation Notes
 
@@ -148,6 +186,8 @@ Current related architecture:
 - SEO articles: `src/content/blog-articles.ts`
 - Customer results: `src/content/customer-results.ts`
 - Content architecture note: `docs/CONTENT_ARCHITECTURE_RESULTS_AND_SOCIAL.md`
+- Manual import template: `docs/FACEBOOK_RESULT_IMPORT_TEMPLATE.md`
+- Dry-run import helper: `scripts/import-facebook-results.ts`
 
 ## Content Growth Reminder
 
@@ -160,4 +200,4 @@ Do not:
 - index thin social updates
 - use customer photos before image rights and approval are confirmed
 
-The prepared BMW X3 E83 2.0d Stage 1 case is a draft result template, not a Facebook sync implementation.
+The BMW X3 E83 2.0d Stage 1 case on PR #3 is a manually prepared customer result, not a Facebook sync implementation. Future Facebook-sourced cases must still start as draft imports and require owner/admin approval before publication.

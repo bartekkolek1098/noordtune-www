@@ -1,0 +1,44 @@
+{
+  "posts": [
+    {
+      "facebookPostUrl": "https://www.facebook.com/noordtune/posts/example",
+      "locale": "nl",
+      "vehicleMake": "BMW",
+      "vehicleModel": "X3",
+      "vehicleGeneration": "E83",
+      "vehicleEngine": "2.0d N47",
+      "vehicleYear": "2008",
+      "transmission": "Automaat",
+      "ecu": "Bosch EDC17",
+      "tcu": "",
+      "fuelType": "Diesel",
+      "serviceType": "Stage 1 / ECU remap",
+      "stage": "Stage 1",
+      "stockPowerHp": 177,
+      "stockTorqueNm": 350,
+      "tunedPowerHp": 214,
+      "tunedTorqueNm": 420,
+      "gainPowerHp": 37,
+      "gainTorqueNm": 70,
+      "shortDescription": "Korte professionele samenvatting van de uitgevoerde Stage 1 remap.",
+      "technicalNotes": [
+        "Originele software uitgelezen en geanalyseerd",
+        "Kalibratie afgestemd op dit voertuig",
+        "Controle na tuning uitgevoerd"
+      ],
+      "images": [
+        {
+          "sourcePath": "incoming/facebook/bmw-x3-example.jpg",
+          "approvedForWebsite": false,
+          "licensePlateVisible": true,
+          "licensePlateApproved": false,
+          "alt": "BMW X3 E83 2.0d Stage 1 resultaat bij NoordTune.nl"
+        }
+      ],
+      "customerApproved": false,
+      "certificateAvailable": true,
+      "certificateNote": "Certificaat aanwezig, geen nummer publiceren.",
+      "languageNotes": "Maak definitieve copy in NL/EN/PL voor publicatie."
+    }
+  ]
+}

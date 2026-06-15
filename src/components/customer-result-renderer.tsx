@@ -30,7 +30,8 @@ const labels = {
     ecu: "ECU",
     tcu: "TCU",
     certificate: "Certificaat",
-    certificateYes: "Beschikbaar"
+    certificateYes: "Beschikbaar",
+    visual: "Projectvisual"
   },
   en: {
     back: "Back to results",
@@ -51,7 +52,8 @@ const labels = {
     ecu: "ECU",
     tcu: "TCU",
     certificate: "Certificate",
-    certificateYes: "Available"
+    certificateYes: "Available",
+    visual: "Project visual"
   },
   pl: {
     back: "Wróć do rezultatów",
@@ -72,7 +74,8 @@ const labels = {
     ecu: "ECU",
     tcu: "TCU",
     certificate: "Certyfikat",
-    certificateYes: "Dostępny"
+    certificateYes: "Dostępny",
+    visual: "Grafika realizacji"
   }
 } satisfies Record<Locale, Record<string, string>>;
 
@@ -166,6 +169,20 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                   <div className="panel-edge rounded-[3px] p-5">
                     <p className="text-xs font-black uppercase text-white/42">{copy.gain}</p>
                     <p className="racing-title mt-3 text-3xl text-primary">{gain}</p>
+                  </div>
+                </div>
+
+                <div className="panel-edge overflow-hidden rounded-[3px] bg-black/55 p-3">
+                  <p className="mb-3 px-2 text-xs font-black uppercase tracking-[0.18em] text-primary">{copy.visual}</p>
+                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-black">
+                    <Image
+                      alt={result.imageAlt}
+                      className="object-contain"
+                      fill
+                      quality={92}
+                      sizes="(min-width:1024px) 720px, 100vw"
+                      src={image}
+                    />
                   </div>
                 </div>
 

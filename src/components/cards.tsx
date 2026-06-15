@@ -134,26 +134,33 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
   const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;
   const gain = `+${result.gainPowerHp} ${copy.hp}`;
   const detailHref = isPublicCustomerResult(result) ? customerResultPath(result) : undefined;
+  const isCustomer = isPublicCustomerResult(result);
 
   return (
     <article className="panel-edge overflow-hidden rounded-[3px]">
-      <div className="relative h-36 border-b border-white/10 bg-black/35">
+      <div className={`relative border-b border-white/10 bg-black/55 ${isCustomer ? "h-48" : "h-36"}`}>
         <Image
           alt={result.imageAlt}
-          className="object-cover opacity-85"
+          className={`${isCustomer ? "object-contain p-2 opacity-95" : "object-cover opacity-85"}`}
           fill
           sizes="(min-width:1024px) 25vw, 100vw"
           src={image}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#090a0b] via-black/25 to-transparent" />
+        <div
+          className={`absolute inset-0 ${
+            isCustomer
+              ? "bg-gradient-to-t from-[#090a0b] via-black/5 to-transparent"
+              : "bg-gradient-to-t from-[#090a0b] via-black/25 to-transparent"
+          }`}
+        />
         <span
           className={`absolute bottom-3 left-3 rounded-[3px] border px-3 py-1 text-[0.65rem] font-black uppercase ${
-            result.customerApproved
+            isCustomer
               ? "border-primary/60 bg-primary/85 text-white shadow-glow"
               : "border-white/15 bg-black/60 text-white/70"
           }`}
         >
-          {result.customerApproved ? copy.customer : copy.demo}
+          {isCustomer ? copy.customer : copy.demo}
         </span>
       </div>
       <div className="p-5">

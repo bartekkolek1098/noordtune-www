@@ -90,13 +90,15 @@ BMW X3 now appears as a real customer result:
 - English label: `Customer result`
 - Polish label: `Realizacja klienta`
 
-Demo examples remain marked as:
+Demo/example result cards are no longer rendered in public listings. The demo data remains available for development/reference only.
 
-- Dutch: `Indicatief voorbeeld`
-- English: `Indicative example`
-- Polish: `Przykład orientacyjny`
+Demo result detail pages still return `404` and are not included in the sitemap.
 
-Demo result detail pages still return `404`.
+Future note shown below the public BMW X3 card:
+
+- Dutch: `Meer klantresultaten worden binnenkort toegevoegd.`
+- English: `More customer results will be added soon.`
+- Polish: `Kolejne realizacje klientów zostaną dodane wkrótce.`
 
 ## Image Status
 
@@ -229,7 +231,7 @@ Local production server checks:
 - result listing pages return `200`
 - BMW X3 listing cards link to the public detail pages
 - BMW X3 cards are labelled as customer results
-- demo cards remain labelled as indicative examples
+- demo/example cards are hidden from public listings
 - demo detail routes still return `404`
 - sitemap includes BMW X3 routes
 - sitemap excludes demo result routes

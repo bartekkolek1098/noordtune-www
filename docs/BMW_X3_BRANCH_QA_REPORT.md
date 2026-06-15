@@ -245,6 +245,8 @@ Rechecked:
 
 - BMW X3 detail routes in NL/EN/PL return `200`
 - result listing pages in NL/EN/PL return `200`
+- BMW X3 is the only public customer result card in the listings
+- demo/example result cards are hidden from public listings
 - demo result detail routes still return `404`
 - sitemap includes the three BMW X3 result URLs
 - sitemap excludes demo result detail routes
@@ -252,6 +254,26 @@ Rechecked:
 - all checked WhatsApp links point to `https://wa.me/31685759600`
 - no local `/power` hrefs were found
 - visible license plate remains only inside the owner-approved promotional graphic
+
+## Listing Cleanup Recheck
+
+After the portfolio cleanup, public result listings render only real published customer results:
+
+- BMW X3 remains visible as `Klantresultaat` / `Customer result` / `Realizacja klienta`
+- BMW 330d demo card is hidden from public listings
+- Audi A4 demo card is hidden from public listings
+- Volkswagen Golf GTI demo card is hidden from public listings
+- Mercedes C 220d demo card is hidden from public listings
+- future note is shown below the BMW X3 card in NL/EN/PL
+
+Import architecture prepared:
+
+- `docs/FACEBOOK_RESULT_IMPORT_TEMPLATE.md`
+- `docs/FACEBOOK_RESULT_IMPORT_PLAN.md`
+- `data/facebook-result-import.example.json`
+- `scripts/import-facebook-results.ts`
+
+Importer dry-run result: passed.
 
 Screenshot QA files:
 

@@ -82,24 +82,30 @@ const ui = {
 
 const resultsIntro = {
   nl: {
-    kicker: "Klantresultaten & voorbeeldcases",
-    title: "Realisaties zijn voertuigafhankelijk, nooit een universele belofte.",
+    kicker: "Klantresultaten",
+    title: "Geselecteerde NoordTune projecten, eerlijk en voertuigspecifiek.",
     text:
-      "Deze pagina combineert echte NoordTune klantresultaten met duidelijk gemarkeerde voorbeeldcases. Een klantresultaat wordt alleen gepubliceerd wanneer de gegevens veilig genoeg zijn voor publicatie. De overige kaarten blijven indicatieve voorbeelden. Resultaten hangen af van onderhoudsstaat, ECU, TCU, softwareversie, brandstof, hardware en gebruik. Gebruik de Power Catalog voor een voertuigspecifieke indicatie of stuur je gegevens via WhatsApp voor advies."
+      "Hier verzamelen we echte gepubliceerde NoordTune klantprojecten. Elke case hoort bij een specifiek voertuig en wordt pas gepubliceerd wanneer de gegevens veilig genoeg zijn om te delen. Resultaten hangen af van onderhoudsstaat, softwareversie, brandstof, ECU/TCU, transmissie, hardware en gebruik. Controleer jouw auto in de Power Catalog voor een voertuigspecifieke indicatie."
   },
   en: {
-    kicker: "Customer results & example cases",
-    title: "Results are vehicle-specific, never a universal promise.",
+    kicker: "Customer results",
+    title: "Selected NoordTune projects, published with realistic context.",
     text:
-      "This page combines real NoordTune customer results with clearly marked example cases. A customer result is only published when the data is safe to share. The other cards remain indicative examples. Results depend on condition, ECU, TCU, software version, fuel, hardware and use."
+      "This portfolio contains selected NoordTune customer projects. Every result belongs to a specific vehicle and configuration, and is only published when the data is safe to share. Figures vary with vehicle condition, software version, fuel, ECU/TCU, transmission, hardware and use. Use the Power Catalog for a vehicle-specific indication."
   },
   pl: {
-    kicker: "Realizacje i przykłady",
-    title: "Wyniki zależą od konkretnego auta, nie są uniwersalną obietnicą.",
+    kicker: "Realizacje klientów",
+    title: "Wybrane projekty NoordTune z realistycznym kontekstem.",
     text:
-      "Ta strona łączy prawdziwe realizacje NoordTune z wyraźnie oznaczonymi przykładami orientacyjnymi. Realizacja klienta jest publikowana tylko wtedy, gdy dane można bezpiecznie pokazać. Pozostałe karty pozostają przykładami orientacyjnymi. Wyniki zależą od stanu auta, ECU, TCU, wersji oprogramowania, paliwa, osprzętu i sposobu użytkowania."
+      "Publikowane realizacje dotyczą konkretnych aut obsłużonych przez NoordTune. Każdy wynik zależy od stanu samochodu, wersji oprogramowania, paliwa, skrzyni biegów, ECU/TCU, osprzętu i sposobu użytkowania. Użyj katalogu mocy, aby sprawdzić orientacyjne możliwości swojego auta."
   }
 } satisfies Record<Locale, {kicker: string; title: string; text: string}>;
+
+const resultsFutureNote = {
+  nl: "Meer klantresultaten worden binnenkort toegevoegd.",
+  en: "More customer results will be added soon.",
+  pl: "Kolejne realizacje klientów zostaną dodane wkrótce."
+} satisfies Record<Locale, string>;
 
 export function HomeRenderer({locale}: {locale: Locale}) {
   const home = homeContent[locale];
@@ -173,25 +179,30 @@ export function HomeRenderer({locale}: {locale: Locale}) {
         <section className="container py-12 md:py-16">
           <SectionHeader
             align="center"
-            kicker={locale === "nl" ? "Resultaten" : locale === "en" ? "Results" : "Rezultaty"}
+            kicker={locale === "nl" ? "Klantresultaten" : locale === "en" ? "Customer results" : "Realizacje klientów"}
             text={
               locale === "nl"
-                ? "Voorbeeldcases met indicatieve resultaten. Definitieve waarden hangen altijd af van jouw exacte voertuig."
-                : undefined
+                ? "Echte gepubliceerde NoordTune cases met voertuigspecifieke context. Nieuwe projecten worden toegevoegd zodra beeld, data en goedkeuring compleet zijn."
+                : locale === "en"
+                  ? "Real published NoordTune cases with vehicle-specific context. More projects will be added when data, images and approval are complete."
+                  : "Prawdziwe opublikowane realizacje NoordTune z kontekstem konkretnego auta. Kolejne projekty dodamy po zatwierdzeniu danych i zdjęć."
             }
             title={
               locale === "nl"
-                ? "Populaire Stage 1 voorbeelden"
+                ? "Portfolio van realisaties"
                 : locale === "en"
-                  ? "Popular Stage 1 examples"
-                  : "Popularne przykłady Stage 1"
+                  ? "Customer result portfolio"
+                  : "Portfolio realizacji"
             }
           />
-          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {displayCustomerResults(locale).map((result) => (
               <ResultCardView key={result.id} locale={locale} result={result} />
             ))}
           </div>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-white/50">
+            {resultsFutureNote[locale]}
+          </p>
         </section>
 
         <section className="container py-12 md:py-16">
@@ -347,20 +358,20 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           bullets={
             locale === "nl"
               ? [
-                  "Geselecteerde klantresultaten en indicatieve voorbeeldcases",
-                  "Resultaten hangen af van onderhoud, ECU, TCU en softwareversie",
+                  "Geselecteerde gepubliceerde klantresultaten",
+                  "Resultaten hangen af van onderhoud, ECU/TCU en softwareversie",
                   "Brandstof, hardware en transmissielimieten tellen mee",
                   "Gebruik de Power Catalog voor een voertuigspecifieke indicatie"
                 ]
               : locale === "en"
                 ? [
-                    "Selected customer results and indicative examples",
+                    "Selected published customer results",
                     "Vehicle condition, ECU, TCU and software version matter",
                     "Fuel, hardware and gearbox limits influence the result",
                     "Use the Power Catalog for a vehicle-specific indication"
                   ]
                 : [
-                    "Wybrane realizacje i przykłady orientacyjne",
+                    "Wybrane opublikowane realizacje klientów",
                     "Stan auta, ECU, TCU i wersja oprogramowania mają znaczenie",
                     "Paliwo, osprzęt i limity skrzyni wpływają na wynik",
                     "Użyj katalogu mocy, aby sprawdzić konkretne auto"
@@ -379,8 +390,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           secondaryHref={site.whatsappUrl}
           secondaryLabel={locale === "nl" ? "WhatsApp ons" : locale === "en" ? "Message us on WhatsApp" : "Napisz na WhatsApp"}
           stats={[
-            {value: "4", label: locale === "nl" ? "Resultaatkaarten" : locale === "en" ? "Result cards" : "Karty wyników"},
-            {value: "Stage 1", label: locale === "nl" ? "Populairste basis" : locale === "en" ? "Popular base" : "Popularna baza"},
+            {value: String(displayCustomerResults(locale).length), label: locale === "nl" ? "Gepubliceerde cases" : locale === "en" ? "Published cases" : "Opublikowane realizacje"},
+            {value: "Stage 1", label: locale === "nl" ? "Eerste klantcase" : locale === "en" ? "First customer case" : "Pierwsza realizacja"},
             {value: "100%", label: locale === "nl" ? "Voertuigafhankelijk" : locale === "en" ? "Vehicle dependent" : "Zależne od auta"},
             {value: "RDW", label: locale === "nl" ? "Cataloguscheck" : locale === "en" ? "Catalog check" : "Katalog"}
           ]}
@@ -388,11 +399,14 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           title={resultsBlock.title}
         />
         <section className="container py-12 md:py-16">
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {displayCustomerResults(locale).map((result) => (
               <ResultCardView key={result.id} locale={locale} result={result} />
             ))}
           </div>
+          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-white/50">
+            {resultsFutureNote[locale]}
+          </p>
         </section>
         <PowerCatalogSection compact locale={locale} />
         <CTASection locale={locale} text={homeContent[locale].finalText} title={homeContent[locale].finalTitle} />

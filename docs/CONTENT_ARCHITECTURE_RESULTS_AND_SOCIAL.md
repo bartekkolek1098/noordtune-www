@@ -89,12 +89,13 @@ Current implementation:
 
 - `src/content/customer-results.ts`
 - existing Results page renders selected listing cards from this model.
-- current BMW/Audi/Volkswagen/Mercedes cases are marked as `demo`, not customer-approved real cases.
-- demo and draft results are not indexable and do not generate public detail routes.
+- public Results listings render real published customer results only.
+- current BMW/Audi/Volkswagen/Mercedes demo cases can remain in development data, but are not rendered publicly.
+- demo and draft results are not indexable, are not in sitemap and do not generate public detail routes.
 - future detail routes are prepared as `/nl/resultaten/[slug]`, `/en/results/[slug]` and `/pl/rezultaty/[slug]`.
 - only `status: "published"` plus `indexable: true` can generate public detail pages and sitemap entries.
 
-Current draft template:
+Current first public case on PR #3:
 
 - BMW X3 E83 2.0d Stage 1
 - N47 / Bosch EDC17
@@ -102,7 +103,9 @@ Current draft template:
 - 214 hp / 420 Nm tuned
 - +37 hp / +70 Nm
 - certificate noted as given to the customer
-- remains draft until owner confirms image rights, customer approval and final data.
+- uses an owner-provided promotional graphic
+- visible license plate is owner-approved for that marketing graphic
+- public/indexable only on the feature branch until owner approval and merge
 
 ## 3. Social Updates
 
@@ -137,21 +140,42 @@ Future flow:
 
 Customer result detail pages should be published only after approval. Facebook-imported posts should never become indexable customer result pages automatically.
 
+## Manual/Facebook Result Import Preparation
+
+Before full Facebook API sync exists, the website uses a manual import preparation flow:
+
+- `docs/FACEBOOK_RESULT_IMPORT_TEMPLATE.md` explains what the owner should provide.
+- `data/facebook-result-import.example.json` shows the expected JSON shape.
+- `scripts/import-facebook-results.ts` validates local JSON and outputs draft customer result objects.
+
+Safety defaults:
+
+- imported result source is `facebook`
+- imported result status is `draft`
+- imported result indexability is `false`
+- imported result customer approval is `false`
+- images are not downloaded automatically
+- Facebook API is not called
+- production content is not modified automatically
+
+Manual review remains mandatory before any imported post becomes public.
+
 ## Current Launch Recommendation
 
-Publish SEO articles now.
+Publish SEO articles as evergreen knowledge-base content.
 
-Keep customer results as carefully labelled indicative examples until real owner-approved vehicle cases are added.
+Use the Results area as a real portfolio area with owner-approved customer cases. Keep demo/example data hidden from public listings.
 
 Do not publish Facebook-synced content automatically.
 
-## Content Growth Phase Note
+## Content Growth And Result Publication Notes
 
-The content growth branch prepares draft brand pages, draft educational articles and the first BMW X3 E83 2.0d Stage 1 customer-result template without publishing them.
+The content growth branch prepared draft brand pages and draft educational articles without exposing them publicly.
 
-Rules for this phase:
+Current rules:
 
 - draft brand pages remain outside routes, navigation and sitemap.
 - draft educational articles remain separate from published SEO articles until owner review.
-- the BMW X3 result stays `draft` and `indexable: false` until image rights, customer approval and final copy are confirmed.
+- the BMW X3 result is the first prepared public customer result on PR #3, pending final owner review and merge.
+- future result imports remain `draft` and `indexable: false` until image rights, customer approval, privacy and final copy are confirmed.
 - social/Facebook-style posts remain a future import workflow and should not be mixed into SEO articles.

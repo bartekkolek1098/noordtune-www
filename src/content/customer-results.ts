@@ -110,8 +110,8 @@ export function publicCustomerResults(locale: Locale) {
 
 export function displayCustomerResults(locale: Locale) {
   return customerResults
-    .filter((result) => result.locale === locale && result.status !== "draft")
-    .sort((a, b) => Number(isPublicCustomerResult(b)) - Number(isPublicCustomerResult(a)));
+    .filter((result) => result.locale === locale && isPublicCustomerResult(result))
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 }
 
 export function customerResultPath(result: CustomerResult) {
