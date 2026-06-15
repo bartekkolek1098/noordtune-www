@@ -1,6 +1,6 @@
 # BMW X3 Customer Result Publication Report
 
-Date: 2026-06-14  
+Date: 2026-06-15
 Branch: `feature/publish-bmw-x3-result`  
 Repository: `bartekkolek1098/noordtune-www`
 
@@ -100,28 +100,40 @@ Demo result detail pages still return `404`.
 
 ## Image Status
 
-No owner-approved BMW X3 vehicle photo was available in the repository for this publication pass.
+The owner-provided BMW X3 E83 Stage 1 promotional graphic is now used as the primary customer result visual.
 
-Used safe local placeholder:
+Source image:
 
 ```text
-/images/sections/tuning-laptop-b2.webp
+/Users/bartk/Pictures/Photos Library.photoslibrary/resources/derivatives/9/91159539-EA0A-49A1-AA22-43B2FC8A84DE_1_105_c.jpeg
 ```
 
-Reason:
+Website image:
 
-- local project asset
-- no visible license plate
-- no VIN
-- no customer identity
-- automotive tuning/logging context fits the result page
+```text
+/images/results/bmw-x3-e83-20d-stage-1.webp
+```
 
-TODO before/after owner image approval:
+Open Graph / social preview image:
 
-- replace the placeholder with owner-approved BMW X3 photos
-- confirm license plates are not visible or are blurred
-- confirm no customer-identifying details are visible
-- update alt text if a real approved image is added
+```text
+/images/results/bmw-x3-e83-20d-stage-1-og.webp
+```
+
+Image notes:
+
+- owner-provided marketing graphic for this BMW X3 case
+- visible license plate is intentionally owner-approved for this promotional graphic
+- no full VIN is shown
+- no customer name is shown
+- no customer address is shown
+- no private contact data is shown
+- no certificate number or private document reference is shown
+- WebP optimized for the website and social preview
+
+Remaining owner review item:
+
+- final visual approval of the promotional graphic on desktop, mobile and social preview
 
 ## Privacy Decisions
 
@@ -133,11 +145,11 @@ Published:
 - stock/tuned/gain figures
 - customer origin as broad country-level context: Poland
 - certificate and recommendations were delivered
+- owner-approved promotional graphic with visible license plate
 
 Not published:
 
 - full VIN
-- license plate
 - customer name
 - customer address
 - private contact data
@@ -145,11 +157,13 @@ Not published:
 
 Safety fields:
 
-- `licensePlateVisible: false`
+- `licensePlateVisible: true`
 - `customerApproved: true`
 - `certificateAvailable: true`
 - `status: "published"`
 - `indexable: true`
+
+The visible license plate appears only inside the owner-approved BMW X3 promotional graphic. It is not published as structured text data.
 
 ## Sitemap Result
 
@@ -222,7 +236,8 @@ Local production server checks:
 - Power Catalog links point to `https://power.noordtune.nl/`
 - WhatsApp links point to `https://wa.me/31685759600`
 - Polish text uses proper diacritics
-- source scan found no VIN-like data
+- source scan found no VIN-like data in website text/data
+- visible license plate was intentionally left in the owner-approved marketing graphic
 
 ## Scope Confirmation
 
@@ -232,7 +247,8 @@ Local production server checks:
 - No file service was added.
 - No production/domain settings were changed.
 - No demo result was converted into a real customer case.
-- No customer name, license plate or full VIN was published.
+- No customer name, full VIN, address, private contact data, certificate number or private document reference was published.
+- The visible license plate in the BMW X3 promotional graphic is owner-approved for this case.
 
 ## Recommendation
 
@@ -241,6 +257,6 @@ Open a PR from `feature/publish-bmw-x3-result` to `main` for owner review.
 Before merging, the owner should manually review:
 
 - public copy in Dutch, English and Polish
-- placeholder image acceptability
+- final visual approval of the owner-provided BMW X3 promotional graphic
 - privacy and approval assumptions
-- whether to replace the placeholder with an owner-approved BMW X3 photo
+- whether to keep this graphic as-is for merge

@@ -154,7 +154,7 @@ export function createBlogArticleMetadata(article: BlogArticle): Metadata {
 
 export function createCustomerResultMetadata(result: CustomerResult): Metadata {
   const canonical = customerResultUrl(result);
-  const image = `${site.url}${result.images[0] ?? "/images/sections/tuning-laptop-b2.webp"}`;
+  const image = `${site.url}${result.ogImage ?? result.images[0] ?? "/images/sections/tuning-laptop-b2.webp"}`;
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
   const hp = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
   const title =

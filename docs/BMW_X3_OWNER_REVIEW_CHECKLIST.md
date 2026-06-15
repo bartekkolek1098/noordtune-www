@@ -20,7 +20,7 @@ Use this checklist before approving the PR for merge to `main`.
 ## 2. Privacy Review
 
 - [ ] No full VIN is shown.
-- [ ] No license plate is shown.
+- [ ] Visible license plate is accepted because it appears only in the owner-approved promotional graphic.
 - [ ] No customer name is shown.
 - [ ] No customer address is shown.
 - [ ] No private contact data is shown.
@@ -29,18 +29,25 @@ Use this checklist before approving the PR for merge to `main`.
 
 ## 3. Image Review
 
-- [ ] Current image is a placeholder.
-- [ ] Placeholder has no visible plate.
-- [ ] Placeholder has no visible VIN.
-- [ ] Placeholder has no visible person or private customer details.
-- [ ] TODO exists to replace it with owner-approved BMW X3 photos later.
-- [ ] If real BMW photos are added later, plates must be blurred or not visible.
-- [ ] If real BMW photos are added later, no private background details should identify the customer.
+- [ ] Current image is the owner-provided BMW X3 promotional graphic.
+- [ ] Visible license plate is intentionally owner-approved for this marketing graphic.
+- [ ] Image has no visible full VIN.
+- [ ] Image has no visible customer name.
+- [ ] Image has no visible customer address.
+- [ ] Image has no private contact data.
+- [ ] Image has no certificate number or private document reference.
+- [ ] Final desktop/mobile visual presentation is approved.
 
-Current placeholder:
+Current website image:
 
 ```text
-/images/sections/tuning-laptop-b2.webp
+/images/results/bmw-x3-e83-20d-stage-1.webp
+```
+
+Current Open Graph image:
+
+```text
+/images/results/bmw-x3-e83-20d-stage-1-og.webp
 ```
 
 ## 4. Technical Review
@@ -54,7 +61,8 @@ Current placeholder:
 - [ ] Gain: +37 hp / +70 Nm.
 - [ ] Certificate delivered to customer.
 - [ ] Recommendations after tuning delivered to customer.
-- [ ] No full VIN or license plate is required for the public case.
+- [ ] No full VIN is required for the public case.
+- [ ] Visible plate use in the graphic is owner-approved.
 
 ## 5. SEO Review
 
@@ -76,12 +84,14 @@ Current placeholder:
 - [ ] Owner approves indexable publication: yes / no
 - [ ] Owner confirms all visible result data is correct: yes / no
 - [ ] Owner confirms privacy is acceptable: yes / no
+- [ ] Owner confirms visible plate in the promotional graphic is acceptable: yes / no
 
 ## Merge Gate
 
 Only merge after the owner confirms:
 
 1. The content is approved in NL/EN/PL.
-2. The placeholder image is acceptable or replaced safely.
+2. The owner-provided BMW X3 promotional graphic is visually approved.
 3. Indexable publication is approved.
 4. No private customer data is exposed.
+5. Visible license plate use in this marketing graphic is approved.

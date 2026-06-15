@@ -33,6 +33,7 @@ export type CustomerResult = {
   gainTorqueNm: number;
   licensePlateVisible: boolean;
   images: string[];
+  ogImage?: string;
   imageAlt: string;
   shortDescription: string;
   technicalNotes: string[];
@@ -73,7 +74,8 @@ const demoDisclaimer = {
 
 const resultImages = {
   bmw330d: "/images/results/bmw-330d-g20.jpg",
-  bmwX3Placeholder: "/images/sections/tuning-laptop-b2.webp",
+  bmwX3: "/images/results/bmw-x3-e83-20d-stage-1.webp",
+  bmwX3Og: "/images/results/bmw-x3-e83-20d-stage-1-og.webp",
   audiA4: "/images/results/audi-a4-b9-tdi.jpg",
   golfGti: "/images/results/volkswagen-golf-gti-mk7.jpg",
   mercedesC220d: "/images/results/mercedes-c220d-w206.jpg"
@@ -437,9 +439,10 @@ export const customerResults: CustomerResult[] = [
     vehicleEngine: "2.0d N47",
     vehicleYear: "E83",
     transmission: "Te bevestigen per voertuig",
-    licensePlateVisible: false,
-    images: [resultImages.bmwX3Placeholder],
-    imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap resultaat met veilige placeholder zonder kenteken",
+    licensePlateVisible: true,
+    images: [resultImages.bmwX3],
+    ogImage: resultImages.bmwX3Og,
+    imageAlt: "BMW X3 E83 2.0d Stage 1 chiptuning resultaat bij NoordTune.nl",
     serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
     fuelType: "Diesel",
@@ -465,7 +468,7 @@ export const customerResults: CustomerResult[] = [
     certificateAvailable: true,
     certificateNote: "Certificaat aanwezig volgens eigenaar; bestand/referentie later toevoegen.",
     publishedAt: "2026-06-14",
-    updatedAt: "2026-06-14",
+    updatedAt: "2026-06-15",
     disclaimer:
       "De genoemde waarden horen bij dit specifieke voertuig en deze configuratie. Resultaten kunnen verschillen per auto, softwareversie, onderhoudsstaat, brandstof, transmissie en hardware.",
     relatedPowerCatalogUrl: site.catalogUrl,
@@ -488,9 +491,10 @@ export const customerResults: CustomerResult[] = [
     vehicleEngine: "2.0d N47",
     vehicleYear: "E83",
     transmission: "To be confirmed per vehicle",
-    licensePlateVisible: false,
-    images: [resultImages.bmwX3Placeholder],
-    imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap result with safe placeholder and no license plate",
+    licensePlateVisible: true,
+    images: [resultImages.bmwX3],
+    ogImage: resultImages.bmwX3Og,
+    imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap result at NoordTune.nl",
     serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
     fuelType: "Diesel",
@@ -516,7 +520,7 @@ export const customerResults: CustomerResult[] = [
     certificateAvailable: true,
     certificateNote: "Certificate exists according to owner; file/reference to be added later.",
     publishedAt: "2026-06-14",
-    updatedAt: "2026-06-14",
+    updatedAt: "2026-06-15",
     disclaimer:
       "The stated figures apply to this specific vehicle and configuration. Results can vary depending on vehicle condition, software version, fuel, transmission and hardware.",
     relatedPowerCatalogUrl: site.catalogUrl,
@@ -539,9 +543,10 @@ export const customerResults: CustomerResult[] = [
     vehicleEngine: "2.0d N47",
     vehicleYear: "E83",
     transmission: "Do potwierdzenia dla konkretnego auta",
-    licensePlateVisible: false,
-    images: [resultImages.bmwX3Placeholder],
-    imageAlt: "BMW X3 E83 2.0d Stage 1 remap ECU, bezpieczne zdjęcie zastępcze bez tablic rejestracyjnych",
+    licensePlateVisible: true,
+    images: [resultImages.bmwX3],
+    ogImage: resultImages.bmwX3Og,
+    imageAlt: "BMW X3 E83 2.0d Stage 1 — wynik indywidualnego remapu ECU w NoordTune.nl",
     serviceType: "Stage 1 / remap ECU",
     stage: "Stage 1",
     fuelType: "Diesel",
@@ -567,7 +572,7 @@ export const customerResults: CustomerResult[] = [
     certificateAvailable: true,
     certificateNote: "Certyfikat istnieje według właściciela; plik lub referencję dodać później.",
     publishedAt: "2026-06-14",
-    updatedAt: "2026-06-14",
+    updatedAt: "2026-06-15",
     disclaimer:
       "Podane wartości dotyczą tego konkretnego egzemplarza i konfiguracji. Wyniki mogą różnić się w zależności od stanu auta, wersji oprogramowania, paliwa, skrzyni biegów i osprzętu.",
     relatedPowerCatalogUrl: site.catalogUrl,

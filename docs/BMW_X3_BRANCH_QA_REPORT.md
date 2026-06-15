@@ -2,7 +2,7 @@
 
 Date: 2026-06-15  
 Branch tested: `feature/publish-bmw-x3-result`  
-Commit tested: `cea7ecb` plus this QA documentation update  
+Commit tested: `cea7ecb` plus the BMW X3 image replacement update
 PR: https://github.com/bartekkolek1098/noordtune-www/pull/3
 
 ## Summary
@@ -36,7 +36,7 @@ The PR description includes:
 - BMW X3 result routes in NL/EN/PL
 - stock/tuned/gain values
 - privacy decisions
-- placeholder image note
+- owner-approved promotional image note
 - sitemap behavior
 - QA results
 - confirmation that `power.noordtune.nl` was not modified
@@ -138,16 +138,16 @@ Verified:
 
 - no full VIN is rendered
 - no VIN-like string is rendered
-- no license plate is rendered
 - no customer name is rendered
 - no customer address is rendered
 - no private contact data is rendered
 - customer origin is broad country-level context only: Poland
 - certificate number/file/reference is not exposed
+- visible license plate is present only inside the owner-approved BMW X3 marketing graphic
 
 Current content fields:
 
-- `licensePlateVisible: false`
+- `licensePlateVisible: true`
 - `customerApproved: true`
 - `certificateAvailable: true`
 - `status: "published"`
@@ -160,23 +160,30 @@ Owner should still manually approve the privacy decision before merge.
 Current image:
 
 ```text
-/images/sections/tuning-laptop-b2.webp
+/images/results/bmw-x3-e83-20d-stage-1.webp
+```
+
+Open Graph image:
+
+```text
+/images/results/bmw-x3-e83-20d-stage-1-og.webp
 ```
 
 Image status:
 
-- safe local placeholder
-- no visible license plate
-- no visible VIN
-- no visible customer/person/private data
-- no real BMW X3 owner photo included yet
+- owner-provided BMW X3 E83 Stage 1 promotional graphic
+- visible license plate intentionally owner-approved for this marketing graphic
+- no full VIN shown
+- no customer name shown
+- no customer address shown
+- no private contact data shown
+- no certificate number or private document reference shown
+- optimized as WebP for page use and Open Graph sharing
 
 Owner decision still needed:
 
-- approve placeholder for first merge, or
-- replace with owner-approved BMW X3 image before merge
-
-If a real vehicle image is added later, license plates must be blurred or not visible.
+- final visual approval before merge
+- approval to keep the visible plate in this specific marketing graphic
 
 ## CTA Result
 
@@ -226,6 +233,34 @@ Build result:
 - Static generation completed: `75/75` pages.
 - The three additional generated pages are the BMW X3 result pages in NL/EN/PL.
 
+## Image Replacement Recheck
+
+After replacing the placeholder with the owner-provided BMW X3 promotional graphic, the branch was rechecked locally at:
+
+```text
+http://127.0.0.1:3022
+```
+
+Rechecked:
+
+- BMW X3 detail routes in NL/EN/PL return `200`
+- result listing pages in NL/EN/PL return `200`
+- demo result detail routes still return `404`
+- sitemap includes the three BMW X3 result URLs
+- sitemap excludes demo result detail routes
+- all checked Power Catalog links point to `https://power.noordtune.nl/`
+- all checked WhatsApp links point to `https://wa.me/31685759600`
+- no local `/power` hrefs were found
+- visible license plate remains only inside the owner-approved promotional graphic
+
+Screenshot QA files:
+
+- `docs/qa-screenshots/bmw-x3/desktop-nl-result.png`
+- `docs/qa-screenshots/bmw-x3/mobile-pl-result.png`
+- `docs/qa-screenshots/bmw-x3/desktop-nl-listing.png`
+
+Note: `docs/qa-screenshots/` is ignored by `.gitignore`, so these screenshots are local QA artifacts unless deliberately force-added.
+
 ## Remaining Manual Owner Decisions
 
 Before merge, owner should confirm:
@@ -236,7 +271,7 @@ Before merge, owner should confirm:
 - result values are correct
 - certificate statement is correct
 - privacy is acceptable
-- placeholder image is acceptable or should be replaced first
+- owner-provided BMW X3 promotional image is visually approved for merge
 - indexable publication is approved
 
 ## Merge Readiness
