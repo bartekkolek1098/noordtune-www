@@ -7,7 +7,7 @@ import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {SectionHeader} from "@/components/section-header";
-import type {CustomerResult} from "@/content/customer-results";
+import {customerResultPrimaryImage, type CustomerResult} from "@/content/customer-results";
 import {pathFor, type Locale} from "@/content/site";
 
 const labels = {
@@ -94,7 +94,7 @@ function Fact({label, value}: {label: string; value?: string}) {
 
 export function CustomerResultRenderer({result}: {result: CustomerResult}) {
   const copy = labels[result.locale];
-  const image = result.images[0] ?? "/images/sections/tuning-laptop-b2.webp";
+  const image = customerResultPrimaryImage(result);
   const title =
     result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleGeneration ?? ""} ${result.vehicleEngine} ${result.stage}`.replace(/\s+/g, " ").trim();
   const hpUnit = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
@@ -109,14 +109,10 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
         <article>
           <section className="relative overflow-hidden border-b border-white/10">
             <div className="absolute inset-0">
-              <Image
-                alt={result.imageAlt}
-                className="object-cover object-center"
-                fill
-                priority
-                quality={90}
-                sizes="100vw"
-                src={image}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-cover bg-center"
+                style={{backgroundImage: `url("${image}")`}}
               />
               <div className="absolute inset-0 bg-[linear-gradient(90deg,#050505_0%,rgba(5,5,5,.9)_40%,rgba(5,5,5,.55)_100%)]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(227,6,19,.28),transparent_18rem)]" />
@@ -174,14 +170,16 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
 
                 <div className="panel-edge overflow-hidden rounded-[3px] bg-black/55 p-3">
                   <p className="mb-3 px-2 text-xs font-black uppercase tracking-[0.18em] text-primary">{copy.visual}</p>
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-black">
+                  <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-[2px] bg-black">
                     <Image
                       alt={result.imageAlt}
                       className="object-contain"
                       fill
-                      quality={92}
+                      priority
+                      quality={90}
                       sizes="(min-width:1024px) 720px, 100vw"
                       src={image}
+                      unoptimized
                     />
                   </div>
                 </div>

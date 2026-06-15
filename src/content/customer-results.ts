@@ -122,6 +122,32 @@ export function customerResultUrl(result: CustomerResult) {
   return `${site.url}${customerResultPath(result)}`;
 }
 
+const fallbackCustomerResultImage = "/images/sections/ford-sid212-obd.webp";
+
+function normalizeCustomerResultImagePath(path: string | undefined, fallback = fallbackCustomerResultImage) {
+  if (!path?.trim()) {
+    return fallback;
+  }
+
+  if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("/")) {
+    return path;
+  }
+
+  return `/${path}`;
+}
+
+export function customerResultPrimaryImage(result: CustomerResult) {
+  return normalizeCustomerResultImagePath(result.images[0]);
+}
+
+export function customerResultCardImage(result: CustomerResult) {
+  return customerResultPrimaryImage(result);
+}
+
+export function customerResultOgImage(result: CustomerResult) {
+  return normalizeCustomerResultImagePath(result.ogImage, customerResultPrimaryImage(result));
+}
+
 export function customerResultFromRoute(locale: Locale, resultsSlug: string, resultSlug: string) {
   if (resultsSlug !== pageRoutes.resultaten[locale]) {
     return undefined;

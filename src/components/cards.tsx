@@ -5,6 +5,7 @@ import {Icon} from "@/components/icon";
 import type {BlogPost, PricingPlan, ServiceCardCopy} from "@/content/copy";
 import {blogArticlePathForPost} from "@/content/blog-articles";
 import {
+  customerResultCardImage,
   customerResultPath,
   isPublicCustomerResult,
   type CustomerResult
@@ -128,7 +129,7 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
 
 export function ResultCardView({result, locale}: {result: CustomerResult; locale: Locale}) {
   const copy = labels[locale];
-  const image = result.images[0] ?? "/images/sections/ford-sid212-obd.webp";
+  const image = customerResultCardImage(result);
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
   const stock = `${result.stockPowerHp} ${copy.hp} / ${result.stockTorqueNm} Nm`;
   const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;
@@ -145,6 +146,7 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
           fill
           sizes="(min-width:1024px) 25vw, 100vw"
           src={image}
+          unoptimized={isCustomer}
         />
         <div
           className={`absolute inset-0 ${

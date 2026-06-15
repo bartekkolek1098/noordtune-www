@@ -283,6 +283,49 @@ Screenshot QA files:
 
 Note: `docs/qa-screenshots/` is ignored by `.gitignore`, so these screenshots are local QA artifacts unless deliberately force-added.
 
+## Detail Image Render Fix Recheck
+
+The BMW X3 detail image issue was rechecked locally at:
+
+```text
+http://127.0.0.1:3024
+```
+
+Root cause:
+
+- the direct BMW X3 WebP assets returned `200`
+- the detail project visual previously requested the image through the Next image optimizer with `q=92`
+- `next.config.ts` only allows image qualities `78`, `82` and `90`
+- the local production server reproduced the optimizer failure: `q=92` returned `400`, while `q=90` returned `200`
+
+Fix summary:
+
+- customer result image paths are now normalized through shared helpers
+- listing cards, detail pages and Open Graph metadata use the expected BMW X3 asset paths
+- the detail hero/background uses the direct public image path
+- the main project visual uses an allowed/direct-safe image render with a non-collapsing responsive panel
+
+Verified:
+
+- `/images/results/bmw-x3-e83-20d-stage-1.webp` -> `200`
+- `/images/results/bmw-x3-e83-20d-stage-1-og.webp` -> `200`
+- BMW X3 detail pages in NL/EN/PL return `200`
+- BMW X3 detail pages include the main image and OG image paths
+- pages no longer include `q=92`
+- demo result detail routes still return `404`
+- `/power` still returns `404` on the main site
+- sitemap includes BMW X3 result routes and excludes demo result routes
+- Power Catalog links still point to `https://power.noordtune.nl/`
+- WhatsApp links still point to `https://wa.me/31685759600`
+
+Screenshot QA files:
+
+- `docs/qa-screenshots/bmw-x3-image-fix/desktop-nl-listing.png`
+- `docs/qa-screenshots/bmw-x3-image-fix/desktop-nl-detail.png`
+- `docs/qa-screenshots/bmw-x3-image-fix/mobile-pl-detail.png`
+
+Note: `docs/qa-screenshots/` is ignored by `.gitignore`, so these screenshots are local QA artifacts unless deliberately force-added.
+
 ## Remaining Manual Owner Decisions
 
 Before merge, owner should confirm:

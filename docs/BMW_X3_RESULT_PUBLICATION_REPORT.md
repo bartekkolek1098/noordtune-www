@@ -241,6 +241,49 @@ Local production server checks:
 - source scan found no VIN-like data in website text/data
 - visible license plate was intentionally left in the owner-approved marketing graphic
 
+## Detail Image Render Fix
+
+The BMW X3 detail image rendering was rechecked after a broken-image report.
+
+Root cause:
+
+- the direct public BMW X3 assets were present and returned `200`
+- the detail project visual requested the image through the Next image optimizer with `q=92`
+- the project image configuration allows `78`, `82` and `90`
+- the optimizer URL with `q=92` returned `400` on the local production server
+
+Fix:
+
+- normalized customer result image paths through shared helpers
+- used the BMW X3 page image consistently for listing and detail rendering
+- used the BMW X3 OG image consistently for metadata
+- changed the detail project visual to an allowed/direct-safe image render
+- kept the project visual panel responsive and non-collapsing on mobile
+
+Rechecked locally at:
+
+```text
+http://127.0.0.1:3024
+```
+
+Verified:
+
+- listing card shows `/images/results/bmw-x3-e83-20d-stage-1.webp`
+- detail page hero/background uses `/images/results/bmw-x3-e83-20d-stage-1.webp`
+- detail page project visual uses `/images/results/bmw-x3-e83-20d-stage-1.webp`
+- Open Graph metadata uses `/images/results/bmw-x3-e83-20d-stage-1-og.webp`
+- BMW X3 pages no longer render `q=92`
+- no console errors were found during screenshot QA
+- no horizontal overflow was found during screenshot QA
+
+Screenshot QA files:
+
+- `docs/qa-screenshots/bmw-x3-image-fix/desktop-nl-listing.png`
+- `docs/qa-screenshots/bmw-x3-image-fix/desktop-nl-detail.png`
+- `docs/qa-screenshots/bmw-x3-image-fix/mobile-pl-detail.png`
+
+Note: `docs/qa-screenshots/` is ignored by `.gitignore`, so these screenshots are local QA artifacts unless deliberately force-added.
+
 ## Scope Confirmation
 
 - `power.noordtune.nl` was not modified.
