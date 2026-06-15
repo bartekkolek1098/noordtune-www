@@ -5,6 +5,7 @@ import {Icon} from "@/components/icon";
 import type {BlogPost, PricingPlan, ServiceCardCopy} from "@/content/copy";
 import {blogArticlePathForPost} from "@/content/blog-articles";
 import {
+  customerResultCardImage,
   customerResultPath,
   isPublicCustomerResult,
   type CustomerResult
@@ -20,6 +21,7 @@ const labels = {
     tuned: "Getuned",
     read: "Lees artikel",
     demo: "Indicatief voorbeeld",
+    customer: "Klantresultaat",
     detail: "Bekijk case",
     catalog: "Controleer jouw auto in de Power Catalog",
     whatsapp: "WhatsApp ons",
@@ -33,6 +35,7 @@ const labels = {
     tuned: "Tuned",
     read: "Read article",
     demo: "Indicative example",
+    customer: "Customer result",
     detail: "View case",
     catalog: "Check your vehicle in the Power Catalog",
     whatsapp: "Message us",
@@ -42,10 +45,11 @@ const labels = {
     more: "Więcej info",
     featured: "Najczęściej wybierane",
     vat: "z VAT",
-    stock: "Seryjnie",
-    tuned: "Po tuningu",
+    stock: "Seria",
+    tuned: "Po modyfikacji",
     read: "Czytaj",
     demo: "Przykład orientacyjny",
+    customer: "Realizacja klienta",
     detail: "Zobacz realizację",
     catalog: "Sprawdź swoje auto w katalogu mocy",
     whatsapp: "Napisz na WhatsApp",
@@ -125,26 +129,40 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
 
 export function ResultCardView({result, locale}: {result: CustomerResult; locale: Locale}) {
   const copy = labels[locale];
-  const image = result.images[0] ?? "/images/sections/ford-sid212-obd.webp";
+  const image = customerResultCardImage(result);
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
   const stock = `${result.stockPowerHp} ${copy.hp} / ${result.stockTorqueNm} Nm`;
   const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;
   const gain = `+${result.gainPowerHp} ${copy.hp}`;
   const detailHref = isPublicCustomerResult(result) ? customerResultPath(result) : undefined;
+  const isCustomer = isPublicCustomerResult(result);
 
   return (
     <article className="panel-edge overflow-hidden rounded-[3px]">
-      <div className="relative h-36 border-b border-white/10 bg-black/35">
+      <div className={`relative border-b border-white/10 bg-black/55 ${isCustomer ? "h-48" : "h-36"}`}>
         <Image
           alt={result.imageAlt}
-          className="object-cover opacity-85"
+          className={`${isCustomer ? "object-contain p-2 opacity-95" : "object-cover opacity-85"}`}
           fill
           sizes="(min-width:1024px) 25vw, 100vw"
           src={image}
+          unoptimized={isCustomer}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#090a0b] via-black/25 to-transparent" />
-        <span className="absolute bottom-3 left-3 rounded-[3px] border border-white/15 bg-black/60 px-3 py-1 text-[0.65rem] font-black uppercase text-white/70">
-          {result.customerApproved ? result.serviceType : copy.demo}
+        <div
+          className={`absolute inset-0 ${
+            isCustomer
+              ? "bg-gradient-to-t from-[#090a0b] via-black/5 to-transparent"
+              : "bg-gradient-to-t from-[#090a0b] via-black/25 to-transparent"
+          }`}
+        />
+        <span
+          className={`absolute bottom-3 left-3 rounded-[3px] border px-3 py-1 text-[0.65rem] font-black uppercase ${
+            isCustomer
+              ? "border-primary/60 bg-primary/85 text-white shadow-glow"
+              : "border-white/15 bg-black/60 text-white/70"
+          }`}
+        >
+          {isCustomer ? copy.customer : copy.demo}
         </span>
       </div>
       <div className="p-5">

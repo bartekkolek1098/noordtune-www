@@ -7,6 +7,9 @@ export type CustomerResult = {
   id: string;
   locale: Locale;
   slug: string;
+  title?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   source: CustomerResultSource;
   sourceUrl?: string;
   status: CustomerResultStatus;
@@ -30,6 +33,7 @@ export type CustomerResult = {
   gainTorqueNm: number;
   licensePlateVisible: boolean;
   images: string[];
+  ogImage?: string;
   imageAlt: string;
   shortDescription: string;
   technicalNotes: string[];
@@ -70,6 +74,8 @@ const demoDisclaimer = {
 
 const resultImages = {
   bmw330d: "/images/results/bmw-330d-g20.jpg",
+  bmwX3: "/images/results/bmw-x3-e83-20d-stage-1.webp",
+  bmwX3Og: "/images/results/bmw-x3-e83-20d-stage-1-og.webp",
   audiA4: "/images/results/audi-a4-b9-tdi.jpg",
   golfGti: "/images/results/volkswagen-golf-gti-mk7.jpg",
   mercedesC220d: "/images/results/mercedes-c220d-w206.jpg"
@@ -103,7 +109,9 @@ export function publicCustomerResults(locale: Locale) {
 }
 
 export function displayCustomerResults(locale: Locale) {
-  return customerResults.filter((result) => result.locale === locale && result.status !== "draft");
+  return customerResults
+    .filter((result) => result.locale === locale && isPublicCustomerResult(result))
+    .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
 }
 
 export function customerResultPath(result: CustomerResult) {
@@ -112,6 +120,32 @@ export function customerResultPath(result: CustomerResult) {
 
 export function customerResultUrl(result: CustomerResult) {
   return `${site.url}${customerResultPath(result)}`;
+}
+
+const fallbackCustomerResultImage = "/images/sections/ford-sid212-obd.webp";
+
+function normalizeCustomerResultImagePath(path: string | undefined, fallback = fallbackCustomerResultImage) {
+  if (!path?.trim()) {
+    return fallback;
+  }
+
+  if (path.startsWith("http://") || path.startsWith("https://") || path.startsWith("/")) {
+    return path;
+  }
+
+  return `/${path}`;
+}
+
+export function customerResultPrimaryImage(result: CustomerResult) {
+  return normalizeCustomerResultImagePath(result.images[0]);
+}
+
+export function customerResultCardImage(result: CustomerResult) {
+  return customerResultPrimaryImage(result);
+}
+
+export function customerResultOgImage(result: CustomerResult) {
+  return normalizeCustomerResultImagePath(result.ogImage, customerResultPrimaryImage(result));
 }
 
 export function customerResultFromRoute(locale: Locale, resultsSlug: string, resultSlug: string) {
@@ -415,26 +449,30 @@ export const customerResults: CustomerResult[] = [
     technicalNotes: ["Stan automatu i adaptacje są ważne", "Diagnostyka przed usługą jest zalecana"]
   }),
   {
-    id: "draft-bmw-x3-e83-20d-stage-1-nl",
+    id: "customer-bmw-x3-e83-20d-stage-1-nl",
     locale: "nl",
     slug: "bmw-x3-e83-20d-stage-1",
+    title: "BMW X3 E83 2.0d Stage 1 chiptuning",
+    metaTitle: "BMW X3 E83 2.0d Stage 1 chiptuning | NoordTune klantresultaat",
+    metaDescription:
+      "BMW X3 E83 2.0d Stage 1 ECU remap: 177 pk / 350 Nm naar 214 pk / 420 Nm. Klant uit Polen, maatwerk software en certificaat geleverd.",
     source: "manual",
-    status: "draft",
-    indexable: false,
+    status: "published",
+    indexable: true,
     vehicleMake: "BMW",
     vehicleModel: "X3",
     vehicleGeneration: "E83",
     vehicleEngine: "2.0d N47",
     vehicleYear: "E83",
-    transmission: "Automaat of handgeschakeld, te bevestigen",
-    licensePlateVisible: false,
-    images: [],
-    imageAlt: "BMW X3 E83 2.0d Stage 1 resultaatfoto, nog te vervangen door eigenaar-goedgekeurde foto",
-    serviceType: "ECU remap",
+    transmission: "Te bevestigen per voertuig",
+    licensePlateVisible: true,
+    images: [resultImages.bmwX3],
+    ogImage: resultImages.bmwX3Og,
+    imageAlt: "BMW X3 E83 2.0d Stage 1 chiptuning resultaat bij NoordTune.nl",
+    serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
     fuelType: "Diesel",
     ecu: "Bosch EDC17",
-    tcu: "Te controleren indien automaat",
     stockPowerHp: 177,
     stockTorqueNm: 350,
     tunedPowerHp: 214,
@@ -442,55 +480,51 @@ export const customerResults: CustomerResult[] = [
     gainPowerHp: 37,
     gainTorqueNm: 70,
     shortDescription:
-      "Draft voor een BMW X3 E83 2.0d Stage 1 case. Niet publiceren voordat foto, klantgoedkeuring en definitieve beschrijving zijn bevestigd.",
+      "Een klant uit Polen bezocht NoordTune.nl met zijn BMW X3 E83 2.0d voor een maatwerk Stage 1 ECU remap. De software is individueel afgestemd op dit voertuig, met aandacht voor betere trekkracht, soepelere vermogensopbouw en veilige marges.",
     technicalNotes: [
+      "Voertuig: BMW X3 E83 2.0d",
       "Motor: N47",
       "ECU: Bosch EDC17",
-      "Certificaat aan klant meegegeven",
-      "Controleer onderhoudsstaat, DPF/EGR-status en transmissiegedrag voordat dit als case wordt gepubliceerd"
+      "Service: Stage 1 / custom ECU remap",
+      "Kalibratie: maatwerk en voertuigspecifiek",
+      "Certificaat aan de klant meegegeven",
+      "Aanbevelingen na tuning aan de klant meegegeven"
     ],
-    customerApproved: false,
+    customerApproved: true,
     certificateAvailable: true,
     certificateNote: "Certificaat aanwezig volgens eigenaar; bestand/referentie later toevoegen.",
     publishedAt: "2026-06-14",
-    updatedAt: "2026-06-14",
+    updatedAt: "2026-06-15",
     disclaimer:
-      "Draft en niet indexeerbaar. Resultaten zijn voertuigspecifiek en afhankelijk van onderhoudsstaat, ECU/TCU, softwareversie, brandstof, hardware en gebruik.",
+      "De genoemde waarden horen bij dit specifieke voertuig en deze configuratie. Resultaten kunnen verschillen per auto, softwareversie, onderhoudsstaat, brandstof, transmissie en hardware.",
     relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl,
-    draftNotes: [
-      "Eigenaar-goedgekeurde foto toevoegen",
-      "Bron/Facebook-post URL toevoegen indien beschikbaar",
-      "Klantgoedkeuring expliciet bevestigen",
-      "Definitieve technische notities en certificaatreferentie aanvullen"
-    ],
-    localizedDraftDescriptions: {
-      nl: "BMW X3 E83 2.0d met N47-motor en Bosch EDC17, voorbereid als Stage 1 klantcase. De bekende waarden zijn 177 pk / 350 Nm origineel en 214 pk / 420 Nm na tuning.",
-      en: "BMW X3 E83 2.0d with N47 engine and Bosch EDC17, prepared as a Stage 1 customer-result draft. Known figures are 177 hp / 350 Nm stock and 214 hp / 420 Nm tuned.",
-      pl: "BMW X3 E83 2.0d z silnikiem N47 i sterownikiem Bosch EDC17, przygotowany jako szkic realizacji Stage 1. Znane wartości to 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po tuningu."
-    }
+    whatsappCta: site.whatsappUrl
   },
   {
-    id: "draft-bmw-x3-e83-20d-stage-1-en",
+    id: "customer-bmw-x3-e83-20d-stage-1-en",
     locale: "en",
     slug: "bmw-x3-e83-20d-stage-1",
+    title: "BMW X3 E83 2.0d Stage 1 ECU remap",
+    metaTitle: "BMW X3 E83 2.0d Stage 1 ECU remap | NoordTune customer result",
+    metaDescription:
+      "BMW X3 E83 2.0d Stage 1 ECU remap: 177 hp / 350 Nm to 214 hp / 420 Nm. Customer from Poland, custom calibration and certificate delivered.",
     source: "manual",
-    status: "draft",
-    indexable: false,
+    status: "published",
+    indexable: true,
     vehicleMake: "BMW",
     vehicleModel: "X3",
     vehicleGeneration: "E83",
     vehicleEngine: "2.0d N47",
     vehicleYear: "E83",
-    transmission: "Automatic or manual, to be confirmed",
-    licensePlateVisible: false,
-    images: [],
-    imageAlt: "BMW X3 E83 2.0d Stage 1 result image placeholder pending owner approval",
-    serviceType: "ECU remap",
+    transmission: "To be confirmed per vehicle",
+    licensePlateVisible: true,
+    images: [resultImages.bmwX3],
+    ogImage: resultImages.bmwX3Og,
+    imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap result at NoordTune.nl",
+    serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
     fuelType: "Diesel",
     ecu: "Bosch EDC17",
-    tcu: "To be checked if automatic",
     stockPowerHp: 177,
     stockTorqueNm: 350,
     tunedPowerHp: 214,
@@ -498,55 +532,51 @@ export const customerResults: CustomerResult[] = [
     gainPowerHp: 37,
     gainTorqueNm: 70,
     shortDescription:
-      "Draft BMW X3 E83 2.0d Stage 1 case. Do not publish until image rights, customer approval and final copy are confirmed.",
+      "A customer from Poland visited NoordTune.nl with a BMW X3 E83 2.0d for a custom Stage 1 ECU remap. The calibration was tailored to this specific vehicle, focusing on stronger torque delivery, smoother power build-up and responsible safety margins.",
     technicalNotes: [
+      "Vehicle: BMW X3 E83 2.0d",
       "Engine: N47",
       "ECU: Bosch EDC17",
+      "Service: Stage 1 / custom ECU remap",
+      "Calibration: custom and vehicle-specific",
       "Certificate given to the customer",
-      "Confirm condition, DPF/EGR status and transmission behaviour before publishing"
+      "Recommendations after tuning delivered to the customer"
     ],
-    customerApproved: false,
+    customerApproved: true,
     certificateAvailable: true,
     certificateNote: "Certificate exists according to owner; file/reference to be added later.",
     publishedAt: "2026-06-14",
-    updatedAt: "2026-06-14",
+    updatedAt: "2026-06-15",
     disclaimer:
-      "Draft and non-indexable. Results are vehicle-specific and depend on condition, ECU/TCU, software version, fuel, hardware and use.",
+      "The stated figures apply to this specific vehicle and configuration. Results can vary depending on vehicle condition, software version, fuel, transmission and hardware.",
     relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl,
-    draftNotes: [
-      "Add owner-approved image",
-      "Add source/Facebook post URL if available",
-      "Confirm customer approval",
-      "Complete final technical notes and certificate reference"
-    ],
-    localizedDraftDescriptions: {
-      nl: "BMW X3 E83 2.0d met N47-motor en Bosch EDC17, voorbereid als Stage 1 klantcase. De bekende waarden zijn 177 pk / 350 Nm origineel en 214 pk / 420 Nm na tuning.",
-      en: "BMW X3 E83 2.0d with N47 engine and Bosch EDC17, prepared as a Stage 1 customer-result draft. Known figures are 177 hp / 350 Nm stock and 214 hp / 420 Nm tuned.",
-      pl: "BMW X3 E83 2.0d z silnikiem N47 i sterownikiem Bosch EDC17, przygotowany jako szkic realizacji Stage 1. Znane wartości to 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po tuningu."
-    }
+    whatsappCta: site.whatsappUrl
   },
   {
-    id: "draft-bmw-x3-e83-20d-stage-1-pl",
+    id: "customer-bmw-x3-e83-20d-stage-1-pl",
     locale: "pl",
     slug: "bmw-x3-e83-20d-stage-1",
+    title: "BMW X3 E83 2.0d Stage 1 — indywidualny remap ECU",
+    metaTitle: "BMW X3 E83 2.0d Stage 1 — indywidualny remap ECU | NoordTune",
+    metaDescription:
+      "BMW X3 E83 2.0d Stage 1: 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po remapie ECU. Klient z Polski, indywidualna kalibracja i certyfikat.",
     source: "manual",
-    status: "draft",
-    indexable: false,
+    status: "published",
+    indexable: true,
     vehicleMake: "BMW",
     vehicleModel: "X3",
     vehicleGeneration: "E83",
     vehicleEngine: "2.0d N47",
     vehicleYear: "E83",
-    transmission: "Automat lub manual, do potwierdzenia",
-    licensePlateVisible: false,
-    images: [],
-    imageAlt: "BMW X3 E83 2.0d Stage 1, zdjęcie realizacji do zastąpienia po akceptacji właściciela",
-    serviceType: "Remap ECU",
+    transmission: "Do potwierdzenia dla konkretnego auta",
+    licensePlateVisible: true,
+    images: [resultImages.bmwX3],
+    ogImage: resultImages.bmwX3Og,
+    imageAlt: "BMW X3 E83 2.0d Stage 1 — wynik indywidualnego remapu ECU w NoordTune.nl",
+    serviceType: "Stage 1 / remap ECU",
     stage: "Stage 1",
     fuelType: "Diesel",
     ecu: "Bosch EDC17",
-    tcu: "Do sprawdzenia przy automacie",
     stockPowerHp: 177,
     stockTorqueNm: 350,
     tunedPowerHp: 214,
@@ -554,32 +584,24 @@ export const customerResults: CustomerResult[] = [
     gainPowerHp: 37,
     gainTorqueNm: 70,
     shortDescription:
-      "Szkic realizacji BMW X3 E83 2.0d Stage 1. Nie publikować przed potwierdzeniem zdjęć, zgody klienta i finalnego opisu.",
+      "Klient z Polski odwiedził NoordTune.nl swoim BMW X3 E83 2.0d, aby wykonać indywidualny Stage 1. Oryginalne oprogramowanie zostało przeanalizowane, a następnie przygotowaliśmy mapę dopasowaną do konkretnego samochodu, z naciskiem na lepszą elastyczność, wyższy moment obrotowy i bezpieczne marginesy pracy silnika.",
     technicalNotes: [
+      "Pojazd: BMW X3 E83 2.0d",
       "Silnik: N47",
       "ECU: Bosch EDC17",
+      "Usługa: Stage 1 / indywidualny remap ECU",
+      "Kalibracja: dopasowana do konkretnego auta",
       "Certyfikat przekazany klientowi",
-      "Przed publikacją potwierdzić stan auta, DPF/EGR i zachowanie skrzyni"
+      "Zalecenia po tuningu przekazane klientowi"
     ],
-    customerApproved: false,
+    customerApproved: true,
     certificateAvailable: true,
     certificateNote: "Certyfikat istnieje według właściciela; plik lub referencję dodać później.",
     publishedAt: "2026-06-14",
-    updatedAt: "2026-06-14",
+    updatedAt: "2026-06-15",
     disclaimer:
-      "Szkic, nieindeksowany. Wyniki zależą od konkretnego auta, ECU/TCU, wersji oprogramowania, paliwa, osprzętu i sposobu użytkowania.",
+      "Podane wartości dotyczą tego konkretnego egzemplarza i konfiguracji. Wyniki mogą różnić się w zależności od stanu auta, wersji oprogramowania, paliwa, skrzyni biegów i osprzętu.",
     relatedPowerCatalogUrl: site.catalogUrl,
-    whatsappCta: site.whatsappUrl,
-    draftNotes: [
-      "Dodać zdjęcie zaakceptowane przez właściciela",
-      "Dodać URL posta z Facebooka, jeśli będzie dostępny",
-      "Potwierdzić zgodę klienta",
-      "Uzupełnić finalne notatki techniczne i referencję certyfikatu"
-    ],
-    localizedDraftDescriptions: {
-      nl: "BMW X3 E83 2.0d met N47-motor en Bosch EDC17, voorbereid als Stage 1 klantcase. De bekende waarden zijn 177 pk / 350 Nm origineel en 214 pk / 420 Nm na tuning.",
-      en: "BMW X3 E83 2.0d with N47 engine and Bosch EDC17, prepared as a Stage 1 customer-result draft. Known figures are 177 hp / 350 Nm stock and 214 hp / 420 Nm tuned.",
-      pl: "BMW X3 E83 2.0d z silnikiem N47 i sterownikiem Bosch EDC17, przygotowany jako szkic realizacji Stage 1. Znane wartości to 177 KM / 350 Nm seryjnie i 214 KM / 420 Nm po tuningu."
-    }
+    whatsappCta: site.whatsappUrl
   }
 ];

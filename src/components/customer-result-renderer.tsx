@@ -7,7 +7,7 @@ import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {SectionHeader} from "@/components/section-header";
-import type {CustomerResult} from "@/content/customer-results";
+import {customerResultPrimaryImage, type CustomerResult} from "@/content/customer-results";
 import {pathFor, type Locale} from "@/content/site";
 
 const labels = {
@@ -22,7 +22,7 @@ const labels = {
     technical: "Technische notities",
     disclaimer: "Belangrijke nuance",
     catalog: "Controleer jouw auto in de Power Catalog",
-    whatsapp: "WhatsApp ons",
+    whatsapp: "Stuur je kenteken of motorgegevens via WhatsApp",
     generation: "Generatie",
     engine: "Motor",
     transmission: "Transmissie",
@@ -30,7 +30,8 @@ const labels = {
     ecu: "ECU",
     tcu: "TCU",
     certificate: "Certificaat",
-    certificateYes: "Beschikbaar"
+    certificateYes: "Beschikbaar",
+    visual: "Projectvisual"
   },
   en: {
     back: "Back to results",
@@ -43,7 +44,7 @@ const labels = {
     technical: "Technical notes",
     disclaimer: "Important nuance",
     catalog: "Check your vehicle in the Power Catalog",
-    whatsapp: "Message us",
+    whatsapp: "Send us your vehicle details on WhatsApp",
     generation: "Generation",
     engine: "Engine",
     transmission: "Transmission",
@@ -51,20 +52,21 @@ const labels = {
     ecu: "ECU",
     tcu: "TCU",
     certificate: "Certificate",
-    certificateYes: "Available"
+    certificateYes: "Available",
+    visual: "Project visual"
   },
   pl: {
     back: "Wróć do rezultatów",
     caseLabel: "Realizacja klienta",
-    stock: "Seryjnie",
-    tuned: "Po tuningu",
+    stock: "Seria",
+    tuned: "Po modyfikacji",
     gain: "Przyrost",
     vehicle: "Pojazd",
     service: "Usługa",
     technical: "Notatki techniczne",
     disclaimer: "Ważna informacja",
     catalog: "Sprawdź swoje auto w katalogu mocy",
-    whatsapp: "Napisz na WhatsApp",
+    whatsapp: "Wyślij nam dane auta przez WhatsApp",
     generation: "Generacja",
     engine: "Silnik",
     transmission: "Skrzynia",
@@ -72,7 +74,8 @@ const labels = {
     ecu: "ECU",
     tcu: "TCU",
     certificate: "Certyfikat",
-    certificateYes: "Dostępny"
+    certificateYes: "Dostępny",
+    visual: "Grafika realizacji"
   }
 } satisfies Record<Locale, Record<string, string>>;
 
@@ -91,8 +94,9 @@ function Fact({label, value}: {label: string; value?: string}) {
 
 export function CustomerResultRenderer({result}: {result: CustomerResult}) {
   const copy = labels[result.locale];
-  const image = result.images[0] ?? "/images/sections/tuning-laptop-b2.webp";
-  const title = `${result.vehicleMake} ${result.vehicleModel} ${result.stage}`;
+  const image = customerResultPrimaryImage(result);
+  const title =
+    result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleGeneration ?? ""} ${result.vehicleEngine} ${result.stage}`.replace(/\s+/g, " ").trim();
   const hpUnit = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
   const stock = `${result.stockPowerHp} ${hpUnit} / ${result.stockTorqueNm} Nm`;
   const tuned = `${result.tunedPowerHp} ${hpUnit} / ${result.tunedTorqueNm} Nm`;
@@ -105,14 +109,10 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
         <article>
           <section className="relative overflow-hidden border-b border-white/10">
             <div className="absolute inset-0">
-              <Image
-                alt={result.imageAlt}
-                className="object-cover object-center"
-                fill
-                priority
-                quality={90}
-                sizes="100vw"
-                src={image}
+              <div
+                aria-hidden="true"
+                className="absolute inset-0 bg-cover bg-center"
+                style={{backgroundImage: `url("${image}")`}}
               />
               <div className="absolute inset-0 bg-[linear-gradient(90deg,#050505_0%,rgba(5,5,5,.9)_40%,rgba(5,5,5,.55)_100%)]" />
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_82%_18%,rgba(227,6,19,.28),transparent_18rem)]" />
@@ -165,6 +165,22 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                   <div className="panel-edge rounded-[3px] p-5">
                     <p className="text-xs font-black uppercase text-white/42">{copy.gain}</p>
                     <p className="racing-title mt-3 text-3xl text-primary">{gain}</p>
+                  </div>
+                </div>
+
+                <div className="panel-edge overflow-hidden rounded-[3px] bg-black/55 p-3">
+                  <p className="mb-3 px-2 text-xs font-black uppercase tracking-[0.18em] text-primary">{copy.visual}</p>
+                  <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-[2px] bg-black">
+                    <Image
+                      alt={result.imageAlt}
+                      className="object-contain"
+                      fill
+                      priority
+                      quality={90}
+                      sizes="(min-width:1024px) 720px, 100vw"
+                      src={image}
+                      unoptimized
+                    />
                   </div>
                 </div>
 
