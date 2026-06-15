@@ -1,0 +1,46 @@
+{
+  "sourceUrl": "",
+  "sourceType": "manual",
+  "localeNotes": {
+    "nl": "Veilig voorbeeld op basis van de reeds goedgekeurde BMW X3 publicatie. Niet gebruiken als nieuwe publicatie.",
+    "en": "Safe example based on the already approved BMW X3 publication. Do not use as a new publication.",
+    "pl": "Bezpieczny przykład na podstawie zatwierdzonej publikacji BMW X3. Nie używać jako nowej publikacji."
+  },
+  "vehicleMake": "BMW",
+  "vehicleModel": "X3",
+  "vehicleGeneration": "E83",
+  "vehicleEngine": "2.0d N47",
+  "vehicleYear": "",
+  "fuelType": "Diesel",
+  "transmission": "Te bevestigen per voertuig",
+  "ecu": "Bosch EDC17",
+  "tcu": "",
+  "serviceType": "Stage 1 / custom ECU remap",
+  "stage": "Stage 1",
+  "stockPowerHp": 177,
+  "stockTorqueNm": 350,
+  "tunedPowerHp": 214,
+  "tunedTorqueNm": 420,
+  "gainPowerHp": 37,
+  "gainTorqueNm": 70,
+  "imagePaths": [
+    "/images/results/bmw-x3-e83-20d-stage-1.webp"
+  ],
+  "mainImagePath": "/images/results/bmw-x3-e83-20d-stage-1.webp",
+  "licensePlateVisible": true,
+  "licensePlateApproved": true,
+  "customerApproved": true,
+  "certificateAvailable": true,
+  "shortDescription": "Voorbeeld intake voor BMW X3 E83 2.0d Stage 1. Alleen bedoeld om de draft-helper te testen.",
+  "technicalNotes": [
+    "Motor: N47",
+    "ECU: Bosch EDC17",
+    "Service: Stage 1 / custom ECU remap"
+  ],
+  "recommendations": [
+    "Aanbevelingen na tuning aan de klant meegegeven"
+  ],
+  "shouldPublish": false,
+  "shouldIndex": false,
+  "ownerReviewNotes": "Example only. BMW X3 is already published through src/content/customer-results.ts; this file must not create a new publication."
+}
