@@ -20,3 +20,6 @@ temp/
 
 *.tsbuildinfo
 docs/qa-screenshots/
+
+data/customer-result-drafts/*.json
+!data/customer-result-drafts/.gitkeep

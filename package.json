@@ -10,6 +10,7 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "content:audit": "tsx scripts/audit-locales.ts",
+    "result:draft": "tsx scripts/prepare-customer-result-draft.ts",
     "screenshots": "tsx scripts/capture-screenshots.ts",
     "menu:screenshots": "tsx scripts/capture-mobile-menu-screenshots.ts"
   },
