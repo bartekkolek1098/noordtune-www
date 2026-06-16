@@ -86,7 +86,16 @@ Verified locally on listing pages:
 
 ## Production Deployment Status
 
-The squash merge pushed new code to `main`, so Vercel production deployment should start automatically from GitHub. This report was prepared immediately after local post-merge QA.
+Vercel production deployments were created automatically from GitHub:
+
+- Audi merge commit `4422801747ad4a8dd0d447cfeefc4933548d35be`: production deployment created.
+- Merge-report commit `f434a6c858544fed9f7673ee2e0aa6934d3279ea`: production deployment completed successfully.
+
+Latest deployment status from GitHub deployments API:
+
+- Environment: `Production`
+- State: `success`
+- Description: `Deployment has completed`
 
 ## Scope Confirmation
 
