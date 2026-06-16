@@ -7,6 +7,8 @@ Branch: `feature/blog-seo-growth`
 
 Six new evergreen SEO articles were added as published content in Dutch, English and Polish.
 
+During branch QA, the articles were expanded with additional practical sections. Dutch articles now have 8 structured sections each, while English and Polish articles have 6 structured sections each. The added sections focus on practical customer preparation, NoordTune's diagnostic-first approach, drivetrain or hardware considerations, and clear limits on what should not be promised.
+
 ### ECU Remap
 
 - Dutch: `/nl/blog/wat-is-ecu-remap`

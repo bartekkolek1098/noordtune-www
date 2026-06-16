@@ -735,3 +735,214 @@ export const plGrowthBlogArticles: BlogArticle[] = [
     ]
   })
 ];
+
+const nlDepthSections: Record<string, BlogArticle["sections"]> = {
+  "wat-is-ecu-remap": [
+    {
+      heading: "Welke tabellen worden in de praktijk beoordeeld?",
+      body: [
+        "Bij een moderne ECU kijk je niet alleen naar een vermogenslimiet. Koppelvraag, rookbegrenzing, laaddrukregeling, inspuitduur, raildruk, gaspedaalmapping, temperatuurbescherming en soms ook communicatie met de transmissie bepalen samen hoe de motor reageert. Een nette remap houdt die samenhang intact.",
+        "Daarom is een goede kalibratie vaak minder spectaculair in woorden dan in gevoel. De auto trekt langer door, reageert sneller en bouwt koppel rustiger op, zonder dat beveiligingen voortdurend moeten ingrijpen. Juist die rust maakt het verschil tussen een snelle indruk en een professionele softwareaanpassing."
+      ],
+      bullets: ["koppelvraag en koppelbegrenzers", "laaddruk en luchtmassa", "brandstofdruk en inspuiting", "temperatuur- en rookbegrenzing", "communicatie met automaat of DSG waar relevant"]
+    },
+    {
+      heading: "Hoe bereid je je auto voor op een remap?",
+      body: [
+        "De beste voorbereiding is simpel: zorg dat onderhoud actueel is, meld bestaande klachten eerlijk en gebruik brandstof die past bij de motor. Bij dieselmotoren kijken we bijvoorbeeld naar roetbelasting, luchtmassa en turbosysteem. Bij benzinemotoren tellen ontsteking, lambda, inlaattemperatuur en brandstofkwaliteit zwaar mee.",
+        "Stuur vooraf gerust het kenteken of de motorgegevens via WhatsApp. Dan kunnen we alvast controleren welke motorvariant, ECU en bekende aandachtspunten bij jouw auto horen. Zo wordt de afspraak efficiënter en voorkom je verkeerde verwachtingen."
+      ]
+    },
+    {
+      heading: "Wat moet je niet verwachten van ECU remap?",
+      body: [
+        "Een remap maakt geen slecht onderhouden auto gezond en vervangt geen reparatie. Als de turbo, injector, sensor, koppeling of transmissie al op de grens zit, kan extra vermogen dat probleem juist sneller zichtbaar maken. Daarom communiceren we liever duidelijk dan te mooi.",
+        "Ook exacte vermogenswinst is nooit universeel. Dezelfde motor kan anders presteren door softwareversie, brandstof, slijtage, klimaat, aandrijflijn en meetmethode. De Power Catalog is een sterke indicatie; de definitieve keuze blijft maatwerk."
+      ]
+    }
+  ],
+  "chiptuning-met-automaat": [
+    {
+      heading: "Koppel is belangrijker dan piekvermogen",
+      body: [
+        "Bij een automaat merk je tuning vooral in de manier waarop koppel wordt opgebouwd. Een te snelle of te hoge koppelvraag kan ervoor zorgen dat de transmissie onrustig terugschakelt, slip registreert of de motorsoftware begrenst. Daarom is een vloeiende curve belangrijker dan alleen het hoogste pk-getal.",
+        "NoordTune.nl stemt het karakter af op het gebruik. Een dagelijkse diesel met automaat vraagt vaak om brede trekkracht en rustige schakelovergangen. Een sportiever project mag directer reageren, maar ook dan moet de transmissie het betrouwbaar kunnen verwerken."
+      ],
+      bullets: ["vloeiende koppelopbouw", "transmissielimieten respecteren", "temperatuurgedrag controleren", "schakellogica passend bij gebruik"]
+    },
+    {
+      heading: "Onderhoud van de transmissie telt mee",
+      body: [
+        "Een automaat met oude olie, schokkerige overgangen of beginnende slip is geen ideale basis voor tuning. Het kan verstandig zijn om eerst onderhoud of diagnose uit te voeren. Bij DSG kijken we bijvoorbeeld naar koppelingen en adaptiewaarden; bij conventionele automaten naar temperatuur, slip en schakelkwaliteit.",
+        "Dat maakt het advies soms minder snel, maar wel beter. Een auto die na tuning prettig blijft schakelen, levert op straat meer rijplezier op dan een setup die alleen in een lijstje mooi oogt."
+      ]
+    },
+    {
+      heading: "Welke informatie helpt bij advies?",
+      body: [
+        "Voor een goed eerste advies zijn motorcode, bouwjaar, transmissietype, kilometerstand en eventuele klachten nuttig. Ook trekhaakgebruik, caravan, veel stadsritten of sportief gebruik kunnen invloed hebben op de beste keuze.",
+        "Met die context kunnen we uitleggen of alleen ECU remap logisch is, of dat DSG / TCU tuning, loganalyse of eerst onderhoud verstandiger is."
+      ]
+    }
+  ],
+  "wanneer-is-stage-2-tuning-verstandig": [
+    {
+      heading: "Stage 2 is een systeemkeuze",
+      body: [
+        "Een Stage 2 setup werkt alleen goed wanneer lucht, brandstof, temperatuur, uitlaatgasstroom en aandrijflijn samen kloppen. Een grotere turbo of downpipe zonder passende controle kan juist minder prettig rijden. Andersom kan goede hardware weinig opleveren wanneer de software te generiek is.",
+        "Daarom bekijken we Stage 2 als systeem, niet als pakketnaam. De vraag is niet alleen wat maximaal mogelijk is, maar wat deze auto herhaalbaar kan leveren met deze hardware, dit onderhoud en dit gebruik."
+      ],
+      bullets: ["hardware past bij software", "temperaturen blijven beheersbaar", "brandstofsysteem heeft marge", "koppeling of automaat kan het koppel aan", "gebruik en regelgeving zijn duidelijk"]
+    },
+    {
+      heading: "Wanneer eerst meten of repareren?",
+      body: [
+        "Als er al vermogensverlies, rook, noodloop, slip of foutcodes aanwezig zijn, is Stage 2 geen eerste stap. Dan wil je weten waarom de auto afwijkt. Loganalyse en diagnose geven antwoord voordat de belasting omhoog gaat.",
+        "Soms blijkt uit data dat een auto technisch prima is, maar een kleinere stap verstandiger blijft. Bijvoorbeeld omdat de koppeling op leeftijd is, de intercooler snel warm wordt of de eigenaar vooral dagelijks comfort wil."
+      ]
+    },
+    {
+      heading: "Stage 2 en publieke weg",
+      body: [
+        "Hardware-aanpassingen kunnen invloed hebben op emissies, geluidsniveau, keuring en verzekering. Daarom doen we geen algemene belofte dat elke Stage 2 setup overal geschikt of toegestaan is. De eigenaar blijft verantwoordelijk voor het gebruik en de lokale regels.",
+        "NoordTune.nl kan wel technisch meedenken: wat is gemonteerd, wat is softwarematig verantwoord, welke controle is nodig en welke verwachtingen zijn realistisch?"
+      ]
+    }
+  ],
+  "waarom-loganalyse-belangrijk-is-voor-tuning": [
+    {
+      heading: "Een log voorkomt giswerk",
+      body: [
+        "Zonder data blijft veel diagnose gebaseerd op gevoel. Een auto kan 'soms traag' zijn, maar de oorzaak kan luchtmassa, brandstofdruk, turbodrukregeling, temperatuur of transmissie-interventie zijn. Een log laat zien welke waarde afwijkt en op welk moment.",
+        "Voor tuning is dat belangrijk omdat software alleen goed kan worden afgestemd wanneer de basis klopt. Als de auto al afwijkt, bouw je anders software bovenop een probleem."
+      ],
+      bullets: ["objectieve data onder belasting", "afwijkingen zichtbaar in tijd", "betere keuze tussen tuning en reparatie", "nacontrole mogelijk na software-aanpassing"]
+    },
+    {
+      heading: "Welke fouten zie je vaak pas rijdend?",
+      body: [
+        "Een lekkende slang, traag reagerende turbo, dalende raildruk of oplopende inlaattemperatuur zie je niet altijd stationair. Ook een automaat die onder hoog koppel ingrijpt, valt pas op tijdens rijden. Daarom is een proefrit met data vaak waardevoller dan alleen uitlezen in de werkplaats.",
+        "Bij dieselmotoren letten we vaak op luchtmassa, turbodruk, raildruk, roetbelasting en EGR-gedrag. Bij benzinemotoren spelen lambda, ontsteking, knock-correcties, turbodruk en temperaturen vaak een grotere rol."
+      ]
+    },
+    {
+      heading: "Wat krijgt de klant uit een loganalyse?",
+      body: [
+        "Het resultaat is geen ruwe datadump, maar een advies. We leggen uit of de waarden normaal zijn, waar risico zit en welke vervolgstap logisch is. Dat kan tuning zijn, maar ook reparatie, onderhoud, extra controle of een rustiger softwaredoel.",
+        "Die aanpak past bij klanten die vermogen willen, maar ook willen begrijpen wat er technisch gebeurt."
+      ]
+    }
+  ],
+  "dsg-tcu-tuning-uitgelegd": [
+    {
+      heading: "TCU tuning is geen truc om alles harder te maken",
+      body: [
+        "Goede transmissiesoftware gaat over balans. Te harde schakelingen kunnen sportief voelen, maar zijn niet automatisch beter voor comfort of levensduur. De kunst is dat de transmissie de nieuwe motorkoppelcurve begrijpt en op het juiste moment schakelt.",
+        "Bij sommige auto's betekent dat hogere koppellimieten. Bij andere gaat het vooral om aangepaste schakelmomenten, kickdown-gedrag of rustiger reageren bij deelgas. De beste instelling hangt af van gebruik en transmissietype."
+      ],
+      bullets: ["koppellimieten waar nodig", "schakelstrategie passend bij rijstijl", "temperatuur en slip in de gaten houden", "comfort en betrouwbaarheid blijven leidend"]
+    },
+    {
+      heading: "Wanneer blijft originele TCU-software beter?",
+      body: [
+        "Niet elke auto heeft TCU tuning nodig. Als de originele transmissiesoftware het extra koppel goed accepteert en het schakelgedrag prettig blijft, kan een nette ECU remap voldoende zijn. Onnodige aanpassingen maken het systeem niet automatisch beter.",
+        "Daarom bespreken we DSG / TCU tuning als adviespunt, niet als verplicht product. Eerst kijken we wat het voertuig doet en wat de bestuurder verwacht."
+      ]
+    },
+    {
+      heading: "DSG, ZF en andere automaten verschillen",
+      body: [
+        "DSG, ZF-automaten, DCT-systemen en klassieke koppelomvormers hebben verschillende softwarelogica. Sommige zijn goed programmeerbaar, andere beperkt of helemaal niet. Ook bouwjaar en softwareversie maken verschil.",
+        "Een goede intake voorkomt verkeerde beloftes. Stuur daarom voertuiggegevens mee wanneer je vraagt naar DSG / TCU tuning."
+      ]
+    }
+  ],
+  "dpf-egr-of-adblue-storing-wat-nu": [
+    {
+      heading: "Waarom alleen wissen meestal niet werkt",
+      body: [
+        "Een foutcode wissen kan het lampje tijdelijk laten verdwijnen, maar lost de oorzaak niet op. Als een sensorwaarde opnieuw afwijkt, komt de storing terug. Bij AdBlue kan dat zelfs leiden tot aftelmeldingen; bij DPF tot noodloop of regeneratieproblemen.",
+        "Daarom kijken we naar de oorzaak: meetwaarden, rijprofiel, onderhoud, eerdere reparaties en de omstandigheden waaronder de storing terugkomt."
+      ],
+      bullets: ["foutcodes en freeze frame", "live data van sensoren", "roetbelasting en regeneratie", "NOx- en AdBlue-waarden", "advies passend bij wetgeving"]
+    },
+    {
+      heading: "Voorbeelden van oorzaken",
+      body: [
+        "Een DPF storing kan veroorzaakt worden door een defecte druksensor, te veel korte ritten, een EGR-probleem, motorstoring of echte filterverzadiging. Een AdBlue fout kan te maken hebben met NOx-sensoren, pompdruk, kristallisatie of temperatuur. Een EGR storing kan mechanisch, elektrisch of door vervuiling ontstaan.",
+        "Omdat de oorzaken zo verschillend zijn, is een standaardantwoord niet professioneel. Eerst meten, dan pas kiezen."
+      ]
+    },
+    {
+      heading: "Zorgvuldige publieke communicatie",
+      body: [
+        "Emissiesystemen hebben juridische gevolgen. Daarom gebruiken we op de website bewust termen als diagnose, storing analyse, advies op maat en software-oplossingen waar wettelijk toegestaan. We adverteren niet met generieke illegale verwijdering.",
+        "Voor de klant betekent dit: je krijgt duidelijkheid over de technische situatie en een advies dat rekening houdt met voertuig, gebruik en regelgeving."
+      ]
+    }
+  ]
+};
+
+const enDepthSections: Record<string, BlogArticle["sections"]> = {
+  "what-is-ecu-remap": [
+    {heading: "What NoordTune checks before advising", body: ["Before final advice, NoordTune looks at fault codes, live data, engine variant, ECU type, gearbox and the owner's use case. This keeps the conversation practical: what can this exact vehicle do, and what should be avoided?", "A remap should not be used to hide a weak turbo, slipping clutch, fuel-pressure issue or sensor fault. If the baseline is not right, diagnostics or maintenance come first."], bullets: ["engine and ECU identification", "fault-code and live-data review", "transmission and torque limits", "maintenance and fuel context"]},
+    {heading: "What should not be promised", body: ["No responsible tuner can promise the same gain for every vehicle. Software version, fuel, mileage, hardware and measurement method all matter. The Power Catalog is a useful starting point, while the final calibration remains vehicle-specific."]}
+  ],
+  "chiptuning-with-automatic-transmission": [
+    {heading: "Torque shape matters more than a peak figure", body: ["With an automatic, the shape of the torque curve often matters more than the highest horsepower number. Too much torque too early can make the gearbox intervene, shift nervously or generate extra heat.", "NoordTune aims for a calibration that feels stronger but still works with the gearbox strategy."], bullets: ["smooth torque delivery", "gearbox limits respected", "temperature behavior considered", "daily drivability protected"]},
+    {heading: "Useful information before booking", body: ["Engine, year, gearbox type, mileage and symptoms help us decide whether ECU remap alone is sensible or whether DSG/TCU tuning, log analysis or maintenance should be considered first."]}
+  ],
+  "when-does-stage-2-tuning-make-sense": [
+    {heading: "Stage 2 is a system decision", body: ["Stage 2 only makes sense when airflow, fuel, temperature control, clutch or gearbox and software all match. A single hardware part does not automatically make a car ready for Stage 2.", "That is why NoordTune treats Stage 2 as a vehicle-specific plan rather than a generic package."], bullets: ["hardware supports the target", "logs confirm healthy behavior", "legal use is considered", "owner expectations are realistic"]},
+    {heading: "When Stage 1 is the better answer", body: ["For many daily cars, Stage 1 gives the best balance of torque, comfort and reliability. If the vehicle is older, used for commuting or not fully maintained, a measured Stage 1 can be the more professional recommendation."]}
+  ],
+  "why-log-analysis-matters-before-tuning": [
+    {heading: "Logs make hidden limits visible", body: ["Some issues only appear during a pull under load. Boost control, fuel pressure, intake temperature or gearbox intervention can look fine in the workshop but deviate on the road.", "This is why logs are valuable before tuning and also useful after tuning to confirm that the calibration behaves as expected."], bullets: ["data under real load", "clearer risk assessment", "better calibration decisions", "useful comparison after tuning"]},
+    {heading: "From numbers to a useful recommendation", body: ["The customer should not receive only raw data. The important part is the conclusion: tune, repair, inspect further, reduce the target or plan an after-check."]}
+  ],
+  "dsg-tcu-tuning-explained": [
+    {heading: "Not every gearbox needs the same change", body: ["Some cars need torque limit alignment, others benefit from shift strategy changes, and some should remain on original TCU software. The correct decision depends on gearbox type, software support and driving use.", "Good TCU tuning should support the engine remap without making daily driving unnecessarily harsh."], bullets: ["torque limits", "shift timing", "temperature strategy", "comfort and control"]},
+    {heading: "Why intake information matters", body: ["Year, gearbox code, engine output, current symptoms and tuning goal help NoordTune decide whether TCU tuning is useful or unnecessary."]}
+  ],
+  "dpf-egr-adblue-fault-what-now": [
+    {heading: "Why clearing the code is not enough", body: ["A warning can disappear after clearing, but it will return if the cause remains. DPF, EGR and AdBlue systems rely on sensors, temperatures, pressure values and driving profile.", "A professional approach checks the reason behind the warning before deciding on repair, cleaning, software advice or further diagnosis."], bullets: ["fault codes and freeze-frame data", "live sensor values", "vehicle use and maintenance", "legal context"]},
+    {heading: "Careful public wording matters", body: ["Emissions-related systems are regulated. NoordTune therefore talks about diagnostics, fault analysis, tailored advice and software solutions only where legally permitted. We do not present one universal shortcut for every vehicle."]}
+  ]
+};
+
+const plDepthSections: Record<string, BlogArticle["sections"]> = {
+  "co-to-jest-remap-ecu": [
+    {heading: "Co NoordTune sprawdza przed poradą", body: ["Przed finalną decyzją liczy się nie tylko model auta. Sprawdzamy błędy, live data, wersję silnika, sterownik ECU, skrzynię i sposób użytkowania. Dzięki temu rozmowa dotyczy konkretnego samochodu, a nie ogólnej obietnicy.", "Remap nie powinien przykrywać słabej turbiny, ślizgającego sprzęgła, problemu z paliwem albo czujnikiem. Jeśli baza jest zła, najpierw potrzebna jest diagnostyka lub serwis."], bullets: ["identyfikacja silnika i ECU", "błędy i live data", "limity skrzyni oraz momentu", "serwis i paliwo"]},
+    {heading: "Czego nie należy obiecywać", body: ["Nie da się uczciwie zagwarantować identycznego przyrostu w każdym aucie. Wersja softu, paliwo, przebieg, osprzęt i metoda pomiaru mają znaczenie. Katalog mocy jest punktem startu, a finalna kalibracja pozostaje indywidualna."]}
+  ],
+  "chiptuning-z-automatyczna-skrzynia": [
+    {heading: "Kształt momentu jest ważniejszy niż sam szczyt", body: ["W automacie często ważniejsza jest krzywa momentu niż maksymalna liczba KM. Zbyt dużo momentu zbyt wcześnie może powodować reakcję skrzyni, nerwową zmianę biegów albo wyższą temperaturę.", "NoordTune dąży do kalibracji, która daje więcej siły, ale nadal pasuje do logiki skrzyni."], bullets: ["płynny przyrost momentu", "respektowanie limitów skrzyni", "kontrola temperatury", "komfort jazdy na co dzień"]},
+    {heading: "Informacje przydatne przed wizytą", body: ["Silnik, rocznik, typ skrzyni, przebieg i objawy pomagają ocenić, czy wystarczy remap ECU, czy warto rozważyć DSG/TCU tuning, logi albo najpierw serwis."]}
+  ],
+  "kiedy-stage-2-ma-sens": [
+    {heading: "Stage 2 to decyzja o całym układzie", body: ["Stage 2 ma sens, gdy powietrze, paliwo, temperatury, sprzęgło lub skrzynia oraz oprogramowanie pasują do siebie. Jeden element osprzętu nie oznacza automatycznie, że auto jest gotowe.", "Dlatego NoordTune traktuje Stage 2 jako plan dla konkretnego samochodu, a nie uniwersalny pakiet."], bullets: ["osprzęt wspiera cel", "logi potwierdzają zdrową pracę", "przepisy są uwzględnione", "oczekiwania są realistyczne"]},
+    {heading: "Kiedy Stage 1 jest lepszy", body: ["W wielu autach codziennych Stage 1 daje najlepszy balans momentu, komfortu i trwałości. Przy starszym aucie, dużym przebiegu lub niepełnym serwisie spokojny Stage 1 może być bardziej profesjonalną rekomendacją."]}
+  ],
+  "dlaczego-logi-sa-wazne-przed-tuningiem": [
+    {heading: "Logi pokazują ukryte limity", body: ["Część problemów pojawia się tylko podczas przyspieszania pod obciążeniem. Sterowanie turbo, ciśnienie paliwa, temperatura dolotu albo interwencja skrzyni mogą wyglądać dobrze w warsztacie, ale inaczej na drodze.", "Dlatego logi są przydatne przed tuningiem i po modyfikacji, aby potwierdzić, że kalibracja działa prawidłowo."], bullets: ["dane pod realnym obciążeniem", "lepsza ocena ryzyka", "dokładniejsza kalibracja", "porównanie po tuningu"]},
+    {heading: "Od liczb do decyzji", body: ["Klient nie powinien dostać tylko surowych danych. Najważniejszy jest wniosek: można stroić, trzeba naprawić, warto dalej diagnozować, obniżyć cel albo zaplanować kontrolę po usłudze."]}
+  ],
+  "dsg-tcu-tuning-wyjasnienie": [
+    {heading: "Nie każda skrzynia wymaga tej samej zmiany", body: ["Jedne auta potrzebują dopasowania limitów momentu, inne zmiany strategii biegów, a niektóre najlepiej zostawić na oryginalnym sofcie TCU. Decyzja zależy od typu skrzyni, wsparcia narzędzi i stylu jazdy.", "Dobry TCU tuning wspiera remap silnika, ale nie powinien niepotrzebnie pogarszać komfortu."], bullets: ["limity momentu", "momenty zmiany biegów", "strategia temperatur", "komfort i kontrola"]},
+    {heading: "Dlaczego dane auta są ważne", body: ["Rocznik, kod skrzyni, silnik, aktualne objawy i cel tuningu pomagają ocenić, czy TCU tuning ma sens, czy byłby tylko niepotrzebną zmianą."]}
+  ],
+  "dpf-egr-adblue-usterka-co-dalej": [
+    {heading: "Samo skasowanie błędu nie wystarcza", body: ["Kontrolka może zniknąć po skasowaniu, ale wróci, jeśli przyczyna pozostanie. DPF, EGR i AdBlue zależą od czujników, temperatur, ciśnień oraz sposobu użytkowania auta.", "Profesjonalna diagnoza sprawdza powód komunikatu, zanim wybierze się naprawę, czyszczenie, poradę programową lub dalsze pomiary."], bullets: ["kody błędów i freeze frame", "live data czujników", "użytkowanie i serwis", "kontekst prawny"]},
+    {heading: "Ostrożne publiczne słownictwo", body: ["Układy emisji podlegają przepisom. Dlatego NoordTune mówi o diagnostyce, analizie usterek, doradztwie i rozwiązaniach programowych tylko tam, gdzie są dozwolone. Nie przedstawiamy jednej drogi na skróty dla każdego auta."]}
+  ]
+};
+
+function appendDepth(articles: BlogArticle[], sectionsBySlug: Record<string, BlogArticle["sections"]>) {
+  for (const article of articles) {
+    article.sections.push(...(sectionsBySlug[article.slug] ?? []));
+  }
+}
+
+appendDepth(nlGrowthBlogArticles, nlDepthSections);
+appendDepth(enGrowthBlogArticles, enDepthSections);
+appendDepth(plGrowthBlogArticles, plDepthSections);
