@@ -1,5 +1,6 @@
 import type {FaqItem} from "./copy";
 import {enBlogArticles} from "./blog-articles-data-en";
+import {enGrowthBlogArticles, nlGrowthBlogArticles, plGrowthBlogArticles} from "./blog-articles-growth";
 import {nlBlogArticles} from "./blog-articles-data-nl";
 import {plBlogArticles} from "./blog-articles-data-pl";
 import {pageRoutes, site, type Locale} from "./site";
@@ -87,6 +88,9 @@ export function blogArticleStaticParams() {
 
 export const blogArticles: BlogArticle[] = [
   ...nlBlogArticles,
+  ...nlGrowthBlogArticles,
   ...enBlogArticles,
-  ...plBlogArticles
+  ...enGrowthBlogArticles,
+  ...plBlogArticles,
+  ...plGrowthBlogArticles
 ];

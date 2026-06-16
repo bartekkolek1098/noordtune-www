@@ -29,6 +29,7 @@ const files = [
   "src/content/site.ts",
   "src/content/seo-landings.ts",
   "src/content/blog-articles.ts",
+  "src/content/blog-articles-growth.ts",
   "src/content/blog-articles-data-nl.ts",
   "src/content/blog-articles-data-en.ts",
   "src/content/blog-articles-data-pl.ts",
@@ -150,7 +151,13 @@ async function main() {
       "/nl/blog/is-ecu-remap-veilig",
       "/nl/blog/adblue-storing-uitgelegd",
       "/nl/blog/5-tips-na-een-tuning",
-      "/nl/blog/waarom-diagnose-voor-tuning-belangrijk-is"
+      "/nl/blog/waarom-diagnose-voor-tuning-belangrijk-is",
+      "/nl/blog/wat-is-ecu-remap",
+      "/nl/blog/chiptuning-met-automaat",
+      "/nl/blog/wanneer-is-stage-2-tuning-verstandig",
+      "/nl/blog/waarom-loganalyse-belangrijk-is-voor-tuning",
+      "/nl/blog/dsg-tcu-tuning-uitgelegd",
+      "/nl/blog/dpf-egr-of-adblue-storing-wat-nu"
     ],
     en: [
       "/en/news-blog/what-is-chiptuning",
@@ -158,7 +165,13 @@ async function main() {
       "/en/news-blog/is-ecu-remap-safe",
       "/en/news-blog/adblue-fault-explained",
       "/en/news-blog/5-tips-after-a-tune",
-      "/en/news-blog/why-diagnostics-before-tuning-matter"
+      "/en/news-blog/why-diagnostics-before-tuning-matter",
+      "/en/news-blog/what-is-ecu-remap",
+      "/en/news-blog/chiptuning-with-automatic-transmission",
+      "/en/news-blog/when-does-stage-2-tuning-make-sense",
+      "/en/news-blog/why-log-analysis-matters-before-tuning",
+      "/en/news-blog/dsg-tcu-tuning-explained",
+      "/en/news-blog/dpf-egr-adblue-fault-what-now"
     ],
     pl: [
       "/pl/aktualnosci-blog/co-to-jest-chiptuning",
@@ -166,7 +179,13 @@ async function main() {
       "/pl/aktualnosci-blog/czy-remap-ecu-jest-bezpieczny",
       "/pl/aktualnosci-blog/usterka-adblue-wyjasnienie",
       "/pl/aktualnosci-blog/5-zalecen-po-chiptuningu",
-      "/pl/aktualnosci-blog/dlaczego-diagnostyka-przed-tuningiem-jest-wazna"
+      "/pl/aktualnosci-blog/dlaczego-diagnostyka-przed-tuningiem-jest-wazna",
+      "/pl/aktualnosci-blog/co-to-jest-remap-ecu",
+      "/pl/aktualnosci-blog/chiptuning-z-automatyczna-skrzynia",
+      "/pl/aktualnosci-blog/kiedy-stage-2-ma-sens",
+      "/pl/aktualnosci-blog/dlaczego-logi-sa-wazne-przed-tuningiem",
+      "/pl/aktualnosci-blog/dsg-tcu-tuning-wyjasnienie",
+      "/pl/aktualnosci-blog/dpf-egr-adblue-usterka-co-dalej"
     ]
   } satisfies Record<Locale, string[]>;
 
@@ -212,6 +231,13 @@ async function main() {
     const serialized = JSON.stringify(article);
     if (/facebook|social update/i.test(serialized)) {
       failures.push(`SEO article appears to contain social/Facebook update content: ${route}`);
+    }
+    if (article.heroImage.startsWith("/")) {
+      try {
+        await readFile(join(root, "public", article.heroImage.slice(1)));
+      } catch {
+        failures.push(`Article hero image file is missing: ${route} -> ${article.heroImage}`);
+      }
     }
     if (article.locale === "pl") {
       const visibleText = [

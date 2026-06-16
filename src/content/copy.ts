@@ -989,7 +989,13 @@ export const posts: Record<Locale, BlogPost[]> = {
     {slug: "is-ecu-remap-veilig", title: "Is ECU remap veilig voor mijn motor?", excerpt: "Veiligheid hangt af van marges, onderhoud, diagnose en de manier waarop software wordt aangepast.", category: "Advies", readTime: "7 min"},
     {slug: "adblue-storing-uitgelegd", title: "AdBlue storing uitgelegd", excerpt: "Wat betekent een AdBlue storing, welke diagnose is nodig en welke oplossingen zijn wettelijk mogelijk?", category: "Diagnose", readTime: "4 min"},
     {slug: "tips-na-tuning", title: "5 tips na een tuning", excerpt: "Praktische tips over warmrijden, onderhoud, brandstofkwaliteit en wanneer je opnieuw moet laten controleren.", category: "Nazorg", readTime: "5 min"},
-    {slug: "diagnose-voor-tuning", title: "Waarom diagnose voor tuning belangrijk is", excerpt: "Een goede tuning begint met weten of de motor, sensoren en transmissie gezond zijn.", category: "Diagnose", readTime: "6 min"}
+    {slug: "diagnose-voor-tuning", title: "Waarom diagnose voor tuning belangrijk is", excerpt: "Een goede tuning begint met weten of de motor, sensoren en transmissie gezond zijn.", category: "Diagnose", readTime: "6 min"},
+    {slug: "wat-is-ecu-remap", title: "Wat is ECU remap?", excerpt: "Een praktische uitleg over motorsoftware, kalibratie, diagnose en waarom maatwerk belangrijk is.", category: "ECU remap", readTime: "9 min"},
+    {slug: "chiptuning-met-automaat", title: "Chiptuning met automaat", excerpt: "Waar moet je op letten bij automaat, DSG of TCU wanneer het motorkoppel toeneemt?", category: "Automaat", readTime: "8 min"},
+    {slug: "wanneer-is-stage-2-tuning-verstandig", title: "Wanneer is Stage 2 tuning verstandig?", excerpt: "Stage 2 vraagt passende hardware, loganalyse en eerlijk advies over risico's en regelgeving.", category: "Stage 2", readTime: "9 min"},
+    {slug: "waarom-loganalyse-belangrijk-is-voor-tuning", title: "Waarom loganalyse belangrijk is vóór tuning", excerpt: "Logbestanden laten zien hoe turbodruk, brandstof, luchtmassa en temperatuur zich onder belasting gedragen.", category: "Loganalyse", readTime: "8 min"},
+    {slug: "dsg-tcu-tuning-uitgelegd", title: "DSG / TCU tuning uitgelegd", excerpt: "Hoe transmissiesoftware, koppellimieten en schakellogica samenwerken met een ECU remap.", category: "DSG / TCU", readTime: "8 min"},
+    {slug: "dpf-egr-of-adblue-storing-wat-nu", title: "DPF, EGR of AdBlue storing: wat nu?", excerpt: "Een zorgvuldige uitleg over diagnose, storing analyse en oplossingen waar wettelijk toegestaan.", category: "Diagnose", readTime: "9 min"}
   ],
   en: [
     {slug: "what-is-chiptuning", title: "What is chiptuning?", excerpt: "A clear explanation of ECU remap, torque, power and custom software.", category: "Chiptuning", readTime: "5 min"},
@@ -997,7 +1003,13 @@ export const posts: Record<Locale, BlogPost[]> = {
     {slug: "is-ecu-remap-safe", title: "Is ECU remap safe?", excerpt: "Safety depends on margins, maintenance, diagnosis and how software is calibrated.", category: "Advice", readTime: "7 min"},
     {slug: "adblue-fault-explained", title: "AdBlue fault explained", excerpt: "What an AdBlue fault means and which legal diagnostic steps are possible.", category: "Diagnostics", readTime: "4 min"},
     {slug: "tips-after-tuning", title: "5 tips after tuning", excerpt: "Warm-up, maintenance, fuel quality and when to schedule checks.", category: "Aftercare", readTime: "5 min"},
-    {slug: "diagnostics-before-tuning", title: "Why diagnose before tuning", excerpt: "Good tuning starts with knowing the engine and transmission are healthy.", category: "Diagnostics", readTime: "6 min"}
+    {slug: "diagnostics-before-tuning", title: "Why diagnose before tuning", excerpt: "Good tuning starts with knowing the engine and transmission are healthy.", category: "Diagnostics", readTime: "6 min"},
+    {slug: "what-is-ecu-remap", title: "What is ECU remap?", excerpt: "A practical explanation of engine software, calibration, diagnostics and custom tuning.", category: "ECU remap", readTime: "7 min"},
+    {slug: "chiptuning-with-automatic-transmission", title: "Chiptuning with automatic transmission", excerpt: "What to check when tuning an automatic, DSG or TCU-controlled vehicle.", category: "Automatic", readTime: "7 min"},
+    {slug: "when-does-stage-2-tuning-make-sense", title: "When does Stage 2 tuning make sense?", excerpt: "Stage 2 needs supporting hardware, log checks and realistic advice about vehicle limits.", category: "Stage 2", readTime: "8 min"},
+    {slug: "why-log-analysis-matters-before-tuning", title: "Why log analysis matters before tuning", excerpt: "Logs show how boost, fuel, airflow and temperature behave under real driving load.", category: "Diagnostics", readTime: "7 min"},
+    {slug: "dsg-tcu-tuning-explained", title: "DSG / TCU tuning explained", excerpt: "How gearbox software, torque limits and shift logic work together with ECU remap.", category: "DSG / TCU", readTime: "7 min"},
+    {slug: "dpf-egr-adblue-fault-what-now", title: "DPF, EGR or AdBlue fault: what now?", excerpt: "Careful diagnostics and legal, vehicle-specific advice for emissions-system faults.", category: "Diagnostics", readTime: "8 min"}
   ],
   pl: [
     {slug: "czym-jest-chiptuning", title: "Czym jest chiptuning?", excerpt: "Proste wyjaśnienie remapu ECU, mocy, momentu i indywidualnego oprogramowania.", category: "Chiptuning", readTime: "5 min"},
@@ -1005,7 +1017,13 @@ export const posts: Record<Locale, BlogPost[]> = {
     {slug: "czy-remap-ecu-jest-bezpieczny", title: "Czy remap ECU jest bezpieczny?", excerpt: "Bezpieczeństwo zależy od marginesów, stanu auta, diagnostyki i sposobu kalibracji.", category: "Porady", readTime: "7 min"},
     {slug: "adblue-wyjasnienie-usterki", title: "AdBlue - wyjaśnienie usterki", excerpt: "Co oznacza błąd AdBlue i jakie kroki diagnostyczne są możliwe zgodnie z przepisami?", category: "Diagnostyka", readTime: "4 min"},
     {slug: "porady-po-tuningu", title: "5 porad po tuningu", excerpt: "Rozgrzewanie, serwis, jakość paliwa i kontrola po modyfikacji.", category: "Po usłudze", readTime: "5 min"},
-    {slug: "diagnostyka-przed-tuningiem", title: "Dlaczego diagnostyka przed tuningiem?", excerpt: "Dobry tuning zaczyna się od zdrowego silnika, osprzętu i skrzyni.", category: "Diagnostyka", readTime: "6 min"}
+    {slug: "diagnostyka-przed-tuningiem", title: "Dlaczego diagnostyka przed tuningiem?", excerpt: "Dobry tuning zaczyna się od zdrowego silnika, osprzętu i skrzyni.", category: "Diagnostyka", readTime: "6 min"},
+    {slug: "co-to-jest-remap-ecu", title: "Co to jest remap ECU?", excerpt: "Wyjaśnienie kalibracji sterownika silnika, diagnostyki i indywidualnego podejścia do auta.", category: "Remap ECU", readTime: "8 min"},
+    {slug: "chiptuning-z-automatyczna-skrzynia", title: "Chiptuning z automatyczną skrzynią", excerpt: "Na co zwrócić uwagę przy tuningu auta z automatem, DSG lub sterownikiem TCU.", category: "Automat", readTime: "7 min"},
+    {slug: "kiedy-stage-2-ma-sens", title: "Kiedy Stage 2 ma sens?", excerpt: "Stage 2 wymaga właściwego osprzętu, logów i uczciwej oceny technicznej auta.", category: "Stage 2", readTime: "8 min"},
+    {slug: "dlaczego-logi-sa-wazne-przed-tuningiem", title: "Dlaczego logi są ważne przed tuningiem", excerpt: "Logi pokazują, jak doładowanie, paliwo, przepływ powietrza i temperatury zachowują się pod obciążeniem.", category: "Logi", readTime: "7 min"},
+    {slug: "dsg-tcu-tuning-wyjasnienie", title: "DSG / TCU tuning — wyjaśnienie", excerpt: "Jak oprogramowanie skrzyni, limity momentu i zmiany biegów współpracują z remapem ECU.", category: "DSG / TCU", readTime: "7 min"},
+    {slug: "dpf-egr-adblue-usterka-co-dalej", title: "DPF, EGR lub AdBlue — usterka, co dalej?", excerpt: "Ostrożne podejście do diagnostyki, analizy usterek i rozwiązań zgodnych z przepisami.", category: "Diagnostyka", readTime: "8 min"}
   ]
 };
 
