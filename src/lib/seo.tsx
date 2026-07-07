@@ -228,8 +228,6 @@ export function localBusinessJsonLd(locale: Locale) {
     email: site.email,
     address: {
       "@type": "PostalAddress",
-      streetAddress: "A. Vogelstraat 1",
-      postalCode: "9406 XD",
       addressLocality: "Assen",
       addressRegion: "Drenthe",
       addressCountry: "NL"
