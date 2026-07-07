@@ -29,7 +29,7 @@ export const site = {
   email: "info@noordtune.nl",
   city: "Assen",
   country: "Netherlands",
-  address: "A. Vogelstraat 1, 9406 XD Assen",
+  address: "Assen",
   opening: "Ma - Za: 09:00 - 18:00"
 } as const;
 

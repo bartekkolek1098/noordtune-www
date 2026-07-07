@@ -9,7 +9,7 @@ Use this checklist for the first manual owner review after launch.
 
 - [ ] Verify phone number: `+31 685 759 600`
 - [ ] Verify WhatsApp button opens correctly
-- [ ] Verify address: `A. Vogelstraat 1, 9406 XD Assen`
+- [ ] Verify address: `Assen`
 - [ ] Verify city/service area text: Assen, Drenthe, Groningen and Noord-Nederland
 - [ ] Verify opening hours
 - [ ] Send a test WhatsApp message from the website

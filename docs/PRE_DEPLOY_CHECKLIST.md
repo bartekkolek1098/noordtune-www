@@ -62,7 +62,7 @@ Date: 2026-06-12
 
 - [ ] Contact details confirmed: `+31 685 759 600`
 - [ ] WhatsApp link confirmed: `https://wa.me/31685759600`
-- [ ] Address confirmed: `A. Vogelstraat 1, 9406 XD Assen`
+- [ ] Address confirmed: `Assen`
 - [ ] Opening hours confirmed
 - [ ] Privacy page reviewed
 - [ ] Terms page reviewed
