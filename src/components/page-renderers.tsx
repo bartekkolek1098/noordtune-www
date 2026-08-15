@@ -1,4 +1,5 @@
 import {BlogCard, PricingCard, ResultCardView, ServiceCard} from "@/components/cards";
+import {ButtonLink} from "@/components/button";
 import {CTASection} from "@/components/cta-section";
 import {FAQ} from "@/components/faq";
 import {FeatureGrid} from "@/components/feature-grid";
@@ -23,7 +24,7 @@ import {
   services,
   whyItems
 } from "@/content/copy";
-import {displayCustomerResults} from "@/content/customer-results";
+import {displayCustomerResults, featuredCustomerResults} from "@/content/customer-results";
 import {heroImages, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
 const ui = {
@@ -83,21 +84,21 @@ const ui = {
 const resultsIntro = {
   nl: {
     kicker: "Klantresultaten",
-    title: "Geselecteerde NoordTune projecten, eerlijk en voertuigspecifiek.",
+    title: "Het volledige portfolio van NoordTune klantprojecten.",
     text:
-      "Hier verzamelen we echte gepubliceerde NoordTune klantprojecten. Elke case hoort bij een specifiek voertuig en wordt pas gepubliceerd wanneer de gegevens veilig genoeg zijn om te delen. Resultaten hangen af van onderhoudsstaat, softwareversie, brandstof, ECU/TCU, transmissie, hardware en gebruik. Controleer jouw auto in de Power Catalog voor een voertuigspecifieke indicatie."
+      "Bekijk alle gepubliceerde NoordTune projecten met voertuigspecifieke context. Resultaten hangen af van onderhoudsstaat, softwareversie, brandstof, ECU/TCU, transmissie, hardware en gebruik. Controleer jouw auto in de Power Catalog voor een persoonlijke indicatie."
   },
   en: {
     kicker: "Customer results",
-    title: "Selected NoordTune projects, published with realistic context.",
+    title: "The complete portfolio of published NoordTune projects.",
     text:
-      "This portfolio contains selected NoordTune customer projects. Every result belongs to a specific vehicle and configuration, and is only published when the data is safe to share. Figures vary with vehicle condition, software version, fuel, ECU/TCU, transmission, hardware and use. Use the Power Catalog for a vehicle-specific indication."
+      "Explore all published NoordTune projects with vehicle-specific context. Results vary with vehicle condition, software version, fuel, ECU/TCU, transmission, hardware and use. Use the Power Catalog for a tailored indication."
   },
   pl: {
     kicker: "Realizacje klientów",
-    title: "Wybrane projekty NoordTune z realistycznym kontekstem.",
+    title: "Pełne portfolio opublikowanych realizacji NoordTune.",
     text:
-      "Publikowane realizacje dotyczą konkretnych aut obsłużonych przez NoordTune. Każdy wynik zależy od stanu samochodu, wersji oprogramowania, paliwa, skrzyni biegów, ECU/TCU, osprzętu i sposobu użytkowania. Użyj katalogu mocy, aby sprawdzić orientacyjne możliwości swojego auta."
+      "Zobacz wszystkie opublikowane realizacje NoordTune z opisem konkretnego auta. Wyniki zależą od stanu samochodu, wersji oprogramowania, paliwa, skrzyni biegów, ECU/TCU, osprzętu i sposobu użytkowania. W katalogu mocy sprawdzisz orientacyjne możliwości swojego auta."
   }
 } satisfies Record<Locale, {kicker: string; title: string; text: string}>;
 
@@ -107,9 +108,38 @@ const resultsFutureNote = {
   pl: "Kolejne realizacje klientów zostaną dodane wkrótce."
 } satisfies Record<Locale, string>;
 
+const homeResultsCopy = {
+  nl: {
+    kicker: "Portfolio",
+    title: "Uitgelichte klantresultaten",
+    text: "Een selectie van recente NoordTune projecten. Bekijk de volledige resultatenpagina voor meer voertuigen, stages en software-oplossingen.",
+    cta: "Bekijk alle klantresultaten"
+  },
+  en: {
+    kicker: "Portfolio",
+    title: "Featured customer results",
+    text: "A selection of recent NoordTune projects. Visit the full results page for more vehicles, stages and software solutions.",
+    cta: "View all customer results"
+  },
+  pl: {
+    kicker: "Portfolio",
+    title: "Wyróżnione realizacje klientów",
+    text: "Wybrane realizacje NoordTune. Pełną listę aut, modyfikacji i wyników znajdziesz w zakładce realizacje.",
+    cta: "Zobacz wszystkie realizacje"
+  }
+} satisfies Record<Locale, {kicker: string; title: string; text: string; cta: string}>;
+
+const archiveCategoryLabels = {
+  nl: ["Alle resultaten", "ECU tuning", "TCU tuning", "ECU cloning", "Stage 1", "Stage 2+"],
+  en: ["All results", "ECU tuning", "TCU tuning", "ECU cloning", "Stage 1", "Stage 2+"],
+  pl: ["Wszystkie realizacje", "Tuning ECU", "Tuning TCU", "Klonowanie ECU", "Stage 1", "Stage 2+"]
+} satisfies Record<Locale, string[]>;
+
 export function HomeRenderer({locale}: {locale: Locale}) {
   const home = homeContent[locale];
   const labels = ui[locale];
+  const featuredResults = featuredCustomerResults(locale);
+  const resultsCopy = homeResultsCopy[locale];
 
   return (
     <>
@@ -179,30 +209,22 @@ export function HomeRenderer({locale}: {locale: Locale}) {
         <section className="container py-12 md:py-16">
           <SectionHeader
             align="center"
-            kicker={locale === "nl" ? "Klantresultaten" : locale === "en" ? "Customer results" : "Realizacje klientów"}
-            text={
-              locale === "nl"
-                ? "Echte gepubliceerde NoordTune cases met voertuigspecifieke context. Nieuwe projecten worden toegevoegd zodra beeld, data en goedkeuring compleet zijn."
-                : locale === "en"
-                  ? "Real published NoordTune cases with vehicle-specific context. More projects will be added when data, images and approval are complete."
-                  : "Prawdziwe opublikowane realizacje NoordTune z kontekstem konkretnego auta. Kolejne projekty dodamy po zatwierdzeniu danych i zdjęć."
-            }
-            title={
-              locale === "nl"
-                ? "Portfolio van realisaties"
-                : locale === "en"
-                  ? "Customer result portfolio"
-                  : "Portfolio realizacji"
-            }
+            kicker={resultsCopy.kicker}
+            text={resultsCopy.text}
+            title={resultsCopy.title}
           />
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {displayCustomerResults(locale).map((result) => (
-              <ResultCardView key={result.id} locale={locale} result={result} />
+            {featuredResults.map((result, index) => (
+              <div className={`h-full [&>article]:h-full ${index === 2 ? "hidden sm:block" : ""}`} key={result.id}>
+                <ResultCardView locale={locale} result={result} />
+              </div>
             ))}
           </div>
-          <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-white/50">
-            {resultsFutureNote[locale]}
-          </p>
+          <div className="mt-8 flex justify-center">
+            <ButtonLink href={pathFor(locale, "resultaten")} variant="outline">
+              {resultsCopy.cta}
+            </ButtonLink>
+          </div>
         </section>
 
         <section className="container py-12 md:py-16">
@@ -391,7 +413,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           secondaryLabel={locale === "nl" ? "WhatsApp ons" : locale === "en" ? "Message us on WhatsApp" : "Napisz na WhatsApp"}
           stats={[
             {value: String(displayCustomerResults(locale).length), label: locale === "nl" ? "Gepubliceerde cases" : locale === "en" ? "Published cases" : "Opublikowane realizacje"},
-            {value: "Stage 1", label: locale === "nl" ? "Eerste klantcase" : locale === "en" ? "First customer case" : "Pierwsza realizacja"},
+            {value: "ECU / TCU", label: locale === "nl" ? "Software en transmissie" : locale === "en" ? "Engine and transmission" : "Silnik i skrzynia"},
             {value: "100%", label: locale === "nl" ? "Voertuigafhankelijk" : locale === "en" ? "Vehicle dependent" : "Zależne od auta"},
             {value: "RDW", label: locale === "nl" ? "Cataloguscheck" : locale === "en" ? "Catalog check" : "Katalog"}
           ]}
@@ -399,9 +421,26 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           title={resultsBlock.title}
         />
         <section className="container py-12 md:py-16">
+          <div
+            aria-label={locale === "nl" ? "Resultaatcategorieën" : locale === "en" ? "Result categories" : "Kategorie realizacji"}
+            className="mb-7 flex flex-wrap gap-2 border-y border-white/10 py-4"
+          >
+            {archiveCategoryLabels[locale].map((label, index) => (
+              <span
+                className={`rounded-[3px] border px-3 py-1.5 text-xs font-black uppercase ${
+                  index === 0
+                    ? "border-primary/55 bg-primary/12 text-white"
+                    : "border-white/12 bg-black/25 text-white/55"
+                }`}
+                key={label}
+              >
+                {label}
+              </span>
+            ))}
+          </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {displayCustomerResults(locale).map((result) => (
-              <ResultCardView key={result.id} locale={locale} result={result} />
+              <ResultCardView key={result.id} locale={locale} result={result} showTags />
             ))}
           </div>
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-white/50">

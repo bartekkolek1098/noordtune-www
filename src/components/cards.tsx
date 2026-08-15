@@ -8,6 +8,7 @@ import {
   customerResultCardImage,
   customerResultDisplayMetrics,
   customerResultPath,
+  customerResultServiceTags,
   isPublicCustomerResult,
   type CustomerResult
 } from "@/content/customer-results";
@@ -131,7 +132,15 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
   );
 }
 
-export function ResultCardView({result, locale}: {result: CustomerResult; locale: Locale}) {
+export function ResultCardView({
+  result,
+  locale,
+  showTags = false
+}: {
+  result: CustomerResult;
+  locale: Locale;
+  showTags?: boolean;
+}) {
   const copy = labels[locale];
   const image = customerResultCardImage(result);
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
@@ -140,6 +149,7 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
   const highlight = metrics.find((metric) => metric.accent) ?? metrics.at(-1);
   const detailHref = isPublicCustomerResult(result) ? customerResultPath(result) : undefined;
   const isCustomer = isPublicCustomerResult(result);
+  const tags = showTags ? customerResultServiceTags(result) : [];
 
   return (
     <article className="panel-edge overflow-hidden rounded-[3px]">
@@ -196,6 +206,18 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
           </div>
         ) : null}
         <p className="mt-4 text-sm leading-6 text-white/65">{result.shortDescription}</p>
+        {tags.length > 0 ? (
+          <ul aria-label={locale === "nl" ? "Categorieën" : locale === "en" ? "Categories" : "Kategorie"} className="mt-4 flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <li
+                className="rounded-[3px] border border-white/12 bg-white/[0.035] px-2.5 py-1 text-[0.65rem] font-black uppercase text-white/62"
+                key={tag}
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
+        ) : null}
         <p className="mt-3 text-xs leading-5 text-white/42">{result.disclaimer}</p>
         <div className="mt-5 grid gap-2">
           {detailHref ? (

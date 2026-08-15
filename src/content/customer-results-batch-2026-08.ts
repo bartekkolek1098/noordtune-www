@@ -15,6 +15,9 @@ type ResultBase = Pick<
   | "tunedTorqueNm"
   | "gainPowerHp"
   | "gainTorqueNm"
+  | "featuredOnHome"
+  | "featuredOrder"
+  | "category"
   | "licensePlateVisible"
   | "licensePlateApproved"
   | "certificateAvailable"
@@ -37,6 +40,7 @@ type LocalizedResult = {
   fuelType?: string;
   shortDescription: string;
   technicalNotes: string[];
+  serviceTags?: string[];
   resultMetrics?: CustomerResultMetric[];
   certificateNote?: string;
   disclaimer: string;
@@ -65,6 +69,10 @@ function publishedResult(base: ResultBase, copy: LocalizedResult): CustomerResul
     tcu: copy.tcu,
     serviceType: copy.serviceType,
     stage: copy.stage,
+    featuredOnHome: base.featuredOnHome,
+    featuredOrder: base.featuredOrder,
+    category: base.category,
+    serviceTags: copy.serviceTags ?? [copy.stage, copy.fuelType].filter((tag): tag is string => Boolean(tag)),
     fuelType: copy.fuelType,
     stockPowerHp: base.stockPowerHp,
     stockTorqueNm: base.stockTorqueNm,
@@ -103,6 +111,7 @@ const fordTransit: ResultBase = {
   tunedTorqueNm: 320,
   gainPowerHp: 45,
   gainTorqueNm: 70,
+  category: "ecu-tuning",
   licensePlateVisible: true,
   licensePlateApproved: true,
   certificateAvailable: false,
@@ -122,6 +131,9 @@ const toyotaProAce: ResultBase = {
   tunedTorqueNm: 450,
   gainPowerHp: 28,
   gainTorqueNm: 50,
+  featuredOnHome: true,
+  featuredOrder: 3,
+  category: "ecu-tuning",
   licensePlateVisible: true,
   licensePlateApproved: true,
   certificateAvailable: false,
@@ -135,6 +147,7 @@ const bmwF40: ResultBase = {
   vehicleModel: "118i",
   vehicleGeneration: "F40",
   vehicleEngine: "B38",
+  category: "tcu-tuning",
   licensePlateVisible: false,
   licensePlateApproved: false,
   certificateAvailable: false,
@@ -151,6 +164,7 @@ const vwCaddy: ResultBase = {
   stockPowerHp: 102,
   tunedPowerHp: 185,
   gainPowerHp: 83,
+  category: "ecu-tuning",
   licensePlateVisible: false,
   licensePlateApproved: false,
   certificateAvailable: false,
@@ -164,6 +178,7 @@ const vwTransporter: ResultBase = {
   vehicleModel: "Transporter",
   vehicleEngine: "2.0 TDI",
   vehicleYear: "2013",
+  category: "ecu-cloning",
   licensePlateVisible: false,
   licensePlateApproved: false,
   certificateAvailable: false,
