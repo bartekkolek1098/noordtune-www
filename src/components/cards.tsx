@@ -6,6 +6,7 @@ import type {BlogPost, PricingPlan, ServiceCardCopy} from "@/content/copy";
 import {blogArticlePathForPost} from "@/content/blog-articles";
 import {
   customerResultCardImage,
+  customerResultDisplayMetrics,
   customerResultPath,
   isPublicCustomerResult,
   type CustomerResult
@@ -19,6 +20,7 @@ const labels = {
     vat: "incl. btw",
     stock: "Origineel",
     tuned: "Getuned",
+    gain: "Winst",
     read: "Lees artikel",
     demo: "Indicatief voorbeeld",
     customer: "Klantresultaat",
@@ -33,6 +35,7 @@ const labels = {
     vat: "incl. VAT",
     stock: "Stock",
     tuned: "Tuned",
+    gain: "Gain",
     read: "Read article",
     demo: "Indicative example",
     customer: "Customer result",
@@ -47,6 +50,7 @@ const labels = {
     vat: "z VAT",
     stock: "Seria",
     tuned: "Po modyfikacji",
+    gain: "Przyrost",
     read: "Czytaj",
     demo: "Przykład orientacyjny",
     customer: "Realizacja klienta",
@@ -131,9 +135,9 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
   const copy = labels[locale];
   const image = customerResultCardImage(result);
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
-  const stock = `${result.stockPowerHp} ${copy.hp} / ${result.stockTorqueNm} Nm`;
-  const tuned = `${result.tunedPowerHp} ${copy.hp} / ${result.tunedTorqueNm} Nm`;
-  const gain = `+${result.gainPowerHp} ${copy.hp}`;
+  const metrics = customerResultDisplayMetrics(result, copy, copy.hp);
+  const cardMetrics = metrics.slice(0, 2);
+  const highlight = metrics.find((metric) => metric.accent) ?? metrics.at(-1);
   const detailHref = isPublicCustomerResult(result) ? customerResultPath(result) : undefined;
   const isCustomer = isPublicCustomerResult(result);
 
@@ -172,20 +176,25 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
             <h3 className="racing-title mt-1 text-3xl text-white">{car}</h3>
             <p className="mt-1 text-xs font-semibold uppercase text-white/45">{result.vehicleEngine}</p>
           </div>
-          <span className="rounded-[3px] border border-primary/50 bg-primary/15 px-3 py-2 text-sm font-black text-primary">
-            {gain}
-          </span>
+          {highlight ? (
+            <span className="max-w-32 rounded-[3px] border border-primary/50 bg-primary/15 px-3 py-2 text-right text-sm font-black text-primary">
+              {highlight.value}
+            </span>
+          ) : null}
         </div>
-        <div className="mt-5 grid grid-cols-2 gap-3">
-          <div className="border border-white/10 bg-black/28 p-3">
-            <p className="text-xs uppercase text-white/45">{copy.stock}</p>
-            <p className="mt-1 font-semibold text-white">{stock}</p>
+        {cardMetrics.length > 0 ? (
+          <div className="mt-5 grid grid-cols-2 gap-3">
+            {cardMetrics.map((metric, index) => (
+              <div
+                className={index === 1 ? "border border-primary/25 bg-primary/10 p-3" : "border border-white/10 bg-black/28 p-3"}
+                key={`${metric.label}-${metric.value}`}
+              >
+                <p className="text-xs uppercase text-white/45">{metric.label}</p>
+                <p className="mt-1 font-semibold text-white">{metric.value}</p>
+              </div>
+            ))}
           </div>
-          <div className="border border-primary/25 bg-primary/10 p-3">
-            <p className="text-xs uppercase text-white/45">{copy.tuned}</p>
-            <p className="mt-1 font-semibold text-white">{tuned}</p>
-          </div>
-        </div>
+        ) : null}
         <p className="mt-4 text-sm leading-6 text-white/65">{result.shortDescription}</p>
         <p className="mt-3 text-xs leading-5 text-white/42">{result.disclaimer}</p>
         <div className="mt-5 grid gap-2">

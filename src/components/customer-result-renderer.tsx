@@ -7,7 +7,11 @@ import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {SectionHeader} from "@/components/section-header";
-import {customerResultPrimaryImage, type CustomerResult} from "@/content/customer-results";
+import {
+  customerResultDisplayMetrics,
+  customerResultPrimaryImage,
+  type CustomerResult
+} from "@/content/customer-results";
 import {pathFor, type Locale} from "@/content/site";
 
 const labels = {
@@ -87,7 +91,7 @@ function Fact({label, value}: {label: string; value?: string}) {
   return (
     <div className="border border-white/10 bg-black/30 p-4">
       <p className="text-xs font-black uppercase text-white/42">{label}</p>
-      <p className="mt-2 text-sm font-semibold text-white">{value}</p>
+      <p className="mt-2 break-words text-sm font-semibold text-white [overflow-wrap:anywhere]">{value}</p>
     </div>
   );
 }
@@ -98,9 +102,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
   const title =
     result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleGeneration ?? ""} ${result.vehicleEngine} ${result.stage}`.replace(/\s+/g, " ").trim();
   const hpUnit = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
-  const stock = `${result.stockPowerHp} ${hpUnit} / ${result.stockTorqueNm} Nm`;
-  const tuned = `${result.tunedPowerHp} ${hpUnit} / ${result.tunedTorqueNm} Nm`;
-  const gain = `+${result.gainPowerHp} ${hpUnit} / +${result.gainTorqueNm} Nm`;
+  const metrics = customerResultDisplayMetrics(result, copy, hpUnit);
 
   return (
     <>
@@ -152,23 +154,24 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
 
           <section className="container py-12 md:py-16">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
-              <div className="space-y-8">
-                <div className="grid gap-4 md:grid-cols-3">
-                  <div className="panel-edge rounded-[3px] p-5">
-                    <p className="text-xs font-black uppercase text-white/42">{copy.stock}</p>
-                    <p className="racing-title mt-3 text-3xl text-white">{stock}</p>
+              <div className="min-w-0 space-y-8">
+                {metrics.length > 0 ? (
+                  <div className="min-w-0 grid gap-4 md:grid-cols-3">
+                    {metrics.map((metric) => (
+                      <div
+                        className={`panel-edge min-w-0 rounded-[3px] p-5 ${metric.accent ? "border-primary/50 bg-primary/10" : ""}`}
+                        key={`${metric.label}-${metric.value}`}
+                      >
+                        <p className="text-xs font-black uppercase text-white/42">{metric.label}</p>
+                        <p className={`racing-title mt-3 break-words text-3xl [overflow-wrap:anywhere] ${metric.accent ? "text-primary" : "text-white"}`}>
+                          {metric.value}
+                        </p>
+                      </div>
+                    ))}
                   </div>
-                  <div className="panel-edge rounded-[3px] border-primary/50 bg-primary/10 p-5">
-                    <p className="text-xs font-black uppercase text-white/42">{copy.tuned}</p>
-                    <p className="racing-title mt-3 text-3xl text-white">{tuned}</p>
-                  </div>
-                  <div className="panel-edge rounded-[3px] p-5">
-                    <p className="text-xs font-black uppercase text-white/42">{copy.gain}</p>
-                    <p className="racing-title mt-3 text-3xl text-primary">{gain}</p>
-                  </div>
-                </div>
+                ) : null}
 
-                <div className="panel-edge overflow-hidden rounded-[3px] bg-black/55 p-3">
+                <div className="panel-edge min-w-0 overflow-hidden rounded-[3px] bg-black/55 p-3">
                   <p className="mb-3 px-2 text-xs font-black uppercase tracking-[0.18em] text-primary">{copy.visual}</p>
                   <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-[2px] bg-black">
                     <Image
@@ -184,7 +187,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                   </div>
                 </div>
 
-                <div className="panel-edge rounded-[3px] p-6 md:p-8">
+                <div className="panel-edge min-w-0 rounded-[3px] p-6 md:p-8">
                   <SectionHeader align="left" kicker={copy.vehicle} title={title} />
                   <div className="mt-8 grid gap-3 sm:grid-cols-2">
                     <Fact label={copy.generation} value={result.vehicleGeneration ?? result.vehicleYear} />
@@ -201,11 +204,11 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                   </div>
                 </div>
 
-                <div className="panel-edge rounded-[3px] p-6 md:p-8">
+                <div className="panel-edge min-w-0 rounded-[3px] p-6 md:p-8">
                   <h2 className="racing-title text-3xl text-white md:text-5xl">{copy.technical}</h2>
                   <ul className="mt-6 grid gap-3">
                     {result.technicalNotes.map((note) => (
-                      <li className="flex gap-3 border border-white/10 bg-black/32 px-4 py-3 text-sm leading-6 text-white/72" key={note}>
+                      <li className="flex min-w-0 gap-3 break-words border border-white/10 bg-black/32 px-4 py-3 text-sm leading-6 text-white/72 [overflow-wrap:anywhere]" key={note}>
                         <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
                         {note}
                       </li>
@@ -214,7 +217,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                 </div>
               </div>
 
-              <aside className="space-y-5">
+              <aside className="min-w-0 space-y-5">
                 <div className="panel-edge rounded-[3px] p-5">
                   <p className="racing-title text-2xl text-white">NoordTune</p>
                   <p className="mt-3 text-sm leading-6 text-white/65">{result.disclaimer}</p>

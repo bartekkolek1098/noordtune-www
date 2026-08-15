@@ -165,13 +165,16 @@ export function createCustomerResultMetadata(result: CustomerResult): Metadata {
       : result.locale === "en"
         ? `${car} ${result.stage} | NoordTune customer result`
         : `${car} ${result.stage} | Realizacja NoordTune`);
-  const description =
-    result.metaDescription ??
-    (result.locale === "nl"
-      ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} naar ${result.tunedPowerHp} ${hp} en ${result.stockTorqueNm} Nm naar ${result.tunedTorqueNm} Nm. Resultaten blijven voertuigafhankelijk.`
+  const hasPowerComparison = result.stockPowerHp !== undefined && result.tunedPowerHp !== undefined;
+  const powerComparison = hasPowerComparison
+    ? result.locale === "nl"
+      ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} naar ${result.tunedPowerHp} ${hp}. Resultaten blijven voertuigafhankelijk.`
       : result.locale === "en"
-        ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} to ${result.tunedPowerHp} ${hp} and ${result.stockTorqueNm} Nm to ${result.tunedTorqueNm} Nm. Results remain vehicle-specific.`
-        : `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} do ${result.tunedPowerHp} ${hp} oraz ${result.stockTorqueNm} Nm do ${result.tunedTorqueNm} Nm. Wynik zależy od konkretnego auta.`);
+        ? `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} to ${result.tunedPowerHp} ${hp}. Results remain vehicle-specific.`
+        : `${car} ${result.vehicleEngine}: ${result.stockPowerHp} ${hp} do ${result.tunedPowerHp} ${hp}. Wynik zależy od konkretnego auta.`
+    : result.shortDescription;
+  const description =
+    result.metaDescription ?? powerComparison;
   const publicPage = isPublicCustomerResult(result);
 
   return {
@@ -197,8 +200,6 @@ export function createCustomerResultMetadata(result: CustomerResult): Metadata {
       images: [
         {
           url: image,
-          width: 1774,
-          height: 887,
           alt: result.imageAlt
         }
       ]
