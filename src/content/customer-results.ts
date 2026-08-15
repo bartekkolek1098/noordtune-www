@@ -1,7 +1,14 @@
 import {pageRoutes, site, type Locale} from "./site";
+import {customerResultsBatch202608} from "./customer-results-batch-2026-08";
 
 export type CustomerResultSource = "manual" | "facebook";
 export type CustomerResultStatus = "published" | "draft" | "demo";
+
+export type CustomerResultMetric = {
+  label: string;
+  value: string;
+  accent?: boolean;
+};
 
 export type CustomerResult = {
   id: string;
@@ -25,12 +32,13 @@ export type CustomerResult = {
   serviceType: string;
   stage: string;
   fuelType?: string;
-  stockPowerHp: number;
-  stockTorqueNm: number;
-  tunedPowerHp: number;
-  tunedTorqueNm: number;
-  gainPowerHp: number;
-  gainTorqueNm: number;
+  stockPowerHp?: number;
+  stockTorqueNm?: number;
+  tunedPowerHp?: number;
+  tunedTorqueNm?: number;
+  gainPowerHp?: number;
+  gainTorqueNm?: number;
+  resultMetrics?: CustomerResultMetric[];
   licensePlateVisible: boolean;
   licensePlateApproved?: boolean;
   images: string[];
@@ -149,6 +157,50 @@ export function customerResultCardImage(result: CustomerResult) {
 
 export function customerResultOgImage(result: CustomerResult) {
   return normalizeCustomerResultImagePath(result.ogImage, customerResultPrimaryImage(result));
+}
+
+function formatPowerTorque(
+  power: number | undefined,
+  torque: number | undefined,
+  hpUnit: string,
+  prefix = ""
+) {
+  const parts: string[] = [];
+
+  if (power !== undefined) {
+    parts.push(`${prefix}${power} ${hpUnit}`);
+  }
+  if (torque !== undefined) {
+    parts.push(`${prefix}${torque} Nm`);
+  }
+
+  return parts.join(" / ");
+}
+
+export function customerResultDisplayMetrics(
+  result: CustomerResult,
+  labels: {stock: string; tuned: string; gain: string},
+  hpUnit: string
+): CustomerResultMetric[] {
+  if (result.resultMetrics?.length) {
+    return result.resultMetrics;
+  }
+
+  return [
+    {
+      label: labels.stock,
+      value: formatPowerTorque(result.stockPowerHp, result.stockTorqueNm, hpUnit)
+    },
+    {
+      label: labels.tuned,
+      value: formatPowerTorque(result.tunedPowerHp, result.tunedTorqueNm, hpUnit)
+    },
+    {
+      label: labels.gain,
+      value: formatPowerTorque(result.gainPowerHp, result.gainTorqueNm, hpUnit, "+"),
+      accent: true
+    }
+  ].filter((metric) => metric.value);
 }
 
 export function customerResultFromRoute(locale: Locale, resultsSlug: string, resultSlug: string) {
@@ -469,6 +521,7 @@ export const customerResults: CustomerResult[] = [
     vehicleYear: "E83",
     transmission: "Te bevestigen per voertuig",
     licensePlateVisible: true,
+    licensePlateApproved: true,
     images: [resultImages.bmwX3],
     ogImage: resultImages.bmwX3Og,
     imageAlt: "BMW X3 E83 2.0d Stage 1 chiptuning resultaat bij NoordTune.nl",
@@ -521,6 +574,7 @@ export const customerResults: CustomerResult[] = [
     vehicleYear: "E83",
     transmission: "To be confirmed per vehicle",
     licensePlateVisible: true,
+    licensePlateApproved: true,
     images: [resultImages.bmwX3],
     ogImage: resultImages.bmwX3Og,
     imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap result at NoordTune.nl",
@@ -573,6 +627,7 @@ export const customerResults: CustomerResult[] = [
     vehicleYear: "E83",
     transmission: "Do potwierdzenia dla konkretnego auta",
     licensePlateVisible: true,
+    licensePlateApproved: true,
     images: [resultImages.bmwX3],
     ogImage: resultImages.bmwX3Og,
     imageAlt: "BMW X3 E83 2.0d Stage 1 — wynik indywidualnego remapu ECU w NoordTune.nl",
@@ -783,5 +838,6 @@ export const customerResults: CustomerResult[] = [
       "Podane wartości dotyczą tego konkretnego Audi A4 B7 i tej konfiguracji sprzętowej. Wyniki mogą różnić się w zależności od stanu auta, wersji oprogramowania, paliwa, skrzyni biegów, osprzętu i sposobu użytkowania. Zawsze należy sprawdzić, jakie modyfikacje są dozwolone w danej sytuacji.",
     relatedPowerCatalogUrl: site.catalogUrl,
     whatsappCta: site.whatsappUrl
-  }
+  },
+  ...customerResultsBatch202608
 ];

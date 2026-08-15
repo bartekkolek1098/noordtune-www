@@ -35,6 +35,7 @@ const files = [
   "src/content/blog-articles-data-pl.ts",
   "src/content/content-growth-drafts.ts",
   "src/content/customer-results.ts",
+  "src/content/customer-results-batch-2026-08.ts",
   "src/components/power-catalog-section.tsx",
   "src/components/cta-section.tsx",
   "src/components/blog-article-renderer.tsx",
@@ -51,6 +52,7 @@ const polishFiles = [
   "src/content/blog-articles-data-pl.ts",
   "src/content/content-growth-drafts.ts",
   "src/content/customer-results.ts",
+  "src/content/customer-results-batch-2026-08.ts",
   "src/components/power-catalog-section.tsx",
   "src/components/cta-section.tsx",
   "src/components/blog-article-renderer.tsx",
@@ -286,8 +288,25 @@ async function main() {
       if (result.images.length === 0 || !result.imageAlt) {
         failures.push(`Public customer result is missing image or alt text: ${result.id}`);
       }
+      if (!result.resultMetrics?.length && result.stockPowerHp === undefined && result.tunedPowerHp === undefined) {
+        failures.push(`Public customer result needs measured values or honest service metrics: ${result.id}`);
+      }
       if (result.technicalNotes.length < 2) {
         failures.push(`Public customer result needs useful technical notes: ${result.id}`);
+      }
+      if (result.licensePlateVisible && !result.licensePlateApproved) {
+        failures.push(`Visible license plate requires explicit approval: ${result.id}`);
+      }
+      for (const image of [...result.images, ...(result.ogImage ? [result.ogImage] : [])]) {
+        if (!image.startsWith("/")) {
+          failures.push(`Public customer result image must use a local public path: ${result.id} -> ${image}`);
+          continue;
+        }
+        try {
+          await readFile(join(root, "public", image.slice(1)));
+        } catch {
+          failures.push(`Public customer result image file is missing: ${result.id} -> ${image}`);
+        }
       }
     }
   }
