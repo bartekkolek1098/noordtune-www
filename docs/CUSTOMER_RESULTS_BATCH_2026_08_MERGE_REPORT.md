@@ -11,9 +11,12 @@ Repository: `bartekkolek1098/noordtune-www`
 - Merge method: squash merge
 - Result: merged successfully
 - Merge commit on `main`: `350307d727ed129c83c4d654449374ee15d88228`
+- Responsive follow-up commit on `main`: `95a5209c61fcd31100602641bc30e2ef0aaafc64`
 - Source branch retained pending production QA.
 
 The PR was `MERGEABLE` with a `CLEAN` merge state and was based directly on the latest `origin/main` before merge.
+
+At final owner approval, PR #8 was already merged and no second PR or duplicate squash merge was created. The approved iPad Power Catalog correction was already present on `main` as commit `95a5209`. The source branch remains available on GitHub but is older than `main` and has no additional work that needs merging.
 
 ## Published Results
 
@@ -41,6 +44,8 @@ The checks were run before merge and repeated from the merged `main` branch. Nod
 | Sitemap audit | Passed |
 | CTA audit | Passed |
 | Local image asset audit | Passed |
+
+The complete check set was repeated after the owner approved the responsive follow-up. All checks remained green on the latest `main`.
 
 ## Route Result
 
@@ -125,6 +130,20 @@ All 15 new result pages were checked in the local production build:
 - Power Catalog CTAs point to `https://power.noordtune.nl/`.
 - WhatsApp CTAs point to `https://wa.me/31685759600`.
 
+## iPad Power Catalog Fix
+
+Owner visual approval was received for the tablet/iPad responsive correction in commit `95a5209c61fcd31100602641bc30e2ef0aaafc64`.
+
+The final layout strategy is:
+
+- mobile: one content column with a two-by-two feature grid;
+- tablet and iPad widths: one content column with the feature boxes below in a four-column grid;
+- desktop from the `xl` breakpoint: two columns using `minmax(0, ...)` tracks;
+- long headings, feature labels and bullet text use safe wrapping;
+- the decorative catalog SVG is simplified on tablet to prevent its embedded labels from visually mixing with live content.
+
+The component retains `min-width: 0`, overflow containment and responsive type sizing. The owner confirmed that the repaired iPad/tablet layout is visually approved.
+
 ## Production Deployment
 
 Vercel started automatically after the GitHub merge.
@@ -133,8 +152,11 @@ Vercel started automatically after the GitHub merge.
 - Vercel status: `success`
 - Description: `Deployment has completed`
 - Deployment dashboard: https://vercel.com/bartekkolek1098s-projects/noordtune-www/4w1s9xTmCY25n5gtQExvwbrMV81b
+- Responsive fix deployment commit: `95a5209c61fcd31100602641bc30e2ef0aaafc64`
+- Responsive fix Vercel status: `success`
+- Responsive fix deployment dashboard: https://vercel.com/bartekkolek1098s-projects/noordtune-www/CQdPhxgNrtaGG4uD3KxTPgr923c2
 
-A separate production URL QA pass remains appropriate before deleting the source branch.
+Production URL QA and owner tablet visual approval are complete. The source branch is intentionally retained until the owner chooses to remove it.
 
 ## Scope Confirmation
 
