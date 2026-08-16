@@ -9,6 +9,7 @@ import {Header} from "@/components/header";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {SectionHeader} from "@/components/section-header";
 import type {BlogArticle} from "@/content/blog-articles";
+import {articleBrandLinks} from "@/content/brand-pages";
 import {pathFor, site, type Locale} from "@/content/site";
 
 const labels = {
@@ -43,6 +44,9 @@ const labels = {
 
 export function BlogArticleRenderer({article}: {article: BlogArticle}) {
   const copy = labels[article.locale];
+  const relatedLinks = [...article.relatedLinks, ...articleBrandLinks(article)].filter(
+    (link, index, links) => links.findIndex((candidate) => candidate.href === link.href) === index
+  );
 
   return (
     <>
@@ -129,7 +133,7 @@ export function BlogArticleRenderer({article}: {article: BlogArticle}) {
                 <div className="panel-edge rounded-[3px] p-5">
                   <p className="racing-title text-2xl text-white">{copy.related}</p>
                   <div className="mt-4 grid gap-2">
-                    {article.relatedLinks.map((link) => (
+                    {relatedLinks.map((link) => (
                       <ButtonLink
                         className="justify-between"
                         href={link.href}

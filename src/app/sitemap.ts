@@ -1,5 +1,6 @@
 import type {MetadataRoute} from "next";
 import {blogArticles, blogArticleUrl} from "@/content/blog-articles";
+import {brandPageForBrand, brandPages, brandPageUrl} from "@/content/brand-pages";
 import {customerResults, customerResultUrl, isPublicCustomerResult} from "@/content/customer-results";
 import {seoLandings, seoLandingUrl} from "@/content/seo-landings";
 import {
@@ -67,5 +68,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       }
     }));
 
-  return [...mainPages, ...landingPages, ...articlePages, ...resultPages];
+  const brandLandingPages = brandPages.map((page) => ({
+    url: brandPageUrl(page),
+    lastModified: new Date("2026-08-16"),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+    alternates: {
+      languages: Object.fromEntries(
+        locales.flatMap((locale) => {
+          const localizedPage = brandPageForBrand(locale, page.brand);
+          return localizedPage ? [[locale, brandPageUrl(localizedPage)]] : [];
+        })
+      )
+    }
+  }));
+
+  return [...mainPages, ...landingPages, ...articlePages, ...resultPages, ...brandLandingPages];
 }
