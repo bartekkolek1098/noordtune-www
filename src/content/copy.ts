@@ -995,7 +995,12 @@ export const posts: Record<Locale, BlogPost[]> = {
     {slug: "wanneer-is-stage-2-tuning-verstandig", title: "Wanneer is Stage 2 tuning verstandig?", excerpt: "Stage 2 vraagt passende hardware, loganalyse en eerlijk advies over risico's en regelgeving.", category: "Stage 2", readTime: "9 min"},
     {slug: "waarom-loganalyse-belangrijk-is-voor-tuning", title: "Waarom loganalyse belangrijk is vóór tuning", excerpt: "Logbestanden laten zien hoe turbodruk, brandstof, luchtmassa en temperatuur zich onder belasting gedragen.", category: "Loganalyse", readTime: "8 min"},
     {slug: "dsg-tcu-tuning-uitgelegd", title: "DSG / TCU tuning uitgelegd", excerpt: "Hoe transmissiesoftware, koppellimieten en schakellogica samenwerken met een ECU remap.", category: "DSG / TCU", readTime: "8 min"},
-    {slug: "dpf-egr-of-adblue-storing-wat-nu", title: "DPF, EGR of AdBlue storing: wat nu?", excerpt: "Een zorgvuldige uitleg over diagnose, storing analyse en oplossingen waar wettelijk toegestaan.", category: "Diagnose", readTime: "9 min"}
+    {slug: "dpf-egr-of-adblue-storing-wat-nu", title: "DPF, EGR of AdBlue storing: wat nu?", excerpt: "Een zorgvuldige uitleg over diagnose, storing analyse en oplossingen waar wettelijk toegestaan.", category: "Diagnose", readTime: "9 min"},
+    {slug: "wat-kost-chiptuning", title: "Wat kost chiptuning?", excerpt: "Waarom voertuig, ECU, leesmethode, diagnose en maatwerk samen de prijs bepalen.", category: "Kosten & keuze", readTime: "10 min"},
+    {slug: "verbruikt-mijn-auto-meer-na-chiptuning", title: "Verbruikt mijn auto meer na chiptuning?", excerpt: "Een eerlijk antwoord over koppel, rijstijl, belasting en realistische verwachtingen rond verbruik.", category: "Verbruik & gebruik", readTime: "9 min"},
+    {slug: "chiptuning-en-apk-in-nederland", title: "Chiptuning en APK in Nederland", excerpt: "Wat de APK controleert en waarom tuning geen storingen of emissieproblemen mag verbergen.", category: "APK & regelgeving", readTime: "11 min"},
+    {slug: "koppelbegrenzers-in-ecu-en-tcu", title: "Koppelbegrenzers in ECU en TCU", excerpt: "Hoe motor- en transmissiesoftware samenwerken en wanneer TCU tuning technisch zinvol is.", category: "ECU & TCU", readTime: "10 min"},
+    {slug: "turbo-brandstof-en-egt-uitgelegd", title: "Turbo, brandstof en EGT uitgelegd", excerpt: "Waarom boost, brandstof, temperatuur en loganalyse als één systeem moeten worden beoordeeld.", category: "Motortechniek", readTime: "11 min"}
   ],
   en: [
     {slug: "what-is-chiptuning", title: "What is chiptuning?", excerpt: "A clear explanation of ECU remap, torque, power and custom software.", category: "Chiptuning", readTime: "5 min"},
@@ -1009,7 +1014,12 @@ export const posts: Record<Locale, BlogPost[]> = {
     {slug: "when-does-stage-2-tuning-make-sense", title: "When does Stage 2 tuning make sense?", excerpt: "Stage 2 needs supporting hardware, log checks and realistic advice about vehicle limits.", category: "Stage 2", readTime: "8 min"},
     {slug: "why-log-analysis-matters-before-tuning", title: "Why log analysis matters before tuning", excerpt: "Logs show how boost, fuel, airflow and temperature behave under real driving load.", category: "Diagnostics", readTime: "7 min"},
     {slug: "dsg-tcu-tuning-explained", title: "DSG / TCU tuning explained", excerpt: "How gearbox software, torque limits and shift logic work together with ECU remap.", category: "DSG / TCU", readTime: "7 min"},
-    {slug: "dpf-egr-adblue-fault-what-now", title: "DPF, EGR or AdBlue fault: what now?", excerpt: "Careful diagnostics and legal, vehicle-specific advice for emissions-system faults.", category: "Diagnostics", readTime: "8 min"}
+    {slug: "dpf-egr-adblue-fault-what-now", title: "DPF, EGR or AdBlue fault: what now?", excerpt: "Careful diagnostics and legal, vehicle-specific advice for emissions-system faults.", category: "Diagnostics", readTime: "8 min"},
+    {slug: "what-does-chiptuning-cost", title: "What does chiptuning cost?", excerpt: "How vehicle, ECU, access method, diagnostics and custom calibration determine the price.", category: "Cost & choice", readTime: "8 min"},
+    {slug: "does-chiptuning-increase-fuel-consumption", title: "Does chiptuning increase fuel consumption?", excerpt: "An honest look at torque, driving style, load and realistic fuel-use expectations.", category: "Fuel & driving", readTime: "8 min"},
+    {slug: "chiptuning-and-dutch-apk-inspection", title: "Chiptuning and the Dutch APK inspection", excerpt: "What APK checks and why tuning must not hide faults or emissions-system problems.", category: "APK & regulation", readTime: "9 min"},
+    {slug: "torque-limiters-in-ecu-and-tcu", title: "Torque limiters in ECU and TCU", excerpt: "How engine and gearbox software cooperate and when TCU tuning may be appropriate.", category: "ECU & TCU", readTime: "9 min"},
+    {slug: "turbo-fuel-and-egt-explained", title: "Turbo, fuel and EGT explained", excerpt: "Why boost, fuelling, thermal load and logging must be considered as one system.", category: "Engine technology", readTime: "9 min"}
   ],
   pl: [
     {slug: "czym-jest-chiptuning", title: "Czym jest chiptuning?", excerpt: "Proste wyjaśnienie remapu ECU, mocy, momentu i indywidualnego oprogramowania.", category: "Chiptuning", readTime: "5 min"},
@@ -1023,7 +1033,12 @@ export const posts: Record<Locale, BlogPost[]> = {
     {slug: "kiedy-stage-2-ma-sens", title: "Kiedy Stage 2 ma sens?", excerpt: "Stage 2 wymaga właściwego osprzętu, logów i uczciwej oceny technicznej auta.", category: "Stage 2", readTime: "8 min"},
     {slug: "dlaczego-logi-sa-wazne-przed-tuningiem", title: "Dlaczego logi są ważne przed tuningiem", excerpt: "Logi pokazują, jak doładowanie, paliwo, przepływ powietrza i temperatury zachowują się pod obciążeniem.", category: "Logi", readTime: "7 min"},
     {slug: "dsg-tcu-tuning-wyjasnienie", title: "DSG / TCU tuning — wyjaśnienie", excerpt: "Jak oprogramowanie skrzyni, limity momentu i zmiany biegów współpracują z remapem ECU.", category: "DSG / TCU", readTime: "7 min"},
-    {slug: "dpf-egr-adblue-usterka-co-dalej", title: "DPF, EGR lub AdBlue — usterka, co dalej?", excerpt: "Ostrożne podejście do diagnostyki, analizy usterek i rozwiązań zgodnych z przepisami.", category: "Diagnostyka", readTime: "8 min"}
+    {slug: "dpf-egr-adblue-usterka-co-dalej", title: "DPF, EGR lub AdBlue — usterka, co dalej?", excerpt: "Ostrożne podejście do diagnostyki, analizy usterek i rozwiązań zgodnych z przepisami.", category: "Diagnostyka", readTime: "8 min"},
+    {slug: "ile-kosztuje-chiptuning", title: "Ile kosztuje chiptuning?", excerpt: "Jak auto, ECU, metoda odczytu, diagnostyka i indywidualna kalibracja wpływają na cenę.", category: "Koszty i wybór", readTime: "9 min"},
+    {slug: "czy-auto-po-chiptuningu-wiecej-pali", title: "Czy auto po chiptuningu więcej pali?", excerpt: "Uczciwe spojrzenie na moment, styl jazdy, obciążenie i realne oczekiwania dotyczące spalania.", category: "Spalanie i jazda", readTime: "8 min"},
+    {slug: "chiptuning-a-apk-w-holandii", title: "Chiptuning a APK w Holandii", excerpt: "Co sprawdza APK i dlaczego tuning nie może ukrywać usterek ani problemów z emisją.", category: "APK i przepisy", readTime: "9 min"},
+    {slug: "limitery-momentu-w-ecu-i-tcu", title: "Limitery momentu w ECU i TCU", excerpt: "Jak współpracuje sterownik silnika i skrzyni oraz kiedy tuning TCU ma techniczny sens.", category: "ECU i TCU", readTime: "9 min"},
+    {slug: "turbo-paliwo-i-egt-wyjasnienie", title: "Turbo, paliwo i EGT — wyjaśnienie", excerpt: "Dlaczego doładowanie, paliwo, temperatura i logi trzeba oceniać jako jeden układ.", category: "Technika silnika", readTime: "9 min"}
   ]
 };
 
