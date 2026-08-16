@@ -15,6 +15,9 @@ type ResultBase = Pick<
   | "tunedTorqueNm"
   | "gainPowerHp"
   | "gainTorqueNm"
+  | "featuredOnHome"
+  | "featuredOrder"
+  | "category"
   | "licensePlateVisible"
   | "licensePlateApproved"
   | "certificateAvailable"
@@ -35,6 +38,7 @@ type LocalizedResult = {
   serviceType: string;
   stage: string;
   fuelType?: string;
+  serviceTags?: string[];
   shortDescription: string;
   technicalNotes: string[];
   resultMetrics?: CustomerResultMetric[];
@@ -65,6 +69,10 @@ function publishedResult(base: ResultBase, copy: LocalizedResult): CustomerResul
     tcu: copy.tcu,
     serviceType: copy.serviceType,
     stage: copy.stage,
+    featuredOnHome: base.featuredOnHome,
+    featuredOrder: base.featuredOrder,
+    category: base.category,
+    serviceTags: copy.serviceTags,
     fuelType: copy.fuelType,
     stockPowerHp: base.stockPowerHp,
     stockTorqueNm: base.stockTorqueNm,
@@ -103,6 +111,7 @@ const fordTransit: ResultBase = {
   tunedTorqueNm: 320,
   gainPowerHp: 45,
   gainTorqueNm: 70,
+  category: "ecu-remap",
   licensePlateVisible: true,
   licensePlateApproved: true,
   certificateAvailable: false,
@@ -122,6 +131,9 @@ const toyotaProAce: ResultBase = {
   tunedTorqueNm: 450,
   gainPowerHp: 28,
   gainTorqueNm: 50,
+  featuredOnHome: true,
+  featuredOrder: 3,
+  category: "ecu-remap",
   licensePlateVisible: true,
   licensePlateApproved: true,
   certificateAvailable: false,
@@ -135,6 +147,7 @@ const bmwF40: ResultBase = {
   vehicleModel: "118i",
   vehicleGeneration: "F40",
   vehicleEngine: "B38",
+  category: "tcu-tuning",
   licensePlateVisible: false,
   licensePlateApproved: false,
   certificateAvailable: false,
@@ -151,6 +164,7 @@ const vwCaddy: ResultBase = {
   stockPowerHp: 102,
   tunedPowerHp: 185,
   gainPowerHp: 83,
+  category: "ecu-remap",
   licensePlateVisible: false,
   licensePlateApproved: false,
   certificateAvailable: false,
@@ -164,6 +178,7 @@ const vwTransporter: ResultBase = {
   vehicleModel: "Transporter",
   vehicleEngine: "2.0 TDI",
   vehicleYear: "2013",
+  category: "ecu-cloning",
   licensePlateVisible: false,
   licensePlateApproved: false,
   certificateAvailable: false,
@@ -245,6 +260,7 @@ export const customerResultsBatch202608: CustomerResult[] = [
     ecu: "Gecontroleerd tijdens service; niet publiek vermeld",
     serviceType: "Stage 1 Comfort Power / maatwerk ECU-remap",
     stage: "Stage 1 Comfort Power",
+    serviceTags: ["Stage 1", "Comfort Power"],
     fuelType: "Diesel",
     shortDescription: "Deze Toyota ProAce Verso VIP 2.0D is gebouwd voor comfort, ruimte en lange afstanden. NoordTune.nl koos voor een nette Stage 1 Comfort Power-calibratie met focus op souplesse, meer koppel en een rustige vermogensopbouw, passend bij een luxe personenbus.",
     technicalNotes: [
@@ -266,6 +282,7 @@ export const customerResultsBatch202608: CustomerResult[] = [
     ecu: "Verified during service; not publicly listed",
     serviceType: "Stage 1 Comfort Power / custom ECU remap",
     stage: "Stage 1 Comfort Power",
+    serviceTags: ["Stage 1", "Comfort Power"],
     fuelType: "Diesel",
     shortDescription: "This Toyota ProAce Verso VIP 2.0D is built for comfort, space and long-distance driving. NoordTune.nl prepared a Stage 1 Comfort Power calibration focused on smoother torque delivery, better flexibility and relaxed drivability for a premium passenger van.",
     technicalNotes: [
@@ -287,6 +304,7 @@ export const customerResultsBatch202608: CustomerResult[] = [
     ecu: "Zweryfikowane podczas usługi; niepodawane publicznie",
     serviceType: "Stage 1 Comfort Power / indywidualny remap ECU",
     stage: "Stage 1 Comfort Power",
+    serviceTags: ["Stage 1", "Comfort Power"],
     fuelType: "Diesel",
     shortDescription: "Toyota ProAce Verso VIP 2.0D to auto stworzone do komfortu, przestrzeni i dłuższych tras. W NoordTune.nl przygotowaliśmy spokojny Stage 1 Comfort Power, nastawiony na lepszą elastyczność, wyższy moment obrotowy i płynne oddawanie mocy, bez przesadnie agresywnej konfiguracji.",
     technicalNotes: [
