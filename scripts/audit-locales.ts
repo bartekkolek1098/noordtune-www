@@ -7,6 +7,11 @@ import {
   blogArticles,
   blogArticleStaticParams
 } from "../src/content/blog-articles";
+import {
+  brandPagePath,
+  brandPages,
+  brandPageStaticParams
+} from "../src/content/brand-pages";
 import {posts} from "../src/content/copy";
 import {
   customerResultFromRoute,
@@ -35,11 +40,13 @@ const files = [
   "src/content/blog-articles-data-en.ts",
   "src/content/blog-articles-data-pl.ts",
   "src/content/content-growth-drafts.ts",
+  "src/content/brand-pages.ts",
   "src/content/customer-results.ts",
   "src/content/customer-results-batch-2026-08.ts",
   "src/components/power-catalog-section.tsx",
   "src/components/cta-section.tsx",
   "src/components/blog-article-renderer.tsx",
+  "src/components/brand-page-renderer.tsx",
   "src/components/customer-result-renderer.tsx",
   "src/components/page-renderers.tsx",
   "src/components/seo-landing-renderer.tsx",
@@ -53,11 +60,13 @@ const polishFiles = [
   "src/content/blog-articles-buyer-decision.ts",
   "src/content/blog-articles-data-pl.ts",
   "src/content/content-growth-drafts.ts",
+  "src/content/brand-pages.ts",
   "src/content/customer-results.ts",
   "src/content/customer-results-batch-2026-08.ts",
   "src/components/power-catalog-section.tsx",
   "src/components/cta-section.tsx",
   "src/components/blog-article-renderer.tsx",
+  "src/components/brand-page-renderer.tsx",
   "src/components/customer-result-renderer.tsx",
   "src/components/page-renderers.tsx",
   "src/components/seo-landing-renderer.tsx",
@@ -287,6 +296,83 @@ async function main() {
       for (const forbidden of ["OPEN POWER CATALOG", "MESSAGE US", "CHECK TUNING OPTIONS", "Wiecej", "Wyslij", "Otworz", "Osiagi", "Zamowienie"]) {
         if (visibleText.includes(forbidden)) {
           failures.push(`Polish article contains forbidden leftover '${forbidden}': ${route}`);
+        }
+      }
+    }
+  }
+
+  const requiredBrandRoutes = new Set([
+    "/nl/bmw-chiptuning",
+    "/en/bmw-chiptuning",
+    "/pl/chiptuning-bmw",
+    "/nl/audi-chiptuning",
+    "/en/audi-chiptuning",
+    "/pl/chiptuning-audi",
+    "/nl/volkswagen-chiptuning",
+    "/en/volkswagen-chiptuning",
+    "/pl/chiptuning-volkswagen",
+    "/nl/ford-chiptuning",
+    "/en/ford-chiptuning",
+    "/pl/chiptuning-ford",
+    "/nl/toyota-chiptuning",
+    "/en/toyota-chiptuning",
+    "/pl/chiptuning-toyota"
+  ]);
+  const staticBrandRoutes = new Set(
+    brandPageStaticParams().map((params) => `/${params.locale}/${params.slug}`)
+  );
+
+  if (brandPages.length !== 15 || staticBrandRoutes.size !== 15) {
+    failures.push(`Expected 15 unique published brand pages, found ${brandPages.length} entries and ${staticBrandRoutes.size} routes.`);
+  }
+
+  for (const route of requiredBrandRoutes) {
+    if (!staticBrandRoutes.has(route)) {
+      failures.push(`Required brand route is missing: ${route}`);
+    }
+  }
+
+  for (const page of brandPages) {
+    const route = brandPagePath(page);
+    if (!page.metaTitle || !page.metaDescription || !page.heroTitle || !page.heroImageAlt) {
+      failures.push(`Brand page is missing localized SEO or hero fields: ${route}`);
+    }
+    if (page.sections.length < 5 || page.faq.length < 3 || page.intro.length < 2) {
+      failures.push(`Brand page is too thin: ${route}`);
+    }
+    if (page.catalogCta.length === 0 || page.whatsappCta.length === 0) {
+      failures.push(`Brand page is missing localized conversion labels: ${route}`);
+    }
+    if (!page.heroImage.startsWith("/")) {
+      failures.push(`Brand page hero image must use a local public path: ${route}`);
+    } else {
+      try {
+        await readFile(join(root, "public", page.heroImage.slice(1)));
+      } catch {
+        failures.push(`Brand page hero image file is missing: ${route} -> ${page.heroImage}`);
+      }
+    }
+    for (const resultSlug of page.resultSlugs) {
+      const result = customerResults.find(
+        (item) => item.locale === page.locale && item.slug === resultSlug && isPublicCustomerResult(item)
+      );
+      if (!result) {
+        failures.push(`Brand page references a missing or non-public result: ${route} -> ${resultSlug}`);
+      }
+    }
+    for (const link of [...page.relatedLinks, ...page.sections.flatMap((section) => section.links ?? [])]) {
+      if (link.href === "/power" || link.href.startsWith("/power/")) {
+        failures.push(`Brand page contains a local Power Catalog route: ${route}`);
+      }
+    }
+    if (page.locale === "pl") {
+      const visibleText = JSON.stringify(page);
+      if (!/[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/.test(visibleText)) {
+        failures.push(`Polish brand page has no Polish diacritics: ${route}`);
+      }
+      for (const forbidden of ["OPEN POWER CATALOG", "MESSAGE US", "CHECK TUNING OPTIONS", "Wiecej", "Wyslij", "Otworz", "Osiagi", "Zamowienie"]) {
+        if (visibleText.includes(forbidden)) {
+          failures.push(`Polish brand page contains forbidden leftover '${forbidden}': ${route}`);
         }
       }
     }

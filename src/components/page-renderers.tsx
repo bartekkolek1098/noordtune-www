@@ -1,3 +1,5 @@
+import Link from "next/link";
+import {ArrowRight} from "lucide-react";
 import {BlogCard, PricingCard, ResultCardView, ServiceCard} from "@/components/cards";
 import {ButtonLink} from "@/components/button";
 import {CTASection} from "@/components/cta-section";
@@ -24,6 +26,7 @@ import {
   services,
   whyItems
 } from "@/content/copy";
+import {brandNavigationLinks} from "@/content/brand-pages";
 import {displayCustomerResults, featuredCustomerResults} from "@/content/customer-results";
 import {heroImages, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
@@ -80,6 +83,49 @@ const ui = {
   whatsappFast: string;
   contactCards: string[];
 }>;
+
+const brandSectionCopy = {
+  nl: {
+    kicker: "Per merk",
+    title: "Verdiep je in chiptuning voor jouw merk.",
+    text: "Bekijk onze aanpak, aandachtspunten en echte klantresultaten voor vijf veelvoorkomende merken. De exacte uitvoering en technische staat blijven altijd bepalend."
+  },
+  en: {
+    kicker: "By brand",
+    title: "Explore chiptuning for your vehicle brand.",
+    text: "See our approach, technical considerations and real customer results for five common brands. The exact version and vehicle condition always remain decisive."
+  },
+  pl: {
+    kicker: "Według marki",
+    title: "Sprawdź podejście do chiptuningu Twojej marki.",
+    text: "Poznaj sposób pracy, ważne kwestie techniczne i prawdziwe realizacje dla pięciu popularnych marek. Ostateczna ocena zawsze zależy od wersji i stanu auta."
+  }
+} satisfies Record<Locale, {kicker: string; title: string; text: string}>;
+
+function BrandNavigationSection({locale}: {locale: Locale}) {
+  const copy = brandSectionCopy[locale];
+  const links = brandNavigationLinks(locale);
+
+  return (
+    <section className="border-y border-white/8 bg-white/[0.025]">
+      <div className="container min-w-0 py-12 md:py-16">
+        <SectionHeader align="left" kicker={copy.kicker} text={copy.text} title={copy.title} />
+        <nav aria-label={copy.title} className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+          {links.map((link) => (
+            <Link
+              className="group flex min-w-0 items-center justify-between gap-3 border border-white/12 bg-black/35 px-4 py-4 text-sm font-black uppercase text-white transition hover:border-primary hover:bg-primary/10"
+              href={link.href}
+              key={link.href}
+            >
+              <span className="[overflow-wrap:anywhere]">{link.label}</span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </section>
+  );
+}
 
 const resultsIntro = {
   nl: {
@@ -592,6 +638,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
       {pageSections[pageKey][locale].map((block, index) => (
         <TextSection block={block} key={block.title} reversed={index % 2 === 1} />
       ))}
+      {pageKey === "chiptuning" ? <BrandNavigationSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <PowerCatalogSection locale={locale} /> : null}
       <section className="container py-12 md:py-16">
         <SectionHeader

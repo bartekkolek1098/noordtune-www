@@ -1,6 +1,12 @@
 import type {Metadata} from "next";
 import {blogArticleUrl, type BlogArticle} from "@/content/blog-articles";
 import {
+  brandPageForBrand,
+  brandPagePath,
+  brandPageUrl,
+  type BrandPage
+} from "@/content/brand-pages";
+import {
   customerResultOgImage,
   customerResultUrl,
   isPublicCustomerResult,
@@ -104,6 +110,41 @@ export function createSeoLandingMetadata(page: SeoLanding): Metadata {
       index: true,
       follow: true
     }
+  };
+}
+
+export function createBrandPageMetadata(page: BrandPage): Metadata {
+  const canonical = brandPageUrl(page);
+  const image = `${site.url}${page.heroImage}`;
+  const languages = Object.fromEntries(
+    locales.flatMap((locale) => {
+      const localizedPage = brandPageForBrand(locale, page.brand);
+      return localizedPage ? [[locale, brandPageUrl(localizedPage)]] : [];
+    })
+  );
+
+  return {
+    title: page.metaTitle,
+    description: page.metaDescription,
+    metadataBase: new URL(site.url),
+    alternates: {canonical, languages},
+    openGraph: {
+      title: page.metaTitle,
+      description: page.metaDescription,
+      url: canonical,
+      siteName: site.name,
+      locale: page.locale,
+      alternateLocale: locales.filter((locale) => locale !== page.locale),
+      type: "website",
+      images: [{url: image, width: 1774, height: 887, alt: page.heroImageAlt}]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.metaTitle,
+      description: page.metaDescription,
+      images: [image]
+    },
+    robots: {index: true, follow: true}
   };
 }
 
@@ -276,6 +317,35 @@ export function faqItemsJsonLd(items: FaqItem[]) {
         text: item.answer
       }
     }))
+  };
+}
+
+export function brandPageBreadcrumbJsonLd(page: BrandPage) {
+  const homeLabel = page.locale === "pl" ? "Start" : "Home";
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: homeLabel,
+        item: `${site.url}${pathFor(page.locale, "home")}`
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Chiptuning",
+        item: `${site.url}${pathFor(page.locale, "chiptuning")}`
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: page.heroTitle,
+        item: `${site.url}${brandPagePath(page)}`
+      }
+    ]
   };
 }
 

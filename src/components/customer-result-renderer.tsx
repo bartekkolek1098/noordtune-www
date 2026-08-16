@@ -7,6 +7,7 @@ import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {SectionHeader} from "@/components/section-header";
+import {brandPageForVehicleMake, brandPagePath} from "@/content/brand-pages";
 import {
   customerResultDisplayMetrics,
   customerResultPrimaryImage,
@@ -103,6 +104,13 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
     result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleGeneration ?? ""} ${result.vehicleEngine} ${result.stage}`.replace(/\s+/g, " ").trim();
   const hpUnit = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
   const metrics = customerResultDisplayMetrics(result, copy, hpUnit);
+  const brandPage = brandPageForVehicleMake(result.locale, result.vehicleMake);
+  const brandLinkLabel =
+    result.locale === "nl"
+      ? `Meer over ${result.vehicleMake} chiptuning`
+      : result.locale === "en"
+        ? `More about ${result.vehicleMake} chiptuning`
+        : `Więcej o chiptuningu ${result.vehicleMake}`;
 
   return (
     <>
@@ -228,6 +236,21 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                     </ButtonLink>
                   </div>
                 </div>
+                {brandPage ? (
+                  <div className="panel-edge rounded-[3px] p-5">
+                    <p className="racing-title text-2xl text-white">{result.vehicleMake}</p>
+                    <p className="mt-3 text-sm leading-6 text-white/60">
+                      {result.locale === "nl"
+                        ? "Lees hoe wij diagnose, ECU/TCU en voertuigspecifieke calibratie voor dit merk benaderen."
+                        : result.locale === "en"
+                          ? "Read how we approach diagnostics, ECU/TCU and vehicle-specific calibration for this brand."
+                          : "Sprawdź, jak podchodzimy do diagnostyki, ECU/TCU i indywidualnej kalibracji tej marki."}
+                    </p>
+                    <div className="mt-4">
+                      <ButtonLink href={brandPagePath(brandPage)} variant="outline">{brandLinkLabel}</ButtonLink>
+                    </div>
+                  </div>
+                ) : null}
                 <div className="panel-edge rounded-[3px] p-5">
                   <p className="racing-title text-2xl text-white">{copy.disclaimer}</p>
                   <p className="mt-3 text-sm leading-6 text-white/60">
