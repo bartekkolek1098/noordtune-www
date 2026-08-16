@@ -29,6 +29,7 @@ const files = [
   "src/content/site.ts",
   "src/content/seo-landings.ts",
   "src/content/blog-articles.ts",
+  "src/content/blog-articles-buyer-decision.ts",
   "src/content/blog-articles-growth.ts",
   "src/content/blog-articles-data-nl.ts",
   "src/content/blog-articles-data-en.ts",
@@ -49,6 +50,7 @@ const files = [
 const polishFiles = [
   "src/content/copy.ts",
   "src/content/blog-articles.ts",
+  "src/content/blog-articles-buyer-decision.ts",
   "src/content/blog-articles-data-pl.ts",
   "src/content/content-growth-drafts.ts",
   "src/content/customer-results.ts",
@@ -100,7 +102,8 @@ const requiredLabels = [
 function stripRouteBlocks(source: string) {
   return source
     .replace(/pl:\s*"(?:uslugi|rezultaty|aktualnosci-blog|polityka-prywatnosci)"/g, "")
-    .replace(/\/pl\/(?:uslugi|rezultaty|aktualnosci-blog|polityka-prywatnosci)/g, "");
+    .replace(/\/pl\/(?:uslugi|rezultaty|aktualnosci-blog|polityka-prywatnosci)/g, "")
+    .replace(/(?:slug:\s*"|\/pl\/aktualnosci-blog\/)czy-auto-po-chiptuningu-wiecej-pali"?/g, "");
 }
 
 async function readUtf8(file: string) {
@@ -159,7 +162,12 @@ async function main() {
       "/nl/blog/wanneer-is-stage-2-tuning-verstandig",
       "/nl/blog/waarom-loganalyse-belangrijk-is-voor-tuning",
       "/nl/blog/dsg-tcu-tuning-uitgelegd",
-      "/nl/blog/dpf-egr-of-adblue-storing-wat-nu"
+      "/nl/blog/dpf-egr-of-adblue-storing-wat-nu",
+      "/nl/blog/wat-kost-chiptuning",
+      "/nl/blog/verbruikt-mijn-auto-meer-na-chiptuning",
+      "/nl/blog/chiptuning-en-apk-in-nederland",
+      "/nl/blog/koppelbegrenzers-in-ecu-en-tcu",
+      "/nl/blog/turbo-brandstof-en-egt-uitgelegd"
     ],
     en: [
       "/en/news-blog/what-is-chiptuning",
@@ -173,7 +181,12 @@ async function main() {
       "/en/news-blog/when-does-stage-2-tuning-make-sense",
       "/en/news-blog/why-log-analysis-matters-before-tuning",
       "/en/news-blog/dsg-tcu-tuning-explained",
-      "/en/news-blog/dpf-egr-adblue-fault-what-now"
+      "/en/news-blog/dpf-egr-adblue-fault-what-now",
+      "/en/news-blog/what-does-chiptuning-cost",
+      "/en/news-blog/does-chiptuning-increase-fuel-consumption",
+      "/en/news-blog/chiptuning-and-dutch-apk-inspection",
+      "/en/news-blog/torque-limiters-in-ecu-and-tcu",
+      "/en/news-blog/turbo-fuel-and-egt-explained"
     ],
     pl: [
       "/pl/aktualnosci-blog/co-to-jest-chiptuning",
@@ -187,7 +200,12 @@ async function main() {
       "/pl/aktualnosci-blog/kiedy-stage-2-ma-sens",
       "/pl/aktualnosci-blog/dlaczego-logi-sa-wazne-przed-tuningiem",
       "/pl/aktualnosci-blog/dsg-tcu-tuning-wyjasnienie",
-      "/pl/aktualnosci-blog/dpf-egr-adblue-usterka-co-dalej"
+      "/pl/aktualnosci-blog/dpf-egr-adblue-usterka-co-dalej",
+      "/pl/aktualnosci-blog/ile-kosztuje-chiptuning",
+      "/pl/aktualnosci-blog/czy-auto-po-chiptuningu-wiecej-pali",
+      "/pl/aktualnosci-blog/chiptuning-a-apk-w-holandii",
+      "/pl/aktualnosci-blog/limitery-momentu-w-ecu-i-tcu",
+      "/pl/aktualnosci-blog/turbo-paliwo-i-egt-wyjasnienie"
     ]
   } satisfies Record<Locale, string[]>;
 
@@ -239,6 +257,18 @@ async function main() {
         await readFile(join(root, "public", article.heroImage.slice(1)));
       } catch {
         failures.push(`Article hero image file is missing: ${route} -> ${article.heroImage}`);
+      }
+    }
+    if (article.slug === "wat-kost-chiptuning" || article.slug === "what-does-chiptuning-cost" || article.slug === "ile-kosztuje-chiptuning" ||
+        article.slug === "verbruikt-mijn-auto-meer-na-chiptuning" || article.slug === "does-chiptuning-increase-fuel-consumption" || article.slug === "czy-auto-po-chiptuningu-wiecej-pali" ||
+        article.slug === "chiptuning-en-apk-in-nederland" || article.slug === "chiptuning-and-dutch-apk-inspection" || article.slug === "chiptuning-a-apk-w-holandii" ||
+        article.slug === "koppelbegrenzers-in-ecu-en-tcu" || article.slug === "torque-limiters-in-ecu-and-tcu" || article.slug === "limitery-momentu-w-ecu-i-tcu" ||
+        article.slug === "turbo-brandstof-en-egt-uitgelegd" || article.slug === "turbo-fuel-and-egt-explained" || article.slug === "turbo-paliwo-i-egt-wyjasnienie") {
+      if (!article.heroImageAlt) {
+        failures.push(`Buyer-decision article is missing localized image alt text: ${route}`);
+      }
+      if (article.sections.length < 4 || article.faq.length === 0) {
+        failures.push(`Buyer-decision article is too thin or has no FAQ: ${route}`);
       }
     }
     if (article.locale === "pl") {

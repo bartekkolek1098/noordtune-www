@@ -52,7 +52,7 @@ export function BlogArticleRenderer({article}: {article: BlogArticle}) {
           <section className="relative overflow-hidden border-b border-white/10">
             <div className="absolute inset-0">
               <Image
-                alt=""
+                alt={article.heroImageAlt ?? article.title}
                 className="object-cover object-center"
                 fill
                 priority

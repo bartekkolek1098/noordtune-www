@@ -1,4 +1,9 @@
 import type {FaqItem} from "./copy";
+import {
+  enBuyerDecisionBlogArticles,
+  nlBuyerDecisionBlogArticles,
+  plBuyerDecisionBlogArticles
+} from "./blog-articles-buyer-decision";
 import {enBlogArticles} from "./blog-articles-data-en";
 import {enGrowthBlogArticles, nlGrowthBlogArticles, plGrowthBlogArticles} from "./blog-articles-growth";
 import {nlBlogArticles} from "./blog-articles-data-nl";
@@ -21,6 +26,7 @@ export type BlogArticle = {
   category: string;
   readTime: string;
   heroImage: string;
+  heroImageAlt?: string;
   intro: string;
   publishedAt: string;
   updatedAt: string;
@@ -89,8 +95,11 @@ export function blogArticleStaticParams() {
 export const blogArticles: BlogArticle[] = [
   ...nlBlogArticles,
   ...nlGrowthBlogArticles,
+  ...nlBuyerDecisionBlogArticles,
   ...enBlogArticles,
   ...enGrowthBlogArticles,
+  ...enBuyerDecisionBlogArticles,
   ...plBlogArticles,
-  ...plGrowthBlogArticles
+  ...plGrowthBlogArticles,
+  ...plBuyerDecisionBlogArticles
 ];

@@ -136,7 +136,7 @@ export function createBlogArticleMetadata(article: BlogArticle): Metadata {
           url: image,
           width: 1774,
           height: 887,
-          alt: `${site.name} ${article.title}`
+          alt: article.heroImageAlt ?? `${site.name} ${article.title}`
         }
       ]
     },
