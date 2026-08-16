@@ -3,6 +3,7 @@ import {customerResultsBatch202608} from "./customer-results-batch-2026-08";
 
 export type CustomerResultSource = "manual" | "facebook";
 export type CustomerResultStatus = "published" | "draft" | "demo";
+export type CustomerResultCategory = "ecu-remap" | "tcu-tuning" | "ecu-cloning" | "diagnostics" | "other";
 
 export type CustomerResultMetric = {
   label: string;
@@ -31,6 +32,10 @@ export type CustomerResult = {
   tcu?: string;
   serviceType: string;
   stage: string;
+  featuredOnHome?: boolean;
+  featuredOrder?: number;
+  category?: CustomerResultCategory;
+  serviceTags?: string[];
   fuelType?: string;
   stockPowerHp?: number;
   stockTorqueNm?: number;
@@ -123,6 +128,53 @@ export function displayCustomerResults(locale: Locale) {
   return customerResults
     .filter((result) => result.locale === locale && isPublicCustomerResult(result))
     .sort((a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt));
+}
+
+export function featuredCustomerResults(locale: Locale, limit = 3) {
+  return customerResults
+    .filter(
+      (result) =>
+        result.locale === locale &&
+        isPublicCustomerResult(result) &&
+        result.featuredOnHome === true
+    )
+    .sort((a, b) => (a.featuredOrder ?? Number.MAX_SAFE_INTEGER) - (b.featuredOrder ?? Number.MAX_SAFE_INTEGER))
+    .slice(0, Math.min(limit, 3));
+}
+
+const categoryLabels = {
+  nl: {
+    "ecu-remap": "ECU remap",
+    "tcu-tuning": "TCU tuning",
+    "ecu-cloning": "ECU cloning",
+    diagnostics: "Diagnose",
+    other: "Maatwerk"
+  },
+  en: {
+    "ecu-remap": "ECU remap",
+    "tcu-tuning": "TCU tuning",
+    "ecu-cloning": "ECU cloning",
+    diagnostics: "Diagnostics",
+    other: "Custom"
+  },
+  pl: {
+    "ecu-remap": "Remap ECU",
+    "tcu-tuning": "Tuning TCU",
+    "ecu-cloning": "Klonowanie ECU",
+    diagnostics: "Diagnostyka",
+    other: "Indywidualnie"
+  }
+} satisfies Record<Locale, Record<CustomerResultCategory, string>>;
+
+export function customerResultServiceTags(result: CustomerResult) {
+  const tags = [
+    ...(result.serviceTags ?? []),
+    result.stage,
+    result.category ? categoryLabels[result.locale][result.category] : undefined,
+    result.fuelType
+  ].filter((tag): tag is string => Boolean(tag));
+
+  return [...new Set(tags)].slice(0, 4);
 }
 
 export function customerResultPath(result: CustomerResult) {
@@ -527,6 +579,10 @@ export const customerResults: CustomerResult[] = [
     imageAlt: "BMW X3 E83 2.0d Stage 1 chiptuning resultaat bij NoordTune.nl",
     serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
+    featuredOnHome: true,
+    featuredOrder: 2,
+    category: "ecu-remap",
+    serviceTags: ["Stage 1", "ECU remap", "Diesel"],
     fuelType: "Diesel",
     ecu: "Bosch EDC17",
     stockPowerHp: 177,
@@ -580,6 +636,10 @@ export const customerResults: CustomerResult[] = [
     imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap result at NoordTune.nl",
     serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
+    featuredOnHome: true,
+    featuredOrder: 2,
+    category: "ecu-remap",
+    serviceTags: ["Stage 1", "ECU remap", "Diesel"],
     fuelType: "Diesel",
     ecu: "Bosch EDC17",
     stockPowerHp: 177,
@@ -633,6 +693,10 @@ export const customerResults: CustomerResult[] = [
     imageAlt: "BMW X3 E83 2.0d Stage 1 — wynik indywidualnego remapu ECU w NoordTune.nl",
     serviceType: "Stage 1 / remap ECU",
     stage: "Stage 1",
+    featuredOnHome: true,
+    featuredOrder: 2,
+    category: "ecu-remap",
+    serviceTags: ["Stage 1", "Remap ECU", "Diesel"],
     fuelType: "Diesel",
     ecu: "Bosch EDC17",
     stockPowerHp: 177,
@@ -683,6 +747,10 @@ export const customerResults: CustomerResult[] = [
     tcu: "Niet van toepassing",
     serviceType: "Stage 2+ / maatwerk ECU-remap",
     stage: "Stage 2+",
+    featuredOnHome: true,
+    featuredOrder: 1,
+    category: "ecu-remap",
+    serviceTags: ["Stage 2+", "ECU remap", "Diesel"],
     fuelType: "Diesel",
     stockPowerHp: 170,
     stockTorqueNm: 350,
@@ -742,6 +810,10 @@ export const customerResults: CustomerResult[] = [
     tcu: "Not applicable",
     serviceType: "Stage 2+ / custom ECU remap",
     stage: "Stage 2+",
+    featuredOnHome: true,
+    featuredOrder: 1,
+    category: "ecu-remap",
+    serviceTags: ["Stage 2+", "ECU remap", "Diesel"],
     fuelType: "Diesel",
     stockPowerHp: 170,
     stockTorqueNm: 350,
@@ -801,6 +873,10 @@ export const customerResults: CustomerResult[] = [
     tcu: "Nie dotyczy",
     serviceType: "Stage 2+ / indywidualny remap ECU",
     stage: "Stage 2+",
+    featuredOnHome: true,
+    featuredOrder: 1,
+    category: "ecu-remap",
+    serviceTags: ["Stage 2+", "Remap ECU", "Diesel"],
     fuelType: "Diesel",
     stockPowerHp: 170,
     stockTorqueNm: 350,

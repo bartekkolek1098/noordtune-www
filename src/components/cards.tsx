@@ -8,6 +8,7 @@ import {
   customerResultCardImage,
   customerResultDisplayMetrics,
   customerResultPath,
+  customerResultServiceTags,
   isPublicCustomerResult,
   type CustomerResult
 } from "@/content/customer-results";
@@ -131,7 +132,15 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
   );
 }
 
-export function ResultCardView({result, locale}: {result: CustomerResult; locale: Locale}) {
+export function ResultCardView({
+  result,
+  locale,
+  showTags = false
+}: {
+  result: CustomerResult;
+  locale: Locale;
+  showTags?: boolean;
+}) {
   const copy = labels[locale];
   const image = customerResultCardImage(result);
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
@@ -140,9 +149,10 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
   const highlight = metrics.find((metric) => metric.accent) ?? metrics.at(-1);
   const detailHref = isPublicCustomerResult(result) ? customerResultPath(result) : undefined;
   const isCustomer = isPublicCustomerResult(result);
+  const tags = showTags ? customerResultServiceTags(result) : [];
 
   return (
-    <article className="panel-edge overflow-hidden rounded-[3px]">
+    <article className="panel-edge h-full min-w-0 overflow-hidden rounded-[3px]">
       <div className={`relative border-b border-white/10 bg-black/55 ${isCustomer ? "h-48" : "h-36"}`}>
         <Image
           alt={result.imageAlt}
@@ -170,14 +180,14 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
         </span>
       </div>
       <div className="p-5">
-        <div className="flex items-start justify-between gap-3">
-          <div>
+        <div className="flex min-w-0 items-start justify-between gap-3">
+          <div className="min-w-0">
             <p className="text-xs font-black uppercase text-primary">{result.stage}</p>
-            <h3 className="racing-title mt-1 text-3xl text-white">{car}</h3>
+            <h3 className="racing-title mt-1 text-3xl text-white [overflow-wrap:anywhere]">{car}</h3>
             <p className="mt-1 text-xs font-semibold uppercase text-white/45">{result.vehicleEngine}</p>
           </div>
           {highlight ? (
-            <span className="max-w-32 rounded-[3px] border border-primary/50 bg-primary/15 px-3 py-2 text-right text-sm font-black text-primary">
+            <span className="max-w-32 shrink-0 rounded-[3px] border border-primary/50 bg-primary/15 px-3 py-2 text-right text-sm font-black text-primary">
               {highlight.value}
             </span>
           ) : null}
@@ -196,6 +206,21 @@ export function ResultCardView({result, locale}: {result: CustomerResult; locale
           </div>
         ) : null}
         <p className="mt-4 text-sm leading-6 text-white/65">{result.shortDescription}</p>
+        {tags.length > 0 ? (
+          <ul
+            aria-label={locale === "nl" ? "Categorieën" : locale === "en" ? "Categories" : "Kategorie"}
+            className="mt-4 flex min-w-0 flex-wrap gap-2"
+          >
+            {tags.map((tag) => (
+              <li
+                className="max-w-full rounded-[3px] border border-white/12 bg-white/[0.035] px-2.5 py-1 text-[0.65rem] font-black uppercase text-white/62 [overflow-wrap:anywhere]"
+                key={tag}
+              >
+                {tag}
+              </li>
+            ))}
+          </ul>
+        ) : null}
         <p className="mt-3 text-xs leading-5 text-white/42">{result.disclaimer}</p>
         <div className="mt-5 grid gap-2">
           {detailHref ? (
