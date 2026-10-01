@@ -53,7 +53,7 @@ function hrefForLabel(label: string, locale: Locale, pageKey: PageKey) {
 }
 
 export function PageHero({copy, image, locale, pageKey}: PageHeroProps) {
-  const primaryHref = hrefForLabel(copy.primary, locale, pageKey);
+  const primaryHref = pageKey === "contact" ? "#contact" : pageKey === "appointment" ? "#enquiry" : hrefForLabel(copy.primary, locale, pageKey);
   const secondaryHref = hrefForLabel(copy.secondary, locale, pageKey);
 
   return (

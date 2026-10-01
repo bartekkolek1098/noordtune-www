@@ -20,6 +20,7 @@ type RichInfoSectionProps = {
   text: string;
   bullets?: string[];
   stats?: Stat[];
+  statValueClassName?: string;
   image: string;
   imageAlt?: string;
   primaryLabel?: string;
@@ -36,6 +37,7 @@ export function RichInfoSection({
   text,
   bullets,
   stats,
+  statValueClassName = "text-3xl",
   image,
   imageAlt = "",
   primaryLabel,
@@ -70,7 +72,7 @@ export function RichInfoSection({
             <div className="mt-7 grid grid-cols-2 gap-3">
               {stats.map((stat) => (
                 <div className="border border-white/10 bg-black/36 p-4" key={stat.label}>
-                  <p className="racing-title text-3xl text-white">{stat.value}</p>
+                  <p className={`racing-title text-white ${statValueClassName}`}>{stat.value}</p>
                   <p className="mt-1 text-xs uppercase text-white/50">{stat.label}</p>
                 </div>
               ))}
