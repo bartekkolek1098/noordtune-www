@@ -17,6 +17,10 @@ const phase = process.env.ENQUIRY_TEST_PHASE ?? "all";
 assert.ok(["all", "forms", "fallback", "regression", "clipboard"].includes(phase), "Unknown test phase");
 const viewports = [{width: 390, height: 844}, {width: 820, height: 1180}, {width: 1180, height: 820}, {width: 1440, height: 1000}];
 const routes = locales.flatMap((locale) => (["contact", "appointment"] as const).map((kind) => ({locale, kind, path: pathFor(locale, kind)})));
+const verifiedSocialProfiles = [
+  {name: "Facebook", href: "https://www.facebook.com/profile.php?id=61590085682134"},
+  {name: "Instagram", href: "https://www.instagram.com/noordtune.nl"}
+];
 
 async function guardNetwork(context: BrowserContext) {
   await context.route("**/*", async (route) => {
@@ -51,7 +55,17 @@ async function assertContactLinks(page: Page) {
   const destinations = await page.locator('a[href*="power.noordtune.nl"]').evaluateAll((links) => links.map((link) => link.getAttribute("href")));
   assert.ok(destinations.length > 0);
   assert.ok(destinations.every((href) => href === site.catalogUrl));
-  assert.equal(await page.locator('footer [aria-label="Facebook"], footer [aria-label="Instagram"], footer [aria-label="TikTok"], footer [aria-label="YouTube"]').count(), 0);
+  for (const profile of verifiedSocialProfiles) {
+    const link = page.locator("footer").getByRole("link", {name: profile.name, exact: true});
+    assert.equal(await link.count(), 1);
+    assert.ok(await link.isVisible());
+    assert.equal(await link.getAttribute("href"), profile.href);
+    assert.equal(await link.getAttribute("target"), "_blank");
+    const rel = (await link.getAttribute("rel"))?.split(/\s+/) ?? [];
+    assert.ok(rel.includes("noopener") && rel.includes("noreferrer"));
+    assert.equal(await link.locator('svg[aria-hidden="true"]').count(), 1);
+  }
+  assert.equal(await page.locator('footer [aria-label="TikTok"], footer [aria-label="YouTube"], footer a[href*="tiktok.com"], footer a[href*="youtube.com"], footer a[href*="youtu.be"]').count(), 0);
 }
 
 async function handoff(context: BrowserContext, page: Page, action: () => Promise<unknown>, expected: string | null) {
@@ -272,6 +286,18 @@ async function verifyClipboardTimingAndLinks(context: BrowserContext, page: Page
   }
   assert.deepEqual(await page.evaluate("window.testProtocolLinks"), Array.from({length: 3}, () => [`tel:${site.phone.replace(/\s/g, "")}`, `mailto:${site.email}`]).flat());
   await handoff(context, page, () => composer.getByRole("link", {name: "WhatsApp", exact: true}).click(), null);
+  for (const profile of verifiedSocialProfiles) {
+    const popupPromise = context.waitForEvent("page");
+    await page.locator("footer").getByRole("link", {name: profile.name, exact: true}).click();
+    const popup = await popupPromise;
+    await popup.waitForURL((url) => url.href === profile.href);
+    await popup.waitForLoadState("domcontentloaded");
+    assert.equal(popup.url(), profile.href);
+    assert.equal(await popup.evaluate(() => window.opener), null);
+    await popup.close();
+    await page.bringToFront();
+    assert.equal(page.url(), `${baseUrl}/en/contact`);
+  }
   assert.ok((await request.inputValue()).includes("Edited while copying"));
 }
 
@@ -317,7 +343,7 @@ async function main() {
       await guardNetwork(context);
       try {
         await verifyClipboardTimingAndLinks(context, await context.newPage());
-        console.log("PASS clipboard timing/unavailable API and intercepted phone/email/WhatsApp alternatives");
+        console.log("PASS clipboard timing/unavailable API and intercepted phone/email/WhatsApp/social links");
         cases++;
       } finally { await context.close(); }
     }

@@ -13,7 +13,7 @@ The contact form had disconnected inputs and an unparameterized WhatsApp link. A
 - `src/components/whatsapp-enquiry.tsx`: one small client component shared by contact and appointment pages. Service and description are required; vehicle, plate and appointment preference are optional. Labels, errors, preview, actions and explanations are localized in NL/EN/PL. Limits are 1,000 / 120 / 24 / 100 characters for description / vehicle / plate / preference.
 - `src/content/enquiry.ts` and `src/lib/enquiry.ts`: localized message text, validation and URL encoding. The recipient comes from the unchanged `site.whatsappUrl`.
 - `src/components/page-renderers.tsx`, `page-hero.tsx` and `src/content/copy.ts`: connect both page types to the composer, replace appointment placeholders with a personal enquiry process, and link the hero action to the composer. Only appointment metadata wording changed; routes and canonical URLs are preserved.
-- `src/components/footer.tsx`: real phone, email and WhatsApp links. Contact cards and the composer offer the same configured alternatives. No business contact data changed.
+- `src/components/footer.tsx`: real phone, email and WhatsApp links, plus owner-verified Facebook and Instagram profile links. Contact cards and the composer offer the same configured alternatives. No business contact data changed.
 - `src/components/rich-info-section.tsx`: optional stat-text sizing, used only by contact pages to fix pre-existing mobile overflow in the service-area cards. Other callers retain their original sizing.
 - `tests/enquiry.test.ts`, `scripts/test-enquiry-browser.ts` and two package scripts: focused tests using the existing tsx, Node assertions and Playwright installation. No dependencies or lockfile changes.
 
@@ -29,12 +29,13 @@ Copy feedback appears only after a successful clipboard write. Failure or an una
 
 ## Validation
 
-Local browser target: `http://127.0.0.1:3001`. Synthetic input only; automated external navigation is intercepted. No WhatsApp messages or emails were sent.
+Local browser target: `http://127.0.0.1:3001`. The full suite was rerun against the local production build for the verified-social-links follow-up. Synthetic input only; automated external navigation is intercepted. No WhatsApp messages or emails were sent.
 
 | Check | Result |
 | --- | --- |
 | `pnpm lint` | Passed |
 | `pnpm typecheck` | Passed |
+| `pnpm content` | Unavailable: this repository has no `content` command; existing `content:audit` used below |
 | `pnpm content:audit` | Passed |
 | `pnpm test:enquiry` | Passed, 11 tests |
 | `pnpm build` | Passed, 141 static pages |
@@ -46,8 +47,10 @@ Regression coverage in NL/EN/PL: exactly three featured homepage results, all se
 
 Limitations: automated browser coverage uses installed Chrome on Windows; other browser engines and physical devices were not tested. WhatsApp acceptance/delivery, email delivery, native app launching and real appointment booking are intentionally not claimed. The no-JavaScript tests verify disabled controls/direct alternatives and also force-enable controls to prove there is still no native submission path.
 
-## Missing social profiles and scope
+## Verified social profiles and scope
 
-No exact verified Facebook, Instagram, TikTok or YouTube business-profile URL was found in the project. Those decorative icons were removed; no profile URL was guessed.
+The owner supplied two verified profile URLs for the follow-up. The footer now links exactly to `https://www.facebook.com/profile.php?id=61590085682134` and `https://www.instagram.com/noordtune.nl`, with accessible icon labels, `target="_blank"` and `rel="noopener noreferrer"`. TikTok and YouTube remain hidden because their exact profile URLs are not verified. No profile URL was guessed.
+
+The browser checks assert both exact destinations, visibility and safe attributes on all six enquiry routes, including unhydrated pages. Intercepted clicks verify separate tabs with no opener, preserving the enquiry page and its input. Mobile and desktop footer screenshots were visually reviewed.
 
 Main branch, Power Catalog files/processes/deployments, catalog link destinations, dependency versions/lockfile, business facts, blog articles, brand content, customer-result data, domains, DNS and Vercel project settings were not changed. No merge or production deployment is authorized by this task.

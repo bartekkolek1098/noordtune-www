@@ -1,4 +1,4 @@
-import {Mail, MapPin, MessageCircle, Phone} from "lucide-react";
+import {Facebook, Instagram, Mail, MapPin, MessageCircle, Phone} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {pathFor, site, type Locale} from "@/content/site";
@@ -52,6 +52,23 @@ export function Footer({locale}: FooterProps) {
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
             {labels.intro}
           </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            {[
+              {label: "Facebook", href: "https://www.facebook.com/profile.php?id=61590085682134", Icon: Facebook},
+              {label: "Instagram", href: "https://www.instagram.com/noordtune.nl", Icon: Instagram}
+            ].map(({label, href, Icon}) => (
+              <a
+                key={label}
+                aria-label={label}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 hover:border-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                href={href}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <Icon aria-hidden="true" className="h-5 w-5" />
+              </a>
+            ))}
+          </div>
         </div>
 
         <div>
