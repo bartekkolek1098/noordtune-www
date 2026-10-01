@@ -1,4 +1,4 @@
-import {Facebook, Instagram, Mail, MapPin, MessageCircle, Music2, Phone, Youtube} from "lucide-react";
+import {Facebook, Instagram, Mail, MapPin, MessageCircle, Phone} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {pathFor, site, type Locale} from "@/content/site";
@@ -14,7 +14,6 @@ export function Footer({locale}: FooterProps) {
         "Chiptuning & Auto Diagnostiek in Assen. Maatwerk software, diagnose, loganalyse en eerlijk advies voor auto's in Drenthe, Groningen en Noord-Nederland.",
       quick: "Snel naar",
       contact: "Contact",
-      social: "Volg ons",
       area: "Ons werkgebied",
       areaText: "Assen, Drenthe, Groningen en Noord-Nederland.",
       legal: "Alle rechten voorbehouden"
@@ -24,7 +23,6 @@ export function Footer({locale}: FooterProps) {
         "Chiptuning & Vehicle Diagnostics in Assen. Custom software, diagnostics, log analysis and clear advice for the northern Netherlands.",
       quick: "Quick links",
       contact: "Contact",
-      social: "Follow us",
       area: "Service area",
       areaText: "Assen, Drenthe, Groningen and the northern Netherlands.",
       legal: "All rights reserved"
@@ -34,18 +32,11 @@ export function Footer({locale}: FooterProps) {
         "Chiptuning i diagnostyka samochodowa w Assen. Indywidualne oprogramowanie, diagnostyka, logi i jasne doradztwo.",
       quick: "Szybkie linki",
       contact: "Kontakt",
-      social: "Media społecznościowe",
       area: "Region",
       areaText: "Assen, Drenthe, Groningen i północna Holandia.",
       legal: "Wszelkie prawa zastrzeżone"
     }
   }[locale];
-  const socialItems = [
-    {label: "Facebook", Icon: Facebook},
-    {label: "Instagram", Icon: Instagram},
-    {label: "TikTok", Icon: Music2},
-    {label: "YouTube", Icon: Youtube}
-  ];
 
   return (
     <footer className="bg-black">
@@ -61,18 +52,21 @@ export function Footer({locale}: FooterProps) {
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
             {labels.intro}
           </p>
-          <div className="mt-6 flex flex-wrap gap-3" aria-label={labels.social}>
-            {socialItems.map(({Icon, label}) => (
-              <span
-                aria-label={label}
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/14 bg-white/[0.03] text-white/78 transition hover:border-primary/60 hover:text-white"
+          <div className="mt-6 flex flex-wrap gap-3">
+            {[
+              {label: "Facebook", href: "https://www.facebook.com/profile.php?id=61590085682134", Icon: Facebook},
+              {label: "Instagram", href: "https://www.instagram.com/noordtune.nl", Icon: Instagram}
+            ].map(({label, href, Icon}) => (
+              <a
                 key={label}
-                role="img"
-                title={label}
+                aria-label={label}
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/70 hover:border-primary hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                href={href}
+                rel="noopener noreferrer"
+                target="_blank"
               >
-                <Icon className="h-4 w-4" />
-                <span className="sr-only">{label}</span>
-              </span>
+                <Icon aria-hidden="true" className="h-5 w-5" />
+              </a>
             ))}
           </div>
         </div>
@@ -81,17 +75,20 @@ export function Footer({locale}: FooterProps) {
           <h3 className="racing-title text-xl text-white">{labels.contact}</h3>
           <ul className="mt-4 space-y-3 text-sm text-white/68">
             <li className="flex items-center gap-2">
-              <Phone className="h-4 w-4 text-primary" /> {site.phone}
+              <Phone aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+              <a className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
             </li>
             <li className="flex items-center gap-2">
-              <Mail className="h-4 w-4 text-primary" /> {site.email}
+              <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+              <a className="break-all py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`mailto:${site.email}`}>{site.email}</a>
             </li>
             <li className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-primary" /> {site.city},{" "}
               {locale === "nl" ? "Nederland" : locale === "en" ? site.country : "Holandia"}
             </li>
             <li className="flex items-center gap-2">
-              <MessageCircle className="h-4 w-4 text-primary" /> WhatsApp
+              <MessageCircle aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+              <a className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</a>
             </li>
           </ul>
         </div>

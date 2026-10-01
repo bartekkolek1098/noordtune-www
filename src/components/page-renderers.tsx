@@ -15,6 +15,7 @@ import {ProcessSteps} from "@/components/process-steps";
 import {RichInfoSection} from "@/components/rich-info-section";
 import {SectionHeader} from "@/components/section-header";
 import {TextGrid, TextSection} from "@/components/text-section";
+import {WhatsAppEnquiry} from "@/components/whatsapp-enquiry";
 import {
   faqs,
   homeContent,
@@ -34,53 +35,21 @@ const ui = {
   nl: {
     faq: "Veelgestelde vragen",
     services: "Onze diensten",
-    contactKicker: "Stuur ons een bericht",
-    contactTitle: "Contactformulier",
-    firstName: "Voornaam",
-    lastName: "Achternaam",
-    email: "E-mailadres",
-    phone: "Telefoonnummer",
-    message: "Typ hier je bericht...",
-    whatsappFast: "Sneller via WhatsApp",
     contactCards: ["Telefoon / WhatsApp", "E-mail", "Locatie", "Openingstijden"]
   },
   en: {
     faq: "Frequently asked questions",
     services: "Our services",
-    contactKicker: "Send us a message",
-    contactTitle: "Contact form",
-    firstName: "First name",
-    lastName: "Last name",
-    email: "Email address",
-    phone: "Phone number",
-    message: "Type your message...",
-    whatsappFast: "Faster via WhatsApp",
     contactCards: ["Phone / WhatsApp", "Email", "Location", "Opening hours"]
   },
   pl: {
     faq: "Najczęstsze pytania",
     services: "Nasze usługi",
-    contactKicker: "Wyślij wiadomość",
-    contactTitle: "Formularz kontaktowy",
-    firstName: "Imię",
-    lastName: "Nazwisko",
-    email: "Adres e-mail",
-    phone: "Telefon",
-    message: "Wpisz wiadomość...",
-    whatsappFast: "Szybciej przez WhatsApp",
     contactCards: ["Telefon / WhatsApp", "E-mail", "Lokalizacja", "Godziny otwarcia"]
   }
 } satisfies Record<Locale, {
   faq: string;
   services: string;
-  contactKicker: string;
-  contactTitle: string;
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  message: string;
-  whatsappFast: string;
   contactCards: string[];
 }>;
 
@@ -305,7 +274,7 @@ export function PageRenderer({locale, pageKey}: {locale: Locale; pageKey: PageKe
         <PageBody locale={locale} pageKey={pageKey} />
       </main>
       <Footer locale={locale} />
-      <FloatingWhatsApp locale={locale} reduced={pageKey === "contact"} />
+      {pageKey !== "contact" && pageKey !== "appointment" ? <FloatingWhatsApp locale={locale} /> : null}
     </>
   );
 }
@@ -544,6 +513,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           primaryLabel={locale === "nl" ? "WhatsApp ons" : locale === "en" ? "Message us on WhatsApp" : "Napisz na WhatsApp"}
           secondaryHref={site.catalogUrl}
           secondaryLabel={locale === "nl" ? "Open Power Catalog" : locale === "en" ? "Open Power Catalog" : "Otwórz katalog mocy"}
+          statValueClassName="text-base [overflow-wrap:anywhere] sm:text-3xl"
           stats={[
             {value: "Assen", label: locale === "nl" ? "Werkplaats" : locale === "en" ? "Workshop" : "Warsztat"},
             {value: "Drenthe", label: locale === "nl" ? "Regio" : locale === "en" ? "Region" : "Region"},
@@ -553,38 +523,21 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           text={contactBlock.text}
           title={contactBlock.title}
         />
-        <section className="container grid gap-6 py-12 md:grid-cols-[1fr_1fr] md:py-16" id="contact">
-          <div className="panel-edge rounded-[3px] p-6">
-            <p className="racing-title text-xl text-primary">{labels.contactKicker}</p>
-            <h2 className="racing-title mt-2 text-4xl text-white">{labels.contactTitle}</h2>
-            <form className="mt-6 grid gap-3">
-              <div className="grid gap-3 sm:grid-cols-2">
-                <input aria-label={labels.firstName} className="rounded-[3px] border border-white/12 bg-black/32 px-4 py-3 text-sm text-white outline-none focus:border-primary" placeholder={labels.firstName} />
-                <input aria-label={labels.lastName} className="rounded-[3px] border border-white/12 bg-black/32 px-4 py-3 text-sm text-white outline-none focus:border-primary" placeholder={labels.lastName} />
-              </div>
-              <input aria-label={labels.email} className="rounded-[3px] border border-white/12 bg-black/32 px-4 py-3 text-sm text-white outline-none focus:border-primary" placeholder={labels.email} />
-              <input aria-label={labels.phone} className="rounded-[3px] border border-white/12 bg-black/32 px-4 py-3 text-sm text-white outline-none focus:border-primary" placeholder={labels.phone} />
-              <textarea aria-label={labels.message} className="min-h-36 rounded-[3px] border border-white/12 bg-black/32 px-4 py-3 text-sm text-white outline-none focus:border-primary" placeholder={labels.message} />
-              <a
-                className="inline-flex min-h-11 items-center justify-center rounded-[3px] border border-primary bg-primary px-5 py-3 text-sm font-black uppercase"
-                href={site.whatsappUrl}
-                rel="noreferrer"
-                target="_blank"
-              >
-                {labels.whatsappFast}
-              </a>
-            </form>
-          </div>
-          <div className="grid gap-5">
+        <section className="container grid scroll-mt-28 items-start gap-6 py-12 md:py-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)]" id="contact">
+          <WhatsAppEnquiry kind="contact" locale={locale} />
+          <div className="grid min-w-0 gap-5 sm:grid-cols-2 lg:grid-cols-1">
             {[
-              [labels.contactCards[0], site.phone],
-              [labels.contactCards[1], site.email],
-              [labels.contactCards[2], site.address],
-              [labels.contactCards[3], site.opening]
-            ].map(([title, value]) => (
-              <div className="panel-edge rounded-[3px] p-6" key={title}>
+              [labels.contactCards[0], site.phone, `tel:${site.phone.replace(/\s/g, "")}`],
+              [labels.contactCards[1], site.email, `mailto:${site.email}`],
+              [labels.contactCards[2], site.address, undefined],
+              [labels.contactCards[3], site.opening, undefined]
+            ].map(([title, value, href], index) => (
+              <div className="panel-edge min-w-0 rounded-[3px] p-6" key={title}>
                 <p className="racing-title text-xl text-white">{title}</p>
-                <p className="mt-3 text-lg text-white/78">{value}</p>
+                <p className="mt-3 break-words text-lg text-white/78">
+                  {href ? <a className="inline-block min-h-11 py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={href}>{value}</a> : value}
+                </p>
+                {index === 0 ? <a className="inline-block min-h-11 py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</a> : null}
               </div>
             ))}
           </div>
@@ -604,27 +557,19 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
   if (pageKey === "appointment") {
     return (
       <>
-        {pageSections.appointment[locale].map((block) => (
-          <TextSection block={block} key={block.title} />
-        ))}
+        <section className="container grid scroll-mt-28 items-start gap-6 py-12 md:py-16 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,0.8fr)]" id="enquiry">
+          <WhatsAppEnquiry kind="appointment" locale={locale} />
+          {pageSections.appointment[locale].map((block) => (
+            <aside className="panel-edge min-w-0 rounded-[3px] p-6" key={block.title}>
+              <h2 className="racing-title text-2xl text-white">{block.title}</h2>
+              <p className="mt-4 text-sm leading-7 text-white/75">{block.text}</p>
+              <ol className="mt-5 list-decimal space-y-4 pl-5 text-sm leading-7 text-white/85">
+                {block.bullets?.map((step) => <li key={step}>{step}</li>)}
+              </ol>
+            </aside>
+          ))}
+        </section>
         <PowerCatalogSection locale={locale} />
-        <CTASection
-          locale={locale}
-          text={
-            locale === "nl"
-              ? "Het volledige afsprakensysteem komt later. Voor nu plannen we sneller en persoonlijker via WhatsApp."
-              : locale === "en"
-                ? "The full booking system will follow later. For now, WhatsApp is the fastest way to plan."
-                : "Pełny system rezerwacji pojawi się później. Na razie najszybszy jest WhatsApp."
-          }
-          title={
-            locale === "nl"
-              ? "Plan voorlopig via WhatsApp"
-              : locale === "en"
-                ? "Plan via WhatsApp for now"
-                : "Na razie WhatsApp"
-          }
-        />
       </>
     );
   }

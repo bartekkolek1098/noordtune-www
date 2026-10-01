@@ -240,19 +240,19 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   appointment: {
     nl: {
-      title: "Afspraak maken | NoordTune.nl Chiptuning & Auto Diagnose",
+      title: "Vraag een afspraak aan | NoordTune.nl Chiptuning & Auto Diagnose",
       description:
-        "Het online afsprakensysteem van NoordTune.nl komt eraan. Neem voorlopig contact op via WhatsApp of controleer eerst jouw tuningmogelijkheden in de Power Catalog."
+        "Vraag via WhatsApp een afspraak aan voor chiptuning of diagnose. Beschrijf je auto en de gewenste werkzaamheden; NoordTune bevestigt de werkzaamheden en afspraak persoonlijk."
     },
     en: {
-      title: "Book an appointment | NoordTune.nl Chiptuning & Diagnostics",
+      title: "Request an appointment | NoordTune.nl Chiptuning & Diagnostics",
       description:
-        "The online booking system is coming soon. For now, contact NoordTune.nl via WhatsApp or check your tuning options in the Power Catalog."
+        "Request an appointment for chiptuning or diagnostics via WhatsApp. Describe your vehicle and the work needed; NoordTune confirms the scope and appointment personally."
     },
     pl: {
-      title: "Umów termin | NoordTune.nl Chiptuning i diagnostyka",
+      title: "Zapytaj o termin | NoordTune.nl Chiptuning i diagnostyka",
       description:
-        "System rezerwacji online jest w przygotowaniu. Na razie skontaktuj się przez WhatsApp lub sprawdź auto w katalogu mocy."
+        "Zapytaj o termin chiptuningu lub diagnostyki przez WhatsApp. Opisz auto i potrzebne prace; NoordTune osobiście potwierdzi zakres prac i termin."
     }
   },
   privacy: {
@@ -483,47 +483,47 @@ export const pageHeroes: Record<PageKey, Record<Locale, PageHeroCopy>> = {
       title: ["Wij staan", "voor je klaar"],
       intro:
         "Stuur je vraag, kenteken of storing via WhatsApp. We denken mee over chiptuning, auto diagnose en de juiste vervolgstap.",
-      primary: "Plan een afspraak",
+      primary: "Stel je vraag",
       secondary: "WhatsApp ons"
     },
     en: {
       eyebrow: "Contact",
       title: ["Ready", "to help"],
       intro: "Send your question, plate or fault description via WhatsApp and we will advise the next step.",
-      primary: "Book an appointment",
+      primary: "Prepare your enquiry",
       secondary: "Message us on WhatsApp"
     },
     pl: {
       eyebrow: "Kontakt",
       title: ["Jesteśmy", "do pomocy"],
       intro: "Wyślij pytanie, numer rejestracyjny lub opis błędu przez WhatsApp, a doradzimy kolejny krok.",
-      primary: "Umów wizytę",
+      primary: "Przygotuj zapytanie",
       secondary: "Napisz na WhatsApp"
     }
   },
   appointment: {
     nl: {
       eyebrow: "Afspraak maken",
-      title: ["Online boeken", "komt binnenkort"],
+      title: ["Vraag een", "afspraak aan"],
       intro:
-        "We bereiden een duidelijk afsprakensysteem voor. Tot die tijd plannen we persoonlijk via WhatsApp en kun je alvast de tuningmogelijkheden van je auto controleren.",
-      primary: "WhatsApp ons",
+        "Vertel ons over je auto en de gewenste werkzaamheden. Geef eventueel een voorkeursdatum aan en bespreek je aanvraag via WhatsApp. NoordTune bevestigt de werkzaamheden en afspraak persoonlijk.",
+      primary: "Beschrijf je aanvraag",
       secondary: "Open Power Catalog"
     },
     en: {
-      eyebrow: "Booking",
-      title: ["Online booking", "coming soon"],
+      eyebrow: "Appointment enquiry",
+      title: ["Request an", "appointment"],
       intro:
-        "We are preparing a clear booking system. Until then, please contact us via WhatsApp and check your vehicle in the Power Catalog.",
-      primary: "Message us on WhatsApp",
+        "Tell us about your vehicle and the work you need. Add a preferred date if you wish and discuss your request via WhatsApp. NoordTune confirms the scope and appointment personally.",
+      primary: "Describe your request",
       secondary: "Open Power Catalog"
     },
     pl: {
       eyebrow: "Termin",
-      title: ["Rezerwacja online", "w przygotowaniu"],
+      title: ["Zapytaj", "o termin"],
       intro:
-        "Przygotowujemy prosty system rezerwacji. Do tego czasu skontaktuj się przez WhatsApp i sprawdź auto w katalogu mocy.",
-      primary: "Napisz na WhatsApp",
+        "Opisz auto i potrzebne prace. Możesz podać preferowaną datę, a następnie omówić zapytanie przez WhatsApp. NoordTune osobiście potwierdzi zakres prac i termin.",
+      primary: "Opisz zapytanie",
       secondary: "Otwórz katalog mocy"
     }
   },
@@ -1221,36 +1221,36 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
   appointment: {
     nl: [
       {
-        kicker: "Binnenkort beschikbaar",
-        title: "Een booking-flow met servicekeuze, voertuiggegevens en beschikbaarheid.",
+        kicker: "Persoonlijk contact",
+        title: "Zo vraag je een afspraak aan.",
         text:
-          "Het toekomstige afsprakensysteem krijgt een duidelijke selectie voor chiptuning, auto diagnose, loganalyse en advies. Voor nu werkt persoonlijk contact sneller: stuur je kenteken, motorvariant of foutcode via WhatsApp en we plannen samen de juiste vervolgstap.",
+          "We stemmen de werkzaamheden en het moment samen af. Een voorkeursdatum is een verzoek; de afspraak is pas definitief na onze bevestiging.",
         bullets: [
-          "Voorlopig plannen via WhatsApp",
-          "Power Catalog gebruiken voor een eerste indicatie",
-          "Servicekeuze en voertuigdetails worden later toegevoegd",
-          "Geen online betaling of kalenderkoppeling in deze eerste versie"
+          "Kies een dienst en beschrijf je vraag. Voeg desgewenst je voertuiggegevens toe.",
+          "Geef eventueel een gewenste datum of dagdeel aan.",
+          "Controleer het bericht, ga verder via WhatsApp en verstuur het daar zelf.",
+          "NoordTune bespreekt de werkzaamheden en bevestigt de afspraak persoonlijk."
         ],
         image: "/images/sections/tuning-laptop-b2.webp"
       }
     ],
     en: [
       {
-        kicker: "Coming soon",
-        title: "A booking flow with service selection, vehicle details and availability.",
+        kicker: "Personal contact",
+        title: "How to request an appointment.",
         text:
-          "The future appointment system will include service choice, vehicle details and available time slots. For now, WhatsApp is the fastest way to plan the right next step.",
-        bullets: ["Plan via WhatsApp for now", "Use the Power Catalog first", "Service choice will be added later"],
+          "We agree on the work and timing together. A preferred date is a request; your appointment is only final after our confirmation.",
+        bullets: ["Choose a service and describe your request. Add vehicle details if you wish.", "Optionally indicate a preferred date or time of day.", "Review the message, continue in WhatsApp and send it there yourself.", "NoordTune discusses the work and confirms the appointment personally."],
         image: "/images/sections/tuning-laptop-b2.webp"
       }
     ],
     pl: [
       {
-        kicker: "W przygotowaniu",
-        title: "Rezerwacja z wyborem usługi, danymi auta i dostępnością.",
+        kicker: "Osobisty kontakt",
+        title: "Jak zapytać o termin wizyty.",
         text:
-          "Przyszły system terminów będzie zawierał wybór usługi, dane pojazdu i dostępne godziny. Na razie najszybszą drogą pozostaje kontakt przez WhatsApp.",
-        bullets: ["Na razie WhatsApp", "Najpierw sprawdź katalog mocy", "Wybór usługi będzie dodany później"],
+          "Wspólnie ustalimy zakres prac i termin. Preferowana data jest propozycją; termin jest ostateczny dopiero po naszym potwierdzeniu.",
+        bullets: ["Wybierz usługę i opisz zapytanie. Możesz dodać dane auta.", "Opcjonalnie podaj preferowaną datę lub porę dnia.", "Sprawdź wiadomość, przejdź do WhatsApp i wyślij ją samodzielnie.", "NoordTune omówi zakres prac i osobiście potwierdzi termin."],
         image: "/images/sections/tuning-laptop-b2.webp"
       }
     ]
