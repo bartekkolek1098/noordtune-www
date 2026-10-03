@@ -39,7 +39,7 @@ export function RichInfoSection({
   stats,
   statValueClassName = "text-3xl",
   image,
-  imageAlt = "",
+  imageAlt,
   primaryLabel,
   primaryHref = site.whatsappUrl,
   secondaryLabel,
@@ -50,9 +50,9 @@ export function RichInfoSection({
   return (
     <section className="container py-9 md:py-14">
       <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
-        <div className={`panel-edge rounded-[3px] p-6 md:p-8 ${reversed ? "lg:order-2" : ""}`}>
+        <div className={`panel-edge min-w-0 rounded-[3px] p-6 md:p-8 ${reversed ? "lg:order-2" : ""}`}>
           {kicker ? <p className="racing-title text-lg text-primary">{kicker}</p> : null}
-          <h2 className="racing-title mt-2 text-3xl leading-[0.93] text-white sm:text-4xl md:text-6xl">
+          <h2 className="racing-title mt-2 text-3xl leading-[0.93] text-white [overflow-wrap:anywhere] sm:text-4xl md:text-6xl">
             {title}
           </h2>
           <p className="mt-5 text-sm leading-7 text-white/70 md:text-base">{text}</p>
@@ -106,9 +106,9 @@ export function RichInfoSection({
           ) : null}
         </div>
 
-        <div className={`panel-edge relative min-h-[260px] overflow-hidden rounded-[3px] md:min-h-[460px] ${reversed ? "lg:order-1" : ""}`}>
+        <div className={`panel-edge relative min-h-[260px] min-w-0 overflow-hidden rounded-[3px] md:min-h-[460px] ${reversed ? "lg:order-1" : ""}`}>
           <Image
-            alt={imageAlt}
+            alt={imageAlt ?? title}
             className="object-cover"
             fill
             sizes="(min-width: 1024px) 52vw, 100vw"

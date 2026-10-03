@@ -292,21 +292,21 @@ export const pageHeroes: Record<PageKey, Record<Locale, PageHeroCopy>> = {
       title: ["Meer vermogen.", "Meer rijplezier.", "100% op maat."],
       intro: "Professionele chiptuning, ECU remap en auto diagnose, afgestemd op jouw auto, motor en rijstijl.",
       primary: "Vermogen berekenen",
-      secondary: "WhatsApp ons"
+      secondary: "Vraag een afspraak aan"
     },
     en: {
       eyebrow: "Chiptuning & Car Diagnostics in Assen",
       title: ["More power.", "Better response.", "100% custom."],
       intro: "Professional ECU remap, chiptuning and vehicle diagnostics tailored to your car, engine and driving style.",
       primary: "Check tuning options",
-      secondary: "Message us"
+      secondary: "Request an appointment"
     },
     pl: {
       eyebrow: "Chiptuning i diagnostyka samochodowa w Assen",
       title: ["Więcej mocy.", "Więcej frajdy z jazdy.", "100% pod Twoje auto."],
       intro: "Profesjonalny chiptuning, remap ECU i diagnostyka przygotowane indywidualnie pod konkretny samochód.",
       primary: "Sprawdź możliwości auta",
-      secondary: "Napisz na WhatsApp"
+      secondary: "Zapytaj o termin"
     }
   },
   chiptuning: {

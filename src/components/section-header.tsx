@@ -11,7 +11,7 @@ export function SectionHeader({kicker, title, text, align = "left"}: SectionHead
       {kicker ? (
         <p className="racing-title mb-2 text-lg text-primary md:text-xl">{kicker}</p>
       ) : null}
-      <h2 className="racing-title text-3xl leading-[0.95] text-white md:text-5xl">
+      <h2 className="racing-title text-3xl leading-[0.95] text-white [overflow-wrap:anywhere] md:text-5xl">
         {title}
       </h2>
       {text ? <p className="mt-4 text-base leading-8 text-white/68">{text}</p> : null}

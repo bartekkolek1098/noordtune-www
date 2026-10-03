@@ -60,6 +60,7 @@ export function PageHero({copy, image, locale, pageKey}: PageHeroProps) {
     <section className="relative overflow-hidden border-b border-white/10">
       <div className="absolute inset-0">
         <Image
+          aria-hidden="true"
           alt=""
           className="object-cover object-center"
           fill

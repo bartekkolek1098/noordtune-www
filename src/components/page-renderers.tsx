@@ -28,7 +28,16 @@ import {
   whyItems
 } from "@/content/copy";
 import {brandNavigationLinks} from "@/content/brand-pages";
-import {displayCustomerResults, featuredCustomerResults} from "@/content/customer-results";
+import {
+  blogArticleForTranslationKey,
+  blogArticlePath,
+  latestBlogArticles
+} from "@/content/blog-articles";
+import {
+  customerResultPath,
+  displayCustomerResults,
+  featuredCustomerResults
+} from "@/content/customer-results";
 import {heroImages, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
 const ui = {
@@ -125,24 +134,109 @@ const resultsFutureNote = {
 
 const homeResultsCopy = {
   nl: {
-    kicker: "Portfolio",
-    title: "Uitgelichte klantresultaten",
-    text: "Een selectie van recente NoordTune projecten. Bekijk de volledige resultatenpagina voor meer voertuigen, stages en software-oplossingen.",
+    kicker: "Actueel portfolio",
+    title: "Recente klantprojecten",
+    text: "Een selectie van recent toegevoegde NoordTune klantprojecten.",
     cta: "Bekijk alle klantresultaten"
   },
   en: {
-    kicker: "Portfolio",
-    title: "Featured customer results",
-    text: "A selection of recent NoordTune projects. Visit the full results page for more vehicles, stages and software solutions.",
+    kicker: "Current portfolio",
+    title: "Recent customer projects",
+    text: "A selection of recently added NoordTune customer projects.",
     cta: "View all customer results"
   },
   pl: {
-    kicker: "Portfolio",
-    title: "Wyróżnione realizacje klientów",
-    text: "Wybrane realizacje NoordTune. Pełną listę aut, modyfikacji i wyników znajdziesz w zakładce realizacje.",
+    kicker: "Aktualne portfolio",
+    title: "Najnowsze realizacje klientów",
+    text: "Wybrane, ostatnio dodane realizacje NoordTune.",
     cta: "Zobacz wszystkie realizacje"
   }
 } satisfies Record<Locale, {kicker: string; title: string; text: string; cta: string}>;
+
+const homeLatestCopy = {
+  nl: {
+    kicker: "Nieuw bij NoordTune",
+    title: "Praktische kennis, uitleg en recente updates.",
+    cta: "Bekijk alle artikelen"
+  },
+  en: {
+    kicker: "Latest from NoordTune",
+    title: "Practical knowledge, explanations and recent updates.",
+    cta: "View all articles"
+  },
+  pl: {
+    kicker: "Nowości w NoordTune",
+    title: "Praktyczna wiedza, poradniki i najnowsze aktualizacje.",
+    cta: "Zobacz wszystkie artykuły"
+  }
+} satisfies Record<Locale, {kicker: string; title: string; cta: string}>;
+
+const chiptuningProofCopy = {
+  nl: {
+    kicker: "Bewijs en uitleg",
+    title: "Bekijk echte resultaten en verdiep je in de techniek.",
+    results: "Recente klantprojecten",
+    guides: "Gerelateerde artikelen",
+    appointment: "Vraag een afspraak aan"
+  },
+  en: {
+    kicker: "Proof and guidance",
+    title: "See real results and learn about the technical choices.",
+    results: "Recent customer projects",
+    guides: "Related articles",
+    appointment: "Request an appointment"
+  },
+  pl: {
+    kicker: "Realizacje i wiedza",
+    title: "Zobacz prawdziwe wyniki i poznaj techniczne podstawy.",
+    results: "Najnowsze realizacje klientów",
+    guides: "Powiązane artykuły",
+    appointment: "Zapytaj o termin"
+  }
+} satisfies Record<Locale, {kicker: string; title: string; results: string; guides: string; appointment: string}>;
+
+function ChiptuningProofSection({locale}: {locale: Locale}) {
+  const copy = chiptuningProofCopy[locale];
+  const results = featuredCustomerResults(locale);
+  const guides = (["what-is-chiptuning", "chiptuning-cost"] as const)
+    .map((key) => blogArticleForTranslationKey(key, locale))
+    .filter((article) => article !== undefined);
+
+  return (
+    <section className="border-y border-white/8 bg-white/[0.025]">
+      <div className="container py-10 md:py-14">
+        <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <SectionHeader align="left" kicker={copy.kicker} title={copy.title} />
+          <ButtonLink href={pathFor(locale, "appointment")} variant="outline">{copy.appointment}</ButtonLink>
+        </div>
+        <div className="mt-7 grid gap-4 lg:grid-cols-2">
+          <nav aria-label={copy.results} className="panel-edge rounded-[3px] p-5">
+            <h3 className="racing-title text-2xl text-white">{copy.results}</h3>
+            <div className="mt-4 grid gap-2">
+              {results.map((result) => (
+                <Link className="group flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm text-white/78 first:border-t-0 hover:text-white" href={customerResultPath(result)} key={result.id}>
+                  <span>{result.vehicleMake} {result.vehicleModel} · {result.stage}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+            </div>
+          </nav>
+          <nav aria-label={copy.guides} className="panel-edge rounded-[3px] p-5">
+            <h3 className="racing-title text-2xl text-white">{copy.guides}</h3>
+            <div className="mt-4 grid gap-2">
+              {guides.map((article) => (
+                <Link className="group flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm text-white/78 first:border-t-0 hover:text-white" href={blogArticlePath(article.locale, article.slug)} key={article.slug}>
+                  <span>{article.title}</span>
+                  <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+  );
+}
 
 const archiveCategoryLabels = {
   nl: ["Alle resultaten", "ECU remap", "TCU tuning", "ECU cloning", "Stage 1", "Stage 2+"],
@@ -161,6 +255,8 @@ export function HomeRenderer({locale}: {locale: Locale}) {
   const labels = ui[locale];
   const featuredResults = featuredCustomerResults(locale);
   const resultsCopy = homeResultsCopy[locale];
+  const latestCopy = homeLatestCopy[locale];
+  const latestArticles = latestBlogArticles(locale);
 
   return (
     <>
@@ -170,6 +266,7 @@ export function HomeRenderer({locale}: {locale: Locale}) {
           copy={pageHeroes.home[locale]}
           features={home.features}
           image={heroImages.home}
+          secondaryHref={pathFor(locale, "appointment")}
           trust={home.trust}
         />
         <TextSection block={home.intro} />
@@ -243,6 +340,26 @@ export function HomeRenderer({locale}: {locale: Locale}) {
             <ButtonLink href={pathFor(locale, "resultaten")} variant="outline">
               {resultsCopy.cta}
             </ButtonLink>
+          </div>
+          <div className="mt-10 border-t border-white/10 pt-8">
+            <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+              <div className="max-w-2xl">
+                <p className="racing-title text-lg text-primary">{latestCopy.kicker}</p>
+                <h2 className="racing-title mt-2 text-3xl text-white md:text-4xl">{latestCopy.title}</h2>
+              </div>
+              <ButtonLink href={pathFor(locale, "blog")} variant="outline">{latestCopy.cta}</ButtonLink>
+            </div>
+            <div className="mt-6 grid gap-3 md:grid-cols-2">
+              {latestArticles.map((article) => (
+                <Link className="group flex min-w-0 items-center justify-between gap-4 border border-white/10 bg-black/35 p-4 transition hover:border-primary/60" href={blogArticlePath(article.locale, article.slug)} key={article.slug}>
+                  <span className="min-w-0">
+                    <span className="block text-xs font-black uppercase text-primary">{article.category} · {article.readTime}</span>
+                    <span className="racing-title mt-1 block text-xl text-white [overflow-wrap:anywhere]">{article.title}</span>
+                  </span>
+                  <ArrowRight className="h-5 w-5 shrink-0 text-primary transition group-hover:translate-x-0.5" />
+                </Link>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -583,6 +700,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
       {pageSections[pageKey][locale].map((block, index) => (
         <TextSection block={block} key={block.title} reversed={index % 2 === 1} />
       ))}
+      {pageKey === "chiptuning" ? <ChiptuningProofSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <BrandNavigationSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <PowerCatalogSection locale={locale} /> : null}
       <section className="container py-12 md:py-16">

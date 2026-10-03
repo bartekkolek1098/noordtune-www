@@ -9,13 +9,15 @@ type HeroProps = {
   image: string;
   trust: string[];
   features: Array<{title: string; text: string; icon: IconName}>;
+  secondaryHref?: string;
 };
 
-export function Hero({copy, image, trust, features}: HeroProps) {
+export function Hero({copy, image, trust, features, secondaryHref = site.whatsappUrl}: HeroProps) {
   return (
     <section className="noise relative overflow-hidden border-b border-white/10">
       <div className="absolute inset-0">
         <Image
+          aria-hidden="true"
           alt=""
           className="object-cover object-center"
           fill
@@ -43,7 +45,7 @@ export function Hero({copy, image, trust, features}: HeroProps) {
 
           <div className="mt-7 flex flex-wrap gap-3">
             <ButtonLink href={site.catalogUrl}>{copy.primary}</ButtonLink>
-            <ButtonLink href={site.whatsappUrl} icon="whatsapp" variant="outline">
+            <ButtonLink href={secondaryHref} icon={secondaryHref === site.whatsappUrl ? "whatsapp" : "arrow"} variant="outline">
               {copy.secondary}
             </ButtonLink>
           </div>
