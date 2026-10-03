@@ -69,6 +69,7 @@ export function ServiceCard({service, locale}: {service: ServiceCardCopy; locale
     <article className="group panel-edge overflow-hidden rounded-[3px] transition hover:border-primary/70 hover:shadow-glow">
       <div className="relative h-40 overflow-hidden">
         <Image
+          aria-hidden="true"
           alt=""
           className="object-cover transition duration-500 group-hover:scale-105"
           fill
@@ -152,7 +153,7 @@ export function ResultCardView({
   const tags = showTags ? customerResultServiceTags(result) : [];
 
   return (
-    <article className="panel-edge h-full min-w-0 overflow-hidden rounded-[3px]">
+    <article className="panel-edge h-full min-w-0 overflow-hidden rounded-[3px]" data-customer-result={isCustomer ? result.slug : undefined}>
       <div className={`relative border-b border-white/10 bg-black/55 ${isCustomer ? "h-48" : "h-36"}`}>
         <Image
           alt={result.imageAlt}

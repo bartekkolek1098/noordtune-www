@@ -12,6 +12,8 @@
     "content:audit": "tsx scripts/audit-locales.ts",
     "test:enquiry": "tsx --test tests/enquiry.test.ts",
     "test:enquiry:browser": "tsx scripts/test-enquiry-browser.ts",
+    "test:seo": "tsx --test tests/seo-freshness.test.ts",
+    "test:seo:browser": "tsx scripts/test-homepage-seo-browser.ts",
     "result:draft": "tsx scripts/prepare-customer-result-draft.ts",
     "screenshots": "tsx scripts/capture-screenshots.ts",
     "menu:screenshots": "tsx scripts/capture-mobile-menu-screenshots.ts"

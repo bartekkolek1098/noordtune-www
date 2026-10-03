@@ -1,5 +1,5 @@
 import type {Metadata} from "next";
-import {blogArticleUrl, type BlogArticle} from "@/content/blog-articles";
+import {blogArticleAlternates, blogArticleUrl, type BlogArticle} from "@/content/blog-articles";
 import {
   brandPageForBrand,
   brandPagePath,
@@ -8,6 +8,7 @@ import {
 } from "@/content/brand-pages";
 import {
   customerResultOgImage,
+  customerResultAlternates,
   customerResultUrl,
   isPublicCustomerResult,
   type CustomerResult
@@ -16,6 +17,7 @@ import {faqs, seo, type FaqItem} from "@/content/copy";
 import type {SeoLanding} from "@/content/seo-landings";
 import {
   absolutePath,
+  defaultLocale,
   heroImages,
   locales,
   pathFor,
@@ -27,9 +29,10 @@ import {
 export function createMetadata(locale: Locale, pageKey: PageKey): Metadata {
   const copy = seo[pageKey][locale];
   const canonical = absolutePath(locale, pageKey);
-  const languages = Object.fromEntries(
-    locales.map((item) => [item, absolutePath(item, pageKey)])
-  );
+  const languages = {
+    ...Object.fromEntries(locales.map((item) => [item, absolutePath(item, pageKey)])),
+    "x-default": pageKey === "home" ? site.url : absolutePath(defaultLocale, pageKey)
+  };
   const image = `${site.url}${heroImages[pageKey]}`;
 
   return {
@@ -151,6 +154,7 @@ export function createBrandPageMetadata(page: BrandPage): Metadata {
 export function createBlogArticleMetadata(article: BlogArticle): Metadata {
   const canonical = blogArticleUrl(article);
   const image = `${site.url}${article.heroImage}`;
+  const languages = blogArticleAlternates(article);
 
   return {
     title: article.metaTitle,
@@ -158,9 +162,7 @@ export function createBlogArticleMetadata(article: BlogArticle): Metadata {
     metadataBase: new URL(site.url),
     alternates: {
       canonical,
-      languages: {
-        [article.locale]: canonical
-      }
+      languages
     },
     openGraph: {
       title: article.metaTitle,
@@ -168,6 +170,7 @@ export function createBlogArticleMetadata(article: BlogArticle): Metadata {
       url: canonical,
       siteName: site.name,
       locale: article.locale,
+      alternateLocale: Object.keys(languages).filter((locale) => locale !== article.locale),
       type: "article",
       publishedTime: article.publishedAt,
       modifiedTime: article.updatedAt,
@@ -197,6 +200,7 @@ export function createBlogArticleMetadata(article: BlogArticle): Metadata {
 export function createCustomerResultMetadata(result: CustomerResult): Metadata {
   const canonical = customerResultUrl(result);
   const image = `${site.url}${customerResultOgImage(result)}`;
+  const languages = customerResultAlternates(result);
   const car = `${result.vehicleMake} ${result.vehicleModel}`;
   const hp = result.locale === "pl" ? "KM" : result.locale === "nl" ? "pk" : "hp";
   const title =
@@ -224,9 +228,7 @@ export function createCustomerResultMetadata(result: CustomerResult): Metadata {
     metadataBase: new URL(site.url),
     alternates: {
       canonical,
-      languages: {
-        [result.locale]: canonical
-      }
+      languages
     },
     openGraph: {
       title,
@@ -234,6 +236,7 @@ export function createCustomerResultMetadata(result: CustomerResult): Metadata {
       url: canonical,
       siteName: site.name,
       locale: result.locale,
+      alternateLocale: Object.keys(languages).filter((locale) => locale !== result.locale),
       type: "article",
       publishedTime: result.publishedAt,
       modifiedTime: result.updatedAt,
@@ -265,6 +268,7 @@ export function localBusinessJsonLd(locale: Locale) {
     "@id": `${site.url}${pathFor(locale, "home")}#business`,
     name: site.name,
     image: `${site.url}/brand/noordtune-logo.png`,
+    logo: `${site.url}/brand/noordtune-logo.png`,
     url: site.url,
     telephone: site.phone,
     email: site.email,
@@ -350,6 +354,8 @@ export function brandPageBreadcrumbJsonLd(page: BrandPage) {
 }
 
 export function articleJsonLd(article: BlogArticle) {
+  const organization = organizationJsonLd();
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -358,24 +364,15 @@ export function articleJsonLd(article: BlogArticle) {
     image: `${site.url}${article.heroImage}`,
     datePublished: article.publishedAt,
     dateModified: article.updatedAt,
-    author: {
-      "@type": "Organization",
-      name: site.name,
-      url: site.url
-    },
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-      logo: {
-        "@type": "ImageObject",
-        url: `${site.url}/brand/noordtune-logo.png`
-      }
-    },
+    author: organization,
+    publisher: organization,
     mainEntityOfPage: blogArticleUrl(article)
   };
 }
 
 export function customerResultJsonLd(result: CustomerResult) {
+  const organization = organizationJsonLd();
+
   return {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -384,25 +381,28 @@ export function customerResultJsonLd(result: CustomerResult) {
     image: result.images.map((image) => `${site.url}${image}`),
     datePublished: result.publishedAt,
     dateModified: result.updatedAt,
-    author: {
-      "@type": "Organization",
-      name: site.name,
-      url: site.url
-    },
-    publisher: {
-      "@type": "Organization",
-      name: site.name,
-      logo: {
-        "@type": "ImageObject",
-        url: `${site.url}/brand/noordtune-logo.png`
-      }
-    },
+    author: organization,
+    publisher: organization,
     about: {
       "@type": "Vehicle",
       name: `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleEngine}`,
       vehicleModelDate: result.vehicleYear
     },
     mainEntityOfPage: customerResultUrl(result)
+  };
+}
+
+function organizationJsonLd() {
+  return {
+    "@type": "Organization",
+    name: site.name,
+    url: site.url,
+    logo: {
+      "@type": "ImageObject",
+      url: `${site.url}/brand/noordtune-logo.png`,
+      width: 260,
+      height: 75
+    }
   };
 }
 

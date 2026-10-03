@@ -80,6 +80,7 @@ export function PowerCatalogSection({locale, compact = false}: PowerCatalogSecti
       <div className="panel-edge relative min-w-0 overflow-hidden rounded-[3px]">
         <div className="absolute inset-0 overflow-hidden">
           <Image
+            aria-hidden="true"
             alt=""
             className="block object-cover opacity-65 md:hidden xl:block"
             fill

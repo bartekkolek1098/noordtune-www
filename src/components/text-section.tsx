@@ -10,7 +10,7 @@ export function TextSection({block, reversed = false}: {block: TextBlock; revers
           block.image ? "lg:grid-cols-[0.9fr_1.1fr] lg:items-center" : ""
         }`}
       >
-        <div className={reversed ? "lg:order-2" : ""}>
+        <div className={`min-w-0 ${reversed ? "lg:order-2" : ""}`}>
           <SectionHeader kicker={block.kicker} text={block.text} title={block.title} />
           {block.bullets ? (
             <ul className="mt-6 grid gap-3 sm:grid-cols-2">
@@ -26,7 +26,7 @@ export function TextSection({block, reversed = false}: {block: TextBlock; revers
         {block.image ? (
           <div className={`panel-edge relative min-h-[250px] overflow-hidden rounded-[3px] md:min-h-[300px] ${reversed ? "lg:order-1" : ""}`}>
             <Image
-              alt=""
+              alt={block.title}
               className="object-cover"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

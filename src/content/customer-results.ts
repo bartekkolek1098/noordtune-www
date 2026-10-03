@@ -1,4 +1,4 @@
-import {pageRoutes, site, type Locale} from "./site";
+import {locales, pageRoutes, site, type Locale} from "./site";
 import {customerResultsBatch202608} from "./customer-results-batch-2026-08";
 
 export type CustomerResultSource = "manual" | "facebook";
@@ -183,6 +183,34 @@ export function customerResultPath(result: CustomerResult) {
 
 export function customerResultUrl(result: CustomerResult) {
   return `${site.url}${customerResultPath(result)}`;
+}
+
+export const translatedCustomerResultSlugs = new Set([
+  "ford-transit-connect-15-ecoblue-2019-stage-1",
+  "toyota-proace-verso-vip-20d-2023-stage-1",
+  "bmw-f40-118i-7dct300-tcu-tuning",
+  "vw-caddy-20-tdi-2020-stage-1",
+  "vw-transporter-20-tdi-2013-ecu-cloning-stage-1",
+  "audi-a4-b7-20-tdi-stage-2-plus",
+  "bmw-x3-e83-20d-stage-1"
+]);
+
+export function customerResultAlternates(result: CustomerResult) {
+  if (!translatedCustomerResultSlugs.has(result.slug)) {
+    return {[result.locale]: customerResultUrl(result)};
+  }
+
+  return Object.fromEntries(
+    locales.flatMap((locale) => {
+      const translatedResult = customerResults.find(
+        (candidate) =>
+          candidate.locale === locale &&
+          candidate.slug === result.slug &&
+          isPublicCustomerResult(candidate)
+      );
+      return translatedResult ? [[locale, customerResultUrl(translatedResult)]] : [];
+    })
+  );
 }
 
 const fallbackCustomerResultImage = "/images/sections/ford-sid212-obd.webp";
@@ -579,8 +607,6 @@ export const customerResults: CustomerResult[] = [
     imageAlt: "BMW X3 E83 2.0d Stage 1 chiptuning resultaat bij NoordTune.nl",
     serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
-    featuredOnHome: true,
-    featuredOrder: 2,
     category: "ecu-remap",
     serviceTags: ["Stage 1", "ECU remap", "Diesel"],
     fuelType: "Diesel",
@@ -636,8 +662,6 @@ export const customerResults: CustomerResult[] = [
     imageAlt: "BMW X3 E83 2.0d Stage 1 ECU remap result at NoordTune.nl",
     serviceType: "Stage 1 / ECU remap",
     stage: "Stage 1",
-    featuredOnHome: true,
-    featuredOrder: 2,
     category: "ecu-remap",
     serviceTags: ["Stage 1", "ECU remap", "Diesel"],
     fuelType: "Diesel",
@@ -693,8 +717,6 @@ export const customerResults: CustomerResult[] = [
     imageAlt: "BMW X3 E83 2.0d Stage 1 — wynik indywidualnego remapu ECU w NoordTune.nl",
     serviceType: "Stage 1 / remap ECU",
     stage: "Stage 1",
-    featuredOnHome: true,
-    featuredOrder: 2,
     category: "ecu-remap",
     serviceTags: ["Stage 1", "Remap ECU", "Diesel"],
     fuelType: "Diesel",
@@ -747,8 +769,6 @@ export const customerResults: CustomerResult[] = [
     tcu: "Niet van toepassing",
     serviceType: "Stage 2+ / maatwerk ECU-remap",
     stage: "Stage 2+",
-    featuredOnHome: true,
-    featuredOrder: 1,
     category: "ecu-remap",
     serviceTags: ["Stage 2+", "ECU remap", "Diesel"],
     fuelType: "Diesel",
@@ -810,8 +830,6 @@ export const customerResults: CustomerResult[] = [
     tcu: "Not applicable",
     serviceType: "Stage 2+ / custom ECU remap",
     stage: "Stage 2+",
-    featuredOnHome: true,
-    featuredOrder: 1,
     category: "ecu-remap",
     serviceTags: ["Stage 2+", "ECU remap", "Diesel"],
     fuelType: "Diesel",
@@ -873,8 +891,6 @@ export const customerResults: CustomerResult[] = [
     tcu: "Nie dotyczy",
     serviceType: "Stage 2+ / indywidualny remap ECU",
     stage: "Stage 2+",
-    featuredOnHome: true,
-    featuredOrder: 1,
     category: "ecu-remap",
     serviceTags: ["Stage 2+", "Remap ECU", "Diesel"],
     fuelType: "Diesel",
