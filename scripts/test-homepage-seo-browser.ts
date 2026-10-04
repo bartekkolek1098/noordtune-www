@@ -122,8 +122,10 @@ async function assertArticleJsonLd(page: Page) {
   );
   const article = blocks.find((block) => block["@type"] === "Article");
   assert.ok(article, "Article JSON-LD missing");
-  const logo = `${site.url}/brand/noordtune-logo.png`;
+  const logo = `${site.url}/brand/noordtune-logo-schema.svg`;
   assert.equal(article.author?.logo?.url, logo);
+  assert.equal(article.author?.logo?.width, 600);
+  assert.equal(article.author?.logo?.height, 184);
   assert.equal(article.publisher?.logo?.url, logo);
 }
 

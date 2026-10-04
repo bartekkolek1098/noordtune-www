@@ -41,17 +41,19 @@ Routes use locale prefixes:
 
 ## Assets
 
-Replace the logo here:
+The active owner-supplied web branding assets are:
 
-- `public/brand/noordtune-logo.png`
-- `public/brand/noordtune-icon.png`
+- `public/brand/noordtune-logo-dark.svg` for the dark header, mobile menu and footer.
+- `public/brand/noordtune-logo-schema.svg` for structured data on a light background.
+- `public/favicon.svg`, PNG favicon fallbacks, `public/favicon.ico` and `public/apple-touch-icon.png`.
+- `public/android-chrome-192x192.png`, `public/android-chrome-512x512.png` and `public/site.webmanifest`.
 
-Logo requirements before launch:
+Brand asset rules:
 
-- Use a transparent PNG or SVG only.
-- Do not use a white-background logo export.
-- Keep the visual width similar to the current header asset so the desktop navigation remains stable.
-- If a final SVG becomes available, replace the component source paths consistently or keep a PNG fallback for Open Graph and favicon use.
+- Use the dark-background SVG directly; do not apply a CSS invert filter.
+- Keep the 600×184 intrinsic dimensions when the full logo is used.
+- Use the light-background SVG at a stable absolute URL for schema markup.
+- The legacy PNG logo and icon remain in the repository only for historical documentation and rollback references.
 
 Replace hero and section imagery here:
 

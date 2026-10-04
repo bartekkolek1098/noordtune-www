@@ -267,8 +267,8 @@ export function localBusinessJsonLd(locale: Locale) {
     "@type": "AutoRepair",
     "@id": `${site.url}${pathFor(locale, "home")}#business`,
     name: site.name,
-    image: `${site.url}/brand/noordtune-logo.png`,
-    logo: `${site.url}/brand/noordtune-logo.png`,
+    image: `${site.url}/brand/noordtune-logo-schema.svg`,
+    logo: `${site.url}/brand/noordtune-logo-schema.svg`,
     url: site.url,
     telephone: site.phone,
     email: site.email,
@@ -399,9 +399,9 @@ function organizationJsonLd() {
     url: site.url,
     logo: {
       "@type": "ImageObject",
-      url: `${site.url}/brand/noordtune-logo.png`,
-      width: 260,
-      height: 75
+      url: `${site.url}/brand/noordtune-logo-schema.svg`,
+      width: 600,
+      height: 184
     }
   };
 }

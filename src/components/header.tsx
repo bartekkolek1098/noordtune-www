@@ -24,10 +24,10 @@ export function Header({locale, activeKey, languagePaths}: HeaderProps) {
           <Image
             alt="NoordTune.nl Chiptuning & Auto Diagnostiek"
             className="h-auto w-28 min-[360px]:w-32 min-[420px]:w-36 sm:w-48 xl:w-52 2xl:w-56"
-            height={75}
+            height={184}
             priority
-            src="/brand/noordtune-logo.png"
-            width={260}
+            src="/brand/noordtune-logo-dark.svg"
+            width={600}
           />
         </Link>
 
