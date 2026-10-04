@@ -1,4 +1,4 @@
-import type {Metadata} from "next";
+import type {Metadata, Viewport} from "next";
 import "./globals.css";
 import {site} from "@/content/site";
 
@@ -21,10 +21,21 @@ export const metadata: Metadata = {
     template: "%s"
   },
   description: site.description,
+  manifest: "/site.webmanifest",
   icons: {
-    icon: "/brand/noordtune-icon.png",
-    apple: "/brand/noordtune-icon.png"
+    icon: [
+      {url: "/favicon.svg", type: "image/svg+xml"},
+      {url: "/favicon-16x16.png", sizes: "16x16", type: "image/png"},
+      {url: "/favicon-32x32.png", sizes: "32x32", type: "image/png"},
+      {url: "/favicon-48x48.png", sizes: "48x48", type: "image/png"},
+      {url: "/favicon.ico", sizes: "any"}
+    ],
+    apple: [{url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png"}]
   }
+};
+
+export const viewport: Viewport = {
+  themeColor: "#111111"
 };
 
 export default function RootLayout({children}: Readonly<{children: React.ReactNode}>) {

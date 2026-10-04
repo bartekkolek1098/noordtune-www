@@ -163,10 +163,10 @@ export function MobileMenu({locale, activeKey, languagePaths}: MobileMenuProps) 
                       <Image
                         alt="NoordTune.nl"
                         className="h-auto w-40 max-w-[58vw]"
-                        height={75}
+                        height={184}
                         priority
-                        src="/brand/noordtune-logo.png"
-                        width={260}
+                        src="/brand/noordtune-logo-dark.svg"
+                        width={600}
                       />
                     </Link>
                     <button

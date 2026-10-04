@@ -100,13 +100,15 @@ test("x-default is limited to general localized pages", () => {
 });
 
 test("Organization structured data uses the official local logo", () => {
-  const logoUrl = `${site.url}/brand/noordtune-logo.png`;
-  assert.ok(existsSync(join(process.cwd(), "public", "brand", "noordtune-logo.png")));
+  const logoUrl = `${site.url}/brand/noordtune-logo-schema.svg`;
+  assert.ok(existsSync(join(process.cwd(), "public", "brand", "noordtune-logo-schema.svg")));
 
   const article = latestBlogArticles("nl", 1)[0];
   assert.ok(article);
   const structuredData = articleJsonLd(article);
   assert.equal(structuredData.author.logo.url, logoUrl);
+  assert.equal(structuredData.author.logo.width, 600);
+  assert.equal(structuredData.author.logo.height, 184);
   assert.equal(structuredData.publisher.logo.url, logoUrl);
   assert.equal(localBusinessJsonLd("nl").logo, logoUrl);
 });

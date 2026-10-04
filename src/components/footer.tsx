@@ -45,9 +45,9 @@ export function Footer({locale}: FooterProps) {
           <Image
             alt="NoordTune.nl"
             className="h-auto w-56"
-            height={75}
-            src="/brand/noordtune-logo.png"
-            width={260}
+            height={184}
+            src="/brand/noordtune-logo-dark.svg"
+            width={600}
           />
           <p className="mt-4 max-w-sm text-sm leading-7 text-white/58">
             {labels.intro}
