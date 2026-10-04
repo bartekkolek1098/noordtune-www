@@ -1259,19 +1259,22 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
     nl: [
       {title: "Welke gegevens wij verwerken", text: "Wanneer je contact opneemt, kunnen wij je naam, telefoonnummer, e-mailadres, kenteken, voertuiggegevens en bericht verwerken om je aanvraag te beantwoorden."},
       {title: "Waarom wij gegevens gebruiken", text: "Wij gebruiken gegevens voor contact, planning, offertes, uitvoering van diensten, wettelijke administratie en verbetering van onze website."},
-      {title: "Bewaren en delen", text: "Wij bewaren gegevens niet langer dan nodig en delen ze niet met derden voor verkoopdoeleinden. Technische dienstverleners kunnen gegevens verwerken wanneer dat nodig is voor website, hosting of communicatie."}
+      {title: "Bewaren en delen", text: "Wij bewaren gegevens niet langer dan nodig en delen ze niet met derden voor verkoopdoeleinden. Technische dienstverleners kunnen gegevens verwerken wanneer dat nodig is voor website, hosting of communicatie."},
+      {title: "Website-analyse", text: "Deze website gebruikt Vercel Web Analytics om geaggregeerd websitegebruik en geselecteerde interacties te meten. De inhoud van aanvragen en directe contactgegevens van klanten worden niet bewust als analytics-eventdata verzonden."}
     ],
     en: [
       {title: "Data we process", text: "When you contact NoordTune.nl, we may process your name, phone number, email address, license plate, vehicle details and message so we can answer your request properly."},
       {title: "Why we use data", text: "We use this information for communication, planning, quotations, service preparation, administration and improving the website experience."},
       {title: "Storage and sharing", text: "We do not keep data longer than necessary and we do not sell personal data. Technical service providers may process data only where needed for hosting, website operation or communication."},
-      {title: "Your rights", text: "You may ask us to view, correct or delete your personal data where legally possible. Contact us if you have a question about privacy or a previous request."}
+      {title: "Your rights", text: "You may ask us to view, correct or delete your personal data where legally possible. Contact us if you have a question about privacy or a previous request."},
+      {title: "Website analytics", text: "This website uses Vercel Web Analytics to measure aggregate website usage and selected interactions. Enquiry contents and direct customer contact details are not intentionally sent as analytics event data."}
     ],
     pl: [
       {title: "Jakie dane przetwarzamy", text: "Gdy kontaktujesz się z NoordTune.nl, możemy przetwarzać imię, numer telefonu, adres e-mail, numer rejestracyjny, dane pojazdu oraz treść wiadomości."},
       {title: "Po co używamy danych", text: "Dane służą do kontaktu, planowania wizyty, przygotowania wyceny, wykonania usługi, administracji i poprawy działania strony."},
       {title: "Przechowywanie i udostępnianie", text: "Nie przechowujemy danych dłużej, niż jest to potrzebne, i nie sprzedajemy danych osobowych. Dostawcy techniczni mogą przetwarzać dane tylko wtedy, gdy jest to potrzebne do hostingu, strony lub komunikacji."},
-      {title: "Twoje prawa", text: "Możesz poprosić o wgląd, poprawienie lub usunięcie danych, jeśli pozwalają na to przepisy. W sprawach prywatności skontaktuj się z NoordTune.nl."}
+      {title: "Twoje prawa", text: "Możesz poprosić o wgląd, poprawienie lub usunięcie danych, jeśli pozwalają na to przepisy. W sprawach prywatności skontaktuj się z NoordTune.nl."},
+      {title: "Analityka strony", text: "Ta strona używa Vercel Web Analytics do pomiaru zbiorczego użycia witryny i wybranych interakcji. Treść zapytań i bezpośrednie dane kontaktowe klientów nie są celowo wysyłane jako dane zdarzeń analitycznych."}
     ]
   },
   terms: {

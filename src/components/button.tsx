@@ -2,6 +2,8 @@ import clsx from "clsx";
 import {ArrowRight, MessageCircle} from "lucide-react";
 import Link from "next/link";
 import type {ReactNode} from "react";
+import {TrackedLink} from "@/components/tracked-link";
+import type {ConversionEvent} from "@/lib/analytics";
 
 type ButtonLinkProps = {
   href: string;
@@ -9,6 +11,7 @@ type ButtonLinkProps = {
   variant?: "primary" | "outline" | "ghost";
   className?: string;
   icon?: "arrow" | "whatsapp" | "none";
+  analytics?: ConversionEvent;
 };
 
 export const buttonClasses = {
@@ -24,7 +27,8 @@ export function ButtonLink({
   children,
   variant = "primary",
   className,
-  icon = "arrow"
+  icon = "arrow",
+  analytics
 }: ButtonLinkProps) {
   const content = (
     <>
@@ -40,11 +44,22 @@ export function ButtonLink({
   );
 
   if (href.startsWith("http")) {
+    if (analytics) {
+      return (
+        <TrackedLink analytics={analytics} className={classes} href={href} rel="noreferrer" target="_blank">
+          {content}
+        </TrackedLink>
+      );
+    }
     return (
       <a className={classes} href={href} rel="noreferrer" target="_blank">
         {content}
       </a>
     );
+  }
+
+  if (analytics) {
+    return <TrackedLink analytics={analytics} className={classes} href={href}>{content}</TrackedLink>;
   }
 
   return (

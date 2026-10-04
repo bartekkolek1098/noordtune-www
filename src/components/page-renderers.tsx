@@ -1,4 +1,3 @@
-import Link from "next/link";
 import {ArrowRight} from "lucide-react";
 import {BlogCard, PricingCard, ResultCardView, ServiceCard} from "@/components/cards";
 import {ButtonLink} from "@/components/button";
@@ -16,6 +15,7 @@ import {RichInfoSection} from "@/components/rich-info-section";
 import {SectionHeader} from "@/components/section-header";
 import {TextGrid, TextSection} from "@/components/text-section";
 import {WhatsAppEnquiry} from "@/components/whatsapp-enquiry";
+import {TrackedLink} from "@/components/tracked-link";
 import {
   faqs,
   homeContent,
@@ -90,14 +90,15 @@ function BrandNavigationSection({locale}: {locale: Locale}) {
         <SectionHeader align="left" kicker={copy.kicker} text={copy.text} title={copy.title} />
         <nav aria-label={copy.title} className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           {links.map((link) => (
-            <Link
+            <TrackedLink
+              analytics={{name: "brand_page_click", properties: {locale, slug: link.href.split("/").at(-1) ?? link.href}}}
               className="group flex min-w-0 items-center justify-between gap-3 border border-white/12 bg-black/35 px-4 py-4 text-sm font-black uppercase text-white transition hover:border-primary hover:bg-primary/10"
               href={link.href}
               key={link.href}
             >
               <span className="[overflow-wrap:anywhere]">{link.label}</span>
               <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
-            </Link>
+            </TrackedLink>
           ))}
         </nav>
       </div>
@@ -207,17 +208,17 @@ function ChiptuningProofSection({locale}: {locale: Locale}) {
       <div className="container py-10 md:py-14">
         <div className="flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
           <SectionHeader align="left" kicker={copy.kicker} title={copy.title} />
-          <ButtonLink href={pathFor(locale, "appointment")} variant="outline">{copy.appointment}</ButtonLink>
+          <ButtonLink analytics={{name: "appointment_click", properties: {locale, source: "brand_index"}}} href={pathFor(locale, "appointment")} variant="outline">{copy.appointment}</ButtonLink>
         </div>
         <div className="mt-7 grid gap-4 lg:grid-cols-2">
           <nav aria-label={copy.results} className="panel-edge rounded-[3px] p-5">
             <h3 className="racing-title text-2xl text-white">{copy.results}</h3>
             <div className="mt-4 grid gap-2">
               {results.map((result) => (
-                <Link className="group flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm text-white/78 first:border-t-0 hover:text-white" href={customerResultPath(result)} key={result.id}>
+                <TrackedLink analytics={{name: "customer_result_click", properties: {locale, slug: result.slug}}} className="group flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm text-white/78 first:border-t-0 hover:text-white" href={customerResultPath(result)} key={result.id}>
                   <span>{result.vehicleMake} {result.vehicleModel} · {result.stage}</span>
                   <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
-                </Link>
+                </TrackedLink>
               ))}
             </div>
           </nav>
@@ -225,10 +226,10 @@ function ChiptuningProofSection({locale}: {locale: Locale}) {
             <h3 className="racing-title text-2xl text-white">{copy.guides}</h3>
             <div className="mt-4 grid gap-2">
               {guides.map((article) => (
-                <Link className="group flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm text-white/78 first:border-t-0 hover:text-white" href={blogArticlePath(article.locale, article.slug)} key={article.slug}>
+                <TrackedLink analytics={{name: "blog_article_click", properties: {locale, slug: article.slug}}} className="group flex items-center justify-between gap-4 border-t border-white/10 py-3 text-sm text-white/78 first:border-t-0 hover:text-white" href={blogArticlePath(article.locale, article.slug)} key={article.slug}>
                   <span>{article.title}</span>
                   <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
-                </Link>
+                </TrackedLink>
               ))}
             </div>
           </nav>
@@ -266,6 +267,7 @@ export function HomeRenderer({locale}: {locale: Locale}) {
           copy={pageHeroes.home[locale]}
           features={home.features}
           image={heroImages.home}
+          locale={locale}
           secondaryHref={pathFor(locale, "appointment")}
           trust={home.trust}
         />
@@ -333,7 +335,7 @@ export function HomeRenderer({locale}: {locale: Locale}) {
           />
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {featuredResults.map((result) => (
-              <ResultCardView key={result.id} locale={locale} result={result} />
+              <ResultCardView analyticsSource="homepage_results" key={result.id} locale={locale} result={result} />
             ))}
           </div>
           <div className="mt-8 flex justify-center">
@@ -351,13 +353,13 @@ export function HomeRenderer({locale}: {locale: Locale}) {
             </div>
             <div className="mt-6 grid gap-3 md:grid-cols-2">
               {latestArticles.map((article) => (
-                <Link className="group flex min-w-0 items-center justify-between gap-4 border border-white/10 bg-black/35 p-4 transition hover:border-primary/60" href={blogArticlePath(article.locale, article.slug)} key={article.slug}>
+                <TrackedLink analytics={{name: "blog_article_click", properties: {locale, slug: article.slug}}} className="group flex min-w-0 items-center justify-between gap-4 border border-white/10 bg-black/35 p-4 transition hover:border-primary/60" href={blogArticlePath(article.locale, article.slug)} key={article.slug}>
                   <span className="min-w-0">
                     <span className="block text-xs font-black uppercase text-primary">{article.category} · {article.readTime}</span>
                     <span className="racing-title mt-1 block text-xl text-white [overflow-wrap:anywhere]">{article.title}</span>
                   </span>
                   <ArrowRight className="h-5 w-5 shrink-0 text-primary transition group-hover:translate-x-0.5" />
-                </Link>
+                </TrackedLink>
               ))}
             </div>
           </div>
@@ -468,6 +470,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           </p>
         </section>
         <RichInfoSection
+          analyticsLocale={locale}
+          analyticsSource="site_cta"
           bullets={
             locale === "nl"
               ? [
@@ -514,6 +518,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
     return (
       <>
         <RichInfoSection
+          analyticsLocale={locale}
+          analyticsSource="results_archive"
           bullets={
             locale === "nl"
               ? [
@@ -617,6 +623,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
     return (
       <>
         <RichInfoSection
+          analyticsLocale={locale}
+          analyticsSource="contact_hero"
           bullets={contactBlock.bullets}
           image="/images/sections/tuning-laptop-b2.webp"
           kicker={contactBlock.kicker}
@@ -652,9 +660,17 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
               <div className="panel-edge min-w-0 rounded-[3px] p-6" key={title}>
                 <p className="racing-title text-xl text-white">{title}</p>
                 <p className="mt-3 break-words text-lg text-white/78">
-                  {href ? <a className="inline-block min-h-11 py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={href}>{value}</a> : value}
+                  {href ? (
+                    <TrackedLink
+                      analytics={{name: href.startsWith("tel:") ? "phone_click" : "email_click", properties: {locale, source: "contact_cards"}}}
+                      className="inline-block min-h-11 py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                      href={href}
+                    >
+                      {value}
+                    </TrackedLink>
+                  ) : value}
                 </p>
-                {index === 0 ? <a className="inline-block min-h-11 py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</a> : null}
+                {index === 0 ? <TrackedLink analytics={{name: "whatsapp_click", properties: {locale, source: "contact_cards"}}} className="inline-block min-h-11 py-2 underline underline-offset-4 focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</TrackedLink> : null}
               </div>
             ))}
           </div>

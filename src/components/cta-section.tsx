@@ -44,8 +44,10 @@ export function CTASection({locale}: CTASectionProps) {
           <p className="mt-3 max-w-2xl text-sm leading-7 text-white/66">{labels.text}</p>
         </div>
         <div className="flex flex-wrap gap-3 md:justify-end">
-          <ButtonLink href={site.catalogUrl}>{labels.catalog}</ButtonLink>
-          <ButtonLink href={site.whatsappUrl} icon="whatsapp" variant="outline">
+          <ButtonLink analytics={{name: "power_catalog_click", properties: {locale, source: "site_cta"}}} href={site.catalogUrl}>
+            {labels.catalog}
+          </ButtonLink>
+          <ButtonLink analytics={{name: "whatsapp_click", properties: {locale, source: "site_cta"}}} href={site.whatsappUrl} icon="whatsapp" variant="outline">
             {labels.whatsapp}
           </ButtonLink>
         </div>

@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import {MessageCircle} from "lucide-react";
 import {site, type Locale} from "@/content/site";
+import {trackConversion} from "@/lib/analytics";
 
 type FloatingWhatsAppProps = {
   locale: Locale;
@@ -37,6 +38,7 @@ export function FloatingWhatsApp({locale, reduced = false}: FloatingWhatsAppProp
         reduced ? "md:h-11 md:w-11" : "md:h-12 md:w-12"
       )}
       href={site.whatsappUrl}
+      onClick={() => trackConversion({name: "whatsapp_click", properties: {locale, source: "floating"}})}
       rel="noreferrer"
       target="_blank"
     >

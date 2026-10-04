@@ -3,6 +3,8 @@
 import {useEffect, useId, useRef, useState, type KeyboardEvent} from "react";
 import {enquiryCopy, enquiryServices} from "@/content/enquiry";
 import {pathFor, site, type Locale} from "@/content/site";
+import {TrackedLink} from "@/components/tracked-link";
+import {trackConversion} from "@/lib/analytics";
 import {buildEnquiryMessage, enquiryLimits, enquiryWhatsAppUrl, validateEnquiry, type EnquiryErrors, type EnquiryFields, type EnquiryKind} from "@/lib/enquiry";
 
 const inputClass = "w-full min-w-0 rounded-[3px] border border-white/25 bg-black/40 px-3 py-3 text-base text-white outline-none focus-visible:ring-2 focus-visible:ring-primary scroll-mt-28";
@@ -16,12 +18,20 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
   const [errors, setErrors] = useState<EnquiryErrors>({});
   const [copyStatus, setCopyStatus] = useState<"idle" | "copying" | "copied" | "failed">("idle");
   const revision = useRef(0);
+  const started = useRef(false);
   const preview = useRef<HTMLTextAreaElement>(null);
   const message = buildEnquiryMessage(fields, locale, kind);
 
   useEffect(() => setReady(true), []);
 
   function updateField(key: keyof EnquiryFields, value: string) {
+    if (!started.current && value.trim()) {
+      started.current = true;
+      trackConversion({
+        name: "appointment_enquiry_started",
+        properties: {locale, source: kind === "contact" ? "contact_composer" : "appointment_composer"}
+      });
+    }
     revision.current += 1;
     setFields((current) => ({...current, [key]: value}));
     setErrors((current) => ({...current, [key]: undefined}));
@@ -38,6 +48,10 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
 
   function continueInWhatsApp() {
     if (!validate()) return;
+    trackConversion({
+      name: "appointment_whatsapp_handoff",
+      properties: {locale, source: kind === "contact" ? "contact_composer" : "appointment_composer"}
+    });
     // Only this explicit action passes the message to an external destination.
     window.open(enquiryWhatsAppUrl(message), "_blank", "noopener,noreferrer");
   }
@@ -123,9 +137,9 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
       <div className="mt-5 border-t border-white/15 pt-4 text-sm">
         <p className="font-semibold">{copy.alternatives}</p>
         <div className="mt-2 flex flex-wrap gap-x-5 gap-y-2 [&_a]:min-h-11 [&_a]:py-3 [&_a]:underline [&_a]:underline-offset-4 [&_a]:focus-visible:outline [&_a]:focus-visible:outline-2 [&_a]:focus-visible:outline-primary">
-          <a href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
-          <a className="break-all" href={`mailto:${site.email}`}>{site.email}</a>
-          <a href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</a>
+          <TrackedLink analytics={{name: "phone_click", properties: {locale, source: kind === "contact" ? "contact_composer" : "appointment_composer"}}} href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</TrackedLink>
+          <TrackedLink analytics={{name: "email_click", properties: {locale, source: kind === "contact" ? "contact_composer" : "appointment_composer"}}} className="break-all" href={`mailto:${site.email}`}>{site.email}</TrackedLink>
+          <TrackedLink analytics={{name: "whatsapp_click", properties: {locale, source: kind === "contact" ? "contact_composer" : "appointment_composer"}}} href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</TrackedLink>
         </div>
       </div>
     </section>

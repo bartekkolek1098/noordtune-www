@@ -2,7 +2,8 @@ import {ArrowRight, CheckCircle2} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {ButtonLink} from "@/components/button";
-import {site} from "@/content/site";
+import {site, type Locale} from "@/content/site";
+import type {ConversionEvent, ConversionSource} from "@/lib/analytics";
 
 type Stat = {
   value: string;
@@ -29,6 +30,8 @@ type RichInfoSectionProps = {
   secondaryHref?: string;
   links?: LinkItem[];
   reversed?: boolean;
+  analyticsLocale?: Locale;
+  analyticsSource?: ConversionSource;
 };
 
 export function RichInfoSection({
@@ -45,8 +48,17 @@ export function RichInfoSection({
   secondaryLabel,
   secondaryHref = site.catalogUrl,
   links,
-  reversed = false
+  reversed = false,
+  analyticsLocale,
+  analyticsSource = "site_cta"
 }: RichInfoSectionProps) {
+  function analyticsFor(href: string): ConversionEvent | undefined {
+    if (!analyticsLocale) return undefined;
+    if (href === site.catalogUrl) return {name: "power_catalog_click", properties: {locale: analyticsLocale, source: analyticsSource}};
+    if (href === site.whatsappUrl) return {name: "whatsapp_click", properties: {locale: analyticsLocale, source: analyticsSource}};
+    return undefined;
+  }
+
   return (
     <section className="container py-9 md:py-14">
       <div className="grid gap-6 lg:grid-cols-[0.92fr_1.08fr] lg:items-stretch">
@@ -96,9 +108,9 @@ export function RichInfoSection({
 
           {primaryLabel || secondaryLabel ? (
             <div className="mt-7 flex flex-wrap gap-3">
-              {primaryLabel ? <ButtonLink href={primaryHref}>{primaryLabel}</ButtonLink> : null}
+              {primaryLabel ? <ButtonLink analytics={analyticsFor(primaryHref)} href={primaryHref}>{primaryLabel}</ButtonLink> : null}
               {secondaryLabel ? (
-                <ButtonLink href={secondaryHref} icon={secondaryHref === site.whatsappUrl ? "whatsapp" : "arrow"} variant="outline">
+                <ButtonLink analytics={analyticsFor(secondaryHref)} href={secondaryHref} icon={secondaryHref === site.whatsappUrl ? "whatsapp" : "arrow"} variant="outline">
                   {secondaryLabel}
                 </ButtonLink>
               ) : null}
