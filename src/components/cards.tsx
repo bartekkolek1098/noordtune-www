@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {ArrowRight} from "lucide-react";
 import {Icon} from "@/components/icon";
+import {TrackedLink} from "@/components/tracked-link";
 import type {BlogPost, PricingPlan, ServiceCardCopy} from "@/content/copy";
 import {blogArticlePathForPost} from "@/content/blog-articles";
 import {
@@ -13,6 +14,7 @@ import {
   type CustomerResult
 } from "@/content/customer-results";
 import {pathFor, type Locale} from "@/content/site";
+import type {ConversionSource} from "@/lib/analytics";
 
 const labels = {
   nl: {
@@ -136,11 +138,13 @@ export function PricingCard({plan, locale}: {plan: PricingPlan; locale: Locale})
 export function ResultCardView({
   result,
   locale,
-  showTags = false
+  showTags = false,
+  analyticsSource = "results_archive"
 }: {
   result: CustomerResult;
   locale: Locale;
   showTags?: boolean;
+  analyticsSource?: ConversionSource;
 }) {
   const copy = labels[locale];
   const image = customerResultCardImage(result);
@@ -225,15 +229,17 @@ export function ResultCardView({
         <p className="mt-3 text-xs leading-5 text-white/42">{result.disclaimer}</p>
         <div className="mt-5 grid gap-2">
           {detailHref ? (
-            <Link
+            <TrackedLink
+              analytics={{name: "customer_result_click", properties: {locale, slug: result.slug}}}
               className="inline-flex items-center justify-between gap-2 rounded-[3px] border border-white/12 bg-black/30 px-3 py-2 text-xs font-black uppercase text-white transition hover:border-primary hover:text-primary"
               href={detailHref}
             >
               {copy.detail}
               <ArrowRight className="h-4 w-4" />
-            </Link>
+            </TrackedLink>
           ) : null}
-          <a
+          <TrackedLink
+            analytics={{name: "power_catalog_click", properties: {locale, source: analyticsSource}}}
             className="inline-flex items-center justify-between gap-2 rounded-[3px] border border-primary/40 bg-primary/10 px-3 py-2 text-xs font-black uppercase text-white transition hover:border-primary hover:bg-primary/18"
             href={result.relatedPowerCatalogUrl}
             rel="noreferrer"
@@ -241,8 +247,9 @@ export function ResultCardView({
           >
             {copy.catalog}
             <ArrowRight className="h-4 w-4" />
-          </a>
-          <a
+          </TrackedLink>
+          <TrackedLink
+            analytics={{name: "whatsapp_click", properties: {locale, source: analyticsSource}}}
             className="inline-flex items-center justify-between gap-2 rounded-[3px] border border-white/12 bg-black/30 px-3 py-2 text-xs font-black uppercase text-white/78 transition hover:border-primary hover:text-white"
             href={result.whatsappCta}
             rel="noreferrer"
@@ -250,7 +257,7 @@ export function ResultCardView({
           >
             {copy.whatsapp}
             <ArrowRight className="h-4 w-4" />
-          </a>
+          </TrackedLink>
         </div>
       </div>
     </article>
@@ -260,7 +267,8 @@ export function ResultCardView({
 export function BlogCard({post, locale}: {post: BlogPost; locale: Locale}) {
   const copy = labels[locale];
   return (
-    <Link
+    <TrackedLink
+      analytics={{name: "blog_article_click", properties: {locale, slug: post.slug}}}
       aria-label={`${copy.read}: ${post.title}`}
       className="group panel-edge flex min-h-full flex-col rounded-[3px] p-5 transition hover:border-primary/70 hover:shadow-glow focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
       data-article-slug={post.slug}
@@ -277,6 +285,6 @@ export function BlogCard({post, locale}: {post: BlogPost; locale: Locale}) {
       <span className="mt-5 inline-flex items-center gap-2 text-sm font-black uppercase text-white">
         {copy.read} <ArrowRight className="h-4 w-4 text-primary" />
       </span>
-    </Link>
+    </TrackedLink>
   );
 }

@@ -7,6 +7,7 @@ import {FloatingWhatsApp} from "@/components/floating-whatsapp";
 import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {SectionHeader} from "@/components/section-header";
+import {TrackedLink} from "@/components/tracked-link";
 import {
   brandLanguagePaths,
   brandPageCatalogUrl,
@@ -122,12 +123,13 @@ function ResultProofCard({page, result}: {page: BrandPage; result: CustomerResul
             ))}
           </dl>
         ) : null}
-        <Link
+        <TrackedLink
+          analytics={{name: "customer_result_click", properties: {locale: page.locale, slug: result.slug}}}
           className="mt-5 inline-flex items-center gap-2 border-b border-primary/70 pb-1 text-xs font-black uppercase text-white transition hover:text-primary"
           href={customerResultPath(result)}
         >
           {copy.viewCase} <ArrowRight className="h-4 w-4" />
-        </Link>
+        </TrackedLink>
       </div>
     </article>
   );
@@ -175,8 +177,8 @@ export function BrandPageRenderer({page}: {page: BrandPage}) {
               </h1>
               <p className="mt-6 max-w-3xl text-base leading-8 text-white/78 md:text-lg">{page.heroIntro}</p>
               <div className="mt-7 flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <ButtonLink className="min-w-0" href={brandPageCatalogUrl}>{page.catalogCta}</ButtonLink>
-                <ButtonLink className="min-w-0" href={brandPageWhatsappUrl} icon="whatsapp" variant="outline">
+                <ButtonLink analytics={{name: "power_catalog_click", properties: {locale: page.locale, source: "brand_hero"}}} className="min-w-0" href={brandPageCatalogUrl}>{page.catalogCta}</ButtonLink>
+                <ButtonLink analytics={{name: "whatsapp_click", properties: {locale: page.locale, source: "brand_hero"}}} className="min-w-0" href={brandPageWhatsappUrl} icon="whatsapp" variant="outline">
                   {page.whatsappCta}
                 </ButtonLink>
               </div>
@@ -255,8 +257,8 @@ export function BrandPageRenderer({page}: {page: BrandPage}) {
               <h2 className="racing-title mt-3 text-[clamp(2.2rem,5vw,4.4rem)] leading-[0.92] text-white [overflow-wrap:anywhere]">{page.catalogTitle}</h2>
               <p className="mt-5 max-w-3xl text-base leading-8 text-white/68">{page.catalogIntro}</p>
               <div className="mt-7 flex min-w-0 flex-col gap-3 sm:flex-row sm:flex-wrap">
-                <ButtonLink href={brandPageCatalogUrl}>{page.catalogCta}</ButtonLink>
-                <ButtonLink href={brandPageWhatsappUrl} icon="whatsapp" variant="outline">{page.whatsappCta}</ButtonLink>
+                <ButtonLink analytics={{name: "power_catalog_click", properties: {locale: page.locale, source: "brand_catalog"}}} href={brandPageCatalogUrl}>{page.catalogCta}</ButtonLink>
+                <ButtonLink analytics={{name: "whatsapp_click", properties: {locale: page.locale, source: "brand_catalog"}}} href={brandPageWhatsappUrl} icon="whatsapp" variant="outline">{page.whatsappCta}</ButtonLink>
               </div>
             </div>
             <ul className="grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-1">

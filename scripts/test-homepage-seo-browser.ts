@@ -31,6 +31,8 @@ const internalPaths = new Set<string>();
 async function guardNetwork(context: BrowserContext) {
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
+    if (url.pathname.startsWith("/_vercel/insights/")) return route.fulfill({status: 204});
+    if (url.hostname === "va.vercel-scripts.com") return route.fulfill({status: 200, contentType: "application/javascript", body: "void 0;"});
     if (url.origin === new URL(baseUrl).origin) return route.continue();
     return route.fulfill({status: 200, contentType: "text/plain", body: "External navigation intercepted by local QA"});
   });

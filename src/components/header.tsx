@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {LanguageSwitcher} from "@/components/language-switcher";
 import {MobileMenu} from "@/components/mobile-menu";
+import {TrackedLink} from "@/components/tracked-link";
 import {navItems, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
 type HeaderProps = {
@@ -58,7 +59,8 @@ export function Header({locale, activeKey, languagePaths}: HeaderProps) {
 
         <div className="hidden items-center gap-3 xl:flex">
           <LanguageSwitcher languagePaths={languagePaths} locale={locale} pageKey={activeKey} />
-          <a
+          <TrackedLink
+            analytics={{name: "whatsapp_click", properties: {locale, source: "header"}}}
             className="hidden h-11 items-center gap-2 whitespace-nowrap rounded-[3px] border border-white/24 bg-black/35 px-4 text-sm font-semibold text-white transition hover:border-primary hover:text-white 2xl:inline-flex"
             href={site.whatsappUrl}
             rel="noreferrer"
@@ -66,7 +68,7 @@ export function Header({locale, activeKey, languagePaths}: HeaderProps) {
           >
             <MessageCircle className="h-4 w-4" />
             {site.phone}
-          </a>
+          </TrackedLink>
         </div>
 
         <MobileMenu activeKey={activeKey} languagePaths={languagePaths} locale={locale} />

@@ -1,6 +1,7 @@
 import {Facebook, Instagram, Mail, MapPin, MessageCircle, Phone} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import {TrackedLink} from "@/components/tracked-link";
 import {pathFor, site, type Locale} from "@/content/site";
 
 type FooterProps = {
@@ -76,11 +77,11 @@ export function Footer({locale}: FooterProps) {
           <ul className="mt-4 space-y-3 text-sm text-white/68">
             <li className="flex items-center gap-2">
               <Phone aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
-              <a className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</a>
+              <TrackedLink analytics={{name: "phone_click", properties: {locale, source: "footer"}}} className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`tel:${site.phone.replace(/\s/g, "")}`}>{site.phone}</TrackedLink>
             </li>
             <li className="flex items-center gap-2">
               <Mail aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
-              <a className="break-all py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`mailto:${site.email}`}>{site.email}</a>
+              <TrackedLink analytics={{name: "email_click", properties: {locale, source: "footer"}}} className="break-all py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={`mailto:${site.email}`}>{site.email}</TrackedLink>
             </li>
             <li className="flex items-center gap-2">
               <MapPin className="h-4 w-4 text-primary" /> {site.city},{" "}
@@ -88,7 +89,7 @@ export function Footer({locale}: FooterProps) {
             </li>
             <li className="flex items-center gap-2">
               <MessageCircle aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
-              <a className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</a>
+              <TrackedLink analytics={{name: "whatsapp_click", properties: {locale, source: "footer"}}} className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</TrackedLink>
             </li>
           </ul>
         </div>
@@ -97,9 +98,9 @@ export function Footer({locale}: FooterProps) {
           <h3 className="racing-title text-xl text-white">{labels.quick}</h3>
           <ul className="mt-4 space-y-2 text-sm text-white/68">
             <li>
-              <a className="hover:text-primary" href={site.catalogUrl} rel="noreferrer" target="_blank">
+              <TrackedLink analytics={{name: "power_catalog_click", properties: {locale, source: "footer"}}} className="hover:text-primary" href={site.catalogUrl} rel="noreferrer" target="_blank">
                 {locale === "pl" ? "Katalog mocy" : "Power Catalog"}
-              </a>
+              </TrackedLink>
             </li>
             <li>
               <Link className="hover:text-primary" href={pathFor(locale, "chiptuning")}>

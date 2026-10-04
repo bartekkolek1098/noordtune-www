@@ -25,6 +25,8 @@ const verifiedSocialProfiles = [
 async function guardNetwork(context: BrowserContext) {
   await context.route("**/*", async (route) => {
     const url = new URL(route.request().url());
+    if (url.pathname.startsWith("/_vercel/insights/")) return route.fulfill({status: 204});
+    if (url.hostname === "va.vercel-scripts.com") return route.fulfill({status: 200, contentType: "application/javascript", body: "void 0;"});
     if (url.origin === new URL(baseUrl).origin) return route.continue();
     // No external navigation or message is ever sent, including WhatsApp, email and catalog.
     return route.fulfill({status: 200, contentType: "text/plain", body: "External navigation intercepted by local test"});

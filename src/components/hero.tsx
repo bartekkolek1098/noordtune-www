@@ -2,7 +2,7 @@ import Image from "next/image";
 import {ButtonLink} from "@/components/button";
 import {Icon} from "@/components/icon";
 import type {IconName, PageHeroCopy} from "@/content/copy";
-import {site} from "@/content/site";
+import {site, type Locale} from "@/content/site";
 
 type HeroProps = {
   copy: PageHeroCopy;
@@ -10,9 +10,10 @@ type HeroProps = {
   trust: string[];
   features: Array<{title: string; text: string; icon: IconName}>;
   secondaryHref?: string;
+  locale: Locale;
 };
 
-export function Hero({copy, image, trust, features, secondaryHref = site.whatsappUrl}: HeroProps) {
+export function Hero({copy, image, trust, features, locale, secondaryHref = site.whatsappUrl}: HeroProps) {
   return (
     <section className="noise relative overflow-hidden border-b border-white/10">
       <div className="absolute inset-0">
@@ -44,8 +45,20 @@ export function Hero({copy, image, trust, features, secondaryHref = site.whatsap
           <p className="mt-6 max-w-xl text-base leading-8 text-white/82 md:text-lg">{copy.intro}</p>
 
           <div className="mt-7 flex flex-wrap gap-3">
-            <ButtonLink href={site.catalogUrl}>{copy.primary}</ButtonLink>
-            <ButtonLink href={secondaryHref} icon={secondaryHref === site.whatsappUrl ? "whatsapp" : "arrow"} variant="outline">
+            <ButtonLink
+              analytics={{name: "power_catalog_click", properties: {locale, source: "homepage_hero"}}}
+              href={site.catalogUrl}
+            >
+              {copy.primary}
+            </ButtonLink>
+            <ButtonLink
+              analytics={secondaryHref === site.whatsappUrl
+                ? {name: "whatsapp_click", properties: {locale, source: "homepage_hero"}}
+                : {name: "appointment_click", properties: {locale, source: "homepage_hero"}}}
+              href={secondaryHref}
+              icon={secondaryHref === site.whatsappUrl ? "whatsapp" : "arrow"}
+              variant="outline"
+            >
               {copy.secondary}
             </ButtonLink>
           </div>

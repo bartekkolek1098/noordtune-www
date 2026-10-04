@@ -16,11 +16,14 @@
     "test:seo:browser": "tsx scripts/test-homepage-seo-browser.ts",
     "test:brand": "tsx --test tests/brand-assets.test.ts",
     "test:brand:browser": "tsx scripts/test-brand-assets-browser.ts",
+    "test:analytics": "tsx --test tests/analytics.test.ts",
+    "test:analytics:browser": "tsx scripts/test-analytics-browser.ts",
     "result:draft": "tsx scripts/prepare-customer-result-draft.ts",
     "screenshots": "tsx scripts/capture-screenshots.ts",
     "menu:screenshots": "tsx scripts/capture-mobile-menu-screenshots.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.475.0",
     "next": "^15.1.7",
