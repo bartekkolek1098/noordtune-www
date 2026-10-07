@@ -51,6 +51,7 @@ export type ServiceCardCopy = {
   image: string;
   icon: IconName;
   page?: PageKey;
+  href?: string;
 };
 
 export type PricingPlan = {
@@ -758,7 +759,7 @@ export const services: Record<Locale, ServiceCardCopy[]> = {
       bullets: ["Snellere respons", "Soepeler schakelen", "Passend bij extra koppel"],
       image: "/images/sections/datalog-road.webp",
       icon: "cpu",
-      page: "diensten"
+      href: "/nl/dsg-tcu-tuning"
     },
     {
       title: "Loganalyse",

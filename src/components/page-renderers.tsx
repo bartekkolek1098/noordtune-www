@@ -11,6 +11,7 @@ import {Hero} from "@/components/hero";
 import {PageHero} from "@/components/page-hero";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {ProcessSteps} from "@/components/process-steps";
+import {TuningServiceNavigation} from "@/components/tuning-service-journey";
 import {RichInfoSection} from "@/components/rich-info-section";
 import {SectionHeader} from "@/components/section-header";
 import {TextGrid, TextSection} from "@/components/text-section";
@@ -390,6 +391,7 @@ export function PageRenderer({locale, pageKey}: {locale: Locale; pageKey: PageKe
       <Header activeKey={pageKey} locale={locale} />
       <main>
         <PageHero copy={pageHeroes[pageKey][locale]} image={heroImages[pageKey]} locale={locale} pageKey={pageKey} />
+        {pageKey === "chiptuning" && locale === "nl" ? <TuningServiceNavigation /> : null}
         <PageBody locale={locale} pageKey={pageKey} />
       </main>
       <Footer locale={locale} />
