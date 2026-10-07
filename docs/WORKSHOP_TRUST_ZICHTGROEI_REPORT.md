@@ -70,9 +70,21 @@ The focused QA covered all nine requested About/Services/home routes plus repres
 
 One initial concurrent enquiry run stopped at an immediate enabled-control assertion while the Polish appointment page was hydrating. The unmodified suite passed all 40 cases when rerun on its own. No enquiry-code change was made. External requests were intercepted and all enquiry data was synthetic; no real enquiry, email or WhatsApp message was sent.
 
+The local Next.js server emitted `NoFallbackError` messages during browser prefetching, also observed in earlier main-branch QA. All requested direct navigations returned HTTP 200 and the final browser suites reported no console/page errors. No server or routing change was made in this task.
+
 A rendered comparison against production on the 12 representative routes confirmed identical titles, descriptions, canonicals, hreflang, JSON-LD business identity, analytics event names/properties and existing Power Catalog, appointment, phone, email and WhatsApp links. The sitemap response was identical. The homepage still has three customer projects and each localized archive has seven. The enquiry regression also preserved the iPad Power Catalog layout.
 
 No dependency/lockfile, price, existing blog article, brand-page content, customer-result data, business name/phone/location, structured-data provider, SEO route or deployment configuration changed. The Power Catalog destination remains exactly `https://power.noordtune.nl/`; its repository and application were not modified.
+
+## PR and preview
+
+Draft PR: [#18](https://github.com/bartekkolek1098/noordtune-www/pull/18).
+
+Implementation commit: `5ccb75aee32986690a1670b07deccc13e18b1dae`.
+
+Preview: [workshop trust branch](https://noordtune-www-git-feature-work-ade3da-bartekkolek1098s-projects.vercel.app).
+
+The automatic Git preview completed with successful Vercel and Vercel Preview Comments checks. Preview deployment: `dpl_CkjNxHAhxpqozbTqHpA5G2EieW38`. Unauthenticated access redirects to Vercel Authentication, and the connected Vercel account returned 403 for this team scope. Consequently, browser QA above is against the local production build; authenticated inspection of the hosted preview remains an owner review step. No deployment protection, DNS or project setting was changed.
 
 ## Release hold and owner decisions
 
