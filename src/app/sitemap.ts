@@ -17,7 +17,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const mainPages = keys.flatMap((key) =>
     locales.map((locale) => ({
       url: absolutePath(locale, key),
-      lastModified: new Date("2026-06-11"),
       changeFrequency: key === "blog" ? ("weekly" as const) : ("monthly" as const),
       priority: key === "home" ? 1 : key === "contact" ? 0.9 : 0.8,
       alternates: {
@@ -30,7 +29,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const landingPages = seoLandings.map((page) => ({
     url: `${site.url}${seoLandingUrl(page)}`,
-    lastModified: new Date("2026-06-12"),
     changeFrequency: "monthly" as const,
     priority: 0.78,
     alternates: {
@@ -70,7 +68,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const brandLandingPages = brandPages.map((page) => ({
     url: brandPageUrl(page),
-    lastModified: new Date("2026-08-16"),
     changeFrequency: "monthly" as const,
     priority: 0.8,
     alternates: {

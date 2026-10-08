@@ -118,3 +118,16 @@ PR #18 remains independent. Its branch was not reset, overwritten, rebased or me
 Only `page-renderers.tsx` overlaps PR #18's file list. The chooser insertion is after the page hero, outside its About/Services changes, and the import uses a separate location. There are no Footer or workshop-content edits in this branch. A future rebase may still be needed after the owner merges PR #18; review combined imports/rendering and rerun regression suites then. No future conflict-free merge is guaranteed here.
 
 Production remains unchanged by this task: no main push, merge, production deployment, DNS/domain or Vercel settings change. Remaining owner decisions: review this draft and its Preview, approve release timing, and handle integration with PR #18. The separate indexing investigation stays outside this implementation scope.
+
+## October 9 SEO technical follow-up
+
+An additional owner-authorized technical SEO correction was made on this existing feature branch, without changing canonicals, robots, route paths or the Power Catalog.
+
+- `AutoRepair.makesOffer` previously used plain strings. It now emits correctly typed `Offer` entries with nested `Service` objects, localized NL/EN/PL. This fixes schema modeling; it does not guarantee a rich result or ranking improvement.
+- The sitemap previously emitted June/August `lastModified` dates for all generic/core, regional and brand pages. Those values were not individually verified against significant page updates, so they are now omitted for those entries. Editorial `updatedAt` dates remain unchanged for published blog articles and customer-result pages. Future significant changes should use verified page-specific editorial modification dates.
+- Two focused SEO tests validate correct offers in every locale and trustworthy sitemap date behavior.
+- A separate `docs/SEO_GROWTH_90D_PLAN.md` records country-filtered Dutch Search Console evidence from Windsor.ai for July 1–October 5 and a 90-day commercial acquisition plan.
+- The Dutch-only query totals for the stated period: `chiptuning assen` 181 impressions / 9 clicks / 9.35 position; `chiptuning drenthe` 72 / 0 / 20.11; `chiptuning groningen` 367 / 0 / 64.35; `ford chiptuning` 67 / 0 / 32.21. Distinct URL-level impressions are not additive.
+- This is a technical/data-led improvement, not evidence that Google index coverage has already changed.
+
+Production remains unchanged until the owner approves a merge.
