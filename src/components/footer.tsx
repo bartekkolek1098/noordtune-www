@@ -167,7 +167,7 @@ export function Footer({locale}: FooterProps) {
           <p className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 pr-16" data-site-credit>
             <span>{labels.credit}</span>
             <a className="inline-flex min-h-11 items-center gap-1.5 py-2 font-semibold text-white/65 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href="https://zichtgroei.nl/" rel="nofollow noopener noreferrer" target="_blank">
-              <Image alt="" aria-hidden="true" className="h-4 w-4 shrink-0 opacity-80" height={64} src="/brand/zichtgroei-mark-white.svg" width={64} />
+              <Image alt="" aria-hidden="true" className="h-6 w-6 shrink-0 opacity-90" height={64} src="/brand/zichtgroei-mark-white.svg" width={64} />
               ZICHTGROEI
             </a>
           </p>
