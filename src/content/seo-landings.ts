@@ -311,7 +311,7 @@ export const seoLandings: SeoLanding[] = [
     },
     hero: {
       eyebrow: "Stage 1 tuning",
-      title: ["Meer koppel", "op standaard hardware"],
+      title: ["Stage 1", "tuning op maat"],
       intro:
         "De populairste tuningvorm voor moderne turbo benzine- en dieselmotoren, met focus op souplesse en betrouwbaarheid.",
       primary: "Bekijk tuningmogelijkheden",
@@ -376,7 +376,7 @@ export const seoLandings: SeoLanding[] = [
     },
     hero: {
       eyebrow: "Stage 2 tuning",
-      title: ["Meer potentie", "meer controle"],
+      title: ["Stage 2", "tuning op maat"],
       intro:
         "Voor auto's met passende hardware en bestuurders die verder willen dan Stage 1, maar wel met technische onderbouwing.",
       primary: "Controleer jouw auto",
@@ -441,7 +441,7 @@ export const seoLandings: SeoLanding[] = [
     },
     hero: {
       eyebrow: "ECU remap",
-      title: ["Motorsoftware", "op maat"],
+      title: ["ECU remap", "op maat"],
       intro:
         "Geen blind bestand, maar software die past bij jouw ECU, motorvariant, transmissie en gebruik.",
       primary: "Controleer jouw auto",
@@ -511,7 +511,7 @@ export const seoLandings: SeoLanding[] = [
     },
     hero: {
       eyebrow: "DSG / TCU tuning",
-      title: ["Meer controle", "over schakelen"],
+      title: ["DSG / TCU", "tuning op maat"],
       intro:
         "Transmissiesoftware kan net zo belangrijk zijn als motorsoftware wanneer extra koppel bruikbaar moet blijven.",
       primary: "Bekijk tuningmogelijkheden",

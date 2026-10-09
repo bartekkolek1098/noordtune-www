@@ -156,9 +156,9 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   prijzen: {
     nl: {
-      title: "Prijzen & Pakketten | Diagnose vanaf €89, Stage 1 vanaf €150",
+      title: "Chiptuning prijzen Assen | Stage 1 vanaf €150 | NoordTune.nl",
       description:
-        "Transparante prijzen voor chiptuning en auto diagnose: diagnose vanaf €89, Stage 1 vanaf €150, Stage 2 vanaf €250 en loganalyse vanaf €149."
+        "Bekijk de vanaf-prijzen bij NoordTune in Assen: Stage 1 €150, Stage 2 €250. Persoonlijke ECU-remap offerte per auto; diagnose apart vanaf €89."
     },
     en: {
       title: "Pricing | Diagnostics from €89 and Stage 1 from €150",
@@ -384,10 +384,10 @@ export const pageHeroes: Record<PageKey, Record<Locale, PageHeroCopy>> = {
   },
   prijzen: {
     nl: {
-      eyebrow: "Prijzen & pakketten",
-      title: ["Transparant", "vanaf de start"],
+      eyebrow: "Chiptuning prijzen in Assen",
+      title: ["Chiptuning", "prijzen"],
       intro:
-        "Indicatieve vanaf-prijzen voor diagnose, Stage 1, Stage 2, loganalyse en mobiele service. De exacte prijs hangt af van jouw voertuig.",
+        "Stage 1 vanaf €150 en Stage 2 vanaf €250 incl. btw. Bekijk ook onze andere diensten. De definitieve offerte hangt af van jouw voertuig, ECU en de benodigde werkzaamheden.",
       primary: "Plan een afspraak",
       secondary: "WhatsApp ons"
     },
@@ -937,25 +937,25 @@ export const whyItems: Record<Locale, Array<{title: string; text: string; icon: 
 
 export const pricingPlans: Record<Locale, PricingPlan[]> = {
   nl: [
-    {name: "Diagnose", price: "€89,-", note: "vanaf", text: "Volledige diagnose van motor en systemen.", features: ["Foutcodes", "Basiscontrole", "Advies"]},
     {name: "Stage 1", price: "€150,-", note: "vanaf", text: "Meer vermogen en koppel op standaard hardware.", features: ["ECU remap", "Originele file backup", "Controle"], highlighted: true},
     {name: "Stage 2", price: "€250,-", note: "vanaf", text: "Voor auto's met passende hardware en extra controle.", features: ["Uitgebreide software", "Logadvies", "Veiligheidsmarges"]},
+    {name: "Basisdiagnose", price: "€89,-", note: "vanaf", text: "Foutcodes uitlezen, basiscontrole en eerste advies; uitgebreid onderzoek apart in overleg.", features: ["Foutcodes", "Basiscontrole", "Advies"]},
     {name: "Loganalyse", price: "€149,-", note: "vanaf", text: "Analyse van motorwaarden, prestaties en storingen.", features: ["Data analyse", "Rapport", "Advies"]},
     {name: "Mobiele service", price: "€129,-", note: "vanaf", text: "Service op locatie waar technisch mogelijk.", features: ["Op afspraak", "Assen regio", "Vooraf afgestemd"]},
     {name: "EGR / DPF / AdBlue", price: "op aanvraag", note: "", text: "Diagnose, storing analyse en oplossingen waar wettelijk toegestaan.", features: ["Storing analyse", "Advies", "Maatwerk"]}
   ],
   en: [
-    {name: "Diagnostics", price: "€89,-", note: "from", text: "Full diagnosis of engine and related systems.", features: ["Fault codes", "Basic checks", "Advice"]},
     {name: "Stage 1", price: "€150,-", note: "from", text: "More power and torque on standard hardware.", features: ["ECU remap", "Original file backup", "Checks"], highlighted: true},
     {name: "Stage 2", price: "€250,-", note: "from", text: "For cars with supporting hardware and extra control.", features: ["Extended software", "Log advice", "Margins"]},
+    {name: "Basic diagnostics", price: "€89,-", note: "from", text: "Fault-code reading, basic checks and initial advice; further investigation is quoted separately.", features: ["Fault codes", "Basic checks", "Advice"]},
     {name: "Log analysis", price: "€149,-", note: "from", text: "Review of engine data, performance and faults.", features: ["Data", "Report", "Advice"]},
     {name: "Mobile service", price: "€129,-", note: "from", text: "Service on location where technically possible.", features: ["Appointment", "Assen region", "Planned"]},
     {name: "EGR / DPF / AdBlue", price: "on request", note: "", text: "Diagnostics and legal solutions where permitted.", features: ["Fault analysis", "Advice", "Custom"]}
   ],
   pl: [
-    {name: "Diagnostyka", price: "€89,-", note: "od", text: "Pełna diagnostyka silnika i powiązanych systemów.", features: ["Kody błędów", "Kontrola", "Doradztwo"]},
     {name: "Stage 1", price: "€150,-", note: "od", text: "Więcej mocy i momentu na seryjnym osprzęcie.", features: ["Remap ECU", "Kopia oryginału", "Kontrola"], highlighted: true},
     {name: "Stage 2", price: "€250,-", note: "od", text: "Dla aut z odpowiednim osprzętem i dodatkową kontrolą.", features: ["Oprogramowanie", "Logi", "Marginesy"]},
+    {name: "Podstawowa diagnostyka", price: "€89,-", note: "od", text: "Odczyt błędów, podstawowa kontrola i wstępna porada; szersza diagnostyka wyceniana osobno.", features: ["Kody błędów", "Kontrola", "Doradztwo"]},
     {name: "Analiza logów", price: "€149,-", note: "od", text: "Analiza danych silnika, osiągów i usterek.", features: ["Dane", "Raport", "Porada"]},
     {name: "Serwis mobilny", price: "€129,-", note: "od", text: "Usługa na miejscu, jeżeli technicznie możliwa.", features: ["Termin", "Region Assen", "Uzgodnienie"]},
     {name: "EGR / DPF / AdBlue", price: "na zapytanie", note: "", text: "Diagnostyka i rozwiązania zgodne z przepisami tam, gdzie są dozwolone.", features: ["Analiza", "Porada", "Indywidualnie"]}

@@ -18,6 +18,7 @@ import {
   translatedCustomerResultSlugs
 } from "../src/content/customer-results";
 import {locales, site} from "../src/content/site";
+import {pageHeroes, pricingPlans, seo} from "../src/content/copy";
 import {seoLandingFromSlug} from "../src/content/seo-landings";
 import sitemap from "../src/app/sitemap";
 import {
@@ -168,5 +169,41 @@ test("Groningen tuning landing communicates the real Assen location and routes t
     "/nl/afspraak"
   ]) {
     assert.ok(page.related.some((link) => link.href === href), "Missing Groningen enquiry or proof link: " + href);
+  }
+});
+
+test("tuning-first pricing keeps approved amounts and sets an honest basic-diagnostics scope", () => {
+  for (const locale of locales) {
+    const plans = pricingPlans[locale];
+    assert.equal(plans[0].name, "Stage 1");
+    assert.equal(plans[0].price, "€150,-");
+    assert.equal(plans[0].highlighted, true);
+    assert.equal(plans[1].name, "Stage 2");
+    assert.equal(plans[1].price, "€250,-");
+    assert.equal(plans[2].price, "€89,-");
+    assert.ok(!/Volledige diagnose|Full diagnosis|Pełna diagnostyka/.test(plans[2].text));
+    assert.equal(plans[3].price, "€149,-");
+    assert.equal(plans[4].price, "€129,-");
+  }
+  assert.equal(pricingPlans.nl[2].name, "Basisdiagnose");
+  assert.match(pricingPlans.nl[2].text, /basiscontrole/);
+  assert.equal(pricingPlans.en[2].name, "Basic diagnostics");
+  assert.equal(pricingPlans.pl[2].name, "Podstawowa diagnostyka");
+  assert.match(seo.prijzen.nl.title, /Stage 1 vanaf €150/);
+  assert.match(pageHeroes.prijzen.nl.title.join(" "), /Chiptuning prijzen/);
+});
+
+test("Dutch service landing H1s name the exact commercial tuning service", () => {
+  const targets = [
+    ["stage-1-tuning", /Stage 1 tuning/],
+    ["stage-2-tuning", /Stage 2 tuning/],
+    ["ecu-remap", /ECU remap/],
+    ["dsg-tcu-tuning", /DSG \/ TCU tuning/]
+  ] as const;
+  for (const [slug, expected] of targets) {
+    const page = seoLandingFromSlug("nl", slug);
+    assert.ok(page, "Published NL tuning page missing: " + slug);
+    assert.match(page.hero.title.join(" "), expected);
+    assert.equal(page.locale, "nl");
   }
 });
