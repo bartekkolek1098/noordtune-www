@@ -25,6 +25,8 @@ export const site = {
   url: "https://www.noordtune.nl",
   catalogUrl: "https://power.noordtune.nl/",
   whatsappUrl: "https://wa.me/31685759600",
+  googleMapsUrl: "https://maps.google.com/maps?cid=1006207776184446592",
+  googleReviewUrl: "https://search.google.com/local/writereview?placeid=ChIJvX-wR8vSvWoRgK61LaTE9g0",
   phone: "+31 685 759 600",
   email: "info@noordtune.nl",
   city: "Assen",

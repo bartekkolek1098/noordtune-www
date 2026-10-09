@@ -207,3 +207,17 @@ test("Dutch service landing H1s name the exact commercial tuning service", () =>
     assert.equal(page.locale, "nl");
   }
 });
+
+test("official Google Business Profile URLs are shared with the website and structured data", () => {
+  assert.equal(site.googleMapsUrl, "https://maps.google.com/maps?cid=1006207776184446592");
+  assert.equal(
+    site.googleReviewUrl,
+    "https://search.google.com/local/writereview?placeid=ChIJvX-wR8vSvWoRgK61LaTE9g0"
+  );
+  for (const locale of locales) {
+    const business = localBusinessJsonLd(locale);
+    assert.ok(business.sameAs.includes(site.googleMapsUrl));
+    assert.ok(business.sameAs.includes(site.catalogUrl));
+    assert.ok(business.sameAs.includes("https://www.instagram.com/noordtune.nl/"));
+  }
+});

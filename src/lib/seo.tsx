@@ -304,7 +304,12 @@ export function localBusinessJsonLd(locale: Locale) {
         name
       }
     })),
-    sameAs: [site.catalogUrl]
+    sameAs: [
+      site.catalogUrl,
+      site.googleMapsUrl,
+      "https://www.instagram.com/noordtune.nl/",
+      "https://www.facebook.com/profile.php?id=61590085682134"
+    ]
   };
 }
 
