@@ -65,7 +65,7 @@ const labels = {
 } satisfies Record<Locale, Record<string, string>>;
 
 export function ServiceCard({service, locale}: {service: ServiceCardCopy; locale: Locale}) {
-  const href = service.page ? pathFor(locale, service.page) : "#";
+  const href = service.href ?? (service.page ? pathFor(locale, service.page) : "#");
   const copy = labels[locale];
   return (
     <article className="group panel-edge overflow-hidden rounded-[3px] transition hover:border-primary/70 hover:shadow-glow">

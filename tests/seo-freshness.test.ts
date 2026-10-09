@@ -18,6 +18,7 @@ import {
   translatedCustomerResultSlugs
 } from "../src/content/customer-results";
 import {locales, site} from "../src/content/site";
+import sitemap from "../src/app/sitemap";
 import {
   articleJsonLd,
   createBlogArticleMetadata,
@@ -115,4 +116,38 @@ test("Organization structured data uses the official local logo", () => {
 
 test("Power Catalog destination remains frozen", () => {
   assert.equal(site.catalogUrl, "https://power.noordtune.nl/");
+});
+
+test("AutoRepair service offerings use valid Offer and Service objects for every locale", () => {
+  for (const locale of locales) {
+    const business = localBusinessJsonLd(locale);
+    assert.equal(business["@type"], "AutoRepair");
+    assert.equal(business.makesOffer.length, 6);
+
+    for (const offer of business.makesOffer) {
+      assert.equal(offer["@type"], "Offer");
+      assert.equal(offer.itemOffered["@type"], "Service");
+      assert.ok(offer.itemOffered.name.trim().length > 0);
+    }
+  }
+});
+
+test("sitemap omits unverifiable modification dates but retains editorial dates", () => {
+  const entries = sitemap();
+
+  for (const url of [site.url + "/nl", site.url + "/nl/chiptuning", site.url + "/nl/stage-2-tuning", site.url + "/nl/ford-chiptuning"]) {
+    const entry = entries.find((item) => item.url === url);
+    assert.ok(entry, "Missing sitemap URL: " + url);
+    assert.equal(entry.lastModified, undefined, "Unverified lastmod on " + url);
+  }
+
+  const article = latestBlogArticles("nl", 1)[0];
+  const articleEntry = entries.find((item) => item.url === blogArticleUrl(article));
+  assert.ok(articleEntry?.lastModified);
+  assert.equal(new Date(articleEntry.lastModified).toISOString().slice(0, 10), article.updatedAt);
+
+  const result = displayCustomerResults("nl")[0];
+  const resultEntry = entries.find((item) => item.url === customerResultUrl(result));
+  assert.ok(resultEntry?.lastModified);
+  assert.equal(new Date(resultEntry.lastModified).toISOString().slice(0, 10), result.updatedAt);
 });

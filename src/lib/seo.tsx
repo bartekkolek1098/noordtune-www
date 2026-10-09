@@ -293,14 +293,17 @@ export function localBusinessJsonLd(locale: Locale) {
         closes: "18:00"
       }
     ],
-    makesOffer: [
-      "Chiptuning",
-      "ECU remap",
-      "Auto diagnose",
-      "Loganalyse",
-      "DSG tuning",
-      "TCU tuning"
-    ],
+    makesOffer: {
+      nl: ["Chiptuning", "ECU remap", "Auto diagnose", "Loganalyse", "DSG tuning", "TCU tuning"],
+      en: ["Chiptuning", "ECU remapping", "Vehicle diagnostics", "Log analysis", "DSG tuning", "TCU tuning"],
+      pl: ["Chiptuning", "Remap ECU", "Diagnostyka samochodowa", "Analiza logów", "Tuning DSG", "Tuning TCU"]
+    }[locale].map((name) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name
+      }
+    })),
     sameAs: [site.catalogUrl]
   };
 }

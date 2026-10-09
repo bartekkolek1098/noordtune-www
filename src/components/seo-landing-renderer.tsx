@@ -7,6 +7,7 @@ import {PowerCatalogSection} from "@/components/power-catalog-section";
 import {RichInfoSection} from "@/components/rich-info-section";
 import {SectionHeader} from "@/components/section-header";
 import {TextSection} from "@/components/text-section";
+import {TuningCustomerProof} from "@/components/tuning-service-journey";
 import type {SeoLanding} from "@/content/seo-landings";
 import {pathFor, site, type Locale} from "@/content/site";
 
@@ -79,6 +80,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
         {restSections.map((section, index) => (
           <TextSection block={section} key={section.title} reversed={index % 2 === 1} />
         ))}
+        {page.locale === "nl" ? <TuningCustomerProof slug={page.slug} /> : null}
         <PowerCatalogSection locale={page.locale} />
         <RichInfoSection
           image="/images/heroes/blog.png"
