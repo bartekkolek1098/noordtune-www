@@ -26,7 +26,7 @@ export function TextSection({block, reversed = false}: {block: TextBlock; revers
         {block.image ? (
           <div className={`panel-edge relative min-h-[250px] overflow-hidden rounded-[3px] md:min-h-[300px] ${reversed ? "lg:order-1" : ""}`}>
             <Image
-              alt={block.title}
+              alt={block.imageAlt ?? block.title}
               className="object-cover"
               fill
               sizes="(min-width: 1024px) 50vw, 100vw"

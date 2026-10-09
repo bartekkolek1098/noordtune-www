@@ -53,7 +53,8 @@ export const seoLandings: SeoLanding[] = [
           "Controle van foutcodes en technische basis",
           "Advies over DSG / TCU tuning wanneer relevant"
         ],
-        image: "/images/sections/ecu-reading.webp"
+        image: "/images/workshop/noordtune-ecu-bench-aansluitingen.jpg",
+        imageAlt: "ECU met benchbekabeling tijdens programmering bij NoordTune in Assen"
       },
       {
         kicker: "Veilige marges",
@@ -119,7 +120,8 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Zoek je chiptuning in Drenthe? NoordTune ontvangt je in de werkplaats in Assen voor voertuigspecifieke ECU-remapping. We bespreken motorvariant, ECU-software, transmissie, onderhoud en jouw gebruik voordat we een voorstel doen. Stage 1 is een mogelijke route bij ondersteunde software en een gezonde auto met standaard hardware. Bij aangepaste hardware bekijken we of Stage 2 passend is; transmissietuning beoordelen we wanneer de aandrijflijn daarom vraagt.",
         bullets: ["Werkplaats in Assen voor klanten uit Drenthe", "ECU-remap afgestemd op voertuig en software", "Koppelopbouw passend bij transmissie en gebruik"],
-        image: "/images/sections/tuning-laptop-b2.webp"
+        image: "/images/workshop/noordtune-ecu-werkbank-programmeerapparatuur.jpg",
+        imageAlt: "ECU-programmeerwerkplek met diagnoseapparatuur bij NoordTune in Assen"
       },
       {
         kicker: "Van indicatie naar offerte",
@@ -259,7 +261,8 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Moderne auto's zitten vol sensoren, regelmodules en voorwaarden. Een DPF storing, EGR storing, AdBlue storing, turbodrukfout of vermogensverlies kan meerdere oorzaken hebben. NoordTune.nl gebruikt foutcodes, live data, freeze frames en rijgedrag om de klacht gericht te begrijpen.",
         bullets: ["Foutcodes uitlezen en interpreteren", "Live data en meetwaarden controleren", "Advies voordat onderdelen worden vervangen"],
-        image: "/images/sections/obd-connector.jpg"
+        image: "/images/workshop/noordtune-bmw-softwarecontrole-laptop.jpg",
+        imageAlt: "Laptop tijdens softwarecontrole in een BMW bij NoordTune"
       },
       {
         kicker: "Loganalyse",
@@ -324,7 +327,8 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Bij Stage 1 tuning blijft de auto technisch standaard. De ECU software wordt aangepast binnen realistische marges voor turbodruk, injectie, ontsteking, koppelbegrenzing en gaspedaalrespons. Het resultaat is meestal meer trekkracht, betere respons en een rustiger gevoel bij inhalen of accelereren.",
         bullets: ["Voor standaard hardware", "Geschikt voor veel turbo motoren", "Focus op rijdbaarheid en veilige marges"],
-        image: "/images/sections/be-racing-turbo.webp"
+        image: "/images/workshop/noordtune-bmw-softwarecontrole-laptop.jpg",
+        imageAlt: "Softwarecontrole met laptop in een BMW tijdens werkzaamheden van NoordTune"
       },
       {
         kicker: "Voor wie?",
@@ -389,7 +393,8 @@ export const seoLandings: SeoLanding[] = [
         text:
           "Stage 2 tuning is geen standaard vervolgstap voor iedere auto. Het past bij voertuigen met ondersteunende hardware en vraagt extra aandacht voor turbodruk, luchtmassa, uitlaatgasstroming, temperaturen, brandstofdruk, koppeling en automaat. Daarom is loganalyse vaak belangrijker dan bij Stage 1.",
         bullets: ["Voor aangepaste hardware", "Loganalyse sterk aanbevolen", "Afstemming op motor en transmissie"],
-        image: "/images/sections/bmw-engine-bay.jpg"
+        image: "/images/workshop/noordtune-bmw-motorruimte-techniek.jpg",
+        imageAlt: "BMW-motorruimte met aangepaste hardware als technische illustratie"
       },
       {
         kicker: "Regelgeving",
@@ -459,7 +464,8 @@ export const seoLandings: SeoLanding[] = [
           "Originele software veiligstellen waar mogelijk",
           "Controle bij foutcodes of twijfel"
         ],
-        image: "/images/sections/ecu-reading.webp"
+        image: "/images/workshop/noordtune-hexprog-formulaflash-ecu-bench.jpg",
+        imageAlt: "ECU-benchopstelling met HEXPROG en FormulaFlash bij NoordTune"
       },
       {
         kicker: "Veilige marges",
@@ -529,7 +535,8 @@ export const seoLandings: SeoLanding[] = [
           "Focus op dagelijks comfort en controle",
           "Geen onnodig harde of nerveuze schakelingen"
         ],
-        image: "/images/sections/tuning-laptop-b2.webp"
+        image: "/images/workshop/noordtune-tcu-transmissieregelunit.jpg",
+        imageAlt: "Transmissieregelunit als voorbeeld van TCU-softwaretechniek"
       },
       {
         kicker: "Wanneer zinvol?",
