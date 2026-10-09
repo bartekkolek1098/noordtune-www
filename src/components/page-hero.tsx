@@ -2,6 +2,7 @@ import Image from "next/image";
 import {ButtonLink} from "@/components/button";
 import type {PageHeroCopy} from "@/content/copy";
 import {pathFor, site, type Locale, type PageKey} from "@/content/site";
+import type {ConversionEvent} from "@/lib/analytics";
 
 type PageHeroProps = {
   copy: PageHeroCopy;
@@ -52,6 +53,13 @@ function hrefForLabel(label: string, locale: Locale, pageKey: PageKey) {
   return pathFor(locale, "contact");
 }
 
+function heroConversion(href: string, locale: Locale): ConversionEvent | undefined {
+  if (href === site.catalogUrl) return {name: "power_catalog_click", properties: {locale, source: "site_cta"}};
+  if (href === site.whatsappUrl) return {name: "whatsapp_click", properties: {locale, source: "site_cta"}};
+  if (href === pathFor(locale, "appointment")) return {name: "appointment_click", properties: {locale, source: "site_cta"}};
+  return undefined;
+}
+
 export function PageHero({copy, image, locale, pageKey}: PageHeroProps) {
   const primaryHref = pageKey === "contact" ? "#contact" : pageKey === "appointment" ? "#enquiry" : hrefForLabel(copy.primary, locale, pageKey);
   const secondaryHref = hrefForLabel(copy.secondary, locale, pageKey);
@@ -84,10 +92,11 @@ export function PageHero({copy, image, locale, pageKey}: PageHeroProps) {
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-white/78 md:text-lg">{copy.intro}</p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <ButtonLink href={primaryHref} icon={primaryHref === site.whatsappUrl ? "whatsapp" : "arrow"}>
+            <ButtonLink analytics={heroConversion(primaryHref, locale)} href={primaryHref} icon={primaryHref === site.whatsappUrl ? "whatsapp" : "arrow"}>
               {copy.primary}
             </ButtonLink>
             <ButtonLink
+              analytics={heroConversion(secondaryHref, locale)}
               href={secondaryHref}
               icon={secondaryHref === site.whatsappUrl ? "whatsapp" : "arrow"}
               variant="outline"
