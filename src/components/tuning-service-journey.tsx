@@ -40,6 +40,13 @@ export function TuningServiceNavigation() {
         ))}
       </nav>
       <EnquiryLinks />
+      <p className="mt-5 text-sm leading-7 text-white/60">
+        Onze werkplaats staat in Assen. Bekijk ook{" "}
+        <Link className="font-semibold text-white/85 underline decoration-primary underline-offset-4 hover:text-primary" href="/nl/chiptuning-drenthe">chiptuning voor Drenthe</Link>{" "}
+        en{" "}
+        <Link className="font-semibold text-white/85 underline decoration-primary underline-offset-4 hover:text-primary" href="/nl/chiptuning-groningen">chiptuning voor Groningen</Link>.
+        De mogelijkheden beoordelen we altijd per auto.
+      </p>
     </section>
   );
 }

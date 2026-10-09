@@ -85,6 +85,11 @@ async function main() {
         assert.equal(await page.locator(`[data-service-journey] nav a[href="/nl/${service}"]`).count(), 1);
         assert.equal((await context.request.get(`${baseUrl}/nl/${service}`)).status(), 200);
       }
+      for (const region of ["drenthe", "groningen"]) {
+        const path = `/nl/chiptuning-${region}`;
+        assert.equal(await page.locator(`[data-service-journey] a[href="${path}"]`).count(), 1);
+        assert.equal((await context.request.get(`${baseUrl}${path}`)).status(), 200);
+      }
       await checkActions(page, "[data-service-journey]");
       await page.locator("[data-service-journey]").screenshot({path: join(output, `chooser-${viewport.width}x${viewport.height}.png`), style: "header, a.fixed {visibility: hidden !important;}"});
       if (viewport.width === 390) {
@@ -96,6 +101,17 @@ async function main() {
           ]);
           assert.ok(await page.locator("main").innerText());
         }
+      }
+      if (viewport.width === 390) {
+        await basics(page, "/nl/stage-1-tuning");
+        const catalogActions = page.locator('main a[data-analytics-event="power_catalog_click"]');
+        const whatsappActions = page.locator('main a[data-analytics-event="whatsapp_click"]');
+        assert.ok(await catalogActions.count() >= 3, "Hero and content sections must track catalog actions");
+        assert.ok(await whatsappActions.count() >= 3, "Hero and content sections must track WhatsApp actions");
+        await page.evaluate(() => { window.__ntAnalyticsEvents.length = 0; });
+        await page.locator("main > section").first().locator('[data-analytics-event="power_catalog_click"]').click();
+        const events = await page.evaluate(() => window.__ntAnalyticsEvents.filter((entry: unknown[]) => entry[0] === "event"));
+        assert.deepEqual(JSON.parse(JSON.stringify(events)), [["event", {name: "power_catalog_click", data: {locale: "nl", source: "site_cta"}}]]);
       }
       for (const proof of proofCases) {
         await basics(page, `/nl/${proof.service}`);

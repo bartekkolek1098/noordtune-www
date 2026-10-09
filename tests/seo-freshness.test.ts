@@ -18,6 +18,7 @@ import {
   translatedCustomerResultSlugs
 } from "../src/content/customer-results";
 import {locales, site} from "../src/content/site";
+import {seoLandingFromSlug} from "../src/content/seo-landings";
 import sitemap from "../src/app/sitemap";
 import {
   articleJsonLd,
@@ -150,4 +151,22 @@ test("sitemap omits unverifiable modification dates but retains editorial dates"
   const resultEntry = entries.find((item) => item.url === customerResultUrl(result));
   assert.ok(resultEntry?.lastModified);
   assert.equal(new Date(resultEntry.lastModified).toISOString().slice(0, 10), result.updatedAt);
+});
+
+test("Groningen tuning landing communicates the real Assen location and routes to a verified case", () => {
+  const page = seoLandingFromSlug("nl", "chiptuning-groningen");
+  assert.ok(page);
+  assert.ok(page.seo.title.includes("Groningen"));
+  assert.ok(page.hero.intro.includes("Assen"));
+  assert.ok(page.sections.some((section) => section.text.includes("geen vestiging in Groningen")));
+  assert.ok(page.sections.some((section) => section.text.includes("Volkswagen Caddy 2.0 TDI")));
+  for (const href of [
+    "/nl/chiptuning",
+    "/nl/resultaten/vw-caddy-20-tdi-2020-stage-1",
+    "/nl/prijzen",
+    "/nl/contact",
+    "/nl/afspraak"
+  ]) {
+    assert.ok(page.related.some((link) => link.href === href), "Missing Groningen enquiry or proof link: " + href);
+  }
 });

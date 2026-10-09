@@ -66,6 +66,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
         <PageHero copy={page.hero} image={page.heroImage} locale={page.locale} pageKey={page.parentKey} />
         {firstSection ? (
           <RichInfoSection
+            analyticsLocale={page.locale}
             bullets={firstSection.bullets}
             image={firstSection.image ?? page.heroImage}
             kicker={firstSection.kicker}
@@ -83,6 +84,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
         {page.locale === "nl" ? <TuningCustomerProof slug={page.slug} /> : null}
         <PowerCatalogSection locale={page.locale} />
         <RichInfoSection
+          analyticsLocale={page.locale}
           image="/images/heroes/blog.png"
           kicker={copy.related}
           links={page.related}
