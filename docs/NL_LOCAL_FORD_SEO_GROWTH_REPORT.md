@@ -99,6 +99,10 @@ Focused local production-build Playwright checks (`.tmp/qa-wave2.ts`, developmen
 
 ## Scope protection, purpose and follow-up
 
+Draft PR: [#20](https://github.com/bartekkolek1098/noordtune-www/pull/20), targeting `main`. Application commit: `0832f9a14afdf96967918df36464b95a53d64aeb`.
+
+Vercel [Preview](https://noordtune-www-git-feature-nl-l-b52a1d-bartekkolek1098s-projects.vercel.app) is **Ready**, with successful GitHub Vercel and Preview Comments checks for the application commit. Authenticated hosted-browser smoke confirms the new Ford programming section and both pages' case/quotation/appointment links, production self-canonicals, exact Power Catalog destination, no observed overflow and no captured console errors. Hosted smoke is separate from the fuller local viewport/interactions QA above. The Vercel connector returns a team-scope 403 and no local Vercel CLI is available; GitHub checks and the existing authenticated browser provide Preview verification instead. No access or protection settings were changed. The final follow-up commit records these documentation receipts only.
+
 Files delivered: `src/content/brand-pages.ts`, `src/content/seo-landings.ts`, and this report. No dependency or lockfile changes. No shared renderer, footer, card, SEO helper, sitemap, redirect, route, customer-result data, blog content or other brand content changes.
 
 PR #18 remained open/draft at `5534b1b3206156866079d0078da8d5173435e8dc`; PR #19 remained open/draft at `258d89f31bbfbc5352476145c1c71bb5eb8d6b05`. Their current file lists do not overlap the two application files edited here. Their branches and PRs were not changed, merged or rebased. Recheck integration against then-current main before any separately authorized release.
