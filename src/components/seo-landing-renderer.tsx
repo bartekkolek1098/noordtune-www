@@ -69,6 +69,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
             analyticsLocale={page.locale}
             bullets={firstSection.bullets}
             image={firstSection.image ?? page.heroImage}
+            imageAlt={firstSection.imageAlt}
             kicker={firstSection.kicker}
             primaryHref={site.catalogUrl}
             primaryLabel="Open Power Catalog"

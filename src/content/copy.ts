@@ -42,6 +42,7 @@ export type TextBlock = {
   text: string;
   bullets?: string[];
   image?: string;
+  imageAlt?: string;
 };
 
 export type ServiceCardCopy = {
@@ -603,7 +604,8 @@ export const homeContent: Record<Locale, {
         "Advies voor Stage 1 tuning, Stage 2 tuning, DSG tuning en TCU tuning",
         "Ondersteuning bij DPF storing, EGR storing en AdBlue storing waar wettelijk toegestaan"
       ],
-      image: "/images/sections/obd-reprogramming.webp"
+      image: "/images/workshop/noordtune-ecu-werkbank-programmeerapparatuur.jpg",
+        imageAlt: "NoordTune-werkbank met ECU-programmeerapparatuur en laptop in Assen"
     },
     highlights: [
       {
@@ -612,7 +614,8 @@ export const homeContent: Record<Locale, {
         text:
           "Een goede ECU remap voelt alsof de auto zo uit de fabriek had moeten komen: krachtiger, soepeler en voorspelbaar. Bij NoordTune.nl stemmen we software af op de motorvariant, onderhoudsstaat, brandstof, transmissie en jouw rijstijl. Stage 1 tuning is ideaal voor een standaard auto. Stage 2 tuning past bij voertuigen met ondersteunende hardware en vraagt extra controle op temperaturen, luchtmassa, turbodruk en koppellimieten.",
         bullets: ["BMW chiptuning", "Audi chiptuning", "Volkswagen chiptuning", "Mercedes chiptuning"],
-        image: "/images/sections/autotuner-ecu-hands.jpeg"
+        image: "/images/workshop/noordtune-ecu-benchwerkplek-assen.jpg",
+        imageAlt: "ECU aangesloten op BENCH-programmeerapparatuur bij NoordTune in Assen"
       },
       {
         kicker: "Auto diagnose & loganalyse",
@@ -628,7 +631,8 @@ export const homeContent: Record<Locale, {
         text:
           "Bij veel auto's bepaalt de transmissie hoe bruikbaar de tuning voelt. DSG tuning of TCU tuning kan schakelmomenten, koppelbegrenzers en rijgedrag optimaliseren. Het doel is geen harde of onrustige bak, maar een transmissie die logischer reageert op het extra vermogen en comfortabel blijft in dagelijks gebruik.",
         bullets: ["Koppellimieten controleren", "Schakelgedrag verbeteren", "Betere respons onder belasting"],
-        image: "/images/sections/datalog-road.webp"
+        image: "/images/workshop/noordtune-tcu-transmissieregelunit.jpg",
+        imageAlt: "Transmissieregelunit als voorbeeld van TCU-softwarewerk"
       }
     ],
     finalTitle: "Klaar voor meer vermogen en zekerheid?",
@@ -649,7 +653,8 @@ export const homeContent: Record<Locale, {
       text:
         "NoordTune.nl provides professional chiptuning, ECU remap and diagnostics in Assen. We focus on the whole vehicle: torque delivery, throttle response, gearbox behavior, fault codes and live data.",
       bullets: ["Custom ECU remap", "Diagnostics and log analysis", "Stage 1 and Stage 2 advice", "DSG and TCU tuning"],
-      image: "/images/sections/obd-reprogramming.webp"
+      image: "/images/workshop/noordtune-ecu-werkbank-programmeerapparatuur.jpg",
+        imageAlt: "NoordTune ECU programming workbench with laptop and interfaces in Assen"
     },
     highlights: [
       {
@@ -658,7 +663,8 @@ export const homeContent: Record<Locale, {
         text:
           "Good tuning makes the vehicle stronger and smoother without losing reliability. We tune for the engine, transmission, condition and intended use.",
         bullets: ["BMW tuning", "Audi tuning", "Volkswagen tuning", "Mercedes tuning"],
-        image: "/images/sections/autotuner-ecu-hands.jpeg"
+        image: "/images/workshop/noordtune-ecu-benchwerkplek-assen.jpg",
+        imageAlt: "ECU connected for BENCH programming at NoordTune in Assen"
       },
       {
         kicker: "Diagnostics and logs",
@@ -674,7 +680,8 @@ export const homeContent: Record<Locale, {
         text:
           "DSG and TCU tuning can improve shift behavior, torque limits and response while keeping the car pleasant every day.",
         bullets: ["Torque limits", "Shift strategy", "Drivability"],
-        image: "/images/sections/datalog-road.webp"
+        image: "/images/workshop/noordtune-tcu-transmissieregelunit.jpg",
+        imageAlt: "Transmission control unit used to illustrate TCU software work"
       }
     ],
     finalTitle: "Ready for more performance?",
@@ -694,7 +701,8 @@ export const homeContent: Record<Locale, {
       text:
         "NoordTune.nl oferuje profesjonalny chiptuning, remap ECU i diagnostykę w Assen. Patrzymy na cały samochód: moment obrotowy, reakcję gazu, pracę skrzyni, kody błędów i live data. Dzięki temu doradzamy rozwiązanie dopasowane do auta, silnika i sposobu jazdy.",
       bullets: ["Indywidualny remap ECU", "Diagnostyka i analiza logów", "Stage 1 i Stage 2", "DSG i TCU tuning"],
-      image: "/images/sections/obd-reprogramming.webp"
+      image: "/images/workshop/noordtune-ecu-werkbank-programmeerapparatuur.jpg",
+        imageAlt: "Stanowisko programowania ECU NoordTune w Assen z laptopem i interfejsami"
     },
     highlights: [
       {
@@ -703,7 +711,8 @@ export const homeContent: Record<Locale, {
         text:
           "Dobry tuning sprawia, że auto jest mocniejsze i płynniejsze bez utraty kultury pracy. Program dobieramy do silnika, skrzyni, stanu auta i sposobu użytkowania. Liczą się nie tylko liczby, ale też sposób budowania momentu, reakcja pedału gazu i bezpieczeństwo podzespołów.",
         bullets: ["BMW tuning", "Audi tuning", "Volkswagen tuning", "Mercedes tuning"],
-        image: "/images/sections/autotuner-ecu-hands.jpeg"
+        image: "/images/workshop/noordtune-ecu-benchwerkplek-assen.jpg",
+        imageAlt: "Sterownik ECU podłączony do programowania metodą BENCH w NoordTune"
       },
       {
         kicker: "Diagnostyka i logi",
@@ -719,7 +728,8 @@ export const homeContent: Record<Locale, {
         text:
           "Tuning DSG i TCU może poprawić zmiany biegów, limity momentu i reakcję auta, zachowując komfort jazdy. Celem nie jest nerwowa skrzynia, tylko napęd, który logicznie współpracuje z dodatkowym momentem.",
         bullets: ["Limity momentu", "Strategia zmian", "Komfort jazdy"],
-        image: "/images/sections/datalog-road.webp"
+        image: "/images/workshop/noordtune-tcu-transmissieregelunit.jpg",
+        imageAlt: "Sterownik skrzyni biegów jako przykład prac nad oprogramowaniem TCU"
       }
     ],
     finalTitle: "Gotowy na lepsze osiągi i pewność?",
@@ -1077,7 +1087,8 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
         text:
           "Bij chiptuning wordt de software in de motorcomputer aangepast zodat de motor efficienter en krachtiger reageert. Denk aan turbodruk, inspuiting, koppelbegrenzers, gaspedaalrespons en veiligheidsmarges. Een goede ECU remap in Assen begint daarom met de vraag: wat kan deze motor verantwoord leveren, in deze auto, met deze transmissie en dit gebruik?",
         bullets: ["Meer vermogen en koppel", "Betere gaspedaalrespons", "Soepeler rijgedrag", "Vaak prettiger verbruik bij rustig rijden"],
-        image: "/images/sections/autotuner-ecu-hands.jpeg"
+        image: "/images/workshop/noordtune-ecu-bench-aansluitingen.jpg",
+        imageAlt: "ECU aangesloten op bench-kabels bij het programmeren in Assen"
       },
       {
         kicker: "Stage 1 tuning",
@@ -1094,12 +1105,14 @@ export const pageSections: Record<PageKey, Record<Locale, TextBlock[]>> = {
       }
     ],
     en: [
-      {kicker: "ECU remap", title: "Chiptuning is about balance, not just peak numbers.", text: "We adjust engine software around boost, injection, torque limits, throttle response and safety margins.", bullets: ["More power", "More torque", "Better response", "Factory-like feel"], image: "/images/sections/autotuner-ecu-hands.jpeg"},
+      {kicker: "ECU remap", title: "Chiptuning is about balance, not just peak numbers.", text: "We adjust engine software around boost, injection, torque limits, throttle response and safety margins.", bullets: ["More power", "More torque", "Better response", "Factory-like feel"], image: "/images/workshop/noordtune-ecu-bench-aansluitingen.jpg",
+        imageAlt: "ECU connected to bench programming cables at NoordTune"},
       {kicker: "Stage 1", title: "For standard cars that should feel stronger.", text: "Stage 1 tuning keeps the car on standard hardware and optimizes software within realistic margins."},
       {kicker: "Stage 2", title: "For vehicles with supporting hardware.", text: "Stage 2 requires more checks, especially logs, temperatures, airflow and gearbox limits."}
     ],
     pl: [
-      {kicker: "Remap ECU", title: "Chiptuning to balans, nie tylko maksymalna liczba.", text: "Zmieniamy oprogramowanie silnika z uwagą na doładowanie, wtrysk, limity momentu, reakcję gazu i marginesy bezpieczeństwa. Dobra kalibracja ma dawać więcej przyjemności z jazdy, ale nadal pasować do auta i sposobu użytkowania.", bullets: ["Więcej mocy", "Więcej momentu", "Lepsza reakcja", "Fabryczny charakter"], image: "/images/sections/autotuner-ecu-hands.jpeg"},
+      {kicker: "Remap ECU", title: "Chiptuning to balans, nie tylko maksymalna liczba.", text: "Zmieniamy oprogramowanie silnika z uwagą na doładowanie, wtrysk, limity momentu, reakcję gazu i marginesy bezpieczeństwa. Dobra kalibracja ma dawać więcej przyjemności z jazdy, ale nadal pasować do auta i sposobu użytkowania.", bullets: ["Więcej mocy", "Więcej momentu", "Lepsza reakcja", "Fabryczny charakter"], image: "/images/workshop/noordtune-ecu-bench-aansluitingen.jpg",
+        imageAlt: "Sterownik ECU podłączony do przewodów programowania bench w NoordTune"},
       {kicker: "Stage 1", title: "Dla seryjnych aut, które mają jechać mocniej.", text: "Stage 1 zachowuje seryjny osprzęt i optymalizuje oprogramowanie w rozsądnych marginesach. To najczęstszy wybór, gdy auto jest technicznie zdrowe i ma dostać więcej elastyczności bez zmian mechanicznych."},
       {kicker: "Stage 2", title: "Dla aut z odpowiednim osprzętem.", text: "Stage 2 wymaga więcej kontroli, szczególnie logów, temperatur, przepływu powietrza, doładowania i limitów skrzyni. Nie każde auto potrzebuje Stage 2; czasem Stage 1 daje lepszą równowagę na co dzień."}
     ]

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {workshopCopy, workshopEquipment} from "@/content/workshop";
 import type {Locale} from "@/content/site";
 
@@ -20,6 +21,15 @@ export function WorkshopEquipment({locale}: {locale: Locale}) {
             ))}
           </ul>
           <p className="mt-5 text-sm leading-7 text-white/65">{copy.equipment}</p>
+          <Image
+            alt={locale === "nl" ? "NoordTune-werkbank met aangesloten ECU en programmeerkabels" : locale === "en" ? "NoordTune workbench with an ECU and programming cables" : "Stanowisko NoordTune ze sterownikiem ECU i przewodami do programowania"}
+            className="mt-5 aspect-[16/9] w-full rounded-[3px] border border-white/10 object-cover"
+            height={1086}
+            loading="lazy"
+            sizes="(min-width: 1024px) 39vw, 100vw"
+            src="/images/workshop/noordtune-ecu-bench-aansluitingen.jpg"
+            width={1448}
+          />
         </div>
       </div>
     </section>

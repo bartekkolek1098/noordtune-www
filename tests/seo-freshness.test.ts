@@ -18,7 +18,7 @@ import {
   translatedCustomerResultSlugs
 } from "../src/content/customer-results";
 import {locales, site} from "../src/content/site";
-import {pageHeroes, pricingPlans, seo} from "../src/content/copy";
+import {homeContent, pageHeroes, pageSections, pricingPlans, seo} from "../src/content/copy";
 import {seoLandingFromSlug} from "../src/content/seo-landings";
 import sitemap from "../src/app/sitemap";
 import {
@@ -220,4 +220,41 @@ test("official Google Business Profile URLs are shared with the website and stru
     assert.ok(business.sameAs.includes(site.catalogUrl));
     assert.ok(business.sameAs.includes("https://www.instagram.com/noordtune.nl/"));
   }
+});
+
+test("real workshop imagery uses published JPEG assets and meaningful localized alternative text", () => {
+  const workshopPrefix = "/images/workshop/";
+  const paths = new Set<string>();
+
+  function checkImage(image: string | undefined, alt: string | undefined, context: string) {
+    if (!image?.startsWith(workshopPrefix)) throw new Error("Workshop image missing for " + context);
+    assert.ok(alt && alt.trim().length >= 25, "Descriptive alt text missing for " + context);
+    const relativePath = image.slice(1);
+    assert.ok(existsSync(join(process.cwd(), "public", relativePath)), "Missing real workshop asset: " + relativePath);
+    paths.add(relativePath);
+  }
+
+  for (const locale of locales) {
+    const content = homeContent[locale];
+    checkImage(content.intro.image, content.intro.imageAlt, locale + " homepage intro");
+    checkImage(content.highlights[0].image, content.highlights[0].imageAlt, locale + " chiptuning highlight");
+    checkImage(content.highlights[2].image, content.highlights[2].imageAlt, locale + " TCU highlight");
+    const chiptuning = pageSections.chiptuning[locale][0];
+    checkImage(chiptuning.image, chiptuning.imageAlt, locale + " chiptuning body");
+  }
+
+  for (const slug of [
+    "chiptuning-assen",
+    "chiptuning-drenthe",
+    "stage-1-tuning",
+    "stage-2-tuning",
+    "ecu-remap",
+    "dsg-tcu-tuning",
+    "auto-diagnose-assen"
+  ]) {
+    const page = seoLandingFromSlug("nl", slug);
+    assert.ok(page, "Missing NL service landing: " + slug);
+    checkImage(page.sections[0]?.image, page.sections[0]?.imageAlt, slug);
+  }
+  assert.ok(paths.size >= 6, "Insufficient distinct workshop photographs in use");
 });
