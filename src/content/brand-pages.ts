@@ -399,10 +399,10 @@ export const brandPages: BrandPage[] = [
     locale: "nl",
     slug: "ford-chiptuning",
     status: "published",
-    metaTitle: "Ford chiptuning | EcoBlue ECU-remap & diagnose | NoordTune.nl",
-    metaDescription: "Ford chiptuning met dagelijkse trekkracht, diagnose en zorgvuldige EcoBlue-calibratie. Bekijk de echte Transit Connect Stage 1 case.",
+    metaTitle: "Ford chiptuning | Stage 1 & ECU-remap in Assen | NoordTune.nl",
+    metaDescription: "Ford chiptuning en Stage 1 ECU-remap vanuit Assen. Beoordeling per motor, ECU en softwareversie. Bekijk de Transit Connect-case en vraag een offerte.",
     heroTitle: "Ford chiptuning voor betere dagelijkse trekkracht",
-    heroIntro: "Een moderne Ford vraagt om calibratie die past bij motor, software, gebruik en emissiesystemen. NoordTune kiest voor controle, soepele koppelopbouw en heldere grenzen.",
+    heroIntro: "Ford ECU-remapping en Stage 1 waar ondersteund, afgestemd op motor, softwareversie en gebruik. Vanuit onze werkplaats in Assen beoordelen we wat bij jouw Ford past.",
     heroImage: sharedImages.ford,
     heroImageAlt: "Ford Transit Connect 1.5 EcoBlue Stage 1 klantresultaat bij NoordTune.nl",
     introTitle: "Ford EcoBlue tuning begint bij gebruik en technische staat.",
@@ -422,10 +422,19 @@ export const brandPages: BrandPage[] = [
         links: [{label: "Auto diagnose", href: "/nl/auto-diagnose"}, {label: "Waarom diagnose vóór tuning?", href: "/nl/blog/waarom-diagnose-voor-tuning-belangrijk-is"}]
       },
       {
+        eyebrow: "ECU-remapping",
+        title: "De ECU en softwareversie bepalen hoe jouw Ford wordt geprogrammeerd.",
+        body: [
+          "Model, bouwjaar en motorinhoud geven een eerste richting, maar bepalen niet alleen of een ECU-remap mogelijk is. We stellen de aanwezige regelunit en softwareversie vast en beoordelen de ondersteuning voordat we de programmeermethode kiezen. Ook eerdere software- of hardwarewijzigingen tellen mee.",
+          "We gebruiken professionele ECU-programmeerapparatuur voor het uitlezen en schrijven van ondersteunde regelunits. De werkwijze wordt gekozen voor de concrete auto; ondersteuning voor één Ford-uitvoering is geen toezegging voor alle Fords met dezelfde motorinhoud."
+        ],
+        links: [{label: "Meer over ECU-remap", href: "/nl/ecu-remap"}]
+      },
+      {
         eyebrow: "Stage 1",
         title: "Stage 1 richt zich op bruikbaar koppel, niet alleen pk's.",
         body: [
-          "Een Stage 1-remap voor een technisch gezonde Ford met standaard hardware kan de respons en trekkracht in het dagelijkse toerentalgebied verbeteren. De calibratie wordt afgestemd op de werkelijke motor- en softwarevariant. Vooral bij bedrijfswagens is een soepele opbouw belangrijk, zodat de auto met belading of bij inhalen sterker maar voorspelbaar blijft reageren.",
+          "Als de ECU en softwarevariant worden ondersteund, kan een Stage 1-remap voor een technisch gezonde Ford met standaard hardware de respons en dagelijkse trekkracht verbeteren. De calibratie wordt afgestemd op de werkelijke motor- en softwarevariant. Vooral bij bedrijfswagens is een soepele opbouw belangrijk, zodat de auto met belading of bij inhalen sterker maar voorspelbaar blijft reageren.",
           "De Transit Connect-case toont de geverifieerde waarden van dat project. Andere bouwjaren, vermogensvarianten, softwareversies of transmissies kunnen een andere uitkomst vragen. De Power Catalog geeft daarom een indicatie, waarna de concrete auto wordt beoordeeld."
         ],
         links: [{label: "Ford Transit Connect Stage 1", href: "/nl/resultaten/ford-transit-connect-15-ecoblue-2019-stage-1"}, {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"}]
@@ -458,10 +467,15 @@ export const brandPages: BrandPage[] = [
       },
       {
         eyebrow: "Advies aanvragen",
-        title: "Stuur rijprofiel en voertuiggegevens mee.",
+        title: "Een offerte voor jouw Ford, daarna een afspraak.",
         body: [
           "Voor gericht advies ontvangen we kenteken of exacte Ford-uitvoering, motor, bouwjaar, transmissie, kilometerstand en onderhoud. Vermeld belading, trekgebruik, ritlengte, storingen, eerdere software en hardwarewijzigingen. Daarmee kunnen we onderscheid maken tussen een tuningvraag en een diagnosevraag.",
-          "Begin in de Power Catalog en stuur daarna via WhatsApp wat je van de auto verwacht. We geven geen gegarandeerde besparing of exact vermogen zonder de concrete auto te beoordelen."
+          "Bekijk de richtprijzen en controleer jouw uitvoering in de Power Catalog. Vraag daarna via WhatsApp of de contactpagina een persoonlijke offerte aan. Vermeld wat je van de auto verwacht; de definitieve mogelijkheden en prijs hangen af van de beoordeling. Wil je het traject plannen, gebruik dan de afspraakaanvraag."
+        ],
+        links: [
+          {label: "Bekijk de richtprijzen", href: pathFor("nl", "prijzen")},
+          {label: "Vraag een persoonlijke offerte", href: pathFor("nl", "contact")},
+          {label: "Vraag een afspraak aan", href: pathFor("nl", "appointment")}
         ]
       }
     ],
@@ -469,14 +483,14 @@ export const brandPages: BrandPage[] = [
     resultSummaries: {"ford-transit-connect-15-ecoblue-2019-stage-1": "Maatwerk Stage 1 voor een Ford Transit Connect 1.5 EcoBlue, gericht op respons en bruikbare trekkracht in dagelijks gebruik."},
     resultsTitle: "Echt Ford-klantresultaat",
     resultsIntro: "Bekijk het geverifieerde Transit Connect-project als voorbeeld van een voertuigspecifieke EcoBlue-calibratie, niet als universele vermogensbelofte.",
-    relatedTitle: "Ford tuning en diagnose verder bekijken",
-    relatedIntro: "Gebruik deze routes om Stage 1, diagnose en de praktische gevolgen van tuning beter te begrijpen.",
+    relatedTitle: "Verder met Ford chiptuning",
+    relatedIntro: "Lees meer over de tuningaanpak en bekijk echte klantresultaten. Diagnose ondersteunt de keuze wanneer de technische staat daarom vraagt.",
     relatedLinks: serviceLinks("nl", {stage2: true}),
     catalogTitle: "Controleer jouw Ford in de NoordTune Power Catalog.",
     catalogIntro: "Nederlandse Fords kunnen via kenteken/RDW worden opgezocht. Internationale voertuigen selecteer je handmatig. De getoonde winst en prijs zijn indicatief; software, transmissie, staat en gebruik bepalen het uiteindelijke advies.",
     catalogBullets: ["RDW-kentekencheck", "Handmatige selectie voor buitenlandse Fords", "Indicatieve Stage-opties en prijzen", "Definitieve beoordeling per voertuig"],
     catalogCta: "Controleer jouw Ford in de NoordTune Power Catalog",
-    whatsappCta: "Vraag Ford-advies via WhatsApp",
+    whatsappCta: "Vraag een Ford-offerte via WhatsApp",
     faq: [
       {question: "Is Ford EcoBlue geschikt voor Stage 1?", answer: "Dat hangt af van de exacte uitvoering, software, onderhoud en storingsstatus. Een gezonde technische basis is noodzakelijk."},
       {question: "Levert chiptuning altijd brandstofbesparing op?", answer: "Nee. Meer koppel kan rustiger rijden ondersteunen, maar verbruik wordt vooral bepaald door rijstijl, belasting, route en gebruik van het extra vermogen."},
