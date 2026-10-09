@@ -102,43 +102,43 @@ export const seoLandings: SeoLanding[] = [
     seo: {
       title: "Chiptuning Drenthe | Stage 1 & ECU Remap | NoordTune.nl",
       description:
-        "Chiptuning Drenthe met maatwerk ECU remap, Stage 1 en Stage 2 advies vanuit Assen. NoordTune.nl helpt auto's uit heel Noord-Nederland."
+        "Chiptuning voor klanten uit Drenthe bij NoordTune in Assen. Voertuigspecifieke Stage 1 en ECU-remap, echte klantresultaten en een offerte voor jouw auto."
     },
     hero: {
       eyebrow: "Chiptuning Drenthe",
       title: ["Maatwerk tuning", "voor Drenthe"],
       intro:
-        "Van Assen tot Hoogeveen, Emmen en Beilen: software op maat met diagnose, uitleg en realistische verwachtingen.",
+        "Onze werkplaats staat in Assen. Voor klanten uit Drenthe stemmen we motorsoftware af op de auto, het gebruik en de gewenste trekkracht.",
       primary: "Bekijk tuningmogelijkheden",
       secondary: "WhatsApp ons"
     },
     sections: [
       {
-        kicker: "Noord-Nederland",
-        title: "Een tuningadres in Drenthe dat verder kijkt dan pk's.",
+        kicker: "Werkplaats in Assen",
+        title: "Chiptuning voor klanten uit Drenthe, uitgevoerd in Assen.",
         text:
-          "Veel auto's hebben ruimte voor meer vermogen en koppel, maar niet iedere auto vraagt dezelfde aanpak. NoordTune.nl helpt bestuurders in Drenthe met een nuchtere combinatie van chiptuning, auto diagnose en loganalyse. We letten op bruikbaarheid, betrouwbaarheid en rijgevoel in plaats van alleen een hoog getal op papier.",
-        bullets: ["Chiptuning Drenthe vanuit Assen", "Persoonlijk advies per voertuig", "Geschikt voor dagelijks en zakelijk gebruik"],
+          "Zoek je chiptuning in Drenthe? NoordTune ontvangt je in de werkplaats in Assen voor voertuigspecifieke ECU-remapping. We bespreken motorvariant, ECU-software, transmissie, onderhoud en jouw gebruik voordat we een voorstel doen. Stage 1 is een mogelijke route bij ondersteunde software en een gezonde auto met standaard hardware. Bij aangepaste hardware bekijken we of Stage 2 passend is; transmissietuning beoordelen we wanneer de aandrijflijn daarom vraagt.",
+        bullets: ["Werkplaats in Assen voor klanten uit Drenthe", "ECU-remap afgestemd op voertuig en software", "Koppelopbouw passend bij transmissie en gebruik"],
         image: "/images/sections/tuning-laptop-b2.webp"
       },
       {
-        kicker: "Stage 1 en Stage 2",
-        title: "Duidelijk verschil tussen standaard auto en aangepaste hardware.",
+        kicker: "Van indicatie naar offerte",
+        title: "Bekijk jouw auto, vergelijk de richtprijzen en vraag advies.",
         text:
-          "Stage 1 tuning is bedoeld voor auto's zonder hardware-aanpassingen. Stage 2 tuning kan interessant zijn wanneer er ondersteunende hardware aanwezig is, maar vraagt ook extra controle. Denk aan luchtmassa, turbodruk, temperaturen, brandstofdruk en transmissielimieten."
+          "De Power Catalog geeft een eerste indicatie voor jouw uitvoering. Staat jouw auto er niet bij of is de configuratie aangepast? Vraag dan een persoonlijke offerte via WhatsApp of de contactpagina. Vermeld model, motor, bouwjaar, transmissie en het gewenste rijgedrag. Op de prijzenpagina vind je de richtprijzen; mogelijkheden en definitieve kosten bespreken we voor jouw auto. Via de afspraakaanvraag kun je het traject met ons afstemmen."
       },
       {
-        kicker: "Diagnose vooraf",
-        title: "Eerst zeker weten dat de technische basis klopt.",
+        kicker: "Echte klantresultaten",
+        title: "Bekijk een afgerond project voordat je een keuze maakt.",
         text:
-          "Bij vermogensverlies, foutcodes, rook, noodloop of onrustig schakelgedrag adviseren we eerst diagnose of loganalyse. Dat voorkomt dat tuning een bestaand probleem verbergt en maakt de uiteindelijke softwarekeuze betrouwbaarder."
+          "Een gepubliceerd voorbeeld is de Ford Transit Connect 1.5 EcoBlue uit 2019 met een maatwerk Stage 1 ECU-remap. De volledige case beschrijft de aanpak en de waarden voor die specifieke auto. Bekijk ook het resultatenarchief om verschillende trajecten te vergelijken. Een klantresultaat is geen vermogensgarantie voor jouw voertuig: jouw uitvoering wordt apart beoordeeld. Bij foutcodes, vermogensverlies of twijfel over de technische staat adviseren we eerst de benodigde controle."
       }
     ],
     faqs: [
       {
         question: "Werkt NoordTune.nl voor heel Drenthe?",
         answer:
-          "Ja. NoordTune.nl werkt vanuit Assen en helpt klanten uit onder andere Assen, Hoogeveen, Emmen, Beilen, Meppel en omliggende plaatsen."
+          "Ja. Onze werkplaats staat in Assen en we helpen klanten uit Drenthe. Vraag vooraf advies voor jouw auto en stem een afspraak met ons af."
       },
       {
         question: "Moet mijn auto eerst op de testbank?",
@@ -148,14 +148,20 @@ export const seoLandings: SeoLanding[] = [
       {
         question: "Kan ik ook alleen advies krijgen?",
         answer:
-          "Ja. Je kunt via WhatsApp je kenteken, motorvariant of storing sturen voor een eerste richting."
+          "Ja. Controleer jouw uitvoering in de Power Catalog of vraag via WhatsApp of de contactpagina een persoonlijke offerte. De mogelijkheden hangen af van voertuig, software en technische staat."
       }
     ],
     related: [
-      {label: "Chiptuning Assen", href: "/nl/chiptuning-assen"},
+      {label: "Onze chiptuningaanpak", href: pathFor("nl", "chiptuning")},
+      {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"},
       {label: "Stage 2 tuning", href: "/nl/stage-2-tuning"},
-      {label: "Auto diagnose Assen", href: "/nl/auto-diagnose-assen"},
-      {label: "Contact", href: pathFor("nl", "contact")}
+      {label: "ECU-remap", href: "/nl/ecu-remap"},
+      {label: "DSG / TCU tuning", href: "/nl/dsg-tcu-tuning"},
+      {label: "Ford Transit Connect Stage 1: volledige case", href: "/nl/resultaten/ford-transit-connect-15-ecoblue-2019-stage-1"},
+      {label: "Alle klantresultaten", href: pathFor("nl", "resultaten")},
+      {label: "Bekijk de richtprijzen", href: pathFor("nl", "prijzen")},
+      {label: "Vraag een persoonlijke offerte", href: pathFor("nl", "contact")},
+      {label: "Vraag een afspraak aan", href: pathFor("nl", "appointment")}
     ]
   },
   {
