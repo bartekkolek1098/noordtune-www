@@ -1,4 +1,5 @@
 import {ArrowRight} from "lucide-react";
+import Link from "next/link";
 import {BlogCard, PricingCard, ResultCardView, ServiceCard} from "@/components/cards";
 import {ButtonLink} from "@/components/button";
 import {CTASection} from "@/components/cta-section";
@@ -16,6 +17,8 @@ import {SectionHeader} from "@/components/section-header";
 import {TextGrid, TextSection} from "@/components/text-section";
 import {WhatsAppEnquiry} from "@/components/whatsapp-enquiry";
 import {TrackedLink} from "@/components/tracked-link";
+import {WorkshopEquipment} from "@/components/workshop-equipment";
+import {workshopCopy, workshopServiceDescriptions} from "@/content/workshop";
 import {
   faqs,
   homeContent,
@@ -413,9 +416,17 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           />
           <div className="mt-9 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {services[locale].map((service) => (
-              <ServiceCard key={service.title} locale={locale} service={service} />
+              <ServiceCard
+                key={service.title}
+                locale={locale}
+                service={{...service, text: workshopServiceDescriptions[locale][service.icon] ?? service.text}}
+              />
             ))}
           </div>
+          <Link className="mt-6 inline-flex min-h-11 items-center gap-2 py-2 text-sm font-semibold text-white/75 underline underline-offset-4 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={pathFor(locale, "over")}>
+            {workshopCopy[locale].servicesAbout}
+            <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+          </Link>
         </section>
         <PowerCatalogSection locale={locale} />
         <section className="container py-12 md:py-16">
@@ -716,6 +727,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
       {pageSections[pageKey][locale].map((block, index) => (
         <TextSection block={block} key={block.title} reversed={index % 2 === 1} />
       ))}
+      {pageKey === "over" ? <WorkshopEquipment locale={locale} /> : null}
       {pageKey === "chiptuning" ? <ChiptuningProofSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <BrandNavigationSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <PowerCatalogSection locale={locale} /> : null}

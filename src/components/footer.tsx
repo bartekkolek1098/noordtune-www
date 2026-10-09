@@ -17,7 +17,8 @@ export function Footer({locale}: FooterProps) {
       contact: "Contact",
       area: "Ons werkgebied",
       areaText: "Assen, Drenthe, Groningen en Noord-Nederland.",
-      legal: "Alle rechten voorbehouden"
+      legal: "Alle rechten voorbehouden",
+      credit: "Website ontwikkeld en onderhouden door"
     },
     en: {
       intro:
@@ -26,7 +27,8 @@ export function Footer({locale}: FooterProps) {
       contact: "Contact",
       area: "Service area",
       areaText: "Assen, Drenthe, Groningen and the northern Netherlands.",
-      legal: "All rights reserved"
+      legal: "All rights reserved",
+      credit: "Website developed and maintained by"
     },
     pl: {
       intro:
@@ -35,7 +37,8 @@ export function Footer({locale}: FooterProps) {
       contact: "Kontakt",
       area: "Region",
       areaText: "Assen, Drenthe, Groningen i północna Holandia.",
-      legal: "Wszelkie prawa zastrzeżone"
+      legal: "Wszelkie prawa zastrzeżone",
+      credit: "Strona stworzona i utrzymywana przez"
     }
   }[locale];
 
@@ -149,16 +152,25 @@ export function Footer({locale}: FooterProps) {
       </div>
 
       <div className="border-t border-white/10 py-5">
-        <div className="container flex flex-col gap-3 text-xs text-white/45 md:flex-row md:items-center md:justify-between">
-          <p>© 2026 NoordTune.nl - {labels.legal}</p>
-          <div className="flex gap-5">
-            <Link className="hover:text-primary" href={pathFor(locale, "terms")}>
-              {locale === "nl" ? "Algemene voorwaarden" : locale === "en" ? "Terms" : "Regulamin"}
-            </Link>
-            <Link className="hover:text-primary" href={pathFor(locale, "privacy")}>
-              {locale === "nl" ? "Privacybeleid" : locale === "en" ? "Privacy policy" : "Polityka prywatności"}
-            </Link>
+        <div className="container grid min-w-0 gap-x-6 gap-y-3 text-xs text-white/45 xl:grid-cols-[minmax(0,1fr)_auto] xl:items-center">
+          <div className="flex min-w-0 flex-wrap items-center gap-x-6 gap-y-3">
+            <p>© 2026 NoordTune.nl - {labels.legal}</p>
+            <div className="flex flex-wrap gap-x-5 gap-y-2">
+              <Link className="hover:text-primary" href={pathFor(locale, "terms")}>
+                {locale === "nl" ? "Algemene voorwaarden" : locale === "en" ? "Terms" : "Regulamin"}
+              </Link>
+              <Link className="hover:text-primary" href={pathFor(locale, "privacy")}>
+                {locale === "nl" ? "Privacybeleid" : locale === "en" ? "Privacy policy" : "Polityka prywatności"}
+              </Link>
+            </div>
           </div>
+          <p className="flex min-w-0 flex-wrap items-center gap-x-1.5 gap-y-1 pr-16" data-site-credit>
+            <span>{labels.credit}</span>
+            <a className="inline-flex min-h-11 items-center gap-1.5 py-2 font-semibold text-white/65 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href="https://zichtgroei.nl/" rel="nofollow noopener noreferrer" target="_blank">
+              <Image alt="" aria-hidden="true" className="h-6 w-6 shrink-0 opacity-90" height={64} src="/brand/zichtgroei-mark-white.svg" width={64} />
+              ZICHTGROEI
+            </a>
+          </p>
         </div>
       </div>
     </footer>
