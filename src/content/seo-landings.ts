@@ -171,62 +171,66 @@ export const seoLandings: SeoLanding[] = [
     parentKey: "chiptuning",
     heroImage: "/images/sections/bench-ecu-service.webp",
     seo: {
-      title: "Chiptuning Groningen | ECU Remap vlakbij Groningen | NoordTune.nl",
+      title: "Chiptuning Groningen | Stage 1 & ECU-remap in Assen | NoordTune.nl",
       description:
-        "Chiptuning voor Groningen en Noord-Nederland. NoordTune.nl in Assen levert ECU remap, Stage 1 tuning, Stage 2 advies en auto diagnose."
+        "Chiptuning voor automobilisten uit Groningen bij NoordTune in Assen. Stage 1 en ECU-remap per voertuig. Bekijk echte resultaten en vraag een offerte."
     },
     hero: {
       eyebrow: "Chiptuning Groningen",
-      title: ["Meer respons", "vlakbij Groningen"],
+      title: ["Chiptuning voor Groningen", "vanuit Assen"],
       intro:
-        "Voor bestuurders uit Groningen die een technische, zorgvuldige aanpak zoeken voor ECU remap en diagnose.",
+        "Kom je uit Groningen of omgeving en zoek je Stage 1 of een ECU-remap? NoordTune beoordeelt en programmeert ondersteunde voertuigen vanuit de werkplaats in Assen.",
       primary: "Controleer jouw auto",
       secondary: "WhatsApp ons"
     },
     sections: [
       {
-        kicker: "Regio Groningen",
-        title: "Een korte rit naar Assen voor tuning met aandacht.",
+        kicker: "Werkplaats in Assen",
+        title: "Chiptuning aanvragen vanuit Groningen: eerst de auto bespreken.",
         text:
-          "NoordTune.nl ligt praktisch voor klanten uit Groningen, Haren, Hoogezand, Veendam, Stadskanaal en omgeving. We combineren tuning met diagnose en duidelijke uitleg, zodat je weet wat er aan je auto gebeurt en waarom een bepaalde oplossing past.",
-        bullets: ["ECU remap voor Groningen", "Diagnose en loganalyse mogelijk", "Power Catalog voor eerste indicatie"],
+          "NoordTune heeft een werkplaats in Assen, geen vestiging in Groningen. Kom je uit Groningen of de omgeving, dan kun je vooraf via WhatsApp of de contactpagina je auto en wensen bespreken. We kijken naar motorvariant, ECU, softwareversie, transmissie en technische staat voordat we een geschikte programmeermethode of vervolgstap adviseren. Zo weet je waar de afspraak in Assen voor bedoeld is.",
+        bullets: ["Werkplaats in Assen", "Beoordeling per motor en ECU-versie", "Offerte en afspraak vooraf afstemmen"],
         image: "/images/sections/bench-ecu-service.webp"
       },
       {
-        kicker: "Rijgedrag",
-        title: "Niet alleen sneller, vooral fijner rijden.",
+        kicker: "Stage 1 en ECU-remap",
+        title: "De mogelijkheden hangen af van de software en de staat van jouw auto.",
         text:
-          "Een goede remap geeft meer trekkracht in het bruikbare toerengebied, betere gaspedaalrespons en vaak meer rust bij normaal rijden. Dat maakt tuning interessant voor dagelijkse auto's, zakelijke rijders en liefhebbers die hun auto net scherper willen maken."
+          "Bij een ondersteunde ECU en een technisch gezonde auto met standaard hardware kan Stage 1 een passende keuze zijn. We richten ons op bruikbaar koppel, gaspedaalrespons en een logische vermogensopbouw, niet op een vaste winst voor ieder model. Heeft jouw auto aangepaste hardware of een automaat? Dan bespreken we apart of maatwerksoftware, Stage 2 of DSG/TCU-afstemming technisch passend en wettelijk toegestaan is."
       },
       {
-        kicker: "Zekerheid",
-        title: "Realistisch advies als de auto eerst aandacht nodig heeft.",
+        kicker: "Echt klantresultaat",
+        title: "Bekijk een afgeronde Stage 1-case en vraag jouw eigen offerte.",
         text:
-          "Als diagnose laat zien dat sensoren, turbodruk, EGR, DPF, AdBlue of transmissiegedrag niet kloppen, bespreken we eerst de juiste vervolgstap. Een gezonde basis blijft belangrijker dan direct tunen."
+          "In ons gepubliceerde project van een Volkswagen Caddy 2.0 TDI uit 2020 zie je de resultaten die bij die specifieke auto horen. De cijfers zijn geen belofte voor jouw voertuig en zeggen niets over de woonplaats van de klant. Controleer jouw uitvoering in de Power Catalog, bekijk de richtprijzen en vraag daarna een persoonlijke offerte of afspraak in Assen aan."
       }
     ],
     faqs: [
       {
-        question: "Is NoordTune.nl bereikbaar vanuit Groningen?",
+        question: "Waar wordt chiptuning voor klanten uit Groningen uitgevoerd?",
         answer:
-          "Ja. De werkplaats in Assen is goed bereikbaar vanuit Groningen en omliggende plaatsen in Noord-Nederland."
+          "Bij NoordTune in Assen. We hebben geen vestiging in Groningen. Je kunt vooraf de mogelijkheden van jouw auto bespreken en een afspraak in Assen aanvragen."
       },
       {
-        question: "Kan ik mijn kenteken vooraf sturen?",
+        question: "Is Stage 1 mogelijk voor mijn auto?",
         answer:
-          "Graag. Stuur je kenteken of motorcode via WhatsApp, of controleer de auto eerst in de Power Catalog."
+          "Dat hangt af van de exacte motor, ECU, softwareversie en technische staat. De Power Catalog geeft een eerste indicatie; definitief advies volgt na beoordeling van jouw voertuig."
       },
       {
-        question: "Doen jullie ook diagnose bij storing?",
+        question: "Hoe vraag ik vanuit Groningen een tuningofferte aan?",
         answer:
-          "Ja. Auto diagnose en loganalyse zijn juist belangrijk wanneer er storingen of twijfel over de technische staat zijn."
+          "Stuur via WhatsApp of de contactpagina je kenteken of exacte model, motor, bouwjaar en wensen. We bespreken de mogelijkheden en de prijs voordat je een afspraak in Assen maakt."
       }
     ],
     related: [
-      {label: "Auto diagnose", href: pathFor("nl", "diagnose")},
+      {label: "Onze chiptuningaanpak", href: pathFor("nl", "chiptuning")},
       {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"},
-      {label: "Prijzen", href: pathFor("nl", "prijzen")},
-      {label: "Resultaten", href: pathFor("nl", "resultaten")}
+      {label: "ECU-remap", href: "/nl/ecu-remap"},
+      {label: "Volkswagen Caddy 2.0 TDI: echte Stage 1-case", href: "/nl/resultaten/vw-caddy-20-tdi-2020-stage-1"},
+      {label: "Klantresultaten", href: pathFor("nl", "resultaten")},
+      {label: "Bekijk de richtprijzen", href: pathFor("nl", "prijzen")},
+      {label: "Vraag een persoonlijke offerte", href: pathFor("nl", "contact")},
+      {label: "Vraag een afspraak in Assen aan", href: pathFor("nl", "appointment")}
     ]
   },
   {
