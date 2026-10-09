@@ -94,6 +94,17 @@ export function Footer({locale}: FooterProps) {
               <MessageCircle aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
               <TrackedLink analytics={{name: "whatsapp_click", properties: {locale, source: "footer"}}} className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={site.whatsappUrl} rel="noreferrer" target="_blank">WhatsApp</TrackedLink>
             </li>
+            <li className="flex items-center gap-2">
+              <MapPin aria-hidden="true" className="h-4 w-4 shrink-0 text-primary" />
+              <a
+                className="py-2 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+                href={site.googleMapsUrl}
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                {locale === "nl" ? "Bekijk ons op Google Maps" : locale === "en" ? "Find us on Google Maps" : "Zobacz nas w Google Maps"}
+              </a>
+            </li>
           </ul>
         </div>
 

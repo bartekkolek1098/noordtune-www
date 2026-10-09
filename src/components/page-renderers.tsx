@@ -607,6 +607,24 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           <p className="mt-6 text-sm font-semibold uppercase tracking-[0.14em] text-white/50">
             {resultsFutureNote[locale]}
           </p>
+          <div className="mt-6 border-t border-white/10 pt-5 text-sm text-white/65" data-google-review-invitation>
+            <p>
+              {locale === "nl"
+                ? "Al ervaring met NoordTune? Deel je eerlijke beoordeling op Google."
+                : locale === "en"
+                  ? "Have you used NoordTune? Share your honest experience on Google."
+                  : "Korzystałeś z usług NoordTune? Podziel się szczerą opinią w Google."}
+            </p>
+            <a
+              className="mt-2 inline-flex min-h-11 items-center gap-2 py-2 font-semibold text-white underline decoration-primary underline-offset-4 hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"
+              href={site.googleReviewUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
+              {locale === "nl" ? "Schrijf een Google-beoordeling" : locale === "en" ? "Write a Google review" : "Dodaj opinię w Google"}
+              <ArrowRight aria-hidden="true" className="h-4 w-4 shrink-0" />
+            </a>
+          </div>
         </section>
         <PowerCatalogSection compact locale={locale} />
         <CTASection locale={locale} text={homeContent[locale].finalText} title={homeContent[locale].finalTitle} />
