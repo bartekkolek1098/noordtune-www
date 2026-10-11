@@ -13,7 +13,10 @@ export const conversionEventPropertyKeys = {
   blog_article_click: ["locale", "slug"],
   brand_page_click: ["locale", "slug"],
   phone_click: ["locale", "source"],
-  email_click: ["locale", "source"]
+  email_click: ["locale", "source"],
+  appointment_email_handoff: ["locale", "source"],
+  catalog_context_loaded: ["locale", "source"],
+  catalog_context_failed: ["locale", "source"]
 } as const;
 
 export const conversionEventNames: ReadonlyArray<keyof typeof conversionEventPropertyKeys> = Object.freeze(
@@ -45,7 +48,10 @@ export type ConversionSource =
   | "site_cta"
   | "business_hero"
   | "business_composer"
-  | "homepage_business";
+  | "homepage_business"
+  | "catalog_manual"
+  | "catalog_profile"
+  | "catalog_engine";
 
 type SourceProperties = Readonly<{locale: Locale; source: ConversionSource}>;
 type SlugProperties = Readonly<{locale: Locale; slug: string}>;
@@ -60,7 +66,10 @@ export type ConversionEvent =
   | {name: "blog_article_click"; properties: SlugProperties}
   | {name: "brand_page_click"; properties: SlugProperties}
   | {name: "phone_click"; properties: SourceProperties}
-  | {name: "email_click"; properties: SourceProperties};
+  | {name: "email_click"; properties: SourceProperties}
+  | {name: "appointment_email_handoff"; properties: SourceProperties}
+  | {name: "catalog_context_loaded"; properties: SourceProperties}
+  | {name: "catalog_context_failed"; properties: SourceProperties};
 
 type AnalyticsTransport = (name: ConversionEventName, properties: Record<string, string>) => void;
 
