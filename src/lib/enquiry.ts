@@ -11,7 +11,7 @@ export type EnquiryFields = {
 };
 export type EnquiryErrors = Partial<Record<keyof EnquiryFields, string>>;
 
-export const enquiryLimits = {description: 1000, vehicle: 120, plate: 24, preferred: 100} as const;
+export const enquiryLimits = {description: 1000, vehicle: 160, plate: 24, preferred: 100} as const;
 
 function isService(value: string): value is EnquiryService {
   return enquiryServices.some((service) => service === value);
@@ -49,4 +49,10 @@ export function enquiryWhatsAppUrl(message: string): string {
   const url = new URL(site.whatsappUrl);
   url.searchParams.set("text", message);
   return url.toString();
+}
+
+/** Compose locally; the visitor sends the message in their own email application. */
+export function enquiryEmailUrl(message: string, locale: Locale): string {
+  const subject = {nl: 'Vraag over mijn voertuig / NoordTune', en: 'Vehicle enquiry / NoordTune', pl: 'Zapytanie o auto / NoordTune'}[locale];
+  return 'mailto:' + site.email + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
 }

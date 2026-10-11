@@ -3,9 +3,11 @@
 import {useEffect, useId, useRef, useState, type KeyboardEvent} from "react";
 import {enquiryCopy, enquiryServices} from "@/content/enquiry";
 import {pathFor, site, type Locale} from "@/content/site";
+import {useCatalogEnquiry} from "@/hooks/use-catalog-enquiry";
+import {CatalogEnquiryBanner} from "@/components/catalog-enquiry-banner";
 import {TrackedLink} from "@/components/tracked-link";
 import {trackConversion} from "@/lib/analytics";
-import {buildEnquiryMessage, enquiryLimits, enquiryWhatsAppUrl, validateEnquiry, type EnquiryErrors, type EnquiryFields, type EnquiryKind} from "@/lib/enquiry";
+import {buildEnquiryMessage, enquiryLimits, enquiryWhatsAppUrl, enquiryEmailUrl, validateEnquiry, type EnquiryErrors, type EnquiryFields, type EnquiryKind} from "@/lib/enquiry";
 
 const inputClass = "w-full min-w-0 rounded-[3px] border border-white/25 bg-black/40 px-3 py-3 text-base text-white outline-none focus-visible:ring-2 focus-visible:ring-primary scroll-mt-28";
 const actionClass = "inline-flex min-h-11 items-center justify-center rounded-[3px] border px-4 py-3 text-sm font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black disabled:opacity-60";
@@ -17,14 +19,18 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
   const [fields, setFields] = useState<EnquiryFields>({service: "", description: "", vehicle: "", plate: "", preferred: ""});
   const [errors, setErrors] = useState<EnquiryErrors>({});
   const [copyStatus, setCopyStatus] = useState<"idle" | "copying" | "copied" | "failed">("idle");
+  const imported = useCatalogEnquiry(locale, "enquiry");
+  const vehicleEdited = useRef(false);
   const revision = useRef(0);
   const started = useRef(false);
   const preview = useRef<HTMLTextAreaElement>(null);
   const message = buildEnquiryMessage(fields, locale, kind);
 
   useEffect(() => setReady(true), []);
+  useEffect(() => {if (imported.context) setFields(current => ({...current, vehicle: vehicleEdited.current ? current.vehicle : imported.context!.label.replace(/\bKM\b/g, locale === "nl" ? "pk" : locale === "en" ? "hp" : "KM"), service: current.service || "advice"}));}, [imported.context, locale]);
 
   function updateField(key: keyof EnquiryFields, value: string) {
+    if (key === "vehicle") vehicleEdited.current = true;
     if (!started.current && value.trim()) {
       started.current = true;
       trackConversion({
@@ -56,6 +62,12 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
     window.open(enquiryWhatsAppUrl(message), "_blank", "noopener,noreferrer");
   }
 
+  function continueInEmail() {
+    if (!validate()) return;
+    trackConversion({name: "appointment_email_handoff", properties: {locale, source: kind === "contact" ? "contact_composer" : "appointment_composer"}});
+    window.location.href = enquiryEmailUrl(message, locale);
+  }
+
   function onInputKeyDown(event: KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter" && !event.nativeEvent.isComposing) {
       event.preventDefault();
@@ -83,11 +95,12 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
   }
 
   return (
-    <section aria-labelledby={`${id}-title`} className="panel-edge min-w-0 scroll-mt-28 rounded-[3px] p-5 sm:p-6" data-enquiry={kind}>
+    <section id="enquiry" aria-labelledby={`${id}-title`} className="panel-edge min-w-0 scroll-mt-28 rounded-[3px] p-5 sm:p-6" data-enquiry={kind}>
       <h2 className="racing-title text-2xl text-white sm:text-3xl" id={`${id}-title`}>
         {kind === "appointment" ? copy.appointmentTitle : copy.title}
       </h2>
       <p className="mt-4 text-sm leading-6 text-white/85" id={`${id}-explanation`}>{copy.explanation}</p>
+      <CatalogEnquiryBanner locale={locale} status={imported.status}/>
       {/* Deliberately no native form: Enter cannot submit a GET or POST, even before hydration. */}
       <fieldset aria-describedby={`${id}-explanation`} className="mt-5 min-w-0 space-y-4" disabled={!ready}>
         <legend className="sr-only">{kind === "appointment" ? copy.appointmentTitle : copy.title}</legend>
@@ -129,6 +142,7 @@ export function WhatsAppEnquiry({locale, kind}: {locale: Locale; kind: EnquiryKi
         <p className="text-sm leading-6 text-white/75">{copy.handoff} <a className="underline underline-offset-4 hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary" href={pathFor(locale, "privacy")} rel="noreferrer" target="_blank">{copy.privacy}</a></p>
         <div className="flex flex-wrap gap-3">
           <button className={`${actionClass} border-primary bg-primary hover:bg-red-700`} onClick={continueInWhatsApp} type="button">{copy.continue}</button>
+          <button className={`${actionClass} border-white/30 bg-black/40 hover:border-primary`} data-testid="enquiry-email-handoff" onClick={continueInEmail} type="button">{{nl: "Verder via e-mail", en: "Continue by email", pl: "Przejdź do e-maila"}[locale]}</button>
           <button className={`${actionClass} border-white/30 bg-black/40 hover:border-primary`} disabled={copyStatus === "copying"} onClick={copyMessage} type="button">{copyStatus === "copying" ? copy.copying : copy.copy}</button>
         </div>
         <p aria-live="polite" className="text-sm leading-6 text-white/85" role="status">{copyStatus === "copied" ? copy.copied : copyStatus === "failed" ? copy.copyFailed : ""}</p>

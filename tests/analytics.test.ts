@@ -20,7 +20,10 @@ const expectedNames = [
   "blog_article_click",
   "brand_page_click",
   "phone_click",
-  "email_click"
+  "email_click",
+  "appointment_email_handoff",
+  "catalog_context_loaded",
+  "catalog_context_failed"
 ].sort();
 
 test("the conversion helper exposes only the approved event allowlist", () => {

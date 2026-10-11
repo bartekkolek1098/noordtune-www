@@ -37,7 +37,7 @@ type EnquiryCopy = {
 
 export const enquiryCopy = {
   nl: {
-    title: "Stel je vraag via WhatsApp",
+    title: "Vraag advies voor jouw voertuig",
     appointmentTitle: "Bereid je afspraakaanvraag voor",
     intro: "Hallo NoordTune, ik heb een vraag.",
     appointmentIntro: "Hallo NoordTune, ik wil graag een afspraak aanvragen.",
@@ -54,8 +54,8 @@ export const enquiryCopy = {
     preview: "Voorbeeld van je bericht",
     previewHint: "Pas de velden hierboven aan om je bericht te wijzigen. Je kunt de tekst hieronder ook selecteren en kopiëren.",
     continue: "Verder via WhatsApp",
-    explanation: "Je bericht wordt voorbereid voor WhatsApp. Je verstuurt het daar zelf. Een afspraak is pas definitief na onze bevestiging.",
-    handoff: "Als je verdergaat, wordt je bericht in de link aan WhatsApp doorgegeven. Deze website slaat je invoer niet op.",
+    explanation: "Kies WhatsApp of e-mail om je bericht zelf te versturen. Een afspraak is pas definitief na onze bevestiging.",
+    handoff: "Na jouw klik gaat de tekst naar WhatsApp of je e-mailprogramma. Deze website slaat je invoer niet op.",
     privacy: "Privacybeleid",
     copy: "Bericht kopiëren",
     copying: "Bezig met kopiëren…",
@@ -68,7 +68,7 @@ export const enquiryCopy = {
     lengthError: "Gebruik maximaal {max} tekens."
   },
   en: {
-    title: "Prepare your WhatsApp enquiry",
+    title: "Ask about your vehicle",
     appointmentTitle: "Prepare your appointment request",
     intro: "Hello NoordTune, I have an enquiry.",
     appointmentIntro: "Hello NoordTune, I would like to request an appointment.",
@@ -85,8 +85,8 @@ export const enquiryCopy = {
     preview: "Message preview",
     previewHint: "Edit the fields above to change your message. You can also select and copy the text below.",
     continue: "Continue in WhatsApp",
-    explanation: "Your message will be prepared for WhatsApp. You send it there yourself. An appointment is only confirmed after our confirmation.",
-    handoff: "When you continue, your message is passed to WhatsApp in the link. This website does not save your input.",
+    explanation: "Choose WhatsApp or email to send your message yourself. An appointment is only confirmed after our confirmation.",
+    handoff: "After your click, the text is passed to WhatsApp or your email application. This website does not save your input.",
     privacy: "Privacy policy",
     copy: "Copy message",
     copying: "Copying…",
@@ -99,7 +99,7 @@ export const enquiryCopy = {
     lengthError: "Use no more than {max} characters."
   },
   pl: {
-    title: "Przygotuj zapytanie do WhatsApp",
+    title: "Zapytaj o swoje auto",
     appointmentTitle: "Przygotuj zapytanie o termin",
     intro: "Dzień dobry NoordTune, mam pytanie.",
     appointmentIntro: "Dzień dobry NoordTune, chcę zapytać o termin wizyty.",
@@ -116,8 +116,8 @@ export const enquiryCopy = {
     preview: "Podgląd wiadomości",
     previewHint: "Zmień pola powyżej, aby poprawić wiadomość. Możesz też zaznaczyć i skopiować tekst poniżej.",
     continue: "Przejdź do WhatsApp",
-    explanation: "Przygotujemy wiadomość do WhatsApp. Wyślesz ją samodzielnie w aplikacji. Termin jest potwierdzony dopiero po naszej odpowiedzi.",
-    handoff: "Po przejściu dalej treść wiadomości zostanie przekazana do WhatsApp w linku. Ta strona nie zapisuje wpisanych danych.",
+    explanation: "Wybierz WhatsApp lub e-mail i wyślij przygotowaną wiadomość. Termin jest potwierdzony dopiero po naszej odpowiedzi.",
+    handoff: "Po Twoim kliknięciu tekst trafi do WhatsApp lub programu pocztowego. Ta strona nie zapisuje wpisanych danych.",
     privacy: "Polityka prywatności",
     copy: "Kopiuj wiadomość",
     copying: "Kopiowanie…",

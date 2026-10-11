@@ -23,7 +23,9 @@
     "menu:screenshots": "tsx scripts/capture-mobile-menu-screenshots.ts",
     "test:business": "tsx --test tests/business-vans.test.ts",
     "test:business:browser": "tsx scripts/test-business-vans-browser.ts",
-    "verify:catalog-pricing": "tsx scripts/verify-catalog-pricing.ts"
+    "verify:catalog-pricing": "tsx scripts/verify-catalog-pricing.ts",
+    "test:catalog-handoff": "tsx --test tests/catalog-enquiry.test.ts",
+    "test:catalog-handoff:browser": "tsx scripts/test-catalog-handoff-browser.ts"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
