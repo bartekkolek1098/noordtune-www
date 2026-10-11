@@ -27,3 +27,6 @@ Customer result model images from Wikimedia Commons
 - Mercedes-Benz C 220d AVANTGARDE (W206) front, author: Tokumeigakarinoaoshima, license: CC BY-SA 4.0
   Source: https://commons.wikimedia.org/wiki/File:Mercedes-Benz_C_220d_AVANTGARDE_(W206)_front.jpg
   License: https://creativecommons.org/licenses/by-sa/4.0
+
+
+Berlingo project, owner-supplied original photographs (2026-10-11): IMG_4180/4181/4182/4184/4186. Published WebP files use -hd names. Registration/ECU serial areas anonymized and metadata stripped. No AI mockups used. Source hashes and dimensions: data/berlingo-original-photos-manifest.json.

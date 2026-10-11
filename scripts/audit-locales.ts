@@ -17,6 +17,8 @@ import {
   customerResultFromRoute,
   customerResults,
   customerResultStaticParams,
+  hasCustomerResultPublicationApproval,
+  isAllowedCustomerResultCatalogUrl,
   isPublicCustomerResult
 } from "../src/content/customer-results";
 import {locales, pageRoutes, site, type Locale} from "../src/content/site";
@@ -382,7 +384,7 @@ async function main() {
     if (!result.id || !result.slug || !result.vehicleMake || !result.vehicleModel || !result.vehicleEngine) {
       failures.push(`Customer result is missing required vehicle fields: ${result.id || "(no id)"}`);
     }
-    if (result.relatedPowerCatalogUrl !== site.catalogUrl) {
+    if (!isAllowedCustomerResultCatalogUrl(result.relatedPowerCatalogUrl)) {
       failures.push(`Customer result has wrong Power Catalog URL: ${result.id}`);
     }
     if (result.whatsappCta !== site.whatsappUrl) {
@@ -391,8 +393,8 @@ async function main() {
     if ((result.status === "demo" || result.status === "draft") && result.indexable) {
       failures.push(`Demo/draft customer result must not be indexable: ${result.id}`);
     }
-    if (result.status === "published" && result.indexable && !result.customerApproved) {
-      failures.push(`Indexable published customer result must be customer-approved: ${result.id}`);
+    if (result.status === "published" && result.indexable && !hasCustomerResultPublicationApproval(result)) {
+      failures.push(`Indexable result requires customer approval or an explicitly owner-approved anonymized technical case: ${result.id}`);
     }
     if (result.status === "published" && result.source === "facebook" && !result.customerApproved) {
       failures.push(`Facebook-sourced customer result requires approval before publishing: ${result.id}`);
@@ -404,7 +406,7 @@ async function main() {
       if (result.images.length === 0 || !result.imageAlt) {
         failures.push(`Public customer result is missing image or alt text: ${result.id}`);
       }
-      if (!result.resultMetrics?.length && result.stockPowerHp === undefined && result.tunedPowerHp === undefined) {
+      if (result.presentation !== "workshop" && !result.resultMetrics?.length && result.stockPowerHp === undefined && result.tunedPowerHp === undefined) {
         failures.push(`Public customer result needs measured values or honest service metrics: ${result.id}`);
       }
       if (result.technicalNotes.length < 2) {

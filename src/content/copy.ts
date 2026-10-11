@@ -1,3 +1,4 @@
+import {priceLabel} from '@/content/pricing';
 import type {Locale, PageKey} from "./site";
 
 export type IconName =
@@ -157,19 +158,19 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   prijzen: {
     nl: {
-      title: "Chiptuning prijzen Assen | Stage 1 vanaf €150 | NoordTune.nl",
+      title: `Chiptuning prijzen Assen | Stage 1 vanaf ${priceLabel('stage1-standard')} | NoordTune.nl`,
       description:
-        "Bekijk de vanaf-prijzen bij NoordTune in Assen: Stage 1 €150, Stage 2 €250. Persoonlijke ECU-remap offerte per auto; diagnose apart vanaf €89."
+        `Bekijk de vanaf-prijzen bij NoordTune in Assen: Stage 1 ${priceLabel('stage1-standard')}, Stage 2 ${priceLabel('stage2-standard')}. Persoonlijke ECU-remap offerte per auto; diagnose apart vanaf €89.`
     },
     en: {
-      title: "Pricing | Diagnostics from €89 and Stage 1 from €150",
+      title: `Pricing | Diagnostics from €89 and Stage 1 from ${priceLabel('stage1-standard')}`,
       description:
         "Clear starting prices for diagnostics, Stage 1, Stage 2, log analysis and mobile service. Final quote depends on the vehicle."
     },
     pl: {
-      title: "Cennik | Diagnostyka od €89 i Stage 1 od €150",
+      title: `Cennik | Diagnostyka od €89 i Stage 1 od ${priceLabel('stage1-standard')}`,
       description:
-        "Przejrzyste ceny startowe: diagnostyka od €89, Stage 1 od €150, Stage 2 od €250 i analiza logów od €149."
+        `Przejrzyste ceny startowe: diagnostyka od €89, Stage 1 od ${priceLabel('stage1-standard')}, Stage 2 od ${priceLabel('stage2-standard')} i analiza logów od €149.`
     }
   },
   resultaten: {
@@ -388,7 +389,7 @@ export const pageHeroes: Record<PageKey, Record<Locale, PageHeroCopy>> = {
       eyebrow: "Chiptuning prijzen in Assen",
       title: ["Chiptuning", "prijzen"],
       intro:
-        "Stage 1 vanaf €150 en Stage 2 vanaf €250 incl. btw. Bekijk ook onze andere diensten. De definitieve offerte hangt af van jouw voertuig, ECU en de benodigde werkzaamheden.",
+        `Stage 1 vanaf ${priceLabel('stage1-standard')} en Stage 2 vanaf ${priceLabel('stage2-standard')} incl. btw. Bekijk ook onze andere diensten. De definitieve offerte hangt af van jouw voertuig, ECU en de benodigde werkzaamheden.`,
       primary: "Plan een afspraak",
       secondary: "WhatsApp ons"
     },
@@ -947,30 +948,39 @@ export const whyItems: Record<Locale, Array<{title: string; text: string; icon: 
 
 export const pricingPlans: Record<Locale, PricingPlan[]> = {
   nl: [
-    {name: "Stage 1", price: "€150,-", note: "vanaf", text: "Meer vermogen en koppel op standaard hardware.", features: ["ECU remap", "Originele file backup", "Controle"], highlighted: true},
-    {name: "Stage 2", price: "€250,-", note: "vanaf", text: "Voor auto's met passende hardware en extra controle.", features: ["Uitgebreide software", "Logadvies", "Veiligheidsmarges"]},
+    {name: "Stage 1", price: `${priceLabel('stage1-standard')},-`, note: "vanaf", text: "Meer vermogen en koppel op standaard hardware.", features: ["ECU remap", "Originele file backup", "Controle"], highlighted: true},
+    {name: "Stage 2", price: `${priceLabel('stage2-standard')},-`, note: "vanaf", text: "Voor auto's met passende hardware en extra controle.", features: ["Uitgebreide software", "Logadvies", "Veiligheidsmarges"]},
     {name: "Basisdiagnose", price: "€89,-", note: "vanaf", text: "Foutcodes uitlezen, basiscontrole en eerste advies; uitgebreid onderzoek apart in overleg.", features: ["Foutcodes", "Basiscontrole", "Advies"]},
     {name: "Loganalyse", price: "€149,-", note: "vanaf", text: "Analyse van motorwaarden, prestaties en storingen.", features: ["Data analyse", "Rapport", "Advies"]},
     {name: "Mobiele service", price: "€129,-", note: "vanaf", text: "Service op locatie waar technisch mogelijk.", features: ["Op afspraak", "Assen regio", "Vooraf afgestemd"]},
     {name: "EGR / DPF / AdBlue", price: "op aanvraag", note: "", text: "Diagnose, storing analyse en oplossingen waar wettelijk toegestaan.", features: ["Storing analyse", "Advies", "Maatwerk"]}
   ],
   en: [
-    {name: "Stage 1", price: "€150,-", note: "from", text: "More power and torque on standard hardware.", features: ["ECU remap", "Original file backup", "Checks"], highlighted: true},
-    {name: "Stage 2", price: "€250,-", note: "from", text: "For cars with supporting hardware and extra control.", features: ["Extended software", "Log advice", "Margins"]},
+    {name: "Stage 1", price: `${priceLabel('stage1-standard')},-`, note: "from", text: "More power and torque on standard hardware.", features: ["ECU remap", "Original file backup", "Checks"], highlighted: true},
+    {name: "Stage 2", price: `${priceLabel('stage2-standard')},-`, note: "from", text: "For cars with supporting hardware and extra control.", features: ["Extended software", "Log advice", "Margins"]},
     {name: "Basic diagnostics", price: "€89,-", note: "from", text: "Fault-code reading, basic checks and initial advice; further investigation is quoted separately.", features: ["Fault codes", "Basic checks", "Advice"]},
     {name: "Log analysis", price: "€149,-", note: "from", text: "Review of engine data, performance and faults.", features: ["Data", "Report", "Advice"]},
     {name: "Mobile service", price: "€129,-", note: "from", text: "Service on location where technically possible.", features: ["Appointment", "Assen region", "Planned"]},
     {name: "EGR / DPF / AdBlue", price: "on request", note: "", text: "Diagnostics and legal solutions where permitted.", features: ["Fault analysis", "Advice", "Custom"]}
   ],
   pl: [
-    {name: "Stage 1", price: "€150,-", note: "od", text: "Więcej mocy i momentu na seryjnym osprzęcie.", features: ["Remap ECU", "Kopia oryginału", "Kontrola"], highlighted: true},
-    {name: "Stage 2", price: "€250,-", note: "od", text: "Dla aut z odpowiednim osprzętem i dodatkową kontrolą.", features: ["Oprogramowanie", "Logi", "Marginesy"]},
+    {name: "Stage 1", price: `${priceLabel('stage1-standard')},-`, note: "od", text: "Więcej mocy i momentu na seryjnym osprzęcie.", features: ["Remap ECU", "Kopia oryginału", "Kontrola"], highlighted: true},
+    {name: "Stage 2", price: `${priceLabel('stage2-standard')},-`, note: "od", text: "Dla aut z odpowiednim osprzętem i dodatkową kontrolą.", features: ["Oprogramowanie", "Logi", "Marginesy"]},
     {name: "Podstawowa diagnostyka", price: "€89,-", note: "od", text: "Odczyt błędów, podstawowa kontrola i wstępna porada; szersza diagnostyka wyceniana osobno.", features: ["Kody błędów", "Kontrola", "Doradztwo"]},
     {name: "Analiza logów", price: "€149,-", note: "od", text: "Analiza danych silnika, osiągów i usterek.", features: ["Dane", "Raport", "Porada"]},
     {name: "Serwis mobilny", price: "€129,-", note: "od", text: "Usługa na miejscu, jeżeli technicznie możliwa.", features: ["Termin", "Region Assen", "Uzgodnienie"]},
     {name: "EGR / DPF / AdBlue", price: "na zapytanie", note: "", text: "Diagnostyka i rozwiązania zgodne z przepisami tam, gdzie są dozwolone.", features: ["Analiza", "Porada", "Indywidualnie"]}
   ]
 };
+
+
+// Additional public catalog services use the same reviewed price snapshot.
+for (const locale of ['nl','en','pl'] as const) {
+ pricingPlans[locale].push(
+  {name:'DSG / ZF / TCU',price:priceLabel('tcu-standard')+',-',note:locale==='nl'?'vanaf':locale==='en'?'from':'od',text:locale==='nl'?'Transmissiesoftware na controle van exacte bak en ondersteuning.':locale==='en'?'Transmission software after checking gearbox identity and support.':'Oprogramowanie skrzyni po potwierdzeniu jej wersji i obsługi.',features:['DSG / ZF / TCU',locale==='nl'?'Voertuigcontrole':locale==='en'?'Vehicle check':'Kontrola pojazdu',locale==='nl'?'Offerte vooraf':locale==='en'?'Quote first':'Wycena przed pracą']},
+  {name:'Stage 3+',price:priceLabel('stage3-standard')+',-',note:locale==='nl'?'vanaf':locale==='en'?'from':'od',text:locale==='nl'?'Individueel hardware- en softwareproject; geen berekende vermogensbelofte.':locale==='en'?'Individual hardware and software project; no calculated power promise.':'Indywidualny projekt osprzętu i oprogramowania; bez obietnicy wyliczonego przyrostu.',features:[locale==='nl'?'Scope vooraf':locale==='en'?'Scope first':'Zakres przed pracą',locale==='nl'?'Hardware apart':locale==='en'?'Hardware separate':'Osprzęt osobno',locale==='nl'?'Voertuigafhankelijk':locale==='en'?'Vehicle-specific':'Zależne od auta']}
+ );
+}
 
 export const results: Record<Locale, ResultCard[]> = {
   nl: [

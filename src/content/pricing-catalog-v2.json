@@ -1,0 +1,71 @@
+{
+  "version": 2,
+  "reviewedAt": "2026-10-11",
+  "sourceRepository": "bartekkolek1098/noordtune-power-catalog",
+  "sourceCommit": "30a9b1f3b6c2851bcd835e56c88ee4685d506aba",
+  "sourcePath": "src/data/pricing.ts",
+  "currency": "EUR",
+  "vatIncluded": true,
+  "tiers": [
+    {
+      "id": "stage1-standard",
+      "label": "Stage 1 standard",
+      "priceFrom": 299,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage1-advanced",
+      "label": "Stage 1 advanced",
+      "priceFrom": 349,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage1-modern",
+      "label": "Stage 1 modern",
+      "priceFrom": 399,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage2-standard",
+      "label": "Stage 2 standard",
+      "priceFrom": 449,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage2-advanced",
+      "label": "Stage 2 advanced",
+      "priceFrom": 499,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage2-performance",
+      "label": "Stage 2 performance",
+      "priceFrom": 549,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage3-standard",
+      "label": "Stage 3+ standard",
+      "priceFrom": 699,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage3-advanced",
+      "label": "Stage 3+ advanced",
+      "priceFrom": 849,
+      "currency": "EUR"
+    },
+    {
+      "id": "stage3-performance",
+      "label": "Stage 3+ performance",
+      "priceFrom": 999,
+      "currency": "EUR"
+    },
+    {
+      "id": "tcu-standard",
+      "label": "DSG / ZF / TCU standard",
+      "priceFrom": 249,
+      "currency": "EUR"
+    }
+  ]
+}

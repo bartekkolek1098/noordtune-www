@@ -1,0 +1,72 @@
+{
+  "reviewedAt": "2026-10-11",
+  "generatedImageUsed": false,
+  "images": [
+    {
+      "sourceAttachment": "IMG_4182.jpeg",
+      "sourceSha256": "0fd1a72cb9bb09bedbac85c3b0a885d1d8804387b9a3f74b6cb99eb886c7a8a9",
+      "publishedPath": "/images/results/citroen-berlingo-15-bluehdi-workshop-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 330644,
+      "sha256": "a6c28c7623027cbe6295f6f25f604a7720f1a024973d11634c01f50ec4fb8163",
+      "role": "hero",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": []
+    },
+    {
+      "sourceAttachment": "IMG_4180.jpeg",
+      "sourceSha256": "d0b8dfec195e04f2fa03dccb302aa931b1ca4c1b85e7e23466c6b9b2f6b6b709",
+      "publishedPath": "/images/results/citroen-berlingo-md1cs003-engine-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 243988,
+      "sha256": "c157251ecba7a46e97a6a6344a27e828273fcb8179497bf187b596ef3b586a7c",
+      "role": "engine",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": [
+        "ECU serial/barcode area obscured; hardware and scene preserved"
+      ]
+    },
+    {
+      "sourceAttachment": "IMG_4181.jpeg",
+      "sourceSha256": "deefb8216e5efd6427d8f2e42035c163f28bca61239ad1050fe5432f627215db",
+      "publishedPath": "/images/results/citroen-berlingo-front-workshop-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 282812,
+      "sha256": "5182223e744d52766939139eab1a1f9a77d94c99dd564a314c558406e20e30a1",
+      "role": "front",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": [
+        "Registration plate covered with opaque neutral mask"
+      ]
+    },
+    {
+      "sourceAttachment": "IMG_4184.jpeg",
+      "sourceSha256": "02ef31e44e11d6c612502063b435e78ee5c84f349f0021f66f621659c9a3993c",
+      "publishedPath": "/images/results/citroen-berlingo-ecu-workstation-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 210290,
+      "sha256": "e6d171c47bd7171b9f64ba07cad8016951c64c3bc2af1a5d87e56d4f39c6911c",
+      "role": "bench",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": []
+    },
+    {
+      "sourceAttachment": "IMG_4186.jpeg",
+      "sourceSha256": "6234d40afc89508ed0bee1d1b6d4fceda98ee256c7c912b8cc59de90efead8ef",
+      "publishedPath": "/images/results/citroen-berlingo-workbench-overview-hd.webp",
+      "width": 1240,
+      "height": 864,
+      "bytes": 157634,
+      "sha256": "e77146e623b3d565ea133181b6de082434a7e75daabe4ea187465e610f2144d2",
+      "role": "overview",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": [
+        "Crop excludes the right-side monitor"
+      ]
+    }
+  ]
+}

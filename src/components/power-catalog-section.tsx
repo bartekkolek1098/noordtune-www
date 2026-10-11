@@ -13,52 +13,52 @@ const copy = {
     kicker: "NoordTune Power Catalog",
     title: "Controleer direct de tuningmogelijkheden van jouw auto.",
     text:
-      "Met onze eigen Power Catalog krijg je snel een indicatie van de mogelijkheden voor jouw voertuig. Vul je Nederlandse kenteken in of kies je auto handmatig. Je ziet direct mogelijke Stage 1, Stage 2, Stage 3+, DSG/TCU en software-opties, inclusief een indicatieve prijs en resultaat.",
+      "Zoek je Nederlandse kenteken of kies merk, model, jaar en motor. De Power Catalog toont originele voertuiggegevens en beschikbare Stage 1-indicaties met bronvermelding. Een indicatie is geen meting of garantie; de prijs en verdere mogelijkheden bevestigen we na controle van jouw voertuig.",
     bullets: [
       "RDW-gegevens voor Nederlandse voertuigen",
       "Handmatige selectie voor buitenlandse voertuigen",
-      "Stage 1 / Stage 2 / Stage 3+",
+      "Beschikbare Stage 1-bronwaarden",
       "DSG / TCU tuning",
       "Indicatieve prijs en resultaat",
       "Advies op maat via NoordTune"
     ],
     catalog: "Open Power Catalog",
     whatsapp: "Vraag advies via WhatsApp",
-    stats: ["RDW", "Stage 1-3+", "DSG / TCU", "Advies"]
+    stats: ["RDW", "Stage 1", "DSG / TCU", "Advies"]
   },
   en: {
     kicker: "NoordTune Power Catalog",
     title: "Check what is possible for your car.",
     text:
-      "Our own Power Catalog gives you a quick indication of tuning options for your vehicle. Dutch vehicles can be checked by license plate, while international vehicles can be selected manually by make, model, year and engine.",
+      "Search a Dutch plate or select make, model, year and engine. The Power Catalog shows original vehicle data and available source-linked Stage 1 indications, not guaranteed or measured output. We confirm price and further options after checking your vehicle.",
     bullets: [
       "RDW data for Dutch vehicles",
       "Manual selection for international vehicles",
-      "Stage 1 / Stage 2 / Stage 3+",
+      "Available source-linked Stage 1",
       "DSG / TCU tuning",
       "Indicative price and result",
       "Tailored advice from NoordTune"
     ],
     catalog: "Open Power Catalog",
     whatsapp: "Message us on WhatsApp",
-    stats: ["RDW", "Stage 1-3+", "DSG / TCU", "Advice"]
+    stats: ["RDW", "Stage 1", "DSG / TCU", "Advice"]
   },
   pl: {
     kicker: "Katalog mocy NoordTune",
     title: "Sprawdź, jakie możliwości ma Twoje auto.",
     text:
-      "Nasz autorski katalog mocy pozwala szybko sprawdzić orientacyjne możliwości tuningu dla konkretnego pojazdu. W Holandii możesz użyć numeru rejestracyjnego, a auta spoza Holandii można wybrać ręcznie według marki, modelu, rocznika i silnika.",
+      "Wpisz holenderską tablicę lub wybierz markę, model, rok i silnik. Katalog pokazuje dane seryjne i dostępne wskazania Stage 1 ze źródłami, nie pomiar ani gwarancję. Cenę i dalsze możliwości potwierdzamy po sprawdzeniu konkretnego auta.",
     bullets: [
       "Dane RDW dla aut z Holandii",
       "Ręczny wybór auta dla klientów spoza Holandii",
-      "Stage 1 / Stage 2 / Stage 3+",
+      "Dostępne wskazania Stage 1 ze źródeł",
       "DSG / TCU tuning",
       "Orientacyjna cena i wynik",
       "Indywidualna konsultacja z NoordTune"
     ],
     catalog: "Otwórz katalog mocy",
     whatsapp: "Napisz na WhatsApp",
-    stats: ["RDW", "Stage 1-3+", "DSG / TCU", "Konsultacja"]
+    stats: ["RDW", "Stage 1", "DSG / TCU", "Konsultacja"]
   }
 } satisfies Record<Locale, {
   kicker: string;

@@ -1,5 +1,7 @@
+import {priceLabel} from '@/content/pricing';
 import {ArrowRight} from "lucide-react";
 import Link from "next/link";
+import {BusinessHomeSection,PricingOverview} from "@/components/business-vans";
 import {BlogCard, PricingCard, ResultCardView, ServiceCard} from "@/components/cards";
 import {ButtonLink} from "@/components/button";
 import {CTASection} from "@/components/cta-section";
@@ -275,8 +277,10 @@ export function HomeRenderer({locale}: {locale: Locale}) {
           secondaryHref={pathFor(locale, "appointment")}
           trust={home.trust}
         />
+        {locale === "nl" ? <BusinessHomeSection /> : null}
         <TextSection block={home.intro} />
         <PowerCatalogSection locale={locale} />
+        <PricingOverview locale={locale} />
 
         <section className="container py-12 md:py-16">
           <SectionHeader
@@ -468,6 +472,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
 
     return (
       <>
+        <PricingOverview locale={locale} details />
         <section className="container py-12 md:py-16">
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
             {pricingPlans[locale].map((plan) => (
@@ -504,8 +509,8 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
           secondaryHref={site.whatsappUrl}
           secondaryLabel={locale === "nl" ? "WhatsApp ons" : locale === "en" ? "Message us on WhatsApp" : "Napisz na WhatsApp"}
           stats={[
-            {value: "€150", label: "Stage 1"},
-            {value: "€250", label: "Stage 2"},
+            {value: `${priceLabel('stage1-standard')}`, label: "Stage 1"},
+            {value: `${priceLabel('stage2-standard')}`, label: "Stage 2"},
             {value: "€89", label: locale === "nl" ? "Basisdiagnose vanaf" : locale === "en" ? "Basic diagnostics from" : "Diagnostyka podstawowa od"},
             {value: "€149", label: locale === "nl" ? "Loganalyse" : locale === "en" ? "Log analysis" : "Analiza logów"}
           ]}
