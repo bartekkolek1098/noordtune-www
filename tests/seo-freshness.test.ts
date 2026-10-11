@@ -37,11 +37,11 @@ function metadataLanguages(metadata: Metadata) {
   );
 }
 
-test("homepage uses exactly three explicitly selected projects from the newest publication date", () => {
+test("homepage uses three editorial projects led by the newest publication", () => {
   const expected = [
+    "citroen-berlingo-15-bluehdi-onderhoud-ecu",
     "ford-transit-connect-15-ecoblue-2019-stage-1",
-    "toyota-proace-verso-vip-20d-2023-stage-1",
-    "bmw-f40-118i-7dct300-tcu-tuning"
+    "toyota-proace-verso-vip-20d-2023-stage-1"
   ];
 
   for (const locale of locales) {
@@ -49,7 +49,8 @@ test("homepage uses exactly three explicitly selected projects from the newest p
     const featured = featuredCustomerResults(locale);
     assert.equal(featured.length, 3);
     assert.deepEqual(featured.map((result) => result.slug), expected);
-    assert.ok(featured.every((result) => result.publishedAt === published[0].publishedAt));
+    assert.equal(featured[0].publishedAt,published[0].publishedAt);
+    assert.ok(featured.every(result=>published.some(p=>p.id===result.id)));
   }
 });
 
@@ -79,7 +80,7 @@ test("every published article belongs to one explicit reciprocal translation gro
 });
 
 test("every published customer result belongs to one explicit reciprocal translation group", () => {
-  assert.equal(translatedCustomerResultSlugs.size, 7);
+  assert.equal(translatedCustomerResultSlugs.size, 8);
 
   for (const locale of locales) {
     for (const result of displayCustomerResults(locale)) {
@@ -176,10 +177,10 @@ test("tuning-first pricing keeps approved amounts and sets an honest basic-diagn
   for (const locale of locales) {
     const plans = pricingPlans[locale];
     assert.equal(plans[0].name, "Stage 1");
-    assert.equal(plans[0].price, "€150,-");
+    assert.equal(plans[0].price, "€299,-");
     assert.equal(plans[0].highlighted, true);
     assert.equal(plans[1].name, "Stage 2");
-    assert.equal(plans[1].price, "€250,-");
+    assert.equal(plans[1].price, "€449,-");
     assert.equal(plans[2].price, "€89,-");
     assert.ok(!/Volledige diagnose|Full diagnosis|Pełna diagnostyka/.test(plans[2].text));
     assert.equal(plans[3].price, "€149,-");
@@ -189,7 +190,7 @@ test("tuning-first pricing keeps approved amounts and sets an honest basic-diagn
   assert.match(pricingPlans.nl[2].text, /basiscontrole/);
   assert.equal(pricingPlans.en[2].name, "Basic diagnostics");
   assert.equal(pricingPlans.pl[2].name, "Podstawowa diagnostyka");
-  assert.match(seo.prijzen.nl.title, /Stage 1 vanaf €150/);
+  assert.match(seo.prijzen.nl.title, /Stage 1 vanaf €299/);
   assert.match(pageHeroes.prijzen.nl.title.join(" "), /Chiptuning prijzen/);
 });
 

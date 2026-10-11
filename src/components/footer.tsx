@@ -111,6 +111,7 @@ export function Footer({locale}: FooterProps) {
         <div>
           <h3 className="racing-title text-xl text-white">{labels.quick}</h3>
           <ul className="mt-4 space-y-2 text-sm text-white/68">
+            {locale === "nl" ? <li><Link href="/nl/bedrijfswagens" className="hover:text-primary">Bedrijfswagens en zakelijke klanten</Link></li> : null}
             <li>
               <TrackedLink analytics={{name: "power_catalog_click", properties: {locale, source: "footer"}}} className="hover:text-primary" href={site.catalogUrl} rel="noreferrer" target="_blank">
                 {locale === "pl" ? "Katalog mocy" : "Power Catalog"}

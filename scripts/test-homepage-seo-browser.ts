@@ -1,3 +1,4 @@
+import {berlingoCustomerResults} from '../src/content/customer-result-berlingo';
 import assert from "node:assert/strict";
 import {mkdir} from "node:fs/promises";
 import {join} from "node:path";
@@ -80,7 +81,7 @@ async function assertPageBasics(page: Page, path: string) {
     links.map((link) => link.getAttribute("href"))
   );
   assert.ok(catalogLinks.length > 0, `${path} has no Power Catalog path`);
-  assert.ok(catalogLinks.every((href) => href === site.catalogUrl), `${path} changed a Power Catalog destination`);
+  assert.ok(catalogLinks.every((href) => [site.catalogUrl,...berlingoCustomerResults.map(result=>result.relatedPowerCatalogUrl)].includes(href??"")), `${path} changed a Power Catalog destination`);
   await collectInternalLinks(page);
   await page.waitForTimeout(50);
   assert.deepEqual(errors, [], `${path} logged browser errors`);

@@ -27,3 +27,5 @@ Customer result model images from Wikimedia Commons
 - Mercedes-Benz C 220d AVANTGARDE (W206) front, author: Tokumeigakarinoaoshima, license: CC BY-SA 4.0
   Source: https://commons.wikimedia.org/wiki/File:Mercedes-Benz_C_220d_AVANTGARDE_(W206)_front.jpg
   License: https://creativecommons.org/licenses/by-sa/4.0
+
+Berlingo project, owner supplied 2026-10-11: citroen-berlingo-15-bluehdi-workshop.webp, citroen-berlingo-ecu-workstation.webp, citroen-berlingo-md1cs003-bench.webp. Cropped photographic areas of supplied project composites; no generated vehicle or workshop imagery. See data/berlingo-publication-evidence.json.

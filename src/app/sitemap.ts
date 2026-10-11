@@ -80,5 +80,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }));
 
-  return [...mainPages, ...landingPages, ...articlePages, ...resultPages, ...brandLandingPages];
+  return [...mainPages, ...landingPages, ...articlePages, ...resultPages, ...brandLandingPages, {url: `${site.url}/nl/bedrijfswagens`, changeFrequency:"monthly" as const, priority:0.85, alternates:{languages:{nl:`${site.url}/nl/bedrijfswagens`}}}];
 }

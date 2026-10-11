@@ -1,0 +1,68 @@
+{
+  "reviewedAt": "2026-10-11",
+  "authorization": "Owner requested website publication of the supplied workshop case and images in this conversation. Public story is anonymized; no customer approval is fabricated.",
+  "sourceDocuments": [
+    "NoordTune_Berlingo_Service_Report_EN.docx",
+    "NoordTune_Berlingo_Stage1_Calibration_Certificate.pdf"
+  ],
+  "declaredTargets": {
+    "powerPs": 130,
+    "torqueNm": 320,
+    "dynamometerMeasured": false
+  },
+  "notes": [
+    "The certificate and RDW output differ on original kW; public story uses the 75 PS commercial designation, not an invented original kW.",
+    "Timing-belt service does not establish replacement of the separate inter-camshaft chain.",
+    "Valve-cover oil leak and reported cold-start noise require follow-up, not described as resolved.",
+    "Recorded SCR software changes do not establish restored emissions function or road-use approval.",
+    "Do not publish the original reports: they contain customer registration/VIN.",
+    "Older supplied artwork states an approximate 100 HP target; the later service report takes precedence.",
+    "AI mockups are not vehicle or workshop evidence and are not published."
+  ],
+  "images": [
+    {
+      "sourceAttachment": "081F2420-3D2F-4AE8-90E6-5C3754F7D6AA.PNG",
+      "sha256": "5478dd65334d34702187428a4ee1d0c3a43b3eff46be8ad2fdf35ab9c42408c2",
+      "crop": {
+        "left": 697,
+        "top": 125,
+        "width": 530,
+        "height": 530
+      },
+      "publishedPath": "/images/results/citroen-berlingo-15-bluehdi-workshop.webp",
+      "method": "Crop of photo area only. No generated background, vehicle alteration or added claims."
+    },
+    {
+      "sourceAttachment": "1632E57A-8420-4F76-A77B-F687284F8483.PNG",
+      "sha256": "6ee1bac56c1e6290c8c97bc523161bb3b6b148d440300ee26123caf6e986dcb8",
+      "crop": {
+        "left": 57,
+        "top": 564,
+        "width": 367,
+        "height": 213
+      },
+      "publishedPath": "/images/results/citroen-berlingo-ecu-workstation.webp",
+      "method": "Crop of photo area only. No generated background, vehicle alteration or added claims."
+    },
+    {
+      "sourceAttachment": "1632E57A-8420-4F76-A77B-F687284F8483.PNG",
+      "sha256": "6ee1bac56c1e6290c8c97bc523161bb3b6b148d440300ee26123caf6e986dcb8",
+      "crop": {
+        "left": 439,
+        "top": 565,
+        "width": 351,
+        "height": 213
+      },
+      "publishedPath": "/images/results/citroen-berlingo-md1cs003-bench.webp",
+      "method": "Crop of photo area only. No generated background, vehicle alteration or added claims."
+    }
+  ],
+  "rdwReview": {
+    "reviewedAt": "2026-10-11",
+    "source": "RDW Open Data m9d7-ebf2",
+    "firstAdmission": "2021-09-30",
+    "capacityCm3": 1499,
+    "vehicleType": "E",
+    "note": "Only non-identifying fields recorded publicly."
+  }
+}

@@ -1,4 +1,5 @@
 import {locales, pageRoutes, site, type Locale} from "./site";
+import {berlingoCustomerResults} from "./customer-result-berlingo";
 import {customerResultsBatch202608} from "./customer-results-batch-2026-08";
 
 export type CustomerResultSource = "manual" | "facebook";
@@ -52,6 +53,9 @@ export type CustomerResult = {
   shortDescription: string;
   technicalNotes: string[];
   customerApproved: boolean;
+  ownerPublicationApproved?: boolean;
+  verificationNote?: string;
+  imageCaptions?: string[];
   certificateAvailable: boolean;
   certificateNote?: string;
   publishedAt: string;
@@ -116,8 +120,26 @@ function demoResult(locale: Locale, seed: CustomerResultSeed): CustomerResult {
   };
 }
 
+/** Customer consent and an owner's anonymized technical case are different approvals.
+ * The owner route never covers Facebook imports or visible registration details. */
+export function hasCustomerResultPublicationApproval(result: CustomerResult) {
+  if (result.customerApproved) return true;
+  return result.ownerPublicationApproved === true && result.source === 'manual' &&
+    result.licensePlateVisible === false && result.licensePlateApproved !== true &&
+    Boolean(result.verificationNote?.trim()) && result.images.length > 0 &&
+    result.images.every(image => image.startsWith('/images/results/')) &&
+    !/\b[A-HJ-NPR-Z0-9]{17}\b/.test(JSON.stringify(result));
+}
+
+export function isAllowedCustomerResultCatalogUrl(url: string) {
+  return [site.catalogUrl,
+    'https://power.noordtune.nl/nl/bedrijfswagens/citroen-berlingo',
+    'https://power.noordtune.nl/en', 'https://power.noordtune.nl/pl'
+  ].includes(url);
+}
+
 export function isPublicCustomerResult(result: CustomerResult) {
-  return result.status === "published" && result.indexable;
+  return result.status === 'published' && result.indexable && hasCustomerResultPublicationApproval(result);
 }
 
 export function publicCustomerResults(locale: Locale) {
@@ -186,6 +208,7 @@ export function customerResultUrl(result: CustomerResult) {
 }
 
 export const translatedCustomerResultSlugs = new Set([
+  "citroen-berlingo-15-bluehdi-onderhoud-ecu",
   "ford-transit-connect-15-ecoblue-2019-stage-1",
   "toyota-proace-verso-vip-20d-2023-stage-1",
   "bmw-f40-118i-7dct300-tcu-tuning",
@@ -931,5 +954,6 @@ export const customerResults: CustomerResult[] = [
     relatedPowerCatalogUrl: site.catalogUrl,
     whatsappCta: site.whatsappUrl
   },
-  ...customerResultsBatch202608
+  ...customerResultsBatch202608,
+  ...berlingoCustomerResults
 ];

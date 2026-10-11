@@ -42,7 +42,10 @@ export type ConversionSource =
   | "brand_hero"
   | "brand_catalog"
   | "brand_results"
-  | "site_cta";
+  | "site_cta"
+  | "business_hero"
+  | "business_composer"
+  | "homepage_business";
 
 type SourceProperties = Readonly<{locale: Locale; source: ConversionSource}>;
 type SlugProperties = Readonly<{locale: Locale; slug: string}>;
