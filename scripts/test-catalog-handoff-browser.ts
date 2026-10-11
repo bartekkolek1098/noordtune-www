@@ -14,7 +14,7 @@ async function main(){
  const context=await browser.newContext();const errors:string[]=[];const networkLeaks:string[]=[];
  let apiMode:'normal'|'fail'|'slow'='normal';
  try {
-  if(process.env.HANDOFF_PREVIEW_ACCESS_URL){const p=await context.newPage();await p.goto(process.env.HANDOFF_PREVIEW_ACCESS_URL);await p.close();}
+  for(const access of [process.env.HANDOFF_PREVIEW_ACCESS_URL,process.env.HANDOFF_CATALOG_ACCESS_URL].filter(Boolean)){const p=await context.newPage();await p.goto(access!);await p.close();}
   await context.addInitScript(()=>{(window as unknown as {qaHandoffs:string[]}).qaHandoffs=[];window.open=((url: string)=>{(window as unknown as {qaHandoffs:string[]}).qaHandoffs.push(String(url));return null;}) as typeof window.open;});
   context.on('request',r=>{if(r.url().includes('PRIVATE_QA_COMPANY')||(r.postData()??'').includes('PRIVATE_QA_COMPANY'))networkLeaks.push(new URL(r.url()).pathname);});
   await context.route('**/*',async route=>{
@@ -68,6 +68,15 @@ async function main(){
   await page.goto(catalog+'/nl/bedrijfswagens/motoren/'+fixtures.refs.engine.id,{waitUntil:'networkidle'});
   await page.getByTestId('catalog-enquiry-link').click();await page.locator('[data-testid="catalog-enquiry-status"][data-status="ready"]').waitFor();
   assert.ok((await page.locator('#business-vehicle').inputValue()).includes('Proace'));checks++;
+  // Select the real BMW from the manual browser controls before following its new link.
+  await page.goto(catalog+'/pl',{waitUntil:'networkidle'});
+  const selects=page.locator('#manual-selector select');
+  await selects.nth(0).selectOption('BMW');await selects.nth(1).selectOption('1');
+  await selects.nth(2).selectOption('2021');await selects.nth(3).selectOption(fixtures.refs.bmw.id);
+  const manualLink=page.locator('#manual-taxonomy-result').getByTestId('catalog-enquiry-link');
+  await manualLink.waitFor();assert.ok((await manualLink.getAttribute('href'))?.includes(fixtures.refs.bmw.id));
+  await manualLink.click();await page.locator('[data-testid="catalog-enquiry-status"][data-status="ready"]').waitFor();
+  assert.match(await page.locator('[data-enquiry="contact"] input[id$="-vehicle"]').inputValue(),/BMW.*118i.*2021/);checks++;
   // Real RDW UI using a synthetic, in-memory registration fixture only.
   await page.goto(catalog+'/nl',{waitUntil:'networkidle'});const rdw=page.locator('#rdw-check');await rdw.locator('input').first().fill('QA0000');await rdw.locator('form button[type="submit"]').click();
   const rdwLink=page.getByTestId('rdw-result').getByTestId('catalog-enquiry-link');await rdwLink.waitFor();assert.doesNotMatch(await rdwLink.getAttribute('href')??'',/QA0000/);await rdwLink.click();await page.locator('[data-testid="catalog-enquiry-status"][data-status="ready"]').waitFor();assert.match(await page.locator('[data-enquiry="contact"] input[id$="-vehicle"]').inputValue(),/Berlingo/i);checks++;
