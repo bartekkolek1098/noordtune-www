@@ -17,6 +17,8 @@ export type CustomerResult = {
   locale: Locale;
   slug: string;
   title?: string;
+  /** Work completed, without a performance-result panel. */
+  presentation?: "workshop";
   metaTitle?: string;
   metaDescription?: string;
   source: CustomerResultSource;
@@ -123,6 +125,7 @@ function demoResult(locale: Locale, seed: CustomerResultSeed): CustomerResult {
 /** Customer consent and an owner's anonymized technical case are different approvals.
  * The owner route never covers Facebook imports or visible registration details. */
 export function hasCustomerResultPublicationApproval(result: CustomerResult) {
+  if (result.presentation === "workshop" && (result.resultMetrics?.length || [result.stockPowerHp,result.stockTorqueNm,result.tunedPowerHp,result.tunedTorqueNm,result.gainPowerHp,result.gainTorqueNm].some(value => value !== undefined))) return false;
   if (result.customerApproved) return true;
   return result.ownerPublicationApproved === true && result.source === 'manual' &&
     result.licensePlateVisible === false && result.licensePlateApproved !== true &&
@@ -285,6 +288,7 @@ export function customerResultDisplayMetrics(
   labels: {stock: string; tuned: string; gain: string},
   hpUnit: string
 ): CustomerResultMetric[] {
+  if (result.presentation === "workshop") return [];
   if (result.resultMetrics?.length) {
     return result.resultMetrics;
   }

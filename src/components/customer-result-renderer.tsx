@@ -99,7 +99,9 @@ function Fact({label, value}: {label: string; value?: string}) {
 }
 
 export function CustomerResultRenderer({result}: {result: CustomerResult}) {
-  const copy = labels[result.locale];
+  const workshop = result.presentation === "workshop";
+  const editorialLabels = {nl:{caseLabel:"Werkplaatsproject",technical:"Uitgevoerde werkzaamheden",visual:"Foto’s uit de werkplaats"},en:{caseLabel:"Workshop project",technical:"Work completed",visual:"Workshop photographs"},pl:{caseLabel:"Realizacja warsztatowa",technical:"Wykonane prace",visual:"Zdjęcia z warsztatu"}};
+  const copy = {...labels[result.locale], ...(workshop ? editorialLabels[result.locale] : {})};
   const image = customerResultPrimaryImage(result);
   const title =
     result.title ?? `${result.vehicleMake} ${result.vehicleModel} ${result.vehicleGeneration ?? ""} ${result.vehicleEngine} ${result.stage}`.replace(/\s+/g, " ").trim();
@@ -117,7 +119,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
     <>
       <Header activeKey="resultaten" locale={result.locale} languagePaths={Object.fromEntries(Object.entries(customerResultAlternates(result)).map(([locale,url])=>[locale,new URL(url).pathname]))} />
       <main>
-        <article>
+        <article data-testid={workshop ? "workshop-case" : "performance-case"}>
           <section className="relative overflow-hidden border-b border-white/10">
             <div className="absolute inset-0">
               <div
@@ -164,7 +166,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
           <section className="container py-12 md:py-16">
             <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_360px]">
               <div className="min-w-0 space-y-8">
-                {result.verificationNote ? <div data-testid="case-verification-notice" className="rounded-lg border border-amber-300/35 bg-amber-300/5 p-5 text-sm leading-7 text-white/85"><strong>{copy.disclaimer}</strong><p className="mt-2">{result.verificationNote}</p></div> : null}
+                {!workshop && result.verificationNote ? <div data-testid="case-verification-notice" className="rounded-lg border border-amber-300/35 bg-amber-300/5 p-5 text-sm leading-7 text-white/85"><strong>{copy.disclaimer}</strong><p className="mt-2">{result.verificationNote}</p></div> : null}
                 {metrics.length > 0 ? (
                   <div className="min-w-0 grid gap-4 md:grid-cols-3">
                     {metrics.map((metric) => (
@@ -183,7 +185,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
 
                 <div className="panel-edge min-w-0 overflow-hidden rounded-[3px] bg-black/55 p-3">
                   <p className="mb-3 px-2 text-xs font-black uppercase tracking-[0.18em] text-primary">{copy.visual}</p>
-                  <div className="relative aspect-[4/3] min-h-[220px] w-full overflow-hidden rounded-[2px] bg-black">
+                  <div className={`relative ${workshop ? "aspect-video" : "aspect-[4/3]"} w-full overflow-hidden rounded-[2px] bg-black`}>
                     <Image
                       alt={result.imageAlt}
                       className="object-contain"
@@ -192,12 +194,12 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                       quality={90}
                       sizes="(min-width:1024px) 720px, 100vw"
                       src={image}
-                      unoptimized
+                      unoptimized={!workshop}
                     />
                   </div>
                 </div>
 
-                {result.imageCaptions && result.images.length > 1 ? <div className="grid gap-4 sm:grid-cols-2" data-testid="case-evidence-gallery">{result.images.slice(1).map((src,index)=><figure key={src} className="overflow-hidden rounded-lg border border-white/15"><div className="relative aspect-[16/10]"><Image src={src} alt={result.imageCaptions?.[index+1] ?? result.imageAlt} fill sizes="(min-width:640px) 350px,100vw" className="object-cover"/></div><figcaption className="p-3 text-xs leading-6 text-white/65">{result.imageCaptions?.[index+1]}</figcaption></figure>)}</div> : null}
+                {result.imageCaptions && result.images.length > 1 ? <div className="grid gap-4 sm:grid-cols-2" data-testid="case-evidence-gallery">{result.images.slice(1).map((src,index)=><figure key={src} className="overflow-hidden rounded-lg border border-white/15"><a href={src} target="_blank" rel="noreferrer" aria-label={result.imageCaptions?.[index+1] ?? result.imageAlt} className="relative block aspect-video bg-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary"><Image src={src} alt={result.imageCaptions?.[index+1] ?? result.imageAlt} fill quality={90} sizes="(min-width:1024px) 360px, (min-width:640px) 45vw, 100vw" className="object-contain"/></a><figcaption className="p-3 text-xs leading-6 text-white/65">{result.imageCaptions?.[index+1]}</figcaption></figure>)}</div> : null}
                 <div className="panel-edge min-w-0 rounded-[3px] p-6 md:p-8">
                   <SectionHeader align="left" kicker={copy.vehicle} title={title} />
                   <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -254,7 +256,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                     </div>
                   </div>
                 ) : null}
-                <div className="panel-edge rounded-[3px] p-5">
+                {!workshop ? <div className="panel-edge rounded-[3px] p-5">
                   <p className="racing-title text-2xl text-white">{copy.disclaimer}</p>
                   <p className="mt-3 text-sm leading-6 text-white/60">
                     {result.locale === "nl"
@@ -263,7 +265,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                         ? "Power figures remain vehicle-specific. Maintenance, software version, fuel, hardware and use determine the final result."
                         : "Wartości mocy są zależne od konkretnego auta. Stan techniczny, wersja oprogramowania, paliwo, osprzęt i sposób użytkowania wpływają na końcowy wynik."}
                   </p>
-                </div>
+                </div> : null}
               </aside>
             </div>
           </section>

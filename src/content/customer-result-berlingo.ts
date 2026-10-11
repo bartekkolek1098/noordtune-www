@@ -1,46 +1,77 @@
 import type {CustomerResult} from './customer-results';
 import type {Locale} from './site';
 import {berlingoCaseSlug} from './business-vans';
-const text={
- nl:{title:'Citroën Berlingo 1.5 BlueHDi: onderhoud en ECU-controle',meta:'Berlingo 1.5 BlueHDi: onderhoud, Bosch MD1CS003 en kalibratiedoel 130 pk / 320 Nm. Geen rollenbankmeting; openstaande herstelpunten staan apart vermeld.',summary:'Bij deze Berlingo K9 combineerden we onderhoud met ECU-identificatie en controle van beschikbare motorlogs. Het servicerapport legt 130 pk / 320 Nm vast als kalibratiedoel, niet als gemeten eindresultaat. Ook de openstaande herstelpunten horen bij dit project.',service:'Onderhoud, ECU-controle en Stage 1-kalibratie',labels:['Fabrieksuitvoering (handelsnaam)','Kalibratiedoel — niet gemeten','Beschikbare controle'],values:['75 pk','130 pk / 320 Nm','ECU-logs · geen rollenbankmeting'],alt:'Citroën Berlingo met geopende motorkap bij de beschreven NoordTune-werkzaamheden',captions:['Uitsnede uit het door de eigenaar aangeleverde projectbeeld.','Werkstation uit het aangeleverde projectbeeld.','ECU en motorruimte uit het aangeleverde projectbeeld.'],notes:[
- 'Projectbasis: het door de eigenaar aangeleverde servicerapport van 11 oktober 2026 en de bijbehorende werkplaatsbeelden. Kenteken en VIN worden niet gepubliceerd.',
- 'De hoofd-distributieriem en waterpomp zijn vervangen. Dit bevestigt niet de vervanging van de afzonderlijke ketting tussen de nokkenassen.',
- 'De complete multiriemset met de bijbehorende rollen, lagers en span-/geleidingsdelen is vernieuwd, evenals de filters binnen de onderhoudsbeurt en de koelvloeistof.',
- 'ECU-identificatie: Bosch MD1CS003 / TC298TP, hardware 0281035365 en software 10SW062964. Het aangeleverde werkmateriaal vermeldt een bench-uitlezing met KT200.',
- 'Het rapport beschrijft aangepaste kalibratie met doelwaarden 130 pk / 320 Nm en beoordeling van motorrespons via logs. Er is geen onafhankelijk rollenbankresultaat beschikbaar.',
- 'De logcontrole betrof stationair draaien en beschikbare MAP-, raildruk- en MAF-waarden. Gevraagde drukwaarden ontbraken en niet alle meetmomenten waren volledig warm; dit is geen volledige validatie onder alle bedrijfsbelastingen.',
- 'Open herstelpunt: actieve olielekkage bij het kleppendeksel / de afdichting, met olie bij de dynamo en omliggende delen. De precieze oorzaak moet na reinigen worden vastgesteld en hersteld.',
- 'Aanvullend advies: de kort gemelde metaalachtige ratel bij koude start vraagt afzonderlijke controle van de nokkenasketting en spanner. Kettingschade is daarmee niet vastgesteld.',
- 'Softwarehistorie: het rapport vermeldt ook SCR-softwarewijzigingen, Start/Stop- en readiness-werk. Herstel van de voorgeschreven SCR-functie of een geslaagde emissie-/APK-keuring is niet gedocumenteerd. Dit project is geen bewijs van goedgekeurd weggebruik en deze wijzigingen worden hier niet als reguliere wegdienst aangeboden.'
- ],notice:'130 pk / 320 Nm zijn vastgelegde kalibratiedoelen, geen gemeten vermogen of garantie. Reparatie van de olielekkage en controle van het koude-startgeluid blijven open aanbevelingen. Dit verslag bevestigt geen emissie-, APK- of weggebruikgoedkeuring.',certificate:'Een servicerapport is beschikbaar in het projectdossier; vanwege voertuigidentificatie niet openbaar. Geen rollenbank- of APK-certificaat.'},
- en:{title:'Citroën Berlingo 1.5 BlueHDi: maintenance and ECU checks',meta:'Berlingo maintenance, Bosch MD1CS003 identification and a declared 130 hp / 320 Nm calibration target. Not dyno-measured; outstanding repair advice disclosed.',summary:'This Berlingo K9 project combined maintenance, ECU identification and review of available engine logs. The service report records 130 hp / 320 Nm as calibration targets, not measured output. Outstanding repair recommendations remain part of the case.',service:'Maintenance, ECU checks and Stage 1 calibration',labels:['Factory version (commercial designation)','Calibration target — not measured','Available verification'],values:['75 hp','130 hp / 320 Nm','ECU logs · no dynamometer test'],alt:'Citroën Berlingo with its bonnet open during the documented NoordTune workshop project',captions:['Crop from the project image supplied by the owner.','Workstation area from the owner-supplied project image.','ECU and engine-bay area from the owner-supplied project image.'],notes:[
- 'Evidence: the owner-supplied service report dated 11 October 2026 and accompanying workshop images. Registration and VIN are not published.',
- 'The main timing belt and coolant pump were replaced. This does not establish replacement of the separate inter-camshaft chain.',
- 'The complete auxiliary belt set and included pulleys, bearings and tensioning/guidance parts were renewed, together with the filters within the service scope and coolant.',
- 'ECU identification: Bosch MD1CS003 / TC298TP, hardware 0281035365 and software 10SW062964. The supplied work material identifies a KT200 bench read.',
- 'The report records revised calibration with declared targets of 130 hp / 320 Nm and engine-response checks using logs. No independent dynamometer result is available.',
- 'Log review covered idle and available MAP, rail pressure and MAF. Requested pressures were unavailable and some intervals were not fully warm; this is not validation under all operating loads.',
- 'Repair remains required: active leakage near the valve cover/seal with oil around the alternator and adjacent components. The exact source requires cleaning, inspection and repair.',
- 'A brief reported metallic cold-start rattle requires separate inspection of the camshaft chain and tensioner. Chain damage was not established.',
- 'Software history: the report also records SCR software changes, Start/Stop and readiness work. Restored mandatory SCR operation or a passed emissions/APK inspection is not documented. This case is not proof of road-use approval and does not offer those changes as a regular road-vehicle service.'
- ],notice:'130 hp / 320 Nm are declared calibration targets, not measured output or a guarantee. Oil-leak repair and cold-start-noise assessment remain recommended. This report does not establish emissions, APK or road-use approval.',certificate:'A service report is held in the project records and is not published because it identifies the vehicle. It is not a dyno or roadworthiness certificate.'},
- pl:{title:'Citroën Berlingo 1.5 BlueHDi: serwis i kontrola ECU',meta:'Serwis Berlingo, identyfikacja Bosch MD1CS003 i cel kalibracji 130 KM / 320 Nm. Bez pomiaru na hamowni; z opisem pozostałych zaleceń naprawczych.',summary:'W tym Berlingo K9 połączyliśmy obsługę mechaniczną z identyfikacją ECU i analizą dostępnych logów silnika. Raport zapisuje 130 KM / 320 Nm jako cel kalibracji, nie zmierzony rezultat. Realizacja obejmuje również jasno wskazane zalecenia dalszych napraw.',service:'Serwis, kontrola ECU i kalibracja Stage 1',labels:['Wersja seryjna (oznaczenie handlowe)','Cel kalibracji — bez pomiaru','Dostępna weryfikacja'],values:['75 KM','130 KM / 320 Nm','Logi ECU · bez hamowni'],alt:'Citroën Berlingo z otwartą maską podczas opisanych prac warsztatowych NoordTune',captions:['Kadr z materiału tej realizacji udostępnionego przez właściciela warsztatu.','Stanowisko pracy widoczne w przekazanym materiale.','Sterownik ECU i komora silnika z przekazanego materiału.'],notes:[
- 'Podstawa opisu: udostępniony przez właściciela raport serwisowy z 11 października 2026 i zdjęcia realizacji. Numer rejestracyjny i VIN nie są publikowane.',
- 'Wymieniono główny pasek rozrządu i pompę wody. Nie oznacza to wymiany osobnego łańcucha między wałkami rozrządu.',
- 'Wymieniono komplet napędu paska osprzętu z rolkami, łożyskami i elementami prowadzenia/napinania, filtry w zakresie obsługi oraz płyn chłodniczy.',
- 'Identyfikacja ECU: Bosch MD1CS003 / TC298TP, hardware 0281035365 i software 10SW062964. Przekazany materiał wskazuje odczyt bench z użyciem KT200.',
- 'Raport opisuje kalibrację z zadeklarowanym celem 130 KM / 320 Nm oraz ocenę reakcji silnika z logów. Nie dostarczono niezależnego pomiaru na hamowni.',
- 'Sprawdzono pracę na biegu jałowym i dostępne wartości MAP, ciśnienia paliwa oraz MAF. Brakowało ciśnień zadanych, a część zapisów dotyczyła nierozgrzanego silnika; to nie jest pełna walidacja wszystkich obciążeń.',
- 'Naprawa pozostaje wymagana: aktywny wyciek oleju w okolicy pokrywy zaworów/uszczelnienia, z olejem przy alternatorze i sąsiednich elementach. Dokładne źródło wymaga oczyszczenia, kontroli i naprawy.',
- 'Krótka metaliczna grzechotka zgłoszona przy zimnym rozruchu wymaga osobnej kontroli łańcucha między wałkami i napinacza. Nie jest to potwierdzone rozpoznanie uszkodzenia łańcucha.',
- 'Historia oprogramowania: raport zapisuje także zmiany SCR, Start/Stop i readiness. Nie udokumentowano przywrócenia wymaganej funkcji SCR ani pozytywnej kontroli emisji/APK. Opis nie potwierdza dopuszczenia do ruchu i nie stanowi oferty takich zmian dla pojazdów drogowych.'
- ],notice:'130 KM / 320 Nm to cele kalibracji, a nie pomiar ani gwarancja osiągów. Naprawa wycieku oleju i ocena odgłosu zimnego rozruchu pozostają zaleceniami. Ten opis nie potwierdza zgodności emisji, wyniku APK ani dopuszczenia do ruchu.',certificate:'Raport serwisowy znajduje się w dokumentacji realizacji. Nie publikujemy go ze względu na identyfikację pojazdu; nie jest to certyfikat pomiaru mocy ani badania technicznego.'}
+
+/** Editorial workshop story. Numerical calibration targets remain in the service dossier, not the public case. */
+const text = {
+ nl: {
+  title:'Citroën Berlingo 1.5 BlueHDi: onderhoud en ECU',
+  meta:'Bekijk deze Berlingo-realisatie bij NoordTune in Assen: distributieriem, waterpomp, onderhoud en Bosch MD1CS003 ECU-werk, met originele werkplaatsfoto’s.',
+  summary:'Van mechanisch onderhoud tot werk aan de motorcomputer. Bij deze Citroën Berlingo combineerden we de distributieservice met onderhoud en werkzaamheden aan de Bosch MD1CS003 ECU. Bekijk de aanpak en de foto’s uit onze werkplaats.',
+  service:'Onderhoud en ECU-kalibratie',
+  alt:'Citroën Berlingo 1.5 BlueHDi met geopende motorkap bij NoordTune in Assen',
+  captions:['Citroën Berlingo bij NoordTune: aanzicht met geopende motorkap.','Bosch MD1CS003 ECU en de motorruimte van de Berlingo.','Vooraanzicht van de Berlingo tijdens het werkplaatsproject.','ECU-werkstation met laptop, interfaces en aangesloten bekabeling.','Overzicht van de werkbank en de apparatuur voor ECU-werk.'],
+  notes:[
+   'De hoofd-distributieriem en de waterpomp zijn vervangen.',
+   'De complete multiriemset is vernieuwd, inclusief de bijbehorende rollen, lagers en span- en geleidingsdelen.',
+   'De filters binnen de onderhoudsbeurt en de koelvloeistof zijn vervangen.',
+   'De Bosch MD1CS003 ECU is geïdentificeerd en met de KT200 op de werkbank uitgelezen.',
+   'De ECU-kalibratie is aangepast en de beschikbare motorgegevens zijn beoordeeld.',
+   'De uitgevoerde werkzaamheden en het vervolgadvies zijn vastgelegd in het servicerapport.'
+  ],
+  contact:'Een vergelijkbare vraag voor jouw Berlingo of bedrijfswagen? Vertel ons welke motor je hebt en waarvoor je de auto gebruikt. We bespreken de werkzaamheden en prijs vooraf.'
+ },
+ en: {
+  title:'Citroën Berlingo 1.5 BlueHDi: maintenance and ECU work',
+  meta:'A Berlingo workshop project at NoordTune in Assen: timing belt, water pump, maintenance and Bosch MD1CS003 ECU work, with original workshop photographs.',
+  summary:'From mechanical maintenance to work on the engine control unit. This Citroën Berlingo project combined timing-belt service, routine maintenance and work on the Bosch MD1CS003 ECU. Explore the work completed and our workshop photographs.',
+  service:'Maintenance and ECU calibration',
+  alt:'Citroën Berlingo 1.5 BlueHDi with its bonnet open at NoordTune in Assen',
+  captions:['Citroën Berlingo at NoordTune with its bonnet open.','Bosch MD1CS003 ECU and the Berlingo engine bay.','Front view of the Berlingo during the workshop project.','ECU workstation with laptop, interfaces and connected wiring.','The workbench and equipment used for ECU work.'],
+  notes:[
+   'The main engine timing belt and the coolant pump were replaced.',
+   'The complete auxiliary drive-belt kit was renewed, including its pulleys, bearings and tensioning and guidance components.',
+   'The filters within the service scope and the coolant were replaced.',
+   'The Bosch MD1CS003 ECU was identified and bench-read using the KT200.',
+   'The ECU calibration was revised and available engine data was reviewed.',
+   'The completed work and follow-up recommendations were recorded in the service report.'
+  ],
+  contact:'Have a similar request for your Berlingo or work van? Tell us about the engine and how you use the vehicle. We discuss the scope and price before carrying out the work.'
+ },
+ pl: {
+  title:'Citroën Berlingo 1.5 BlueHDi: serwis i prace przy ECU',
+  meta:'Realizacja NoordTune w Assen: wymiana rozrządu i pompy wody, obsługa serwisowa oraz prace przy Bosch MD1CS003. Zobacz oryginalne zdjęcia z warsztatu.',
+  summary:'Od obsługi mechanicznej po prace przy sterowniku silnika. W tym Citroënie Berlingo połączyliśmy serwis rozrządu i obsługę eksploatacyjną z pracami przy Bosch MD1CS003. Zobacz zakres realizacji i zdjęcia z naszego warsztatu.',
+  service:'Serwis i kalibracja ECU',
+  alt:'Citroën Berlingo 1.5 BlueHDi z otwartą maską przy warsztacie NoordTune w Assen',
+  captions:['Citroën Berlingo przy NoordTune, widok z otwartą maską.','Sterownik Bosch MD1CS003 i komora silnika Berlingo.','Berlingo od przodu podczas realizacji warsztatowej.','Stanowisko ECU z laptopem, interfejsami i podłączonym okablowaniem.','Stół warsztatowy oraz wyposażenie do prac przy sterownikach.'],
+  notes:[
+   'Wymieniono główny pasek rozrządu oraz pompę wody.',
+   'Wymieniono kompletny zestaw napędu paska osprzętu, w tym rolki, łożyska oraz elementy prowadzenia i napinania.',
+   'Wymieniono filtry objęte obsługą serwisową oraz płyn chłodniczy.',
+   'Zidentyfikowano sterownik Bosch MD1CS003 i wykonano odczyt bench przy użyciu KT200.',
+   'Zmieniono kalibrację ECU i przeanalizowano dostępne dane pracy silnika.',
+   'Wykonane prace i dalsze zalecenia zapisano w raporcie serwisowym.'
+  ],
+  contact:'Potrzebujesz podobnych prac przy Berlingo lub innym aucie firmowym? Podaj wersję silnika i sposób użytkowania. Zakres oraz cenę uzgadniamy przed realizacją.'
+ }
 };
-export const berlingoCustomerResults:CustomerResult[]=(['nl','en','pl'] as const).map((locale:Locale)=>{const t=text[locale];return {
- id:'customer-berlingo-maintenance-ecu-'+locale,locale,slug:berlingoCaseSlug,title:t.title,metaTitle:t.title+' | NoordTune',metaDescription:t.meta,
- source:'manual',status:'published',indexable:true,vehicleMake:'Citroën',vehicleModel:'Berlingo',vehicleGeneration:'K9',vehicleEngine:'1.5 BlueHDi DV5 · 75 '+(locale==='pl'?'KM':locale==='nl'?'pk':'hp'),vehicleYear:'2021',ecu:'Bosch MD1CS003 · TC298TP',serviceType:t.service,stage:'Stage 1',category:'ecu-remap',serviceTags:[locale==='nl'?'Onderhoud':locale==='pl'?'Serwis':'Maintenance','ECU','Stage 1'],fuelType:'Diesel',
- featuredOnHome:true,featuredOrder:0,licensePlateVisible:false,customerApproved:false,ownerPublicationApproved:true,certificateAvailable:false,certificateNote:t.certificate,
- images:['/images/results/citroen-berlingo-15-bluehdi-workshop.webp','/images/results/citroen-berlingo-ecu-workstation.webp','/images/results/citroen-berlingo-md1cs003-bench.webp'],imageAlt:t.alt,imageCaptions:t.captions,shortDescription:t.summary,technicalNotes:t.notes,
- resultMetrics:t.labels.map((label,i)=>({label,value:t.values[i],accent:i===1})),verificationNote:t.notice,
- publishedAt:'2026-10-11',updatedAt:'2026-10-11',disclaimer:t.notice,relatedPowerCatalogUrl:locale==='nl'?'https://power.noordtune.nl/nl/bedrijfswagens/citroen-berlingo':'https://power.noordtune.nl/'+locale,whatsappCta:'https://wa.me/31685759600'
-};});
+const images=[
+ '/images/results/citroen-berlingo-15-bluehdi-workshop-hd.webp',
+ '/images/results/citroen-berlingo-md1cs003-engine-hd.webp',
+ '/images/results/citroen-berlingo-front-workshop-hd.webp',
+ '/images/results/citroen-berlingo-ecu-workstation-hd.webp',
+ '/images/results/citroen-berlingo-workbench-overview-hd.webp'
+];
+export const berlingoCustomerResults:CustomerResult[]=(['nl','en','pl'] as const).map((locale:Locale)=>{
+ const t=text[locale];
+ return {
+  id:'customer-berlingo-maintenance-ecu-'+locale,locale,slug:berlingoCaseSlug,title:t.title,metaTitle:t.title+' | NoordTune',metaDescription:t.meta,
+  source:'manual',status:'published',indexable:true,presentation:'workshop',vehicleMake:'Citroën',vehicleModel:'Berlingo',vehicleGeneration:'K9',vehicleEngine:'1.5 BlueHDi DV5',vehicleYear:'2021',ecu:'Bosch MD1CS003',serviceType:t.service,stage:'Stage 1',category:'ecu-remap',serviceTags:[locale==='nl'?'Onderhoud':locale==='pl'?'Serwis':'Maintenance','ECU','Stage 1'],fuelType:'Diesel',
+  featuredOnHome:true,featuredOrder:0,licensePlateVisible:false,customerApproved:false,ownerPublicationApproved:true,certificateAvailable:false,
+  images:[...images],imageAlt:t.alt,imageCaptions:t.captions,shortDescription:t.summary,technicalNotes:t.notes,
+  verificationNote:'Owner-approved anonymized workshop story; completed maintenance and ECU work checked against the service report. Full technical follow-up remains in the project dossier.',
+  publishedAt:'2026-10-11',updatedAt:'2026-10-11',disclaimer:t.contact,
+  relatedPowerCatalogUrl:locale==='nl'?'https://power.noordtune.nl/nl/bedrijfswagens/citroen-berlingo':'https://power.noordtune.nl/'+locale,whatsappCta:'https://wa.me/31685759600'
+ };
+});

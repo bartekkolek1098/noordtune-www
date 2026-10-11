@@ -406,7 +406,7 @@ async function main() {
       if (result.images.length === 0 || !result.imageAlt) {
         failures.push(`Public customer result is missing image or alt text: ${result.id}`);
       }
-      if (!result.resultMetrics?.length && result.stockPowerHp === undefined && result.tunedPowerHp === undefined) {
+      if (result.presentation !== "workshop" && !result.resultMetrics?.length && result.stockPowerHp === undefined && result.tunedPowerHp === undefined) {
         failures.push(`Public customer result needs measured values or honest service metrics: ${result.id}`);
       }
       if (result.technicalNotes.length < 2) {

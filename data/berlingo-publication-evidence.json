@@ -17,9 +17,86 @@
     "Recorded SCR software changes do not establish restored emissions function or road-use approval.",
     "Do not publish the original reports: they contain customer registration/VIN.",
     "Older supplied artwork states an approximate 100 HP target; the later service report takes precedence.",
-    "AI mockups are not vehicle or workshop evidence and are not published."
+    "AI mockups are not vehicle or workshop evidence and are not published.",
+    "2026-10-11: Original uploaded photographs replace all composite crops. No fictional backdrop or vehicle appearance was generated. Performance values, gains, dyno-status notices and road-approval claims are omitted from public presentation. Service and safety follow-up remain recorded in the source dossier."
   ],
   "images": [
+    {
+      "sourceAttachment": "IMG_4182.jpeg",
+      "sourceSha256": "0fd1a72cb9bb09bedbac85c3b0a885d1d8804387b9a3f74b6cb99eb886c7a8a9",
+      "publishedPath": "/images/results/citroen-berlingo-15-bluehdi-workshop-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 330644,
+      "sha256": "a6c28c7623027cbe6295f6f25f604a7720f1a024973d11634c01f50ec4fb8163",
+      "role": "hero",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": []
+    },
+    {
+      "sourceAttachment": "IMG_4180.jpeg",
+      "sourceSha256": "d0b8dfec195e04f2fa03dccb302aa931b1ca4c1b85e7e23466c6b9b2f6b6b709",
+      "publishedPath": "/images/results/citroen-berlingo-md1cs003-engine-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 243988,
+      "sha256": "c157251ecba7a46e97a6a6344a27e828273fcb8179497bf187b596ef3b586a7c",
+      "role": "engine",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": [
+        "ECU serial/barcode area obscured; hardware and scene preserved"
+      ]
+    },
+    {
+      "sourceAttachment": "IMG_4181.jpeg",
+      "sourceSha256": "deefb8216e5efd6427d8f2e42035c163f28bca61239ad1050fe5432f627215db",
+      "publishedPath": "/images/results/citroen-berlingo-front-workshop-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 282812,
+      "sha256": "5182223e744d52766939139eab1a1f9a77d94c99dd564a314c558406e20e30a1",
+      "role": "front",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": [
+        "Registration plate covered with opaque neutral mask"
+      ]
+    },
+    {
+      "sourceAttachment": "IMG_4184.jpeg",
+      "sourceSha256": "02ef31e44e11d6c612502063b435e78ee5c84f349f0021f66f621659c9a3993c",
+      "publishedPath": "/images/results/citroen-berlingo-ecu-workstation-hd.webp",
+      "width": 1536,
+      "height": 864,
+      "bytes": 210290,
+      "sha256": "e6d171c47bd7171b9f64ba07cad8016951c64c3bc2af1a5d87e56d4f39c6911c",
+      "role": "bench",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": []
+    },
+    {
+      "sourceAttachment": "IMG_4186.jpeg",
+      "sourceSha256": "6234d40afc89508ed0bee1d1b6d4fceda98ee256c7c912b8cc59de90efead8ef",
+      "publishedPath": "/images/results/citroen-berlingo-workbench-overview-hd.webp",
+      "width": 1240,
+      "height": 864,
+      "bytes": 157634,
+      "sha256": "e77146e623b3d565ea133181b6de082434a7e75daabe4ea187465e610f2144d2",
+      "role": "overview",
+      "method": "Owner-supplied original photo, orientation normalized, metadata removed, WebP quality 92; no generated pixels or scene replacement.",
+      "privacyEdits": [
+        "Crop excludes the right-side monitor"
+      ]
+    }
+  ],
+  "rdwReview": {
+    "reviewedAt": "2026-10-11",
+    "source": "RDW Open Data m9d7-ebf2",
+    "firstAdmission": "2021-09-30",
+    "capacityCm3": 1499,
+    "vehicleType": "E",
+    "note": "Only non-identifying fields recorded publicly."
+  },
+  "supersededCompositeCrops": [
     {
       "sourceAttachment": "081F2420-3D2F-4AE8-90E6-5C3754F7D6AA.PNG",
       "sha256": "5478dd65334d34702187428a4ee1d0c3a43b3eff46be8ad2fdf35ab9c42408c2",
@@ -57,12 +134,5 @@
       "method": "Crop of photo area only. No generated background, vehicle alteration or added claims."
     }
   ],
-  "rdwReview": {
-    "reviewedAt": "2026-10-11",
-    "source": "RDW Open Data m9d7-ebf2",
-    "firstAdmission": "2021-09-30",
-    "capacityCm3": 1499,
-    "vehicleType": "E",
-    "note": "Only non-identifying fields recorded publicly."
-  }
+  "publicPresentation": "Owner requested concise workshop story with original photographs. Calibration targets and measurement-status messaging removed together from public case; source report and unresolved follow-up unchanged."
 }
