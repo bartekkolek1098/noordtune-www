@@ -13,6 +13,7 @@ import {Header} from "@/components/header";
 import {Hero} from "@/components/hero";
 import {PageHero} from "@/components/page-hero";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
+import {CatalogDeepLinks} from "@/components/catalog-deep-links";
 import {ProcessSteps} from "@/components/process-steps";
 import {TuningServiceNavigation} from "@/components/tuning-service-journey";
 import {RichInfoSection} from "@/components/rich-info-section";
@@ -280,6 +281,7 @@ export function HomeRenderer({locale}: {locale: Locale}) {
         {locale === "nl" ? <BusinessHomeSection /> : null}
         <TextSection block={home.intro} />
         <PowerCatalogSection locale={locale} />
+        <CatalogDeepLinks locale={locale} />
         <PricingOverview locale={locale} />
 
         <section className="container py-12 md:py-16">
@@ -756,6 +758,7 @@ function PageBody({locale, pageKey}: {locale: Locale; pageKey: PageKey}) {
       {pageKey === "chiptuning" ? <ChiptuningProofSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <BrandNavigationSection locale={locale} /> : null}
       {pageKey === "chiptuning" ? <PowerCatalogSection locale={locale} /> : null}
+      {pageKey === "chiptuning" ? <CatalogDeepLinks locale={locale} /> : null}
       <section className="container py-12 md:py-16">
         <SectionHeader
           align="center"

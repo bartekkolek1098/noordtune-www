@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {ArrowRight, CheckCircle2} from "lucide-react";
 import {ButtonLink} from "@/components/button";
+import {CatalogDeepLinks} from "@/components/catalog-deep-links";
 import {FAQ} from "@/components/faq";
 import {FloatingWhatsApp} from "@/components/floating-whatsapp";
 import {Footer} from "@/components/footer";
@@ -271,6 +272,8 @@ export function BrandPageRenderer({page}: {page: BrandPage}) {
             </ul>
           </div>
         </section>
+
+        <CatalogDeepLinks brand={page.brand} locale={page.locale} />
 
         <section className="container py-12 md:py-16">
           <SectionHeader align="left" kicker={copy.relatedKicker} text={page.relatedIntro} title={page.relatedTitle} />
