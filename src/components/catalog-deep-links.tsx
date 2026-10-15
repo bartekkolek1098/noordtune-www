@@ -26,11 +26,17 @@ export function CatalogDeepLinks({locale,brand}:{locale:Locale;brand?:BrandKey})
        "Ga direct naar een modelvergelijking of bedrijfswagen in onze catalogus. Bekijk de originele RDW-gegevens en beschikbare externe Stage 1-indicaties per uitvoering."}
      </p>
     </div>
-    <TrackedLink analytics={{name:"power_catalog_click",properties:{locale:"nl",source:brand?"catalog_discovery_brand":"catalog_discovery_home"}}}
+    <div className="flex flex-wrap items-center gap-5">
+     <TrackedLink analytics={{name:"power_catalog_click",properties:{locale:"nl",source:brand?"catalog_discovery_brand":"catalog_discovery_home"}}}
+      data-testid="nl-technical-brand-directory-link"
+      className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white underline decoration-primary underline-offset-4 transition hover:text-primary"
+      href="https://power.noordtune.nl/nl/merken">Alle 15 automerken <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true"/></TrackedLink>
+     <TrackedLink analytics={{name:"power_catalog_click",properties:{locale:"nl",source:brand?"catalog_discovery_brand":"catalog_discovery_home"}}}
      className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white underline decoration-primary underline-offset-4 transition hover:text-primary"
      href="https://power.noordtune.nl/nl/motoren">
      Alle onderzochte motoren <ChevronRight className="h-4 w-4 shrink-0" aria-hidden="true"/>
     </TrackedLink>
+    </div>
    </div>
    <nav aria-label={label} className="mt-7 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
     {topics.map(topic=>(
