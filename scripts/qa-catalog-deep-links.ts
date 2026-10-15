@@ -24,6 +24,9 @@ async function main(){
    assert.ok((await links.first().getAttribute("href"))?.startsWith("https://power.noordtune.nl/nl/"));
    assert.equal(await links.first().getAttribute("data-analytics-event"),"power_catalog_click");
    assert.equal(await links.first().getAttribute("data-analytics-source"),"catalog_discovery_home");
+   const guide=page.getByTestId("nl-technical-brand-directory-link");
+   assert.equal(await guide.count(),1);
+   assert.equal(await guide.getAttribute("href"),"https://power.noordtune.nl/nl/merken");
   }
   let brandPagesChecked=0;
   for(const brand of brandPages.filter(p=>p.locale==="nl")){
@@ -35,6 +38,8 @@ async function main(){
    const paths=await links.evaluateAll(a=>a.map(x=>x.getAttribute("data-catalog-path")));
    assert.deepEqual(new Set(paths),new Set(catalogDiscoveryTopics(brand.brand).map(x=>x.path)));
    assert.equal(await links.first().getAttribute("data-analytics-source"),"catalog_discovery_brand");
+   assert.equal(await links.first().getAttribute("data-catalog-path"),"/nl/merken/"+brand.brand);
+   assert.equal(await page.getByTestId("nl-technical-brand-directory-link").getAttribute("href"),"https://power.noordtune.nl/nl/merken");
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=391),"Mobile width "+path);
    brandPagesChecked++;
   }
@@ -48,7 +53,11 @@ async function main(){
    const r=await page.goto(base+"/"+locale,{waitUntil:"domcontentloaded"});
    assert.equal(r?.status(),200);
    assert.equal(await page.locator('[data-testid="nl-home-catalog-links"]').count(),0,"No NL-only links on "+locale);
+   assert.equal(await page.getByTestId("nl-technical-brand-directory-link").count(),0,"No technical Dutch guide link in "+locale);
   }
+  const indexResponse=await page.request.get("https://power.noordtune.nl/nl/merken",{timeout:30000});
+  assert.equal(indexResponse.status(),200);
+  assert.ok((await indexResponse.text()).includes("https://power.noordtune.nl/nl/merken"));
   const topics=Object.values(catalogTopics);
   let source200=0;
   for(let i=0;i<topics.length;i+=4){

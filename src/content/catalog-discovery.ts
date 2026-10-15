@@ -8,11 +8,16 @@ import type {BrandKey} from "./brand-pages";
 export type CatalogTopic = Readonly<{
   title: string;
   detail: string;
-  kind: "Modelvergelijking" | "Motorprofiel" | "Bedrijfswagen";
+  kind: "Modelvergelijking" | "Motorprofiel" | "Bedrijfswagen" | "Merkenoverzicht";
   path: `/nl/${string}`;
 }>;
 
 export const catalogTopics = {
+  bmwBrand: {title:"BMW motoren per generatie",detail:"N20, B48, F30 en G20: overzicht met exact beoordeelde motoren",kind:"Merkenoverzicht",path:"/nl/merken/bmw"},
+  audiBrand: {title:"Audi TFSI motoren per generatie",detail:"A1 8X, A3 8P en Q3 8U: van model naar de juiste ECU-variant",kind:"Merkenoverzicht",path:"/nl/merken/audi"},
+  vwBrand: {title:"Volkswagen motoren en bedrijfswagens",detail:"Golf, Polo, Tiguan, Transporter en Caddy: bronprofielen per generatie",kind:"Merkenoverzicht",path:"/nl/merken/volkswagen"},
+  fordBrand: {title:"Ford EcoBoost en EcoBlue motoren",detail:"Fiesta, Transit en Transit Custom met gecontroleerde RDW-kW",kind:"Merkenoverzicht",path:"/nl/merken/ford"},
+  toyotaBrand: {title:"Toyota Proace D-4D motoroverzicht",detail:"Proace en Proace City, 1.5 en 2.0 D-4D per originele motorversie",kind:"Merkenoverzicht",path:"/nl/merken/toyota"},
   bmwF30: {title:"BMW 320i F30/F31",detail:"N20 of B48: twee motorfamilies vergelijken",kind:"Modelvergelijking",path:"/nl/modellen/bmw-320i-f30-f31"},
   bmwG20: {title:"BMW 320i G20 B48",detail:"Originele 135 kW, ECU en Stage 1-bronnen",kind:"Motorprofiel",path:"/nl/motoren/bmw-320i-g20-g21-b48-184"},
   bmw320d: {title:"BMW 320d B47",detail:"Een specifieke dieselgeneratie en werkplaatscheck",kind:"Motorprofiel",path:"/nl/vehicles/bmw-320d-b47"},
@@ -43,11 +48,11 @@ const overviewKeys:readonly CatalogTopicKey[]=[
   "vwTransporter","fordTransitCustom","toyotaProace"
 ];
 const brandKeys:Record<BrandKey,readonly CatalogTopicKey[]>={
-  bmw:["bmwF30","bmwG20","bmw320d"],
-  audi:["audiA1","audiA3","audiA4"],
-  volkswagen:["vwGolf","vwPolo","vwCaddy","vwTransporter","vwTransporterT61"],
-  ford:["fordFiesta","fordTransitConnect","fordTransitCustom","fordEcoBlue"],
-  toyota:["toyotaProace","toyotaProaceCity","toyotaProace177"]
+  bmw:["bmwBrand","bmwF30","bmwG20","bmw320d"],
+  audi:["audiBrand","audiA1","audiA3","audiA4"],
+  volkswagen:["vwBrand","vwGolf","vwPolo","vwCaddy","vwTransporter","vwTransporterT61"],
+  ford:["fordBrand","fordFiesta","fordTransitConnect","fordTransitCustom","fordEcoBlue"],
+  toyota:["toyotaBrand","toyotaProace","toyotaProaceCity","toyotaProace177"]
 };
 
 export function catalogDiscoveryTopics(brand?:BrandKey):readonly CatalogTopic[]{
