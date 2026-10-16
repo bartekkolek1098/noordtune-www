@@ -1,0 +1,81 @@
+import assert from "node:assert/strict";
+import {readFileSync,statSync} from "node:fs";
+import {test} from "node:test";
+import {customerResults,isPublicCustomerResult,publicCustomerResults,customerResultPath,customerResultUrl,customerResultDisplayMetrics} from "../src/content/customer-results";
+import {createCustomerResultMetadata,customerResultJsonLd} from "../src/lib/seo";
+
+const slug="audi-a4-b7-20-tdi-stage-2-plus";
+const audi=publicCustomerResults("nl").find(x=>x.slug===slug);
+assert.ok(audi,"Only an authorized, already published Audi case qualifies for SEO optimization");
+
+test("source-approved Audi project facts remain unchanged",()=>{
+ assert.equal(audi.source,"manual");
+ assert.equal(audi.customerApproved,true);
+ assert.equal(audi.status,"published");
+ assert.equal(audi.indexable,true);
+ assert.equal(isPublicCustomerResult(audi),true);
+ assert.equal(audi.vehicleMake,"Audi");
+ assert.equal(audi.vehicleModel,"A4");
+ assert.equal(audi.vehicleGeneration,"B7");
+ assert.equal(audi.vehicleEngine,"2.0 TDI");
+ assert.equal(audi.vehicleYear,"2008");
+ assert.equal(audi.transmission,"Handgeschakeld");
+ assert.equal(audi.stage,"Stage 2+");
+ assert.deepEqual([audi.stockPowerHp,audi.stockTorqueNm,audi.tunedPowerHp,audi.tunedTorqueNm,audi.gainPowerHp,audi.gainTorqueNm],[170,350,235,470,65,120]);
+ assert.equal(audi.certificateNote,"Certificaat van uitgevoerde dienst geleverd.");
+ assert.equal(audi.certificateAvailable,true);
+ assert.ok(audi.technicalNotes.some(x=>x.includes("hybride turbo")));
+ assert.ok(audi.technicalNotes.some(x=>x.includes("downpipe")));
+ assert.ok(audi.disclaimer.includes("Controleer altijd welke aanpassingen wettelijk zijn toegestaan"));
+ assert.equal(customerResultPath(audi),"/nl/resultaten/"+slug);
+ assert.equal(customerResultUrl(audi),"https://www.noordtune.nl/nl/resultaten/"+slug);
+ assert.equal(audi.images.length,1);
+ assert.ok(statSync("public"+audi.images[0]).size>100000,"Original owner-authorized workshop image remains");
+ assert.equal(customerResultDisplayMetrics(audi,{stock:"Origineel",tuned:"Na tuning",gain:"Winst"},"pk").length,3);
+});
+
+test("actual-GSC-intent NL metadata is descriptive, unique and internally consistent",()=>{
+ const m=createCustomerResultMetadata(audi);
+ assert.equal(m.title,"Audi A4 B7 2.0 TDI Stage 2+: 170 naar 235 pk | NoordTune");
+ assert.match(m.description??"",/170 naar 235 pk en 350 naar 470 Nm/);
+ assert.match(m.description??"",/hybride turbo, ECU-afstelling/);
+ assert.equal(m.alternates?.canonical,"https://www.noordtune.nl/nl/resultaten/"+slug);
+ assert.equal(typeof m.robots==="object" && m.robots?.index,true);
+ assert.equal(m.openGraph?.url,m.alternates?.canonical);
+ assert.equal(m.openGraph && "modifiedTime" in m.openGraph ? m.openGraph.modifiedTime : undefined,"2026-10-16","Only true editorial update modifies NL date");
+ const other=[...customerResults].filter(x=>x.slug===slug && x.locale!=="nl");
+ assert.equal(other.length,2);
+ assert.ok(other.every(x=>x.updatedAt==="2026-06-16"&&x.metaTitle?.includes("Audi A4 B7")),"Translated cases unchanged");
+ const schema=customerResultJsonLd(audi);
+ assert.equal(schema.mainEntityOfPage,m.alternates?.canonical);
+ assert.equal(schema.datePublished,"2026-06-16");
+ assert.equal(schema.dateModified,"2026-10-16");
+ assert.equal(schema.about.vehicleModelDate,"2008");
+ assert.equal(schema["@type"],"Article");
+});
+
+test("authentic Audi Stage 2+ on-page evidence only for NL and explicitly scoped",()=>{
+ const renderer=readFileSync("src/components/customer-result-renderer.tsx","utf8");
+ const caseComponent=readFileSync("src/components/audi-a4-b7-stage2-evidence.tsx","utf8");
+ const service=readFileSync("src/components/page-renderers.tsx","utf8");
+ assert.match(renderer,/<AudiA4B7Stage2Evidence result=\{result\}/);
+ assert.match(caseComponent,/result\.locale!=="nl"/);
+ assert.ok(caseComponent.includes('result.slug!=="'+slug+'"'));
+ assert.match(caseComponent,/isPublicCustomerResult\(result\)/);
+ assert.match(caseComponent,/result\.stockPowerHp/);
+ assert.match(caseComponent,/result\.tunedPowerHp/);
+ assert.match(caseComponent,/result\.stockTorqueNm/);
+ assert.match(caseComponent,/result\.tunedTorqueNm/);
+ assert.match(caseComponent,/geen bewijs van een afzonderlijke rollenbankmeting/);
+ assert.match(caseComponent,/geen garantie|geen algemene/);
+ assert.match(caseComponent,/DPF, SCR/);
+ assert.match(caseComponent,/href="\/nl\/afspraak"/);
+ assert.match(caseComponent,/href="\/nl\/stage-2-tuning"/);
+ assert.match(caseComponent,/data-testid="audi-a4-b7-stage2-evidence"/);
+ assert.match(service,/publicCustomerResults\("nl"\)\.find/);
+ assert.match(service,/data-testid="nl-audi-stage2-case-from-chiptuning"/);
+ assert.match(service,/customerResultPath\(audiStage2Case\)/);
+ assert.match(service,/customer_result_click/);
+ assert.ok(!caseComponent.includes("rolbankcertificaat"));
+ assert.doesNotMatch(caseComponent,/aantal reviews|klantbeoordeling|100% gegarandeerd|legale downpipe/i);
+});

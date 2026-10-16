@@ -44,7 +44,8 @@ import {
 import {
   customerResultPath,
   displayCustomerResults,
-  featuredCustomerResults
+  featuredCustomerResults,
+  publicCustomerResults
 } from "@/content/customer-results";
 import {heroImages, pathFor, site, type Locale, type PageKey} from "@/content/site";
 
@@ -207,6 +208,9 @@ const chiptuningProofCopy = {
 function ChiptuningProofSection({locale}: {locale: Locale}) {
   const copy = chiptuningProofCopy[locale];
   const results = featuredCustomerResults(locale);
+  const audiStage2Case = locale === "nl"
+    ? publicCustomerResults("nl").find(item=>item.slug==="audi-a4-b7-20-tdi-stage-2-plus")
+    : undefined;
   const guides = (["what-is-chiptuning", "chiptuning-cost"] as const)
     .map((key) => blogArticleForTranslationKey(key, locale))
     .filter((article) => article !== undefined);
@@ -228,6 +232,19 @@ function ChiptuningProofSection({locale}: {locale: Locale}) {
                   <ArrowRight className="h-4 w-4 shrink-0 text-primary transition group-hover:translate-x-0.5" />
                 </TrackedLink>
               ))}
+              {audiStage2Case ? <div className="mt-5 rounded-lg border border-white/15 bg-black/35 p-4" data-testid="nl-audi-stage2-case-from-chiptuning">
+                <p className="text-xs font-bold uppercase tracking-[.1em] text-primary">Uitgelicht technisch project · geen standaard Stage 1</p>
+                <p className="mt-2 text-sm leading-7 text-white/70">
+                 Een Audi A4 B7 2.0 TDI kreeg een op de hybride turbo en aanwezige hardware afgestemde Stage 2+ ECU-remap.
+                 Het dossier toont de specifieke projectwaarden, configuratie en aandachtspunten voor weggebruik.
+                </p>
+                <TrackedLink analytics={{name:"customer_result_click",properties:{locale:"nl",slug:audiStage2Case.slug}}}
+                  href={customerResultPath(audiStage2Case)}
+                  className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white underline decoration-primary underline-offset-4">
+                  Audi A4 B7 2.0 TDI Stage 2+ praktijkcase bekijken
+                  <ArrowRight className="h-4 w-4 shrink-0 text-primary" aria-hidden="true"/>
+                </TrackedLink>
+              </div>:null}
             </div>
           </nav>
           <nav aria-label={copy.guides} className="panel-edge rounded-[3px] p-5">

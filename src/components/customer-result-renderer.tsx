@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import {ButtonLink} from "@/components/button";
+import {AudiA4B7Stage2Evidence} from "@/components/audi-a4-b7-stage2-evidence";
 import {CTASection} from "@/components/cta-section";
 import {FloatingWhatsApp} from "@/components/floating-whatsapp";
 import {Footer} from "@/components/footer";
@@ -228,6 +229,7 @@ export function CustomerResultRenderer({result}: {result: CustomerResult}) {
                     ))}
                   </ul>
                 </div>
+                <AudiA4B7Stage2Evidence result={result}/>
               </div>
 
               <aside className="min-w-0 space-y-5">
