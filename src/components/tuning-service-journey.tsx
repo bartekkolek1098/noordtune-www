@@ -1,4 +1,4 @@
-import {ArrowRight} from "lucide-react";
+import {ArrowRight, MapPin} from "lucide-react";
 import Link from "next/link";
 import {ButtonLink} from "@/components/button";
 import {TrackedLink} from "@/components/tracked-link";
@@ -39,6 +39,26 @@ export function TuningServiceNavigation() {
           </Link>
         ))}
       </nav>
+      <div className="mt-5 rounded-lg border border-primary/25 bg-[#141719] p-5" data-testid="nl-local-chiptuning-trust">
+        <div className="flex items-start gap-3">
+         <MapPin className="mt-1 h-5 w-5 shrink-0 text-primary" aria-hidden="true"/>
+         <div>
+          <h3 className="text-lg font-bold text-white">Chiptuning in Assen — diagnose en afstelling per auto</h3>
+          <p className="mt-2 text-sm leading-7 text-white/70">
+           NoordTune werkt vanuit de eigen werkplaats in Assen. Voor een Stage 1-remap
+           bespreken we motorcode, originele kW, ECU-versie, onderhoud en transmissie.
+           De Power Catalog toont bronindicaties; een definitieve prijs en passende afstelling
+           bepalen we pas na controle van jouw voertuig. Ook klanten uit Groningen en Drenthe
+           kunnen vooraf een offerte aanvragen voor een bezoek aan Assen.
+          </p>
+          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold">
+           <Link className="min-h-11 inline-flex items-center gap-2 text-white underline decoration-primary underline-offset-4" href="/nl/chiptuning-assen">Chiptuning in Assen <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true"/></Link>
+           <Link className="min-h-11 inline-flex items-center gap-2 text-white underline decoration-primary underline-offset-4" href="/nl/chiptuning-groningen">Vanuit Groningen naar Assen <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true"/></Link>
+           <Link className="min-h-11 inline-flex items-center gap-2 text-white underline decoration-primary underline-offset-4" href="/nl/resultaten">Echte NoordTune projecten <ArrowRight className="h-4 w-4 text-primary" aria-hidden="true"/></Link>
+          </div>
+         </div>
+        </div>
+      </div>
       <EnquiryLinks />
       <p className="mt-5 text-sm leading-7 text-white/60">
         Onze werkplaats staat in Assen. Bekijk ook{" "}

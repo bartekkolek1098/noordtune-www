@@ -107,9 +107,9 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   chiptuning: {
     nl: {
-      title: "Chiptuning Assen | ECU Remap, Stage 1 en Stage 2 | NoordTune.nl",
+      title: "Chiptuning Assen | Stage 1 op maat & diagnose | NoordTune",
       description:
-        "Chiptuning Assen en Drenthe met software op maat. ECU remap, Stage 1 tuning, Stage 2 tuning, BMW chiptuning, Audi chiptuning en Volkswagen chiptuning."
+        "Chiptuning in Assen bij NoordTune: Stage 1 en ECU-remap per auto, controle van motor en transmissie vooraf. Bekijk echte klantprojecten en vraag jouw offerte."
     },
     en: {
       title: "Chiptuning in Assen | ECU Remap, Stage 1 and Stage 2",
