@@ -44,6 +44,7 @@ export type ConversionSource =
   | "brand_index"
   | "brand_hero"
   | "brand_catalog"
+  | "brand_section"
   | "catalog_discovery_home"
   | "catalog_discovery_brand"
   | "brand_results"

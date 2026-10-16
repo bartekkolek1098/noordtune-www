@@ -231,7 +231,12 @@ export function BrandPageRenderer({page}: {page: BrandPage}) {
                 {section.links?.length ? (
                   <div className="mt-6 flex min-w-0 flex-wrap gap-3">
                     {section.links.map((link) => (
-                      <ButtonLink href={link.href} key={`${link.href}-${link.label}`} variant="outline">{link.label}</ButtonLink>
+                      <ButtonLink
+                        analytics={link.href.startsWith("https://power.noordtune.nl/") ? {name: "power_catalog_click", properties: {locale: page.locale, source: "brand_section"}} : undefined}
+                        href={link.href}
+                        key={`${link.href}-${link.label}`}
+                        variant="outline"
+                      >{link.label}</ButtonLink>
                     ))}
                   </div>
                 ) : null}

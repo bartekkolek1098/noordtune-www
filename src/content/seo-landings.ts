@@ -230,6 +230,7 @@ export const seoLandings: SeoLanding[] = [
       {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"},
       {label: "ECU-remap", href: "/nl/ecu-remap"},
       {label: "Storingsdiagnose en auto uitlezen bij NoordTune in Assen", href: "/nl/auto-diagnose"},
+      {label: "Volkswagen Golf GTI en Golf R: kies de juiste motor", href: "/nl/volkswagen-chiptuning"},
       {label: "Volkswagen Caddy 2.0 TDI: echte Stage 1-case", href: "/nl/resultaten/vw-caddy-20-tdi-2020-stage-1"},
       {label: "Klantresultaten", href: pathFor("nl", "resultaten")},
       {label: "Bekijk de richtprijzen", href: pathFor("nl", "prijzen")},
