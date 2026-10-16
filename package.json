@@ -12,7 +12,7 @@
     "content:audit": "tsx scripts/audit-locales.ts",
     "test:enquiry": "tsx --test tests/enquiry.test.ts",
     "test:enquiry:browser": "tsx scripts/test-enquiry-browser.ts",
-    "test:seo": "tsx --test tests/seo-freshness.test.ts tests/catalog-discovery.test.ts tests/van-generation-comparisons.test.ts tests/gsc-nl-home-routing.test.ts tests/gsc-audi-a4-stage2-case.test.ts tests/gsc-nl-diagnostics.test.ts",
+    "test:seo": "tsx --test tests/seo-freshness.test.ts tests/catalog-discovery.test.ts tests/van-generation-comparisons.test.ts tests/gsc-nl-home-routing.test.ts tests/gsc-audi-a4-stage2-case.test.ts tests/gsc-nl-diagnostics.test.ts tests/gsc-nl-vw-gti-discovery.test.ts",
     "qa:catalog-discovery": "tsx scripts/qa-catalog-deep-links.ts",
     "test:seo:browser": "tsx scripts/test-homepage-seo-browser.ts",
     "test:brand": "tsx --test tests/brand-assets.test.ts",
@@ -26,6 +26,7 @@
     "qa:van-comparisons:www": "tsx scripts/qa-www-van-comparisons.ts",
     "test:business:browser": "tsx scripts/test-business-vans-browser.ts",
     "qa:diagnostics:www": "tsx scripts/qa-nl-gsc-diagnostics.ts",
+    "qa:vw-gti:www": "tsx scripts/qa-nl-gsc-vw-gti.ts",
     "verify:catalog-pricing": "tsx scripts/verify-catalog-pricing.ts",
     "test:catalog-handoff": "tsx --test tests/catalog-enquiry.test.ts",
     "test:catalog-handoff:browser": "tsx scripts/test-catalog-handoff-browser.ts"

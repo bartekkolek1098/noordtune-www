@@ -305,7 +305,7 @@ export const brandPages: BrandPage[] = [
     slug: "volkswagen-chiptuning",
     status: "published",
     metaTitle: "Volkswagen chiptuning & ECU-service | NoordTune.nl",
-    metaDescription: "Volkswagen chiptuning voor personenauto en bedrijfswagen, plus diagnose en ECU cloning. Bekijk echte Caddy- en Transporter-resultaten.",
+    metaDescription: "Volkswagen chiptuning in Assen voor Golf GTI, Golf R en bedrijfswagens. Vergelijk motorvarianten, bekijk echte Caddy/Transporter-cases en vraag advies.",
     heroTitle: "Volkswagen chiptuning voor auto en bedrijfswagen",
     heroIntro: "ECU-remap, transmissiecontrole en ECU-service vragen per Volkswagen om een andere technische route. NoordTune koppelt software aan het exacte voertuig en gebruik.",
     heroImage: sharedImages.volkswagen,
@@ -334,6 +334,25 @@ export const brandPages: BrandPage[] = [
           "De Volkswagen Caddy-case toont een geverifieerde vermogensverandering, maar er was geen betrouwbare koppelwaarde aangeleverd. Daarom staat die ook niet op de openbare pagina. Die transparantie geldt eveneens voor nieuwe aanvragen: we communiceren alleen gegevens die bij het concrete voertuig en traject horen."
         ],
         links: [{label: "Volkswagen Caddy Stage 1", href: "/nl/resultaten/vw-caddy-20-tdi-2020-stage-1"}, {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"}]
+      },
+      {
+        eyebrow: "Golf GTI of Golf R",
+        title: "Golf GTI chiptuning vraagt een ander profiel dan Golf R.",
+        body: [
+          "De Golf 7 GTI Performance met 2.0 TSI EA888 en de Golf 7 R met 2.0 TSI zijn verschillende uitvoeringen. Aandrijving, motormanagement, turbo, originele software en eventuele DSG-begrenzingen verschillen. Ook binnen de GTI-familie is de motorvariant bepalend: een Stage 1-indicatie van de Golf R hoort niet automatisch bij jouw GTI.",
+          "Zoek je Golf GTI tuning vanuit Groningen? NoordTune werkt uitsluitend in de werkplaats in Assen, op afspraak. We controleren eerst motorcode, ECU- en transmissieversie, onderhoud, foutcodes en aanwezige hardware. De gelinkte Nederlandse catalogusprofielen bevatten brongebonden indicaties, geen op jouw auto gemeten of gegarandeerde resultaten. Vraag advies voor jouw exacte uitvoering."
+        ],
+        bullets: [
+          "Golf GTI Performance: afzonderlijk EA888-profiel",
+          "Golf 7 R: eigen motor- en aandrijfconfiguratie",
+          "DSG, ECU-software en conditie eerst controleren",
+          "Werkplaats in Assen, geen vestiging in Groningen"
+        ],
+        links: [
+          {label: "Golf GTI Performance: motorprofiel", href: "https://power.noordtune.nl/nl/vehicles/vw-golf-20-tsi-ea888"},
+          {label: "Golf 7 R: ander motorprofiel", href: "https://power.noordtune.nl/nl/vehicles/volkswagen-golf-7-r-20-tsi"},
+          {label: "Plan een afspraak in Assen", href: "/nl/afspraak"}
+        ]
       },
       {
         eyebrow: "Stage 2 en hardware",
