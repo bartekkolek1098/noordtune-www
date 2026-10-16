@@ -1,6 +1,6 @@
 import {cookies} from "next/headers";
 import {permanentRedirect, redirect} from "next/navigation";
-import {defaultLocale, isLocale, localeCookieName} from "@/content/site";
+import {defaultLocale, isLocale, localeCookieName, sharedLocaleCookieName} from "@/content/site";
 
 /**
  * Root is a deterministic Dutch entry for first-time visitors and crawlers.
@@ -13,7 +13,9 @@ import {defaultLocale, isLocale, localeCookieName} from "@/content/site";
  * remains temporary (never cached as a permanent language redirect).
  */
 export default async function RootPage() {
-  const storedLocale = (await cookies()).get(localeCookieName)?.value;
+  const visitorCookies = await cookies();
+  const sharedLocale = visitorCookies.get(sharedLocaleCookieName)?.value;
+  const storedLocale = isLocale(sharedLocale) ? sharedLocale : visitorCookies.get(localeCookieName)?.value;
   if (isLocale(storedLocale) && storedLocale !== defaultLocale) {
     redirect(`/${storedLocale}`);
   }
