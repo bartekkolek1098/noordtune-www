@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import {readFileSync} from "node:fs";
 import {test} from "node:test";
 import {businessVanModels,businessVansPath} from "../src/content/business-vans";
-import {vanComparisonIndexUrl,vanGenerationComparisons,vanComparisonUrl} from "../src/content/van-generation-comparisons";
+import {vanComparisonIndexUrl,vanGenerationComparisons,vanAdditionalComparisons,allVanGenerationComparisons,vanComparisonUrl} from "../src/content/van-generation-comparisons";
 
 test("Nine current, manually reviewed commercial-van comparison pages have distinct direct NL URLs",()=>{
  assert.equal(vanGenerationComparisons.length,9);
@@ -33,6 +33,39 @@ test("Nine current, manually reviewed commercial-van comparison pages have disti
   assert.equal(u.search,"");
   assert.equal(u.hash,"");
  }
+});
+
+test("Twelve new source-reviewed van comparisons are discoverable without removing the nine featured links",()=>{
+ assert.equal(vanGenerationComparisons.length,9);
+ assert.equal(vanAdditionalComparisons.length,12);
+ assert.equal(allVanGenerationComparisons.length,21);
+ assert.equal(new Set(allVanGenerationComparisons.map(g=>g.slug)).size,21);
+ assert.deepEqual(vanAdditionalComparisons.map(g=>g.slug),[
+  "iveco-daily-23-30-euro6-euro6df",
+  "renault-master-23-dci-blue-dci",
+  "peugeot-expert-20-bluehdi-120-180",
+  "toyota-proace-city-15-d4d-75-130",
+  "opel-vivaro-b-16-cdti-biturbo",
+  "opel-movano-b-c-23-cdti-22-diesel",
+  "citroen-jumpy-15-20-bluehdi",
+  "citroen-berlingo-ii-iii-hdi-bluehdi",
+  "peugeot-partner-ii-iii-hdi-bluehdi",
+  "fiat-doblo-16-multijet-100-120",
+  "opel-combo-e-15-diesel-75-130",
+  "renault-kangoo-15-dci-75-110"
+ ]);
+ for(const comparison of allVanGenerationComparisons){
+  const target=new URL(vanComparisonUrl(comparison));
+  assert.equal(target.origin,"https://power.noordtune.nl");
+  assert.equal(target.pathname,"/nl/bedrijfswagens/vergelijken/"+comparison.slug);
+  assert.equal(target.search+target.hash,"");
+  assert.ok(comparison.title.length>15&&comparison.detail.length>38);
+ }
+ const section=readFileSync("src/components/van-generation-comparisons.tsx","utf8");
+ assert.match(section,/vanAdditionalComparisons\.map/);
+ assert.match(section,/data-additional-comparison-slug=\{item\.slug\}/);
+ assert.match(section,/data-testid="www-van-extra-comparison-links"/);
+ assert.match(section,/allVanGenerationComparisons\.length/);
 });
 
 test("Technical van comparison links complement rather than replace existing workshop model links",()=>{

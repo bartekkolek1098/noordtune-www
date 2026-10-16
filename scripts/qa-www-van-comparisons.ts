@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import {chromium} from "playwright";
-import {vanGenerationComparisons,vanComparisonIndexUrl,vanComparisonUrl} from "../src/content/van-generation-comparisons";
+import {vanGenerationComparisons,vanAdditionalComparisons,allVanGenerationComparisons,vanComparisonIndexUrl,vanComparisonUrl} from "../src/content/van-generation-comparisons";
 import {businessVansPath} from "../src/content/business-vans";
 import {site} from "../src/content/site";
 
@@ -45,6 +45,22 @@ async function main(){
    assert.equal(e.event,"power_catalog_click");
    assert.equal(e.source,"business_van_compare");
   }
+  const additional=page.getByTestId("www-van-extra-comparison-links").locator("[data-additional-comparison-slug]");
+  assert.equal(await additional.count(),12);
+  const added=await additional.evaluateAll(nodes=>nodes.map(a=>({
+   slug:a.getAttribute("data-additional-comparison-slug"),href:a.getAttribute("href"),
+   event:a.getAttribute("data-analytics-event"),source:a.getAttribute("data-analytics-source")
+  })));
+  assert.deepEqual(new Set(added.map(g=>g.slug)),new Set(vanAdditionalComparisons.map(g=>g.slug)));
+  assert.equal(new Set([...destinations,...added].map(g=>g.slug)).size,21,"Nine featured + twelve additional technical destinations");
+  for(const link of added){
+   const item=vanAdditionalComparisons.find(g=>g.slug===link.slug);
+   assert.ok(item);
+   assert.equal(link.href,vanComparisonUrl(item));
+   assert.equal(link.event,"power_catalog_click");
+   assert.equal(link.source,"business_van_compare");
+  }
+  assert.match(await section.innerText(),/21 gecontroleerde modelvergelijkingen/);
   const directory=page.getByTestId("www-van-comparison-directory");
   assert.equal(await directory.count(),1);
   assert.equal(await directory.getAttribute("href"),vanComparisonIndexUrl);
@@ -56,12 +72,12 @@ async function main(){
   assert.equal(await page.getByTestId("business-enquiry").count(),1);
   await page.waitForFunction(()=>document.querySelector("#business-service")?.matches(":enabled")===true,null,{timeout:20000});
   assert.equal(await page.locator('#business-service').isEnabled(),true);
-  assert.equal(await page.locator('a[href^="https://power.noordtune.nl/nl/bedrijfswagens/"]').count()>=16,true,"Old 6 van model links plus 9 comparisons and index retained");
+  assert.equal(await page.locator('a[href^="https://power.noordtune.nl/nl/bedrijfswagens/"]').count()>=28,true,"Six old van model links, 21 comparisons and index retained");
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=391),"Business landing mobile viewport");
 
   let checkedTargets=0;
-  for(let i=0;i<vanGenerationComparisons.length;i+=3){
-   await Promise.all(vanGenerationComparisons.slice(i,i+3).map(async item=>{
+  for(let i=0;i<allVanGenerationComparisons.length;i+=3){
+   await Promise.all(allVanGenerationComparisons.slice(i,i+3).map(async item=>{
     const url=vanComparisonUrl(item);
     const response=await page.request.get(url,{timeout:35000});
     assert.equal(response.status(),200,url);
@@ -85,7 +101,8 @@ async function main(){
    await page.setViewportSize({width,height:900});
    await page.goto(base+businessVansPath,{waitUntil:"domcontentloaded",timeout:45000});
    assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1),"No horizontal overflow "+width);
-   assert.equal(await section.locator('[data-comparison-slug]').count(),9,"All links visible in HTML "+width);
+   assert.equal(await section.locator('[data-comparison-slug]').count(),9,"Nine featured links retained at "+width);
+   assert.equal(await section.locator('[data-additional-comparison-slug]').count(),12,"Twelve new compact links present at "+width);
   }
 
   // Full, genuine cross-domain journey. No customer data or message is submitted.
@@ -109,10 +126,29 @@ async function main(){
   assert.equal(await page.locator("#business-question").inputValue(),"","No submitted quote details");
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=391),"Cross-domain quote on mobile");
 
+  // A newly published commercial model must also preserve the precise engine handoff.
+  await page.goto(base+businessVansPath,{waitUntil:"domcontentloaded",timeout:45000});
+  const ivecoLink=section.locator('[data-additional-comparison-slug="iveco-daily-23-30-euro6-euro6df"]');
+  assert.equal(await ivecoLink.count(),1);
+  await ivecoLink.click();
+  await page.waitForURL(u=>u.origin==="https://power.noordtune.nl"
+   &&u.pathname==="/nl/bedrijfswagens/vergelijken/iveco-daily-23-30-euro6-euro6df",{timeout:45000});
+  assert.equal(await page.getByTestId("van-comparison-variants").locator("article[data-engine-slug]").count(),6);
+  const ivecoQuote=page.getByTestId("van-comparison-variants").getByTestId("catalog-enquiry-link").first();
+  const ivecoHref=await ivecoQuote.getAttribute("href");
+  assert.ok(ivecoHref?.includes("id=iveco-daily-"),"One reviewed Iveco Daily engine ID must be transferred");
+  await ivecoQuote.click();
+  await page.waitForURL(u=>u.origin==="https://www.noordtune.nl"&&u.pathname==businessVansPath,{timeout:45000});
+  await page.locator('[data-testid="catalog-enquiry-status"][data-status="ready"]').waitFor({timeout:35000});
+  assert.match(await page.locator("#business-vehicle").inputValue(),/Iveco Daily/i);
+  assert.equal(new URL(page.url()).hash,"#offerte");
+  assert.equal(await page.locator("#business-question").inputValue(),"","No Iveco test enquiry was sent");
+  assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=391),"Iveco quote mobile viewport");
+
   assert.deepEqual(errors,[],"No JS runtime errors");
   console.log("WWW_VAN_COMPARISON_CROSS_DOMAIN_QA_PASS",JSON.stringify({
    www:base,publishedComparisonTargets:checkedTargets,technicalComparisonDirectoryHTTP200:true,
-   NLHomepageEntry:true,NLBusinessServiceEntries:9,originalSixModelLinksPreserved:true,
+   NLHomepageEntry:true,NLBusinessServiceEntries:21,featuredVanCards:9,newCompactComparisons:12,originalSixModelLinksPreserved:true,
    analyticsSources:["homepage_van_compare","business_van_compare"],crossDomainHandoff:"Mercedes Sprinter -> exact engine -> prefilled WWW quote",
    actualMessagesSent:0,languageGuard:true,responsive:[320,390,1440],correctCanonical:true
   }));
