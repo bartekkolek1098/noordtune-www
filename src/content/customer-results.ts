@@ -780,9 +780,9 @@ export const customerResults: CustomerResult[] = [
     locale: "nl",
     slug: "audi-a4-b7-20-tdi-stage-2-plus",
     title: "Audi A4 B7 2.0 TDI Stage 2+ chiptuning",
-    metaTitle: "Audi A4 B7 2.0 TDI Stage 2+ chiptuning | NoordTune klantresultaat",
+    metaTitle: "Audi A4 B7 2.0 TDI Stage 2+: 170 naar 235 pk | NoordTune",
     metaDescription:
-      "Audi A4 B7 2.0 TDI Stage 2+ maatwerk ECU-remap: 170 pk / 350 Nm naar 235 pk / 470 Nm met downpipe, hybride turbo en certificaat.",
+      "Audi A4 B7 2.0 TDI Stage 2+ praktijkcase: 170 naar 235 pk en 350 naar 470 Nm. Bekijk de hybride turbo, ECU-afstelling en voorwaarden bij NoordTune.",
     source: "manual",
     status: "published",
     indexable: true,
@@ -830,7 +830,7 @@ export const customerResults: CustomerResult[] = [
     certificateAvailable: true,
     certificateNote: "Certificaat van uitgevoerde dienst geleverd.",
     publishedAt: "2026-06-16",
-    updatedAt: "2026-06-16",
+    updatedAt: "2026-10-16",
     disclaimer:
       "De genoemde waarden horen bij deze specifieke Audi A4 B7 en deze hardwareconfiguratie. Resultaten kunnen verschillen per auto, softwareversie, onderhoudsstaat, brandstof, transmissie, hardware en gebruik. Controleer altijd welke aanpassingen wettelijk zijn toegestaan voor jouw situatie.",
     relatedPowerCatalogUrl: site.catalogUrl,
