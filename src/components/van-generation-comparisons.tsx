@@ -2,7 +2,7 @@ import {ArrowUpRight,ChevronRight,ClipboardCheck,Truck} from "lucide-react";
 import {ButtonLink} from "@/components/button";
 import {TrackedLink} from "@/components/tracked-link";
 import {businessVansPath} from "@/content/business-vans";
-import {vanComparisonIndexUrl,vanComparisonUrl,vanGenerationComparisons} from "@/content/van-generation-comparisons";
+import {vanComparisonIndexUrl,vanComparisonUrl,vanGenerationComparisons,vanAdditionalComparisons,allVanGenerationComparisons} from "@/content/van-generation-comparisons";
 
 /**
  * Pure navigation to distinct technical vehicle comparisons on the existing
@@ -27,7 +27,7 @@ export function VanGenerationComparisonSection(){
    </div>
    <div className="flex items-center gap-2 text-sm text-white/65">
     <Truck className="h-5 w-5 text-primary" aria-hidden="true"/>
-    <span>9 gecontroleerde modelvergelijkingen</span>
+    <span>{allVanGenerationComparisons.length} gecontroleerde modelvergelijkingen</span>
    </div>
   </div>
   <nav className="mt-7 grid min-w-0 gap-4 sm:grid-cols-2 lg:grid-cols-3"
@@ -51,11 +51,32 @@ export function VanGenerationComparisonSection(){
      </span>
     </TrackedLink>)}
   </nav>
+  <div className="mt-8 rounded-xl border border-white/15 bg-[#121516] p-5 md:p-7" data-testid="www-van-extra-comparison-section">
+   <p className="text-xs font-black uppercase tracking-[.13em] text-primary">Ook voor compacte en zware bedrijfswagens</p>
+   <h3 className="mt-3 text-xl font-black text-white md:text-2xl">Meer merken, bouwjaren en dieselmotoren vergelijken</h3>
+   <p className="mt-3 max-w-4xl text-sm leading-7 text-white/65">
+    Naast de negen uitgelichte modellen kun je ook alle afzonderlijk gecontroleerde Iveco Daily,
+    Renault Master, Peugeot Expert, Toyota Proace City, Opel Vivaro/Movano/Combo, Citroën Jumpy/Berlingo,
+    Peugeot Partner, Fiat Doblò en Renault Kangoo vergelijken. RDW-kW en ECU-fases blijven per motor gescheiden.
+   </p>
+   <nav aria-label="Andere technisch onderzochte bestelwagenmotoren"
+    data-testid="www-van-extra-comparison-links" className="mt-6 grid min-w-0 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+    {vanAdditionalComparisons.map(item=><TrackedLink
+     key={item.slug} href={vanComparisonUrl(item)}
+     analytics={{name:"power_catalog_click",properties:{locale:"nl",source:"business_van_compare"}}}
+     data-additional-comparison-slug={item.slug}
+     className="group flex min-w-0 items-start justify-between gap-3 rounded-lg border border-white/15 bg-black/25 p-4 transition-colors hover:border-primary/60 hover:bg-white/[.035] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+      <span className="min-w-0"><strong className="block text-sm font-bold text-white [overflow-wrap:anywhere]">{item.make} {item.title}</strong>
+      <span className="mt-2 block text-xs leading-5 text-white/60">{item.detail}</span></span>
+      <ArrowUpRight className="mt-1 h-4 w-4 shrink-0 text-primary" aria-hidden="true"/>
+    </TrackedLink>)}
+   </nav>
+  </div>
   <div className="mt-7 flex min-w-0 flex-wrap items-center gap-4">
    <TrackedLink href={vanComparisonIndexUrl} data-testid="www-van-comparison-directory"
     analytics={{name:"power_catalog_click",properties:{locale:"nl",source:"business_van_compare"}}}
     className="inline-flex min-h-11 items-center gap-2 text-sm font-bold text-white underline decoration-primary underline-offset-4 hover:text-primary">
-    Bekijk alle motorvergelijkingen<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true"/>
+    Bekijk alle {allVanGenerationComparisons.length} motorvergelijkingen<ArrowUpRight className="h-4 w-4 shrink-0" aria-hidden="true"/>
    </TrackedLink>
    <ButtonLink href={businessVansPath+"#offerte"} variant="outline"
     analytics={{name:"appointment_click",properties:{locale:"nl",source:"business_van_compare"}}}>
