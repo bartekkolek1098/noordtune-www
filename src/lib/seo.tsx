@@ -31,7 +31,7 @@ export function createMetadata(locale: Locale, pageKey: PageKey): Metadata {
   const canonical = absolutePath(locale, pageKey);
   const languages = {
     ...Object.fromEntries(locales.map((item) => [item, absolutePath(item, pageKey)])),
-    "x-default": pageKey === "home" ? site.url : absolutePath(defaultLocale, pageKey)
+    "x-default": absolutePath(defaultLocale, pageKey)
   };
   const image = `${site.url}${heroImages[pageKey]}`;
 

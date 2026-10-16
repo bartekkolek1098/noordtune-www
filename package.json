@@ -12,7 +12,7 @@
     "content:audit": "tsx scripts/audit-locales.ts",
     "test:enquiry": "tsx --test tests/enquiry.test.ts",
     "test:enquiry:browser": "tsx scripts/test-enquiry-browser.ts",
-    "test:seo": "tsx --test tests/seo-freshness.test.ts tests/catalog-discovery.test.ts tests/van-generation-comparisons.test.ts",
+    "test:seo": "tsx --test tests/seo-freshness.test.ts tests/catalog-discovery.test.ts tests/van-generation-comparisons.test.ts tests/gsc-nl-home-routing.test.ts",
     "qa:catalog-discovery": "tsx scripts/qa-catalog-deep-links.ts",
     "test:seo:browser": "tsx scripts/test-homepage-seo-browser.ts",
     "test:brand": "tsx --test tests/brand-assets.test.ts",

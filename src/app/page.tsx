@@ -1,34 +1,22 @@
-import {cookies, headers} from "next/headers";
-import {redirect} from "next/navigation";
-import {defaultLocale, isLocale, localeCookieName, type Locale} from "@/content/site";
+import {cookies} from "next/headers";
+import {permanentRedirect, redirect} from "next/navigation";
+import {defaultLocale, isLocale, localeCookieName} from "@/content/site";
 
-function localeFromAcceptLanguage(value: string | null): Locale {
-  if (!value) {
-    return defaultLocale;
-  }
-
-  const normalized = value.toLowerCase();
-  if (normalized.startsWith("nl")) {
-    return "nl";
-  }
-  if (normalized.startsWith("en")) {
-    return "en";
-  }
-  if (normalized.startsWith("pl")) {
-    return "pl";
-  }
-
-  return defaultLocale;
-}
-
+/**
+ * Root is a deterministic Dutch entry for first-time visitors and crawlers.
+ *
+ * Googlebot does not send Accept-Language, and a temporary 307 that varies
+ * by that header obscures the preferred canonical. Other language pages
+ * remain fully available via their dedicated URLs and language switcher.
+ *
+ * An explicit language selection stored by the switcher is respected and
+ * remains temporary (never cached as a permanent language redirect).
+ */
 export default async function RootPage() {
-  const cookieStore = await cookies();
-  const storedLocale = cookieStore.get(localeCookieName)?.value;
-
-  if (isLocale(storedLocale)) {
+  const storedLocale = (await cookies()).get(localeCookieName)?.value;
+  if (isLocale(storedLocale) && storedLocale !== defaultLocale) {
     redirect(`/${storedLocale}`);
   }
 
-  const headerStore = await headers();
-  redirect(`/${localeFromAcceptLanguage(headerStore.get("accept-language"))}`);
+  permanentRedirect(`/${defaultLocale}`);
 }
