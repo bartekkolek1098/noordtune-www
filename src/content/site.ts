@@ -18,6 +18,7 @@ export type PageKey =
 
 export const defaultLocale: Locale = "nl";
 export const localeCookieName = "noordtune_locale";
+export const sharedLocaleCookieName = "noordtune_preferred_locale";
 
 export const site = {
   name: "NoordTune.nl",

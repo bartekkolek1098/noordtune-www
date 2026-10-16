@@ -184,7 +184,8 @@ export function MobileMenu({locale, activeKey, languagePaths}: MobileMenuProps) 
                     <p className="text-xs font-black uppercase text-primary">{copy.eyebrow}</p>
                     <p className="mt-1 text-sm text-white/70">{copy.subtitle}</p>
                     <LanguageSwitcher
-                      className="mt-4 flex-wrap gap-2"
+                      className="mt-4"
+                      expanded
                       languagePaths={languagePaths}
                       locale={locale}
                       order={mobileLanguageOrder[locale]}
