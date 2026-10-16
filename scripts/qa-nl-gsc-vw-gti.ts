@@ -47,8 +47,9 @@ async function main(){
   assert.equal(response?.status(),200);
   assert.equal(await page.locator('link[rel="canonical"]').getAttribute("href"),site+groningen);
   const fromGroningen=page.locator('main a[href="/nl/volkswagen-chiptuning"]');
-  assert.equal(await fromGroningen.count(),1);
-  await fromGroningen.click();
+  assert.equal(await fromGroningen.count(),2,"Original related link plus new source-guided brand card are both useful");
+  assert.equal(await page.getByTestId("nl-groningen-brand-pathways").locator('a[href="/nl/volkswagen-chiptuning"]').count(),1);
+  await fromGroningen.first().click();
   await page.waitForURL(url=>url.pathname===volkswagen,{timeout:45000});
   assert.equal(await section.count(),1,"Groningen visitor reaches variant comparison and matching catalog profiles");
   await section.getByRole("link",{name:"Plan een afspraak in Assen"}).click();
