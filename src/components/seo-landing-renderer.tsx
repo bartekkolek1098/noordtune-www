@@ -1,5 +1,6 @@
 import {FAQ} from "@/components/faq";
 import {FloatingWhatsApp} from "@/components/floating-whatsapp";
+import {NlGroningenBrandPathways} from "@/components/nl-groningen-brand-pathways";
 import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {PageHero} from "@/components/page-hero";
@@ -59,6 +60,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
 
   const [firstSection, ...restSections] = page.sections;
   const isNlDiagnosisAssen = page.locale === "nl" && page.slug === "auto-diagnose-assen";
+  const isNlChiptuningGroningen = page.locale === "nl" && page.slug === "chiptuning-groningen";
 
   return (
     <>
@@ -83,6 +85,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
         {restSections.map((section, index) => (
           <TextSection block={section} key={section.title} reversed={index % 2 === 1} />
         ))}
+        {isNlChiptuningGroningen ? <NlGroningenBrandPathways /> : null}
         {page.locale === "nl" ? <TuningCustomerProof slug={page.slug} /> : null}
         <PowerCatalogSection locale={page.locale} />
         <RichInfoSection

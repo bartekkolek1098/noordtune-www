@@ -191,7 +191,7 @@ export function BrandPageRenderer({page}: {page: BrandPage}) {
           <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
             <div className="min-w-0">
               <p className="text-xs font-black uppercase text-primary">{page.brandName} chiptuning</p>
-              <h2 className="racing-title mt-3 text-4xl leading-none text-white md:text-6xl">{page.introTitle}</h2>
+              <h2 className="racing-title mt-3 text-4xl leading-none text-white [overflow-wrap:anywhere] md:text-6xl">{page.introTitle}</h2>
               <div className="mt-6 space-y-4">
                 {page.intro.map((paragraph) => (
                   <p className="text-base leading-8 text-white/70" key={paragraph}>{paragraph}</p>

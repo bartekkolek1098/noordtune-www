@@ -174,6 +174,19 @@ export const brandPages: BrandPage[] = [
         ]
       },
       {
+        eyebrow: "BMW tuning voor Groningen",
+        title: "BMW chiptuning vanuit Groningen: de motorvariant bepaalt de aanpak.",
+        body: [
+          "Kom je uit Groningen met een BMW en wil je weten of Stage 1, diagnose of transmissiecontrole passend is? NoordTune werkt vanuit één werkplaats in Assen; we hebben geen vestiging in Groningen. Vooraf bespreken we motorcode, ECU-software, transmissie, kilometerstand en bestaande storingen zodat een bezoek doelgericht is.",
+          "Een BMW 320d B47 hoort niet op dezelfde technische Stage 1-pagina als een oudere 320d N47. Het Nederlandse B47-profiel in de Power Catalog geeft alleen een brongebonden indicatie. De echte BMW X3 E83-klantcase op deze pagina is een afzonderlijk voertuig en garandeert geen uitkomst voor jouw 320d."
+        ],
+        links: [
+          {label: "BMW 320d B47: gecontroleerd motorprofiel", href: "https://power.noordtune.nl/nl/vehicles/bmw-320d-b47"},
+          {label: "Voor klanten uit Groningen", href: "/nl/chiptuning-groningen"},
+          {label: "Vraag een afspraak in Assen aan", href: "/nl/afspraak"}
+        ]
+      },
+      {
         eyebrow: "Advies aanvragen",
         title: "Stuur de gegevens waarmee we jouw BMW echt kunnen beoordelen.",
         body: [
@@ -268,6 +281,19 @@ export const brandPages: BrandPage[] = [
           "Bij dieselmodellen worden DPF-, EGR- en AdBlue-gerelateerde klachten eerst als diagnosevraag behandeld. We adverteren geen generieke verwijdering. Software-oplossingen worden alleen besproken waar wettelijk toegestaan en passend bij voertuig, gebruik en regelgeving."
         ],
         links: [{label: "Turbo, brandstof en EGT uitgelegd", href: "/nl/blog/turbo-brandstof-en-egt-uitgelegd"}, {label: "DPF, EGR of AdBlue storing", href: "/nl/blog/dpf-egr-of-adblue-storing-wat-nu"}]
+      },
+      {
+        eyebrow: "Audi tuning voor Groningen",
+        title: "Audi chiptuning vanuit Groningen: software en hardware in Assen beoordelen.",
+        body: [
+          "Ook als je uit Groningen komt, wordt jouw Audi bij NoordTune in de werkplaats in Assen beoordeeld en waar mogelijk geprogrammeerd. We hebben geen tweede vestiging in Groningen. Bespreek vooraf het type Audi, de exacte motor, ECU-software, transmissie, foutmeldingen en eventueel aangepaste onderdelen.",
+          "De gepubliceerde Audi A4 B7 2.0 TDI Stage 2+-case is een echt project met hybride turbo en downpipe, geen algemene Stage 2-belofte voor alle A4-uitvoeringen. Voor een andere Audi kan een technisch gezonde standaardauto met Stage 1 geschikter zijn, of is eerst diagnose nodig. Bekijk de case en vraag advies voor jouw configuratie."
+        ],
+        links: [
+          {label: "Bekijk echte Audi A4 B7 Stage 2+-realisatie", href: "/nl/resultaten/audi-a4-b7-20-tdi-stage-2-plus"},
+          {label: "Voor klanten uit Groningen", href: "/nl/chiptuning-groningen"},
+          {label: "Plan je bezoek aan Assen", href: "/nl/afspraak"}
+        ]
       },
       {
         eyebrow: "Advies aanvragen",
