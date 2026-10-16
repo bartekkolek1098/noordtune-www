@@ -51,6 +51,8 @@ export type ConversionSource =
   | "business_hero"
   | "business_composer"
   | "homepage_business"
+  | "homepage_van_compare"
+  | "business_van_compare"
   | "catalog_manual"
   | "catalog_profile"
   | "catalog_engine";
