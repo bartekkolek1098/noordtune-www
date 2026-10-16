@@ -54,6 +54,7 @@ async function main(){
   assert.equal(await quote.getAttribute("data-analytics-event"),"appointment_click");
   assert.equal(await quote.getAttribute("data-analytics-source"),"business_van_compare");
   assert.equal(await page.getByTestId("business-enquiry").count(),1);
+  await page.waitForFunction(()=>document.querySelector("#business-service")?.matches(":enabled")===true,null,{timeout:20000});
   assert.equal(await page.locator('#business-service').isEnabled(),true);
   assert.equal(await page.locator('a[href^="https://power.noordtune.nl/nl/bedrijfswagens/"]').count()>=16,true,"Old 6 van model links plus 9 comparisons and index retained");
   assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=391),"Business landing mobile viewport");
