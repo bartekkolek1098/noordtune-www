@@ -21,6 +21,13 @@ async function menu(page: Page, expectedCurrent: string) {
   const box=await button.boundingBox();
   assert.ok(box&&box.width>=65&&box.height>=44,"Usable touch target");
   assert.ok(box.x>=0&&box.x+box.width<=page.viewportSize()!.width+1,"Language button fits the screen");
+  // Public Next.js pages can render before the client event handlers hydrate.
+  // Wait for the *visible* React-owned trigger before testing interaction.
+  await page.waitForFunction(() => {
+    const visible = [...document.querySelectorAll<HTMLElement>('header [data-testid="language-switcher-trigger"]')]
+      .find(el => el.getBoundingClientRect().width > 0 && el.getBoundingClientRect().height > 0);
+    return Boolean(visible && Object.keys(visible).some(key => key.startsWith("__reactFiber$")));
+  }, null, {timeout:20000});
   await button.click();
   assert.equal(await button.getAttribute("aria-expanded"),"true");
   const options=header.locator('[data-testid="language-switcher-options"]:visible');
