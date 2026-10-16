@@ -124,9 +124,9 @@ export const seo: Record<PageKey, Record<Locale, SeoCopy>> = {
   },
   diagnose: {
     nl: {
-      title: "Auto Diagnose Assen | Foutcodes, Live Data en Loganalyse",
+      title: "Auto uitlezen & storingsdiagnose | NoordTune Assen",
       description:
-        "Auto diagnose Assen voor storingen, foutcodes, live data, loganalyse, DPF storing, EGR storing en AdBlue storing. Gericht advies zonder giswerk."
+        "Auto uitlezen en storingsdiagnose bij NoordTune in Assen, ook voor klanten uit Groningen. Foutcodes, live data en loganalyse op afspraak; gericht advies."
     },
     en: {
       title: "Car Diagnostics in Assen | Fault Codes, Live Data and Logs",
@@ -338,12 +338,12 @@ export const pageHeroes: Record<PageKey, Record<Locale, PageHeroCopy>> = {
   },
   diagnose: {
     nl: {
-      eyebrow: "Auto diagnose Assen",
-      title: ["Storing zoeken", "zonder giswerk"],
+      eyebrow: "Storingsdiagnose & auto uitlezen in Assen",
+      title: ["Auto uitlezen", "met live data"],
       intro:
-        "Foutcodes, live data en loganalyse brengen duidelijkheid voordat er onderdelen worden vervangen of software wordt aangepast.",
+        "Motorlampje, vermogensverlies of terugkerende storingsmelding? NoordTune onderzoekt foutcodes en live data in Assen, ook voor automobilisten uit Groningen. Eerst de oorzaak onderzoeken, daarna een passende vervolgstap.",
       primary: "WhatsApp ons",
-      secondary: "Controleer jouw auto"
+      secondary: "Maak een afspraak"
     },
     en: {
       eyebrow: "Vehicle diagnostics Assen",

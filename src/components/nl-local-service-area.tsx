@@ -16,8 +16,8 @@ const serviceAreaLinks=[
   },
   {
     href:"/nl/auto-diagnose-assen",
-    label:"Auto diagnose in Assen",
-    text:"Onderzoek van foutcodes, live data en loganalyse vóór een motor- of transmissie-aanpassing."
+    label:"Storingsdiagnose & auto uitlezen in Assen",
+    text:"Ook voor klanten uit Groningen: onderzoek van foutcodes, live data en loganalyse bij onze werkplaats in Assen."
   }
 ] as const;
 

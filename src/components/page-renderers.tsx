@@ -11,6 +11,7 @@ import {FloatingWhatsApp} from "@/components/floating-whatsapp";
 import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
 import {NlLocalServiceArea} from "@/components/nl-local-service-area";
+import {NlDiagnosticsServiceGuide} from "@/components/nl-diagnostics-service-guide";
 import {Hero} from "@/components/hero";
 import {PageHero} from "@/components/page-hero";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
@@ -420,6 +421,7 @@ export function PageRenderer({locale, pageKey}: {locale: Locale; pageKey: PageKe
       <main>
         <PageHero copy={pageHeroes[pageKey][locale]} image={heroImages[pageKey]} locale={locale} pageKey={pageKey} />
         {pageKey === "chiptuning" && locale === "nl" ? <TuningServiceNavigation /> : null}
+        {pageKey === "diagnose" && locale === "nl" ? <NlDiagnosticsServiceGuide /> : null}
         <PageBody locale={locale} pageKey={pageKey} />
       </main>
       <Footer locale={locale} />

@@ -81,9 +81,9 @@ export function PageHero({copy, image, locale, pageKey}: PageHeroProps) {
         <div className="absolute inset-0 bg-[linear-gradient(125deg,rgba(227,6,19,.2),transparent_26rem)]" />
       </div>
       <div className="container relative z-10 flex min-h-[400px] items-end pb-10 pt-16 md:min-h-[560px] md:pb-12 md:pt-20">
-        <div className="max-w-3xl">
+        <div className="min-w-0 w-full max-w-3xl">
           <p className="racing-title mb-4 text-lg text-primary md:text-xl">{copy.eyebrow}</p>
-          <h1 className="racing-title text-4xl leading-[0.9] text-white sm:text-5xl md:text-8xl">
+          <h1 className="racing-title break-words text-4xl leading-[0.9] text-white sm:text-5xl md:text-8xl">
             {copy.title.map((line, index) => (
               <span className={index % 2 === 1 ? "block text-primary" : "block"} key={line}>
                 {line}
