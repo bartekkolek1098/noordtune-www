@@ -95,7 +95,7 @@ test("every published customer result belongs to one explicit reciprocal transla
 
 test("x-default is limited to general localized pages", () => {
   for (const locale of locales) {
-    assert.equal(metadataLanguages(createMetadata(locale, "home"))["x-default"], site.url);
+    assert.equal(metadataLanguages(createMetadata(locale, "home"))["x-default"], `${site.url}/nl`);
     assert.equal(
       metadataLanguages(createMetadata(locale, "chiptuning"))["x-default"],
       `${site.url}/nl/chiptuning`

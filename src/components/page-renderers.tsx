@@ -10,6 +10,7 @@ import {FeatureGrid} from "@/components/feature-grid";
 import {FloatingWhatsApp} from "@/components/floating-whatsapp";
 import {Footer} from "@/components/footer";
 import {Header} from "@/components/header";
+import {NlLocalServiceArea} from "@/components/nl-local-service-area";
 import {Hero} from "@/components/hero";
 import {PageHero} from "@/components/page-hero";
 import {PowerCatalogSection} from "@/components/power-catalog-section";
@@ -279,6 +280,7 @@ export function HomeRenderer({locale}: {locale: Locale}) {
           trust={home.trust}
         />
         {locale === "nl" ? <BusinessHomeSection /> : null}
+        {locale === "nl" ? <NlLocalServiceArea /> : null}
         <TextSection block={home.intro} />
         <PowerCatalogSection locale={locale} />
         <CatalogDeepLinks locale={locale} />
