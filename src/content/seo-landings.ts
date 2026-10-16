@@ -229,6 +229,7 @@ export const seoLandings: SeoLanding[] = [
       {label: "Onze chiptuningaanpak", href: pathFor("nl", "chiptuning")},
       {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"},
       {label: "ECU-remap", href: "/nl/ecu-remap"},
+      {label: "Storingsdiagnose en auto uitlezen bij NoordTune in Assen", href: "/nl/auto-diagnose"},
       {label: "Volkswagen Caddy 2.0 TDI: echte Stage 1-case", href: "/nl/resultaten/vw-caddy-20-tdi-2020-stage-1"},
       {label: "Klantresultaten", href: pathFor("nl", "resultaten")},
       {label: "Bekijk de richtprijzen", href: pathFor("nl", "prijzen")},
@@ -243,17 +244,17 @@ export const seoLandings: SeoLanding[] = [
     parentKey: "diagnose",
     heroImage: "/images/sections/obd-connector.jpg",
     seo: {
-      title: "Auto Diagnose Assen | Foutcodes, Live Data & Loganalyse",
+      title: "Storingsdiagnose Assen | Foutcodes & Meetdata | NoordTune",
       description:
-        "Auto diagnose Assen voor foutcodes, live data, loganalyse, DPF storing, EGR storing en AdBlue storing. NoordTune.nl zoekt gericht naar de oorzaak."
+        "Storingsdiagnose in Assen: foutcodes uitlezen, meetwaarden en live data controleren. NoordTune onderzoekt oorzaken voordat reparatie of software wordt besproken."
     },
     hero: {
-      eyebrow: "Auto diagnose Assen",
-      title: ["Storing zoeken", "met data"],
+      eyebrow: "Storingsdiagnose in Assen",
+      title: ["Foutcodes uitlezen", "en oorzaken onderzoeken"],
       intro:
-        "Foutcodes uitlezen is pas het begin. Wij combineren diagnose met live data, context en technisch advies.",
+        "Storingsdiagnose bij NoordTune in Assen: van foutcode en freeze-frame naar passende meetgegevens en een onderbouwd advies. Ook voor automobilisten uit Groningen, op afspraak.",
       primary: "WhatsApp ons",
-      secondary: "Controleer jouw auto"
+      secondary: "Maak een afspraak"
     },
     sections: [
       {
@@ -276,6 +277,12 @@ export const seoLandings: SeoLanding[] = [
         title: "DPF, EGR en AdBlue vragen zorgvuldige diagnose en correcte woorden.",
         text:
           "Wij adverteren geen generieke verwijdering van emissiesystemen. Wel helpen we met storing analyse, diagnose, advies op maat en software-oplossingen waar wettelijk toegestaan. De juiste aanpak hangt af van voertuig, gebruik, technische staat en regelgeving."
+      },
+      {
+        kicker: "Vervolgonderzoek en werkplaatsbezoek",
+        title: "Van uitleesrapport naar een voorstel zonder onnodig onderdelen te wisselen.",
+        text:
+          "Een opgeslagen foutcode is niet automatisch een defect onderdeel. We bespreken welke waarnemingen nog ontbreken, of extra meetgegevens nodig zijn en wat een logische volgende controle is. De basisdiagnose en eventuele uitgebreide loganalyse hebben een verschillende omvang. Kom je uit Groningen, stem dan eerst de klacht en afspraak met ons af: de feitelijke auto-uitlezing en inspectie vinden plaats in onze werkplaats in Assen, niet in een vestiging in Groningen."
       }
     ],
     faqs: [
@@ -293,12 +300,23 @@ export const seoLandings: SeoLanding[] = [
         question: "Is diagnose nodig voor chiptuning?",
         answer:
           "Niet altijd, maar bij foutcodes, vermogensverlies, hoge kilometerstand of twijfel is diagnose vooraf verstandig."
+      },
+      {
+        question: "Wanneer is loganalyse bij een storingsdiagnose nodig?",
+        answer:
+          "Dat hangt af van de klacht en de opgeslagen gegevens. Bij problemen die alleen optreden tijdens accelereren, onder belasting of bij bepaalde temperaturen kunnen vergelijkingen van gemeten en gevraagde waarden extra informatie geven. De noodzaak, werkwijze en eventuele meerprijs bespreken we vooraf; niet iedere auto krijgt automatisch een uitgebreide loganalyse."
+      },
+      {
+        question: "Wat neem ik mee voor auto uitlezen in Assen?",
+        answer:
+          "Noteer wanneer de storing optreedt, of het motorlampje brandt, welke foutcodes eventueel eerder zijn gevonden en of er recent reparaties of software-aanpassingen zijn uitgevoerd. Meld ook wanneer de auto niet normaal of veilig rijdt. Daarmee kunnen we de klacht bij de afspraak gerichter bespreken; een definitieve oorzaak kan pas na onderzoek worden vastgesteld."
       }
     ],
     related: [
-      {label: "Stage 1 tuning", href: "/nl/stage-1-tuning"},
+      {label: "Hoe werkt onze storingsdiagnose?", href: "/nl/auto-diagnose"},
+      {label: "DPF-, EGR- en AdBlue-storing uitgelegd", href: "/nl/blog/dpf-egr-of-adblue-storing-wat-nu"},
       {label: "Chiptuning Assen", href: "/nl/chiptuning-assen"},
-      {label: "Chiptuning Drenthe", href: "/nl/chiptuning-drenthe"},
+      {label: "Afspraak voor diagnose", href: pathFor("nl", "appointment")},
       {label: "Contact opnemen", href: pathFor("nl", "contact")}
     ]
   },

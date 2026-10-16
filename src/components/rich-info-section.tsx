@@ -2,7 +2,7 @@ import {ArrowRight, CheckCircle2} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {ButtonLink} from "@/components/button";
-import {site, type Locale} from "@/content/site";
+import {pathFor,site, type Locale} from "@/content/site";
 import type {ConversionEvent, ConversionSource} from "@/lib/analytics";
 
 type Stat = {
@@ -56,6 +56,7 @@ export function RichInfoSection({
     if (!analyticsLocale) return undefined;
     if (href === site.catalogUrl) return {name: "power_catalog_click", properties: {locale: analyticsLocale, source: analyticsSource}};
     if (href === site.whatsappUrl) return {name: "whatsapp_click", properties: {locale: analyticsLocale, source: analyticsSource}};
+    if (href === pathFor(analyticsLocale,"appointment")) return {name:"appointment_click",properties:{locale:analyticsLocale,source:analyticsSource}};
     return undefined;
   }
 

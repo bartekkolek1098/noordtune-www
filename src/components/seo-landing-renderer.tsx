@@ -58,6 +58,7 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
   languagePaths[page.locale] = `/${page.locale}/${page.slug}`;
 
   const [firstSection, ...restSections] = page.sections;
+  const isNlDiagnosisAssen = page.locale === "nl" && page.slug === "auto-diagnose-assen";
 
   return (
     <>
@@ -71,8 +72,8 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
             image={firstSection.image ?? page.heroImage}
             imageAlt={firstSection.imageAlt}
             kicker={firstSection.kicker}
-            primaryHref={site.catalogUrl}
-            primaryLabel="Open Power Catalog"
+            primaryHref={isNlDiagnosisAssen ? pathFor("nl","appointment") : site.catalogUrl}
+            primaryLabel={isNlDiagnosisAssen ? "Plan een diagnose-afspraak" : "Open Power Catalog"}
             secondaryHref={site.whatsappUrl}
             secondaryLabel="WhatsApp ons"
             text={firstSection.text}
@@ -89,11 +90,13 @@ export function SeoLandingRenderer({page}: {page: SeoLanding}) {
           image="/images/heroes/blog.png"
           kicker={copy.related}
           links={page.related}
-          primaryHref={site.catalogUrl}
-          primaryLabel="Controleer jouw auto"
+          primaryHref={isNlDiagnosisAssen ? pathFor("nl","appointment") : site.catalogUrl}
+          primaryLabel={isNlDiagnosisAssen ? "Vraag een diagnose-afspraak aan" : "Controleer jouw auto"}
           secondaryHref={site.whatsappUrl}
           secondaryLabel="WhatsApp ons"
-          text={copy.relatedText}
+          text={isNlDiagnosisAssen
+            ? "Een juiste storingsdiagnose begint bij jouw klacht, foutcodes en meetwaarden. Vraag de afspraak vooraf aan; onze werkplaats bevindt zich in Assen. Bekijk ook de uitleg over DPF, EGR en AdBlue of neem contact met ons op."
+            : copy.relatedText}
           title={copy.relatedTitle}
           reversed
         />
